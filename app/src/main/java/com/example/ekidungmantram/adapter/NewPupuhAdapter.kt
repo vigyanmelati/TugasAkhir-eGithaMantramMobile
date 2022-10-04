@@ -7,9 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.NewMantramModel
+import com.example.ekidungmantram.model.NewPupuhModel
 
-class NewMantramAdapter(val results: ArrayList<NewMantramModel.DataM>, val listener: OnAdapterMantramListener)
-    : RecyclerView.Adapter<NewMantramAdapter.ViewHolder>() {
+class NewPupuhAdapter (val results: ArrayList<NewPupuhModel.DataP>, val listener: OnAdapterPupuhListener)
+    : RecyclerView.Adapter<NewPupuhAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.layout_list_mantram, parent, false)
@@ -18,6 +19,7 @@ class NewMantramAdapter(val results: ArrayList<NewMantramModel.DataM>, val liste
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val result = results[position]
         holder.title.setText(result.nama_post)
+//        holder.jenis.setText("Pupuh "+result.kategori)
         if(result.nama_post.length > 20){
             holder.title.textSize = 15F
         }
@@ -32,13 +34,13 @@ class NewMantramAdapter(val results: ArrayList<NewMantramModel.DataM>, val liste
 
     override fun getItemCount() = results.size
 
-    fun setData (data: List<NewMantramModel.DataM>) {
+    fun setData (data: List<NewPupuhModel.DataP>) {
         results.clear()
         results.addAll(data)
         notifyDataSetChanged()
     }
 
-    interface OnAdapterMantramListener {
-        fun onClick(result: NewMantramModel.DataM)
+    interface OnAdapterPupuhListener {
+        fun onClick(result: NewPupuhModel.DataP)
     }
 }

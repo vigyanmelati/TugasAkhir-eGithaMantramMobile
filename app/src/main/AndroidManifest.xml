@@ -23,12 +23,36 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".AllPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListGitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajidharmagita.DetailDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajidharmagita.ListDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.gita.AllGitaAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllKategoriGitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.DetailGitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllGitaActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.kajimantram.DetailMantramNeedApprovalActivity"
             android:exported="false" />
         <activity
             android:name=".admin.kajimantram.ListMantramNeedApprovalActivity"
             android:exported="false"
-            android:parentActivityName=".admin.HomeAdminActivity"/>
+            android:parentActivityName=".admin.HomeAdminActivity" />
         <activity
             android:name=".admin.prosesiupacara.prosesikhusus.AllProsesiKhususActivity"
             android:exported="false" />

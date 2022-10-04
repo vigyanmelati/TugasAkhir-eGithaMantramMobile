@@ -21,6 +21,8 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.admin.adminmanager.AllAdminActivity
 import com.example.ekidungmantram.admin.fragment.HomeAdminFragment
 import com.example.ekidungmantram.admin.gamelan.AllGamelanAdminActivity
+import com.example.ekidungmantram.admin.gita.AllGitaAdminActivity
+import com.example.ekidungmantram.admin.kajidharmagita.ListDharmagitaNeedApprovalActivity
 import com.example.ekidungmantram.admin.kajimantram.ListMantramNeedApprovalActivity
 import com.example.ekidungmantram.admin.kidung.AllKidungAdminActivity
 import com.example.ekidungmantram.admin.mantram.AllMantramAdminActivity
@@ -74,6 +76,7 @@ class HomeAdminActivity : AppCompatActivity() {
             val nav_Menu: Menu = navView.getMenu()
             nav_Menu.findItem(R.id.approval).setVisible(false)
             nav_Menu.findItem(R.id.kelola_admin).setVisible(false)
+            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }
 
         navView.setNavigationItemSelectedListener {
@@ -85,6 +88,8 @@ class HomeAdminActivity : AppCompatActivity() {
                 R.id.kidung_admin -> goToKidung()
                 R.id.mantram_admin -> goToMantram()
                 R.id.approval -> goToKajiMantram()
+                R.id.gita_admin ->goToGita()
+                R.id.gita_approve -> goToKajiGita()
                 R.id.prosesi_upacara_admin -> goToProsesi()
                 R.id.kelola_admin -> goToAdmin()
                 R.id.logout -> goToLogout(id?.toInt())
@@ -105,6 +110,17 @@ class HomeAdminActivity : AppCompatActivity() {
             true
         }
     }
+
+    private fun goToGita() {
+        val intent = Intent(this, AllGitaAdminActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToKajiGita() {
+        val intent = Intent(this, ListDharmagitaNeedApprovalActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun goToYadnya() {
         val intent = Intent(this, AllYadnyaAdminActivity::class.java)
         startActivity(intent)

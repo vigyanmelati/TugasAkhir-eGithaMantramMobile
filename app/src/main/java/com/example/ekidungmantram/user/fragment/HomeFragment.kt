@@ -17,17 +17,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.ekidungmantram.adapter.CardSliderAdapter
-import com.example.ekidungmantram.adapter.NewKidungAdapter
-import com.example.ekidungmantram.adapter.NewMantramAdapter
-import com.example.ekidungmantram.adapter.NewYadnyaAdapter
+import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.FragmentHomeBinding
-import com.example.ekidungmantram.model.HomeModel
-import com.example.ekidungmantram.model.NewKidungModel
-import com.example.ekidungmantram.model.NewMantramModel
-import com.example.ekidungmantram.model.NewYadnyaModel
+import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.user.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
@@ -45,6 +39,8 @@ class HomeFragment : Fragment() {
     private lateinit var yadnyaAdapter  : NewYadnyaAdapter
     private lateinit var kidungAdapter  : NewKidungAdapter
     private lateinit var mantramAdapter : NewMantramAdapter
+    private lateinit var pupuhAdapter : NewPupuhAdapter
+    private lateinit var dharmagitaAdapter : NewDharmagitaAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var gridLayoutManagerK      : GridLayoutManager? = null
     private var gridLayoutManagerM      : GridLayoutManager? = null
@@ -60,13 +56,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getYadnyaMasterData()
-        setupRecyclerViewY()
+//        getYadnyaMasterData()
+        getDharmagitaMasterData()
+//        setupRecyclerViewY()
+        setupRecyclerViewD()
         setupRecyclerViewK()
-        setupRecyclerViewM()
-        getLatestYadnyaData()
+        setupRecyclerViewP()
+        getLatestDharmagitaData()
         getLatestKidungData()
-        getLatestMantramData()
+        getLatestPupuhData()
+//        getLatestMantramData()
         runAutoSlideCard()
 
         lihatSemua.visibility = View.GONE
@@ -82,12 +81,15 @@ class HomeFragment : Fragment() {
 
         val swiped = binding.swipe
         swiped.setOnRefreshListener {
-            setupRecyclerViewY()
+//            setupRecyclerViewY()
+            setupRecyclerViewD()
             setupRecyclerViewK()
-            setupRecyclerViewM()
-            getLatestYadnyaData()
+            setupRecyclerViewP()
+//            setupRecyclerViewM()
+//            getLatestYadnyaData()
+            getLatestDharmagitaData()
             getLatestKidungData()
-            getLatestMantramData()
+            getLatestPupuhData()
             swiped.isRefreshing = false
         }
     }
@@ -108,24 +110,21 @@ class HomeFragment : Fragment() {
         handler.post(runnable)
     }
 
-    private fun setupRecyclerViewY() {
-        yadnyaAdapter = NewYadnyaAdapter(arrayListOf(), object : NewYadnyaAdapter.OnAdapterListener{
-            override fun onClick(result: NewYadnyaModel.Data) {
+
+    private fun setupRecyclerViewD() {
+        dharmagitaAdapter = NewDharmagitaAdapter(arrayListOf(), object : NewDharmagitaAdapter.OnAdapterListener{
+            override fun onClick(result: NewDharmagitaModel.Data) {
                 val bundle = Bundle()
-                val intent = Intent(activity, DetailYadnyaActivity::class.java)
-                bundle.putInt("id_yadnya", result.id_post)
-                bundle.putInt("id_kategori", result.id_kategori)
-                bundle.putString("nama_yadnya", result.nama_post)
-                bundle.putString("kategori", result.kategori)
-                bundle.putString("gambar", result.gambar)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                if(result.nama_post == "Sekar Madya"){
+                    val intent = Intent(activity, AllKidungActivity::class.java)
+                    startActivity(intent)
+                }
             }
         })
         binding.yadnyaBaru.apply {
             gridLayoutManagerY = GridLayoutManager(activity, 1, LinearLayoutManager.HORIZONTAL, false)
             layoutManager      = gridLayoutManagerY
-            adapter            = yadnyaAdapter
+            adapter            = dharmagitaAdapter
             setHasFixedSize(true)
         }
     }
@@ -148,11 +147,29 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerViewM() {
-        mantramAdapter = NewMantramAdapter(arrayListOf(), object : NewMantramAdapter.OnAdapterMantramListener{
-            override fun onClick(result: NewMantramModel.DataM) {
+//    private fun setupRecyclerViewM() {
+//        mantramAdapter = NewMantramAdapter(arrayListOf(), object : NewMantramAdapter.OnAdapterMantramListener{
+//            override fun onClick(result: NewMantramModel.DataM) {
+//                val bundle = Bundle()
+//                val intent = Intent(activity, DetailMantramActivity::class.java)
+//                bundle.putInt("id_mantram", result.id_post)
+//                intent.putExtras(bundle)
+//                startActivity(intent)
+//            }
+//        })
+//        binding.mantramBaru.apply {
+//            gridLayoutManagerM = GridLayoutManager(activity, 1, LinearLayoutManager.HORIZONTAL, false)
+//            layoutManager      = gridLayoutManagerM
+//            adapter            = mantramAdapter
+//            setHasFixedSize(true)
+//        }
+//    }
+
+    private fun setupRecyclerViewP() {
+        pupuhAdapter = NewPupuhAdapter(arrayListOf(), object : NewPupuhAdapter.OnAdapterPupuhListener{
+            override fun onClick(result: NewPupuhModel.DataP) {
                 val bundle = Bundle()
-                val intent = Intent(activity, DetailMantramActivity::class.java)
+                val intent = Intent(activity, AllGitaActivity::class.java)
                 bundle.putInt("id_mantram", result.id_post)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -161,28 +178,28 @@ class HomeFragment : Fragment() {
         binding.mantramBaru.apply {
             gridLayoutManagerM = GridLayoutManager(activity, 1, LinearLayoutManager.HORIZONTAL, false)
             layoutManager      = gridLayoutManagerM
-            adapter            = mantramAdapter
+            adapter            = pupuhAdapter
             setHasFixedSize(true)
         }
     }
 
-    private fun getLatestYadnyaData() {
-        ApiService.endpoint.getYadnyaNewList()
-            .enqueue(object: Callback<NewYadnyaModel>{
-                override fun onResponse(
-                    call: Call<NewYadnyaModel>,
-                    response: Response<NewYadnyaModel>
-                ) {
-                    showYadnyaData(response.body()!!)
-                    binding.nodatayadnya.visibility  = View.GONE
-                }
-
-                override fun onFailure(call: Call<NewYadnyaModel>, t: Throwable) {
-                    printLog("on failure: $t")
-                }
-
-            })
-    }
+//    private fun getLatestYadnyaData() {
+//        ApiService.endpoint.getYadnyaNewList()
+//            .enqueue(object: Callback<NewYadnyaModel>{
+//                override fun onResponse(
+//                    call: Call<NewYadnyaModel>,
+//                    response: Response<NewYadnyaModel>
+//                ) {
+//                    showYadnyaData(response.body()!!)
+//                    binding.nodatayadnya.visibility  = View.GONE
+//                }
+//
+//                override fun onFailure(call: Call<NewYadnyaModel>, t: Throwable) {
+//                    printLog("on failure: $t")
+//                }
+//
+//            })
+//    }
 
     private fun getLatestKidungData() {
         ApiService.endpoint.getKidungNewList()
@@ -207,22 +224,62 @@ class HomeFragment : Fragment() {
             })
     }
 
-    private fun getLatestMantramData() {
-        ApiService.endpoint.getMantramNewList()
-            .enqueue(object: Callback<NewMantramModel>{
+//    private fun getLatestMantramData() {
+//        ApiService.endpoint.getMantramNewList()
+//            .enqueue(object: Callback<NewMantramModel>{
+//                override fun onResponse(
+//                    call: Call<NewMantramModel>,
+//                    response: Response<NewMantramModel>
+//                ) {
+//                    if(response.body()!!.data.toString() == "[]"){
+//                        binding.nodatamantram.visibility  = View.VISIBLE
+//                    }else{
+//                        showMantramData(response.body()!!)
+//                        binding.nodatamantram.visibility  = View.GONE
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<NewMantramModel>, t: Throwable) {
+//                    printLog("on failure: $t")
+//                }
+//
+//            })
+//    }
+
+    private fun getLatestPupuhData() {
+        ApiService.endpoint.getPupuhNewList()
+            .enqueue(object: Callback<NewPupuhModel>{
                 override fun onResponse(
-                    call: Call<NewMantramModel>,
-                    response: Response<NewMantramModel>
+                    call: Call<NewPupuhModel>,
+                    response: Response<NewPupuhModel>
                 ) {
                     if(response.body()!!.data.toString() == "[]"){
                         binding.nodatamantram.visibility  = View.VISIBLE
                     }else{
-                        showMantramData(response.body()!!)
+                        showPupuhData(response.body()!!)
                         binding.nodatamantram.visibility  = View.GONE
                     }
                 }
 
-                override fun onFailure(call: Call<NewMantramModel>, t: Throwable) {
+                override fun onFailure(call: Call<NewPupuhModel>, t: Throwable) {
+                    printLog("on failure: $t")
+                }
+
+            })
+    }
+
+    private fun getLatestDharmagitaData() {
+        ApiService.endpoint.getDharmagitaNewList()
+            .enqueue(object: Callback<NewDharmagitaModel>{
+                override fun onResponse(
+                    call: Call<NewDharmagitaModel>,
+                    response: Response<NewDharmagitaModel>
+                ) {
+                    showDharmagitaData(response.body()!!)
+                    binding.nodatayadnya.visibility  = View.GONE
+                }
+
+                override fun onFailure(call: Call<NewDharmagitaModel>, t: Throwable) {
                     printLog("on failure: $t")
                 }
 
@@ -232,6 +289,11 @@ class HomeFragment : Fragment() {
     private fun showYadnyaData(data: NewYadnyaModel) {
         val results = data.data
         yadnyaAdapter.setData(results)
+    }
+
+    private fun showDharmagitaData(data: NewDharmagitaModel) {
+        val results = data.data
+        dharmagitaAdapter.setData(results)
     }
 
     private fun showKidungData(data: NewKidungModel) {
@@ -244,8 +306,48 @@ class HomeFragment : Fragment() {
         mantramAdapter.setData(results)
     }
 
-    private fun getYadnyaMasterData() {
-        ApiService.endpoint.getYadnyaMasterList()
+    private fun showPupuhData(data: NewPupuhModel) {
+        val results = data.data
+        pupuhAdapter.setData(results)
+    }
+
+//    private fun getYadnyaMasterData() {
+//        ApiService.endpoint.getYadnyaMasterList()
+//            .enqueue(object:Callback<List<HomeModel>>{
+//                override fun onResponse(
+//                    call: Call<List<HomeModel>>,
+//                    response: Response<List<HomeModel>>
+//                ) {
+//                    if(response.isSuccessful){
+//                        val result = response.body()
+//                        printLog(result.toString())
+//                        fetchData(result!!)
+//
+//                        cardAdapter               = CardSliderAdapter(list)
+//                        binding.viewPager.adapter = cardAdapter
+//                        dots                      = ArrayList()
+//                        setIndicator()
+//
+//                        binding.viewPager.registerOnPageChangeCallback(object  : ViewPager2.OnPageChangeCallback(){
+//                            override fun onPageSelected(position: Int) {
+//                                selectedDot(position)
+//                                super.onPageSelected(position)
+//                            }
+//                        })
+//                        setShimmerToStop()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<List<HomeModel>>, t: Throwable) {
+//                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
+//                    setShimmerToStop()
+//                }
+//
+//            })
+//    }
+
+    private fun getDharmagitaMasterData() {
+        ApiService.endpoint.getDharmagitaMasterList()
             .enqueue(object:Callback<List<HomeModel>>{
                 override fun onResponse(
                     call: Call<List<HomeModel>>,
@@ -339,7 +441,7 @@ class HomeFragment : Fragment() {
     private fun fetchData(titles: List<HomeModel>) {
         for (title in titles) {
             yadnyaList.add(
-                title.nama_kategori
+                title.nama_post
             )
         }
 

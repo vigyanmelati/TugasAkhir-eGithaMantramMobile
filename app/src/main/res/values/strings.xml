@@ -6,10 +6,35 @@
     <string name="app_desc">E-Yadnya Mobile merupakan sebuah pengembangan lanjutan versi <i>mobile</i> Android dari <i>Website</i> Sistem Informasi E-Yadnya dimana aplikasi ini memiliki tujuan untuk memberi edukasi mengenai upacara <i>yadnya</i> beserta prosesi serta pernak-perniknya. Pengembang aplikasi mobile ini adalah mahasiswa Program Studi Teknologi Informasi, Fakultas Teknik, Universitas Udayana. Aplikasi ini dikembangkan di platform Android dengan bahasa pemrograman Kotlin. Semoga aplikasi ini dapat dikembangkan lagi lebih jauh dan bisa menyasar lebih banyak platform lagi.\n\nJika anda tertarik berkontribusi memperbanyak pengetahuan seputar Yadnya beserta pernak-perniknya, silahkan hubung Telegram saya: <b>@Wahyuivan999</b></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="e_yadnya">E-Yadnya</string>
+    <string name="e_yadnya">E-Dharmagita</string>
     <string name="e_yadnya_admin">Beranda Admin</string>
     <string name="e_yadnya_mobile">E-Yadnya Mobile</string>
     <string name="version_app">v1.0.7</string>
     <string name="copyright">© 2021</string>
     <string name="e_yadnya_mobile_app">E-Yadnya Mobile App</string>
+    <string name="gita">Dharmagita</string>
+    <string name="data_gita"> Data Dharmagita</string>
+    <string name="daftar_gita">Daftar Dharmagita</string>
+
+    <string-array name="data_nama_gita">
+        <item>Sekar Rare</item>
+        <item>Sekar Alit</item>
+        <item>Sekar Madya</item>
+        <item>Sekar Agung</item>
+    </string-array>
+
+    <string-array name="data_desc_gita">
+        <item>Jenis Lagu Anak-Anak</item>
+        <item>Jenis Pupuh</item>
+        <item>Jenis Kidung</item>
+        <item>Jenis Kakawin</item>
+    </string-array>
+
+    <string-array name="data_nama_gita_app">
+        <item>Meong-Meong</item>
+    </string-array>
+
+    <string-array name="data_kategori_gita_test">
+        <item>Sekar Rare</item>
+    </string-array>
 </resources>

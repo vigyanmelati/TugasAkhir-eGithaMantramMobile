@@ -755,4 +755,19 @@ interface ApiEndpoint {
         @Path("id_prosesi") idProsesi: Int,
         @Path("id_yadnya") idYadnya: Int,
     ) : Call<ProsesiKhususModel>
+
+    //Dharmagita
+    @GET("listalldharmagita")
+    fun getDharmagitaMasterList(): Call<List<HomeModel>>
+    @GET("listdharmagitaterbaru")
+    fun getDharmagitaNewList(): Call<NewDharmagitaModel>
+    @GET("listallpupuh")
+    fun getListPupuh() : Call<NewPupuhModel>
+    @GET("listpupuhterbaru")
+    fun getPupuhNewList(): Call<NewPupuhModel>
+//    @GET("detaillistdharmagita/{id_post}")
+//    fun getDetailListDharmagita(@Path("id_post") id: Int) : Call<DetailYadnyaModel>
+//    @GET("detaildharmagita/{id_post}")
+//    fun getDetailDharmagita(@Path("id_post") id: Int) : Call<DetailYadnyaModel>
+    
 }

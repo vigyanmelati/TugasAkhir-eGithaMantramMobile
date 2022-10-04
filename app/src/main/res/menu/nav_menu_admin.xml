@@ -35,6 +35,14 @@
                     android:title="Data Kidung"
                     android:icon="@drawable/kidung" />
                 <item
+                    android:id="@+id/gita_admin"
+                    android:title="@string/data_gita"
+                    android:icon="@drawable/gita" />
+                <item
+                    android:id="@+id/gita_approve"
+                    android:title="Kaji Dharmagita"
+                    android:icon="@drawable/approve" />
+                <item
                     android:id="@+id/prosesi_upacara_admin"
                     android:title="Data Prosesi Upacara"
                     android:icon="@drawable/list" />
