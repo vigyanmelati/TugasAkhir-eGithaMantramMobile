@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.ItemSlideBinding
-import com.example.ekidungmantram.user.AllKidungActivity
-import com.example.ekidungmantram.user.YadnyaActivity
+import com.example.ekidungmantram.user.*
 
 
 class CardSliderAdapter(private val items: List<CardSliderData>) :RecyclerView.Adapter<CardSliderAdapter.CardViewHolder>() {
@@ -20,6 +19,15 @@ class CardSliderAdapter(private val items: List<CardSliderData>) :RecyclerView.A
                 cardYadnya.setOnClickListener {
                     if(data.yadnyaName == "Sekar Madya"){
                         val intent = Intent(itemView.context, AllKidungActivity::class.java)
+                        itemView.context.startActivity(intent)
+                    } else if(data.yadnyaName == "Sekar Rare"){
+                        val intent = Intent(itemView.context, AlllLaguAnakActivity::class.java)
+                        itemView.context.startActivity(intent)
+                    }else if(data.yadnyaName == "Sekar Alit"){
+                        val intent = Intent(itemView.context, AllPupuhActivity::class.java)
+                        itemView.context.startActivity(intent)
+                    }else if(data.yadnyaName == "Sekar Agung"){
+                        val intent = Intent(itemView.context, AllKakawinActivity::class.java)
                         itemView.context.startActivity(intent)
                     }
 //                    val intent = Intent(itemView.context, YadnyaActivity::class.java)

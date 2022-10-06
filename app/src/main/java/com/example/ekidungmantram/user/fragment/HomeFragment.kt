@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
         }
 
         lihatSemua3.setOnClickListener {
-            val intent = Intent(activity, AllMantramActivity::class.java)
+            val intent = Intent(activity, AllPupuhActivity::class.java)
             startActivity(intent)
         }
 

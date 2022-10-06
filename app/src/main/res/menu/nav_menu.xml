@@ -51,6 +51,15 @@
                     android:id="@+id/sekar_rare"
                     android:title="Sekar Rare"
                     android:icon="@drawable/gita" />
+                <item
+                    android:id="@+id/yadnya"
+                    android:title="Upacara Yadnya"
+                    android:icon="@drawable/ic_baseline_home_work_24" />
+                <item
+                    android:id="@+id/prosesi_upacara"
+                    android:title="Prosesi Upacara"
+                    android:icon="@drawable/list" />
+
             </group>
         </menu>
     </item>

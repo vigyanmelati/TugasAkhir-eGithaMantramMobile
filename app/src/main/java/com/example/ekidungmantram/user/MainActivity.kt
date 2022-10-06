@@ -60,9 +60,12 @@ class MainActivity : AppCompatActivity() {
 //                R.id.tabuh -> goToTabuh()
 //                R.id.gamelan_bali -> goToGamelan()
                 R.id.sekar_madya -> goToKidung()
+                R.id.sekar_agung -> goToKakawin()
+                R.id.sekar_alit -> goToPupuh()
+                R.id.sekar_rare -> goToLaguAnak()
 //                R.id.gita -> goToGita()
 //                R.id.mantram -> goToMantram()
-//                R.id.prosesi_upacara -> goToProsesi()
+                R.id.prosesi_upacara -> goToProsesi()
                 R.id.login -> goToLogin()
                 R.id.about -> goToAbout()
             }
@@ -114,6 +117,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToKidung() {
         val intent = Intent(this, AllKidungActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToPupuh() {
+        val intent = Intent(this, AllPupuhActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToLaguAnak() {
+        val intent = Intent(this, AlllLaguAnakActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToKakawin() {
+        val intent = Intent(this, AllKakawinActivity::class.java)
         startActivity(intent)
     }
 

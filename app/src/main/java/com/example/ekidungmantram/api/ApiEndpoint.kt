@@ -761,13 +761,24 @@ interface ApiEndpoint {
     fun getDharmagitaMasterList(): Call<List<HomeModel>>
     @GET("listdharmagitaterbaru")
     fun getDharmagitaNewList(): Call<NewDharmagitaModel>
+
+    //Pupuh
     @GET("listallpupuh")
-    fun getListPupuh() : Call<NewPupuhModel>
+    fun getPupuhMasterList() : Call<ArrayList<AllPupuhModel>>
     @GET("listpupuhterbaru")
     fun getPupuhNewList(): Call<NewPupuhModel>
-//    @GET("detaillistdharmagita/{id_post}")
-//    fun getDetailListDharmagita(@Path("id_post") id: Int) : Call<DetailYadnyaModel>
-//    @GET("detaildharmagita/{id_post}")
-//    fun getDetailDharmagita(@Path("id_post") id: Int) : Call<DetailYadnyaModel>
-    
+    @GET("listkategoripupuh/{id_pupuh}")
+    fun getKategoriPupuh(@Path("id_pupuh") id: Int) : Call<ArrayList<KategoriPupuhModel>>
+
+    //Lagu Anak
+    @GET("listalllaguanak")
+    fun getLaguAnakMasterList() : Call<ArrayList<AllLaguAnakModel>>
+    @GET("detaillaguanak/{id_post}")
+    fun getDetailLaguAnak(@Path("id_post") id: Int) : Call<DetailLaguAnakModel>
+    @GET("detailbaitlaguanak/{id_post}")
+    fun getDetailBaitLaguAnak(@Path("id_post") id:Int) : Call<DetailBaitLaguAnakModel>
+
+    //Kakawin
+    @GET("listallkakawin")
+    fun getKakawinMasterList() : Call<ArrayList<AllKakawinModel>>
 }

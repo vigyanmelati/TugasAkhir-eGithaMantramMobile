@@ -23,7 +23,7 @@ class AllKidungActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kidung)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "E-Kidung"
+        supportActionBar!!.title = "E-SekarMadya"
 
         allKidung1.layoutManager = LinearLayoutManager(applicationContext)
         allKidung2.layoutManager = LinearLayoutManager(applicationContext)

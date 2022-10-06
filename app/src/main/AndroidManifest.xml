@@ -23,7 +23,19 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
-            android:name=".AllPupuhActivity"
+            android:name=".user.DetailLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllKategoriPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllKakawinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AlllLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllPupuhActivity"
             android:exported="false" />
         <activity
             android:name=".ListGitaActivity"
