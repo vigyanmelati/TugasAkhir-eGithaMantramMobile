@@ -63,8 +63,9 @@ class AlllLaguAnakActivity : AppCompatActivity() {
                         object : AllLaguAnakAdapter.OnAdapterAllLaguAnakListener{
                             override fun onClick(result: AllLaguAnakModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@AlllLaguAnakActivity, DetailLaguAnakActivity::class.java)
+                                val intent = Intent(this@AlllLaguAnakActivity, AllKategoriLaguAnakActivity::class.java)
                                 bundle.putInt("id_lagu_anak", result.id_post)
+                                bundle.putString("nama_lagu_anak", result.nama_post)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }

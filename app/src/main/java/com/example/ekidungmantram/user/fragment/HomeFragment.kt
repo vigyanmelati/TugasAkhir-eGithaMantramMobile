@@ -169,8 +169,9 @@ class HomeFragment : Fragment() {
         pupuhAdapter = NewPupuhAdapter(arrayListOf(), object : NewPupuhAdapter.OnAdapterPupuhListener{
             override fun onClick(result: NewPupuhModel.DataP) {
                 val bundle = Bundle()
-                val intent = Intent(activity, AllGitaActivity::class.java)
-                bundle.putInt("id_mantram", result.id_post)
+                val intent = Intent(activity, AllKategoriPupuhActivity::class.java)
+                bundle.putInt("id_pupuh", result.id_post)
+                bundle.putString("nama_pupuh", result.nama_post)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

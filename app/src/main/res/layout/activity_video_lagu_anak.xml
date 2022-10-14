@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.DetailLaguAnakActivity">
+    tools:context=".user.VideoLaguAnakActivity">
     <com.facebook.shimmer.ShimmerFrameLayout
         android:visibility="visible"
-        android:id="@+id/shimmerDetailLaguAnak"
+        android:id="@+id/shimmerVideoLaguAnak"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
@@ -15,7 +15,7 @@
             layout="@layout/shimmer_detail_lagu_anak"/>
     </com.facebook.shimmer.ShimmerFrameLayout>
     <ScrollView
-        android:id="@+id/scrollDetailLaguAnak"
+        android:id="@+id/scrollVideoLaguAnak"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +30,7 @@
                 android:layout_height="300dp"
                 tools:ignore="MissingConstraints">
                 <ImageView
-                    android:id="@+id/imageDetailLaguAnak"
+                    android:id="@+id/imageVideoLaguAnak"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/backToLaguAnak"
+                            android:id="@+id/backToVideoLaguAnak"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -68,7 +68,7 @@
                     android:paddingBottom="55dp"
                     android:paddingLeft="10dp">
                     <TextView
-                        android:id="@+id/detailNamaLaguAnak"
+                        android:id="@+id/detailNamaVideoLaguAnak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nama Sekar Rare"
@@ -76,7 +76,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
                     <TextView
-                        android:id="@+id/detailJenisLaguAnak"
+                        android:id="@+id/detailJenisVideoLaguAnak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Jenis Sekar Rare"
@@ -98,12 +98,28 @@
                     android:orientation="vertical"
                     android:padding="10dp">
                     <LinearLayout
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+                        <com.google.android.youtube.player.YouTubePlayerView
+                            android:id="@+id/youtubePlayerLaguAnak"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="10dp"/>
                         <TextView
-                            android:id="@+id/deskripsiLaguAnak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Deskripsi Sekar Rare"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:justificationMode="inter_word"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="5dp"/>
+                        <TextView
+                            android:id="@+id/deskripsiVideoLaguAnak"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
@@ -121,92 +137,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/baitLaguAnakList"
+                                android:id="@+id/baitVideoLaguAnakList"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                tools:listitem="@layout/layout_list_detail_lagu_anak" />
+                                tools:listitem="@layout/layout_list_detail_video_lagu_anak" />
                         </RelativeLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Video"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="15sp"/>
-                        <TextView
-                            android:id="@+id/lihatSemuavideoanak"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Lihat Semua"
-                            android:textColor="#4F88C7"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:id="@+id/nodatavideolagu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Tidak ada data"
-                        android:textColor="@color/shimmer_secondary"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_video_lagu_anak"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_list_video_lagu_anak"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp"/>
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Audio"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="15sp"/>
-                        <TextView
-                            android:id="@+id/lihatSemuaaudioanak"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Lihat Semua"
-                            android:textColor="#4F88C7"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:id="@+id/nodataaudiolagu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Tidak ada data"
-                        android:textColor="@color/shimmer_secondary"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_audio_lagu_anak"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_list_audio_lagu_anak"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

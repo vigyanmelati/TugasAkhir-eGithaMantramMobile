@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.sekar_rare -> goToLaguAnak()
 //                R.id.gita -> goToGita()
 //                R.id.mantram -> goToMantram()
-                R.id.prosesi_upacara -> goToProsesi()
+//                R.id.prosesi_upacara -> goToProsesi()
                 R.id.login -> goToLogin()
                 R.id.about -> goToAbout()
             }

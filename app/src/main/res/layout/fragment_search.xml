@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/searchview_background"
-                app:queryHint="Masukan nama yadnya"/>
+                app:queryHint="Masukan nama dharmagita"/>
             <TextView
                 android:id="@+id/noallyadnyadata"
                 android:layout_width="match_parent"

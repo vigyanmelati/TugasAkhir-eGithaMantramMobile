@@ -8,10 +8,10 @@
     <item
         android:id="@+id/cari"
         android:icon="@drawable/search"
-        android:title="Cari Yadnya"/>
+        android:title="Cari Dharmagita"/>
 
     <item
         android:id="@+id/list_yadnya"
         android:icon="@drawable/bookmark_list"
-        android:title="Yadnya Ditandai"/>
+        android:title="Dharmagita Ditandai"/>
 </menu>

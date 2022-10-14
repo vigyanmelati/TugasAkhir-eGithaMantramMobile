@@ -23,6 +23,18 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".user.DetailMaknaDharmagitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AudioLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.VideoLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllKategoriLaguAnakActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.DetailLaguAnakActivity"
             android:exported="false" />
         <activity
@@ -48,9 +60,6 @@
             android:exported="false" />
         <activity
             android:name=".admin.gita.AllGitaAdminActivity"
-            android:exported="false" />
-        <activity
-            android:name=".user.AllKategoriGitaActivity"
             android:exported="false" />
         <activity
             android:name=".user.DetailGitaActivity"

@@ -773,10 +773,16 @@ interface ApiEndpoint {
     //Lagu Anak
     @GET("listalllaguanak")
     fun getLaguAnakMasterList() : Call<ArrayList<AllLaguAnakModel>>
+    @GET("listkategorilaguanak/{id_lagu_anak}")
+    fun getKategoriLaguAnak(@Path("id_lagu_anak") id: Int) : Call<ArrayList<KategoriLaguAnakModel>>
     @GET("detaillaguanak/{id_post}")
     fun getDetailLaguAnak(@Path("id_post") id: Int) : Call<DetailLaguAnakModel>
     @GET("detailbaitlaguanak/{id_post}")
     fun getDetailBaitLaguAnak(@Path("id_post") id:Int) : Call<DetailBaitLaguAnakModel>
+    @GET("listvideolaguanak/{id_lagu_anak}")
+    fun getListVideoLaguAnak(@Path("id_lagu_anak") id:Int): Call<VideoLaguAnakModel>
+    @GET("listaudiolaguanak/{id_post}")
+    fun getListAudioLaguAnak(@Path("id_post") id:Int): Call<AudioLaguAnakModel>
 
     //Kakawin
     @GET("listallkakawin")
