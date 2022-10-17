@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.BookmarkedAdapter
-import com.example.ekidungmantram.database.data.Yadnya
-import com.example.ekidungmantram.database.setup.YadnyaDb
-import com.example.ekidungmantram.user.DetailYadnyaActivity
+import com.example.ekidungmantram.adapter.BookmarkedDharmagitaAdapter
+import com.example.ekidungmantram.database.data.Dharmagita
+import com.example.ekidungmantram.database.setup.DharmagitaDb
+import com.example.ekidungmantram.user.DetailKidungActivity
+import com.example.ekidungmantram.user.DetailLaguAnakActivity
 import kotlinx.android.synthetic.main.fragment_list_yadnya.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +22,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ListYadnyaFragment : Fragment() {
-    private lateinit var db                : YadnyaDb
-    private lateinit var bookmarkedAdapter : BookmarkedAdapter
+//    private lateinit var db                : YadnyaDb
+    private lateinit var db                : DharmagitaDb
+//    private lateinit var bookmarkedAdapter : BookmarkedAdapter
+    private lateinit var bookmarkedAdapter : BookmarkedDharmagitaAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,28 +35,53 @@ class ListYadnyaFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        db = Room.databaseBuilder(requireActivity(), YadnyaDb::class.java, "yadnyabookmarked.db").build()
-        getAllYadnyaBookmarkedData()
+        db = Room.databaseBuilder(requireActivity(), DharmagitaDb::class.java, "dharmagitabookmarked.db").build()
+        getAllDharmagitaBookmarkedData()
         setupRecyclerviewBookmark()
         swipeBook.setOnRefreshListener {
-            getAllYadnyaBookmarkedData()
+            getAllDharmagitaBookmarkedData()
             setupRecyclerviewBookmark()
             swipeBook.isRefreshing = false
         }
     }
 
     private fun setupRecyclerviewBookmark() {
-        bookmarkedAdapter = BookmarkedAdapter(arrayListOf(), object : BookmarkedAdapter.OnAdapterListener{
-            override fun onClick(result: Yadnya) {
+        bookmarkedAdapter = BookmarkedDharmagitaAdapter(arrayListOf(), object : BookmarkedDharmagitaAdapter.OnAdapterListener{
+            override fun onClick(result: Dharmagita) {
                 val bundle = Bundle()
-                val intent = Intent(activity, DetailYadnyaActivity::class.java)
-                bundle.putInt("id_yadnya", result.id_yadnya)
-                bundle.putInt("id_kategori", result.id_kategori)
-                bundle.putString("nama_yadnya", result.nama_post)
-                bundle.putString("kategori", result.kategori)
-                bundle.putString("gambar", result.gambar)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                if(result.id_tag == 4){
+                    val intent = Intent(activity, DetailKidungActivity::class.java)
+                    bundle.putInt("id_kidung", result.id_dharmagita)
+                    bundle.putInt("tag_kidung", result.id_tag)
+                    bundle.putString("nama_kidung", result.nama_post)
+                    bundle.putString("gambar_kidung", result.gambar)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if (result.id_tag == 9){
+                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                    bundle.putInt("id_lagu", result.id_dharmagita)
+                    bundle.putInt("tag_lagu", result.id_tag)
+                    bundle.putString("nama_lagu", result.nama_post)
+                    bundle.putString("gambar_lagu", result.gambar)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if (result.id_tag == 10) {
+                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                    bundle.putInt("id_pupuh", result.id_dharmagita)
+                    bundle.putInt("tag_pupuh", result.id_tag)
+                    bundle.putString("nama_pupuh", result.nama_post)
+                    bundle.putString("gambar_pupuh", result.gambar)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if (result.id_tag == 11) {
+                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                    bundle.putInt("id_kakawin", result.id_dharmagita)
+                    bundle.putInt("tag_kakawin", result.id_tag)
+                    bundle.putString("nama_kakawin", result.nama_post)
+                    bundle.putString("gambar_kakawin", result.gambar)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
             }
         })
         allYadnyasBookmarked.apply {
@@ -63,28 +91,28 @@ class ListYadnyaFragment : Fragment() {
         }
     }
 
-    private fun getAllYadnyaBookmarkedData() {
+    private fun getAllDharmagitaBookmarkedData() {
         CoroutineScope(Dispatchers.IO).launch {
-            val yadnya = db.yadnyaDao().getAllBookmarkedYadnya()
+            val dharmagita = db.dharmagitaDao().getAllBookmarkedDharmagita()
             withContext(Dispatchers.Main){
-                if(yadnya.isNotEmpty()){
+                if(dharmagita.isNotEmpty()){
                     nobookmark.visibility           = View.GONE
                     allYadnyasBookmarked.visibility = View.VISIBLE
                 }else{
                     nobookmark.visibility           = View.VISIBLE
                     allYadnyasBookmarked.visibility = View.GONE
                 }
-                showData(yadnya)
+                showData(dharmagita)
             }
         }
     }
 
-    private fun showData(yadnya: List<Yadnya>) {
-        bookmarkedAdapter.setData(yadnya)
+    private fun showData(dharmagita: List<Dharmagita>) {
+        bookmarkedAdapter.setData(dharmagita)
     }
 
     private fun printLog(message: String) {
-        Log.d("ListYadnyaFragment", message)
+        Log.d("ListdharmagitaFragment", message)
     }
 
 }

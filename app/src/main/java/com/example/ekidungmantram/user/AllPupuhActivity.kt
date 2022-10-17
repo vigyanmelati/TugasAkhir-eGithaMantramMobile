@@ -67,6 +67,7 @@ class AllPupuhActivity : AppCompatActivity() {
                                 val intent = Intent(this@AllPupuhActivity, AllKategoriPupuhActivity::class.java)
                                 bundle.putInt("id_pupuh", result.id_post)
                                 bundle.putString("nama_pupuh", result.nama_post)
+                                bundle.putString("desc_pupuh", result.deskripsi)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -93,6 +94,8 @@ class AllPupuhActivity : AppCompatActivity() {
                                                 val bundle = Bundle()
                                                 val intent = Intent(this@AllPupuhActivity, AllKategoriPupuhActivity::class.java)
                                                 bundle.putInt("id_pupuh", result.id_post)
+                                                bundle.putString("nama_pupuh", result.nama_post)
+                                                bundle.putString("desc_pupuh", result.deskripsi)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

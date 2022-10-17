@@ -10,50 +10,92 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
+import com.example.ekidungmantram.database.data.Dharmagita
+import com.example.ekidungmantram.database.data.Yadnya
+import com.example.ekidungmantram.database.setup.DharmagitaDb
+import com.example.ekidungmantram.database.setup.YadnyaDb
 import com.example.ekidungmantram.model.*
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
+import kotlinx.android.synthetic.main.activity_detail_yadnya.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class DetailLaguAnakActivity : YouTubeBaseActivity() {
+    private lateinit var db             : DharmagitaDb
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitLaguAnakAdapter : BaitLaguAnakAdapter
     private lateinit var videoLaguAnakAdapter  : VideoLaguAnakAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioLaguAnakAdapter  : AudioLaguAnakAdapter
     private var gridLayoutManagerA      : GridLayoutManager? = null
+    private lateinit var yadnyaLaguAnakAdapter  : YadnyaLaguAnakAdapter
+    private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_lagu : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_lagu_anak)
+        db = Room.databaseBuilder(applicationContext, DharmagitaDb::class.java, "dharmagitabookmarked.db").build()
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             id_lagu = bundle.getInt("id_lagu")
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu")
+            val nama_lagu = bundle.getString("nama_lagu")
+            val gambar_lagu = bundle.getString("gambar_lagu")
+            val tag_lagu = bundle.getInt("tag_lagu")
             Log.d("id_lagu",postID.toString())
 
             getDetailData(postID)
             getBaitData(postID)
             getListVideoLaguAnak(postID)
             getListAudioLaguAnak(postID)
+            getListYadnyaLaguAnak(postID)
             setupRecyclerViewBait()
             setupRecyclerViewK()
             setupRecyclerViewA()
+            setupRecyclerViewY()
             lihatSemuavideoanak.visibility = View.GONE
             lihatSemuaaudioanak.visibility = View.GONE
+            lihatSemuayadnyaanak.visibility = View.GONE
+
+            bookmarked_dharmagita.setOnClickListener {
+                if(bookmarked_dharmagita.isChecked){
+                    Toast.makeText(this, "Bookmark Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this, "Bookmark Berhasil dihapus", Toast.LENGTH_SHORT).show()
+                }
+            }
+            bookmarked_dharmagita.setOnCheckedChangeListener { _, isChecked->
+                if (isChecked){
+                    addBookmark(postID, tag_lagu, nama_lagu, gambar_lagu)
+                }else{
+                    deleteBookmark(postID)
+                }
+            }
+            CoroutineScope(Dispatchers.IO).launch {
+                val test = db.dharmagitaDao().fetch(postID)
+                if(test != null){
+                    bookmarked_dharmagita.isChecked = true
+                }else{
+                    bookmarked_dharmagita.isChecked = false
+                }
+            }
         }
 
         backToLaguAnak.setOnClickListener {
@@ -61,6 +103,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 
     private fun printLog(message: String) {
@@ -193,6 +236,28 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
         }
     }
 
+    private fun setupRecyclerViewY() {
+        yadnyaLaguAnakAdapter =  YadnyaLaguAnakAdapter(arrayListOf(), object : YadnyaLaguAnakAdapter.OnAdapterYadnyaLaguAnakListener{
+            override fun onClick(result: YadnyaLaguAnakModel.DataL) {
+                val bundle = Bundle()
+                val intent = Intent(this@DetailLaguAnakActivity, DetailYadnyaActivity::class.java)
+                bundle.putInt("id_yadnya", result.id_post)
+                bundle.putInt("id_kategori", result.id_kategori)
+                bundle.putString("nama_yadnya", result.nama_post)
+                bundle.putString("kategori", result.kategori)
+                bundle.putString("gambar", result.gambar)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+        })
+        rv_yadnya_lagu_anak.apply {
+            gridLayoutManagerY = GridLayoutManager(this@DetailLaguAnakActivity, 1, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager      = gridLayoutManagerY
+            adapter            = yadnyaLaguAnakAdapter
+            setHasFixedSize(true)
+        }
+    }
+
     private fun getListVideoLaguAnak(id_lagu_anak: Int) {
         ApiService.endpoint.getListVideoLaguAnak(id_lagu_anak)
             .enqueue(object: Callback<VideoLaguAnakModel>{
@@ -207,6 +272,13 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                         nodatavideolagu.visibility  = View.GONE
                         showVideoLaguAnakData(response.body()!!)
                     }
+//                    if(response.body()!!.data.toString() == "[]") {
+//                        layoutGamelan.visibility = View.GONE
+//                    }else{
+//                        layoutGamelan.visibility = View.VISIBLE
+//                        nodatayadnyagamelan.visibility = View.GONE
+//                        showGamelanYadnyaData(response.body()!!)
+//                    }
 
                 }
 
@@ -241,6 +313,30 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
             })
     }
 
+    private fun getListYadnyaLaguAnak(id_lagu_anak: Int) {
+        ApiService.endpoint.getYadnyaLaguAnak(id_lagu_anak)
+            .enqueue(object: Callback<YadnyaLaguAnakModel>{
+                override fun onResponse(
+                    call: Call<YadnyaLaguAnakModel>,
+                    response: Response<YadnyaLaguAnakModel>
+                ) {
+                    if(response.body()!!.data.toString() == "[]"){
+                        nodatayadnyalagu.visibility  = View.VISIBLE
+                        Log.d("audio",response.body().toString())
+                    }else{
+                        nodatayadnyalagu.visibility  = View.GONE
+                        showYadnyaLaguAnakData(response.body()!!)
+                    }
+
+                }
+
+                override fun onFailure(call: Call<YadnyaLaguAnakModel>, t: Throwable) {
+                    printLog("on failure: $t")
+                }
+
+            })
+    }
+
     private fun showVideoLaguAnakData(body: VideoLaguAnakModel) {
         val results = body.data
         videoLaguAnakAdapter.setData(results)
@@ -248,5 +344,25 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
     private fun showAudioLaguAnakData(body: AudioLaguAnakModel) {
         val results = body.data
         audioLaguAnakAdapter.setData(results)
+    }
+    private fun showYadnyaLaguAnakData(body: YadnyaLaguAnakModel) {
+        val results = body.data
+        yadnyaLaguAnakAdapter.setData(results)
+    }
+
+    private fun addBookmark(postID: Int , id_tag: Int, namapost: String?, gambars: String?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            db.dharmagitaDao().addBookmarkedDharmagita(
+                Dharmagita(0, postID ,id_tag,namapost.toString(), gambars.toString())
+            )
+            val test = db.dharmagitaDao().fetch(postID)
+            printLog(test.toString())
+        }
+    }
+
+    private fun deleteBookmark(postID: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            db.dharmagitaDao().deleteById(postID)
+        }
     }
 }

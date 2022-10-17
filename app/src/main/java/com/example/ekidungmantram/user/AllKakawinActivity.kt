@@ -65,8 +65,10 @@ class AllKakawinActivity : AppCompatActivity() {
                         object : AllKakawinAdapter.OnAdapterAllKakawinListener{
                             override fun onClick(result: AllKakawinModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@AllKakawinActivity, DetailKidungActivity::class.java)
-                                bundle.putInt("id_kidung", result.id_post)
+                                val intent = Intent(this@AllKakawinActivity, AllKategoriKakawinActivity::class.java)
+                                bundle.putInt("id_kakawin", result.id_post)
+                                bundle.putString("nama_kakawin", result.nama_post)
+                                bundle.putString("desc_kakawin", result.deskripsi)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -91,8 +93,10 @@ class AllKakawinActivity : AppCompatActivity() {
                                         object : AllKakawinAdapter.OnAdapterAllKakawinListener{
                                             override fun onClick(result: AllKakawinModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@AllKakawinActivity, DetailKidungActivity::class.java)
-                                                bundle.putInt("id_kidung", result.id_post)
+                                                val intent = Intent(this@AllKakawinActivity, AllKategoriKakawinActivity::class.java)
+                                                bundle.putInt("id_kakawin", result.id_post)
+                                                bundle.putString("nama_kakawin", result.nama_post)
+                                                bundle.putString("desc_kakawin", result.deskripsi)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

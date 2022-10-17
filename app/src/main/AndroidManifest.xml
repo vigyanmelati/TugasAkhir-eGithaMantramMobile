@@ -23,6 +23,9 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".user.AllKategoriKakawinActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.DetailMaknaDharmagitaActivity"
             android:exported="false" />
         <activity

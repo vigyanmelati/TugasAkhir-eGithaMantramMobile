@@ -783,8 +783,12 @@ interface ApiEndpoint {
     fun getListVideoLaguAnak(@Path("id_lagu_anak") id:Int): Call<VideoLaguAnakModel>
     @GET("listaudiolaguanak/{id_post}")
     fun getListAudioLaguAnak(@Path("id_post") id:Int): Call<AudioLaguAnakModel>
+    @GET("yadnyalaguanak/{id_lagu_anak}")
+    fun getYadnyaLaguAnak(@Path("id_lagu_anak") id:Int): Call<YadnyaLaguAnakModel>
 
     //Kakawin
     @GET("listallkakawin")
     fun getKakawinMasterList() : Call<ArrayList<AllKakawinModel>>
+    @GET("listkategorikakawin/{id_kakawin}")
+    fun getKategoriKakawin(@Path("id_kakawin") id: Int) : Call<ArrayList<KategoriKakawinModel>>
 }

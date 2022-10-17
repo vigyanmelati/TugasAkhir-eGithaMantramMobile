@@ -45,16 +45,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="14dp"/>
 
-                <TextView
-                    android:id="@+id/jenis_kakawin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jenis"
-                    android:textColor="@color/grey_200"
-                    android:textSize="14sp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginBottom="15dp"/>
             </LinearLayout>
         </LinearLayout>
 

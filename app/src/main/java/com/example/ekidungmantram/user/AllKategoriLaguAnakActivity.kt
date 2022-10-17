@@ -33,9 +33,11 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu_anak")
             val namaPost = bundle.getString("nama_lagu_anak")
+            val descPost = bundle.getString("desc_lagu_anak")
             Log.d("id_lagu_anak", postID.toString())
 
             daftar_nama.text = "Daftar " + namaPost
+            desc_kategori_sekar_rare.text = descPost
             allKategoriLaguAnak1.layoutManager = LinearLayoutManager(applicationContext)
             allKategoriLaguAnak2.layoutManager = LinearLayoutManager(applicationContext)
             getAllKategoriLaguAnak(postID)
@@ -75,6 +77,9 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
                                 val bundle = Bundle()
                                 val intent = Intent(this@AllKategoriLaguAnakActivity, DetailLaguAnakActivity::class.java)
                                 bundle.putInt("id_lagu", result.id_post)
+                                bundle.putString("nama_lagu", result.nama_post)
+                                bundle.putString("gambar_lagu", result.gambar)
+                                bundle.putInt("tag_lagu", result.id_tag)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -101,6 +106,9 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
                                                 val bundle = Bundle()
                                                 val intent = Intent(this@AllKategoriLaguAnakActivity, DetailLaguAnakActivity::class.java)
                                                 bundle.putInt("id_lagu", result.id_post)
+                                                bundle.putString("nama_lagu", result.nama_post)
+                                                bundle.putString("gambar_lagu", result.gambar)
+                                                bundle.putInt("tag_lagu", result.id_tag)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.model.AllKakawinModel
-import com.example.ekidungmantram.model.AllKidungModel
+import com.example.ekidungmantram.model.KategoriKakawinModel
+import com.example.ekidungmantram.model.KategoriPupuhModel
 
-class AllKakawinAdapter (private var results: ArrayList<AllKakawinModel>, val listener: OnAdapterAllKakawinListener)
-    : RecyclerView.Adapter<AllKakawinAdapter.ViewHolder>() {
+class KategoriKakawinAdapter (private var results: ArrayList<KategoriKakawinModel>, val listener: OnAdapterKategoriKakawinListener)
+    : RecyclerView.Adapter<KategoriKakawinAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val inflatedView = layoutInflater.inflate(R.layout.layout_all_kakawin, parent, false)
+        val inflatedView = layoutInflater.inflate(R.layout.layout_all_kategori_kakawin, parent, false)
         return ViewHolder(inflatedView)
     }
 
@@ -32,9 +32,9 @@ class AllKakawinAdapter (private var results: ArrayList<AllKakawinModel>, val li
     override fun getItemCount(): Int = results.size
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        private var title : TextView = view.findViewById(R.id.title_kakawin)
-        private var gambar : ImageView = view.findViewById(R.id.kakawin_imgs)
-        fun bindItem(data: AllKakawinModel) {
+        private var title : TextView = view.findViewById(R.id.title_kategori_kakawin)
+        private var gambar : ImageView = view.findViewById(R.id.kategori_kakawin_imgs)
+        fun bindItem(data: KategoriKakawinModel) {
             if(data.nama_post.length > 30){
                 title.textSize = 15F
             }
@@ -47,7 +47,7 @@ class AllKakawinAdapter (private var results: ArrayList<AllKakawinModel>, val li
         }
     }
 
-    interface OnAdapterAllKakawinListener {
-        fun onClick(result: AllKakawinModel)
+    interface OnAdapterKategoriKakawinListener {
+        fun onClick(result: KategoriKakawinModel)
     }
 }

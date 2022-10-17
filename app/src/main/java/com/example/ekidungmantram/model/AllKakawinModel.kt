@@ -6,5 +6,5 @@ data class AllKakawinModel(
     val kategori: String,
     val nama_post: String,
     val gambar: String,
-    val jenis_sekar_agung: String
+    val deskripsi: String
 )

@@ -5,5 +5,6 @@ data class AllPupuhModel(
     val id_kategori: Int,
     val kategori: String,
     val nama_post: String,
-    val gambar: String
+    val gambar: String,
+    val deskripsi: String
 )

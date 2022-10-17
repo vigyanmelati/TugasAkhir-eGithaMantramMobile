@@ -32,9 +32,11 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
             val namaPost = bundle.getString("nama_pupuh")
+            val descPost = bundle.getString("desc_pupuh")
             Log.d("id_pupuh", postID.toString())
 
             daftar_nama.text = "Daftar " + namaPost
+            desc_kategori_pupuh.text = descPost
             allKategoriPupuh1.layoutManager = LinearLayoutManager(applicationContext)
             allKategoriPupuh2.layoutManager = LinearLayoutManager(applicationContext)
             getAllKategoriPupuh(postID)

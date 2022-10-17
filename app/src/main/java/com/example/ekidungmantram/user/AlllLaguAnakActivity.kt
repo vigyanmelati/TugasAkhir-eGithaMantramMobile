@@ -66,6 +66,7 @@ class AlllLaguAnakActivity : AppCompatActivity() {
                                 val intent = Intent(this@AlllLaguAnakActivity, AllKategoriLaguAnakActivity::class.java)
                                 bundle.putInt("id_lagu_anak", result.id_post)
                                 bundle.putString("nama_lagu_anak", result.nama_post)
+                                bundle.putString("desc_lagu_anak", result.deskripsi)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -92,6 +93,8 @@ class AlllLaguAnakActivity : AppCompatActivity() {
                                                 val bundle = Bundle()
                                                 val intent = Intent(this@AlllLaguAnakActivity, DetailLaguAnakActivity::class.java)
                                                 bundle.putInt("id_lagu_anak", result.id_post)
+                                                bundle.putString("nama_lagu_anak", result.nama_post)
+                                                bundle.putString("desc_lagu_anak", result.deskripsi)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

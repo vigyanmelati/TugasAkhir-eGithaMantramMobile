@@ -44,6 +44,14 @@
                 android:textColor="@color/shimmer_secondary"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/desc_sekar_rare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sekar Agung atau Tembang Gede meliputi lagu-lagu berbahasa Kawi yang diikat oleh hukum guru lagu, pada umumnya dinyanyikan dalam kaitan upacara"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp"/>
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/cariKakawin"
                 app:iconifiedByDefault="false"
