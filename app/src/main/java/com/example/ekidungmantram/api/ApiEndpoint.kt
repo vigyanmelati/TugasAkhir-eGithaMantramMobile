@@ -705,6 +705,12 @@ interface ApiEndpoint {
     fun getDetailKidung(@Path("id_post") id: Int) : Call<DetailKidungModel>
     @GET("detailbaitkidung/{id_post}")
     fun getDetailBaitKidung(@Path("id_post") id:Int) : Call<DetailBaitKidungModel>
+    @GET("listvideokidung/{id_kidung}")
+    fun getListVideoKidung(@Path("id_kidung") id:Int): Call<VideoKidungModel>
+    @GET("listaudiokidung/{id_post}")
+    fun getListAudioKidung(@Path("id_post") id:Int): Call<AudioKidungModel>
+    @GET("yadnyakidung/{id_kidung}")
+    fun getYadnyaKidung(@Path("id_kidung") id:Int): Call<YadnyaKidungModel>
 
     //Mantram
     @GET("listallmantram")

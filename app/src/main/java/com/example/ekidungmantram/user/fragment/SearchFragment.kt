@@ -15,10 +15,7 @@ import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllDharmagitaModel
 import com.example.ekidungmantram.model.AllYadnyaModel
-import com.example.ekidungmantram.user.DetailKidungActivity
-import com.example.ekidungmantram.user.DetailLaguAnakActivity
-import com.example.ekidungmantram.user.DetailPupuhActivity
-import com.example.ekidungmantram.user.DetailYadnyaActivity
+import com.example.ekidungmantram.user.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -186,7 +183,7 @@ class SearchFragment : Fragment() {
                                     intent.putExtras(bundle)
                                     startActivity(intent)
                                 }else if (result.id_tag == 11) {
-                                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                                    val intent = Intent(activity, DetailKakawinActivity::class.java)
                                     bundle.putInt("id_kakawin", result.id_post)
                                     bundle.putInt("tag_kakawin", result.id_tag)
                                     bundle.putString("nama_kakawin", result.nama_post)
@@ -222,6 +219,7 @@ class SearchFragment : Fragment() {
                                                     bundle.putInt("id_kidung", result.id_post)
                                                     bundle.putInt("tag_kidung", result.id_tag)
                                                     bundle.putString("nama_kidung", result.nama_post)
+                                                    bundle.putString("nama_tag_kidung", result.nama_tag)
                                                     bundle.putString("gambar_kidung", result.gambar)
                                                     intent.putExtras(bundle)
                                                     startActivity(intent)
@@ -230,6 +228,7 @@ class SearchFragment : Fragment() {
                                                     bundle.putInt("id_lagu", result.id_post)
                                                     bundle.putInt("tag_lagu", result.id_tag)
                                                     bundle.putString("nama_lagu", result.nama_post)
+                                                    bundle.putString("nama_tag_lagu", result.nama_tag)
                                                     bundle.putString("gambar_lagu", result.gambar)
                                                     intent.putExtras(bundle)
                                                     startActivity(intent)
@@ -238,14 +237,16 @@ class SearchFragment : Fragment() {
                                                     bundle.putInt("id_pupuh", result.id_post)
                                                     bundle.putInt("tag_pupuh", result.id_tag)
                                                     bundle.putString("nama_pupuh", result.nama_post)
+                                                    bundle.putString("nama_tag_pupuh", result.nama_tag)
                                                     bundle.putString("gambar_pupuh", result.gambar)
                                                     intent.putExtras(bundle)
                                                     startActivity(intent)
                                                 }else if (result.id_tag == 11) {
-                                                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                                                    val intent = Intent(activity, DetailKakawinActivity::class.java)
                                                     bundle.putInt("id_kakawin", result.id_post)
                                                     bundle.putInt("tag_kakawin", result.id_tag)
                                                     bundle.putString("nama_kakawin", result.nama_post)
+                                                    bundle.putString("nama_tag_kakawin", result.nama_tag)
                                                     bundle.putString("gambar_kakawin", result.gambar)
                                                     intent.putExtras(bundle)
                                                     startActivity(intent)

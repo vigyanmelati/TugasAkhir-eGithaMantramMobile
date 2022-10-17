@@ -23,6 +23,12 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".user.VideoKidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AudioKidungActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.VideoKakawinActivity"
             android:exported="false" />
         <activity

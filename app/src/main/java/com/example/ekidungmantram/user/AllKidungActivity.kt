@@ -62,6 +62,10 @@ class AllKidungActivity : AppCompatActivity() {
                                 val bundle = Bundle()
                                 val intent = Intent(this@AllKidungActivity, DetailKidungActivity::class.java)
                                 bundle.putInt("id_kidung", result.id_post)
+                                bundle.putInt("tag_kidung", result.id_tag)
+                                bundle.putString("nama_kidung", result.nama_post)
+                                bundle.putString("nama_tag_kidung", result.nama_tag)
+                                bundle.putString("gambar_kidung", result.gambar)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -88,6 +92,10 @@ class AllKidungActivity : AppCompatActivity() {
                                                 val bundle = Bundle()
                                                 val intent = Intent(this@AllKidungActivity, DetailKidungActivity::class.java)
                                                 bundle.putInt("id_kidung", result.id_post)
+                                                bundle.putInt("tag_kidung", result.id_tag)
+                                                bundle.putString("nama_kidung", result.nama_post)
+                                                bundle.putString("nama_tag_kidung", result.nama_tag)
+                                                bundle.putString("gambar_kidung", result.gambar)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

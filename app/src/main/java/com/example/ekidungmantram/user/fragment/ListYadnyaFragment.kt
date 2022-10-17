@@ -13,6 +13,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BookmarkedDharmagitaAdapter
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
+import com.example.ekidungmantram.user.DetailKakawinActivity
 import com.example.ekidungmantram.user.DetailKidungActivity
 import com.example.ekidungmantram.user.DetailLaguAnakActivity
 import com.example.ekidungmantram.user.DetailPupuhActivity
@@ -78,7 +79,7 @@ class ListYadnyaFragment : Fragment() {
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 11) {
-                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                    val intent = Intent(activity, DetailKakawinActivity::class.java)
                     bundle.putInt("id_kakawin", result.id_dharmagita)
                     bundle.putInt("tag_kakawin", result.id_tag)
                     bundle.putString("nama_kakawin", result.nama_post)
