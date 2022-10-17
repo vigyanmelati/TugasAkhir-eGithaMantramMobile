@@ -76,8 +76,12 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
                         object : KategoriKakawinAdapter.OnAdapterKategoriKakawinListener{
                             override fun onClick(result: KategoriKakawinModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@AllKategoriKakawinActivity, DetailKidungActivity::class.java)
-                                bundle.putInt("id_kidung", result.id_post)
+                                val intent = Intent(this@AllKategoriKakawinActivity, DetailKakawinActivity::class.java)
+                                bundle.putInt("id_kakawin", result.id_post)
+                                bundle.putInt("tag_kakawin", result.id_tag)
+                                bundle.putString("nama_kakawin", result.nama_post)
+                                bundle.putString("gambar_kakawin", result.gambar)
+                                bundle.putString("nama_tag_kakawin", result.nama_tag)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -102,8 +106,12 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
                                         object : KategoriKakawinAdapter.OnAdapterKategoriKakawinListener{
                                             override fun onClick(result: KategoriKakawinModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@AllKategoriKakawinActivity, DetailKidungActivity::class.java)
-                                                bundle.putInt("id_kidung", result.id_post)
+                                                val intent = Intent(this@AllKategoriKakawinActivity, DetailKakawinActivity::class.java)
+                                                bundle.putInt("id_kakawin", result.id_post)
+                                                bundle.putInt("tag_kakawin", result.id_tag)
+                                                bundle.putString("nama_kakawin", result.nama_post)
+                                                bundle.putString("gambar_kakawin", result.gambar)
+                                                bundle.putString("nama_tag_kakawin", result.nama_tag)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

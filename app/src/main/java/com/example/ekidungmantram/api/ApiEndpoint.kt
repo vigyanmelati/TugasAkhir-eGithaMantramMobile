@@ -777,7 +777,7 @@ interface ApiEndpoint {
     fun getDetailBaitPupuh(@Path("id_post") id:Int) : Call<DetailBaitPupuhModel>
     @GET("listvideopupuh/{id_pupuh}")
     fun getListVideoPupuh(@Path("id_pupuh") id:Int): Call<VideoPupuhModel>
-    @GET("listaudiolaguanak/{id_post}")
+    @GET("listaudiopupuh/{id_post}")
     fun getListAudioPupuh(@Path("id_post") id:Int): Call<AudioPupuhModel>
     @GET("yadnyapupuh/{id_pupuh}")
     fun getYadnyaPupuh(@Path("id_pupuh") id:Int): Call<YadnyaPupuhModel>
@@ -803,4 +803,14 @@ interface ApiEndpoint {
     fun getKakawinMasterList() : Call<ArrayList<AllKakawinModel>>
     @GET("listkategorikakawin/{id_kakawin}")
     fun getKategoriKakawin(@Path("id_kakawin") id: Int) : Call<ArrayList<KategoriKakawinModel>>
+    @GET("detailkakawin/{id_post}")
+    fun getDetailKakawin(@Path("id_post") id: Int) : Call<DetailKakawinModel>
+    @GET("detailbaitkakawin/{id_post}")
+    fun getDetailBaitKakawin(@Path("id_post") id:Int) : Call<DetailBaitKakawinModel>
+    @GET("listvideokakawin/{id_kakawin}")
+    fun getListVideoKakawin(@Path("id_kakawin") id:Int): Call<VideoKakawinModel>
+    @GET("listaudiokakawin/{id_post}")
+    fun getListAudioKakawin(@Path("id_post") id:Int): Call<AudioKakawinModel>
+    @GET("yadnyakakawin/{id_kakawin}")
+    fun getYadnyaKakawin(@Path("id_kakawin") id:Int): Call<YadnyaKakawinModel>
 }
