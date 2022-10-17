@@ -15,6 +15,7 @@ import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.user.DetailKidungActivity
 import com.example.ekidungmantram.user.DetailLaguAnakActivity
+import com.example.ekidungmantram.user.DetailPupuhActivity
 import kotlinx.android.synthetic.main.fragment_list_yadnya.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -68,7 +69,7 @@ class ListYadnyaFragment : Fragment() {
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 10) {
-                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                    val intent = Intent(activity, DetailPupuhActivity::class.java)
                     bundle.putInt("id_pupuh", result.id_dharmagita)
                     bundle.putInt("tag_pupuh", result.id_tag)
                     bundle.putString("nama_pupuh", result.nama_post)

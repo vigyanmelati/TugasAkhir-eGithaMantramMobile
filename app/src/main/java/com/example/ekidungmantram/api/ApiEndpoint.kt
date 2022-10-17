@@ -771,6 +771,16 @@ interface ApiEndpoint {
     fun getPupuhNewList(): Call<NewPupuhModel>
     @GET("listkategoripupuh/{id_pupuh}")
     fun getKategoriPupuh(@Path("id_pupuh") id: Int) : Call<ArrayList<KategoriPupuhModel>>
+    @GET("detailpupuh/{id_post}")
+    fun getDetailPupuh(@Path("id_post") id: Int) : Call<DetailPupuhModel>
+    @GET("detailbaitpupuh/{id_post}")
+    fun getDetailBaitPupuh(@Path("id_post") id:Int) : Call<DetailBaitPupuhModel>
+    @GET("listvideopupuh/{id_pupuh}")
+    fun getListVideoPupuh(@Path("id_pupuh") id:Int): Call<VideoPupuhModel>
+    @GET("listaudiolaguanak/{id_post}")
+    fun getListAudioPupuh(@Path("id_post") id:Int): Call<AudioPupuhModel>
+    @GET("yadnyapupuh/{id_pupuh}")
+    fun getYadnyaPupuh(@Path("id_pupuh") id:Int): Call<YadnyaPupuhModel>
 
     //Lagu Anak
     @GET("listalllaguanak")

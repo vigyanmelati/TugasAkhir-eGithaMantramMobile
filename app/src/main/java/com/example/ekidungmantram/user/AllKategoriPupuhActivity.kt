@@ -75,8 +75,12 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                         object : KategoriPupuhAdapter.OnAdapterKategoriPupuhListener{
                             override fun onClick(result: KategoriPupuhModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@AllKategoriPupuhActivity, DetailKidungActivity::class.java)
-                                bundle.putInt("id_kidung", result.id_post)
+                                val intent = Intent(this@AllKategoriPupuhActivity, DetailPupuhActivity::class.java)
+                                bundle.putInt("id_pupuh", result.id_post)
+                                bundle.putString("nama_pupuh", result.nama_post)
+                                bundle.putString("nama_tag_pupuh", result.nama_tag)
+                                bundle.putString("gambar_pupuh", result.gambar)
+                                bundle.putInt("tag_pupuh", result.id_tag)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -101,8 +105,12 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                                         object : KategoriPupuhAdapter.OnAdapterKategoriPupuhListener{
                                             override fun onClick(result: KategoriPupuhModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@AllKategoriPupuhActivity, DetailKidungActivity::class.java)
-                                                bundle.putInt("id_kidung", result.id_post)
+                                                val intent = Intent(this@AllKategoriPupuhActivity, DetailPupuhActivity::class.java)
+                                                bundle.putInt("id_pupuh", result.id_post)
+                                                bundle.putString("nama_pupuh", result.nama_post)
+                                                bundle.putString("nama_tag_pupuh", result.nama_tag)
+                                                bundle.putString("gambar_pupuh", result.gambar)
+                                                bundle.putInt("tag_pupuh", result.id_tag)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

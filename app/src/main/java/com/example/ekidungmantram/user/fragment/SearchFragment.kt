@@ -17,6 +17,7 @@ import com.example.ekidungmantram.model.AllDharmagitaModel
 import com.example.ekidungmantram.model.AllYadnyaModel
 import com.example.ekidungmantram.user.DetailKidungActivity
 import com.example.ekidungmantram.user.DetailLaguAnakActivity
+import com.example.ekidungmantram.user.DetailPupuhActivity
 import com.example.ekidungmantram.user.DetailYadnyaActivity
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -177,7 +178,7 @@ class SearchFragment : Fragment() {
                                     intent.putExtras(bundle)
                                     startActivity(intent)
                                 }else if (result.id_tag == 10) {
-                                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                                    val intent = Intent(activity, DetailPupuhActivity::class.java)
                                     bundle.putInt("id_pupuh", result.id_post)
                                     bundle.putInt("tag_pupuh", result.id_tag)
                                     bundle.putString("nama_pupuh", result.nama_post)
@@ -233,7 +234,7 @@ class SearchFragment : Fragment() {
                                                     intent.putExtras(bundle)
                                                     startActivity(intent)
                                                 }else if (result.id_tag == 10) {
-                                                    val intent = Intent(activity, DetailLaguAnakActivity::class.java)
+                                                    val intent = Intent(activity, DetailPupuhActivity::class.java)
                                                     bundle.putInt("id_pupuh", result.id_post)
                                                     bundle.putInt("tag_pupuh", result.id_tag)
                                                     bundle.putString("nama_pupuh", result.nama_post)
