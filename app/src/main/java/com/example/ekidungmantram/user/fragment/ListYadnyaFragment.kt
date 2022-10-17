@@ -55,6 +55,7 @@ class ListYadnyaFragment : Fragment() {
                     bundle.putInt("tag_kidung", result.id_tag)
                     bundle.putString("nama_kidung", result.nama_post)
                     bundle.putString("gambar_kidung", result.gambar)
+                    bundle.putString("nama_tag_kidung", result.nama_tag)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 9){
@@ -62,6 +63,7 @@ class ListYadnyaFragment : Fragment() {
                     bundle.putInt("id_lagu", result.id_dharmagita)
                     bundle.putInt("tag_lagu", result.id_tag)
                     bundle.putString("nama_lagu", result.nama_post)
+                    bundle.putString("nama_tag_lagu", result.nama_tag)
                     bundle.putString("gambar_lagu", result.gambar)
                     intent.putExtras(bundle)
                     startActivity(intent)
@@ -71,6 +73,7 @@ class ListYadnyaFragment : Fragment() {
                     bundle.putInt("tag_pupuh", result.id_tag)
                     bundle.putString("nama_pupuh", result.nama_post)
                     bundle.putString("gambar_pupuh", result.gambar)
+                    bundle.putString("nama_tag_pupuh", result.nama_tag)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 11) {
@@ -79,6 +82,7 @@ class ListYadnyaFragment : Fragment() {
                     bundle.putInt("tag_kakawin", result.id_tag)
                     bundle.putString("nama_kakawin", result.nama_post)
                     bundle.putString("gambar_kakawin", result.gambar)
+                    bundle.putString("nama_tag_kakawin", result.nama_tag)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }

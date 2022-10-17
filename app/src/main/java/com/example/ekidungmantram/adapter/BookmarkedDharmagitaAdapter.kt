@@ -24,6 +24,7 @@ class BookmarkedDharmagitaAdapter (val results: ArrayList<Dharmagita>, val liste
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val result = results[position]
         holder.title.setText(result.nama_post)
+        holder.jenis.setText(result.nama_tag)
         Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
@@ -32,7 +33,7 @@ class BookmarkedDharmagitaAdapter (val results: ArrayList<Dharmagita>, val liste
 
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.title_bookmarked_yadnya)
-//        val jenis: TextView = view.findViewById(R.id.jenis_bookmarked_yadnya)
+        val jenis: TextView = view.findViewById(R.id.jenis__bookmarked_yadnya)
         val gambar: ImageView = view.findViewById(R.id.bookmarkedImage)
     }
 

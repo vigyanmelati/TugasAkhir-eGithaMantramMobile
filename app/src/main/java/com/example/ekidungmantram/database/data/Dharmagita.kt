@@ -11,7 +11,8 @@ data class Dharmagita(
     val id_dharmagita: Int,
     val id_tag: Int,
     val nama_post: String,
+    val nama_tag: String,
     val gambar: String
 ){
-    constructor() : this(0, 0,0 , "", "")
+    constructor() : this(0, 0,0 , "","", "")
 }

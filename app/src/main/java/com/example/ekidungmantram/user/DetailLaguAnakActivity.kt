@@ -57,6 +57,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu")
             val nama_lagu = bundle.getString("nama_lagu")
+            val nama_tag_lagu = bundle.getString("nama_tag_lagu")
             val gambar_lagu = bundle.getString("gambar_lagu")
             val tag_lagu = bundle.getInt("tag_lagu")
             Log.d("id_lagu",postID.toString())
@@ -83,7 +84,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
             }
             bookmarked_dharmagita.setOnCheckedChangeListener { _, isChecked->
                 if (isChecked){
-                    addBookmark(postID, tag_lagu, nama_lagu, gambar_lagu)
+                    addBookmark(postID, tag_lagu, nama_lagu, nama_tag_lagu, gambar_lagu)
                 }else{
                     deleteBookmark(postID)
                 }
@@ -350,10 +351,10 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
         yadnyaLaguAnakAdapter.setData(results)
     }
 
-    private fun addBookmark(postID: Int , id_tag: Int, namapost: String?, gambars: String?) {
+    private fun addBookmark(postID: Int , id_tag: Int, namapost: String?,namatag: String?, gambars: String?) {
         CoroutineScope(Dispatchers.IO).launch {
             db.dharmagitaDao().addBookmarkedDharmagita(
-                Dharmagita(0, postID ,id_tag,namapost.toString(), gambars.toString())
+                Dharmagita(0, postID ,id_tag,namapost.toString(),namatag.toString(), gambars.toString())
             )
             val test = db.dharmagitaDao().fetch(postID)
             printLog(test.toString())

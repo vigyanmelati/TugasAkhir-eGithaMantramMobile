@@ -46,9 +46,19 @@
                     android:textColor="@color/black"
                     android:textSize="21sp"
                     android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="14dp"/>
+                <TextView
+                    android:id="@+id/jenis__bookmarked_yadnya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis"
+                    android:textColor="@color/grey_200"
+                    android:textSize="12sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginBottom="15dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -10,7 +10,7 @@ import com.example.ekidungmantram.database.data.Yadnya
 
 @Database(
     entities     = [Dharmagita::class],
-    version      = 2,
+    version      = 3,
     exportSchema = false
 )
 abstract class DharmagitaDb : RoomDatabase() {

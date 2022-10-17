@@ -761,6 +761,8 @@ interface ApiEndpoint {
     fun getDharmagitaMasterList(): Call<List<HomeModel>>
     @GET("listdharmagitaterbaru")
     fun getDharmagitaNewList(): Call<NewDharmagitaModel>
+    @GET("listallgita")
+    fun getGitaAllList(): Call<ArrayList<AllDharmagitaModel>>
 
     //Pupuh
     @GET("listallpupuh")
