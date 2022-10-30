@@ -24,6 +24,8 @@ interface ApiEndpoint {
     //Home
     @GET("admin/listyadnya")
     fun getYadnyaAdminHomeList(): Call<ArrayList<AllYadnyaHomeAdminModel>>
+    @GET("admin/listdharmagita")
+    fun getDharmagitaAdminHomeList(): Call<ArrayList<AllDharmagitaHomeAdminModel>>
 
     //Mantram
     @GET("admin/listallmantram")
@@ -787,6 +789,14 @@ interface ApiEndpoint {
     fun getListAudioPupuh(@Path("id_post") id:Int): Call<AudioPupuhModel>
     @GET("yadnyapupuh/{id_pupuh}")
     fun getYadnyaPupuh(@Path("id_pupuh") id:Int): Call<YadnyaPupuhModel>
+    @FormUrlEncoded
+    @POST("createpupuh")
+    fun createDataPupuh (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_pupuh") id_pupuh:Int,
+    ):Call<CrudModel>
 
     //Lagu Anak
     @GET("listalllaguanak")

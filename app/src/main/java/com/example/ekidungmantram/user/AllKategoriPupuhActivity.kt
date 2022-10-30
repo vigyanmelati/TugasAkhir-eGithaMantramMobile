@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllLaguAnakAdapter
 import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
+import com.example.ekidungmantram.admin.kidung.AddKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllLaguAnakModel
 import com.example.ekidungmantram.model.KategoriPupuhModel
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
+import kotlinx.android.synthetic.main.activity_all_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_alll_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,7 +47,16 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                 getAllKategoriPupuh(postID)
                 swipeKategoriPupuh.isRefreshing = false
             }
+
+            fabPupuh.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, AddPupuhActivity::class.java)
+                bundle.putInt("id_kat_pupuh", postID)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
         }
+
 
 
     }

@@ -8,10 +8,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="e_yadnya">E-Dharmagita</string>
     <string name="e_yadnya_admin">Beranda Admin</string>
-    <string name="e_yadnya_mobile">E-Yadnya Mobile</string>
+    <string name="e_yadnya_mobile">E-Dharmagita Mobile</string>
     <string name="version_app">v1.0.7</string>
     <string name="copyright">© 2021</string>
-    <string name="e_yadnya_mobile_app">E-Yadnya Mobile App</string>
+    <string name="e_yadnya_mobile_app">E-Dharmagita Mobile App</string>
     <string name="gita">Dharmagita</string>
     <string name="data_gita"> Data Dharmagita</string>
     <string name="daftar_gita">Daftar Dharmagita</string>

@@ -24,7 +24,8 @@ class NewDharmagitaAdapter (val results: ArrayList<NewDharmagitaModel.Data>, val
         val result = results[position]
         holder.title.setText(result.nama_post)
         holder.jenis.setText(result.deskripsi)
-        Glide.with(holder.view).load(Constant.IMAGE_URL+result.gambar).into(holder.gambar)
+//        Glide.with(holder.view).load(Constant.IMAGE_URL+result.gambar).into(holder.gambar)
+        Glide.with(holder.view).load(result.gambar).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
         }

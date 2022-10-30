@@ -14,10 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.adapter.admin.AllDharmagitaAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllYadnyaHomeAdminAdapter
 import com.example.ekidungmantram.admin.ListYadnyaAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.SelectedAllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
+import com.example.ekidungmantram.model.adminmodel.AllDharmagitaHomeAdminModel
 import com.example.ekidungmantram.model.adminmodel.AllYadnyaHomeAdminModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home_admin.*
@@ -41,23 +43,62 @@ class HomeAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         yadnyaAdminHome.layoutManager = GridLayoutManager(activity, 2, LinearLayoutManager.VERTICAL, false)
-        getAdminHomeYadnyaData()
+        getAdminHomeDharmagitaData()
         sharedPreferences = getActivity()!!.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val nama          = sharedPreferences.getString("NAMA", null)
         namaAdmin.text    = "Selamat Datang, $nama!"
 
         swipeAdmin.setOnRefreshListener {
-            getAdminHomeYadnyaData()
+            getAdminHomeDharmagitaData()
             swipeAdmin.isRefreshing = false
         }
     }
 
-    private fun getAdminHomeYadnyaData() {
-        ApiService.endpoint.getYadnyaAdminHomeList()
-            .enqueue(object: Callback<ArrayList<AllYadnyaHomeAdminModel>> {
+//    private fun getAdminHomeYadnyaData() {
+//        ApiService.endpoint.getYadnyaAdminHomeList()
+//            .enqueue(object: Callback<ArrayList<AllYadnyaHomeAdminModel>> {
+//                override fun onResponse(
+//                    call: Call<ArrayList<AllYadnyaHomeAdminModel>>,
+//                    response: Response<ArrayList<AllYadnyaHomeAdminModel>>
+//                ) {
+//                    val datalist   = response.body()
+//                    if(datalist != null){
+//                        swipeAdmin.visibility = View.VISIBLE
+//                        shimmerHomeAdmin.visibility = View.GONE
+//                    }else{
+//                        swipeAdmin.visibility = View.GONE
+//                        shimmerHomeAdmin.visibility = View.VISIBLE
+//                    }
+//                    yadnyaAdapter = datalist?.let { AllYadnyaHomeAdminAdapter(it,
+//                        object : AllYadnyaHomeAdminAdapter.OnAdapterAllYadnyaHomeAdminListener{
+//                            override fun onClick(result: AllYadnyaHomeAdminModel) {
+//                                val bundle = Bundle()
+//                                val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
+//                                bundle.putInt("id_yadnya", result.id_kategori)
+//                                bundle.putString("nama_yadnya", result.nama_kategori)
+//                                intent.putExtras(bundle)
+//                                startActivity(intent)
+//                            }
+//                        }) }!!
+//
+//                    yadnyaAdminHome.adapter = yadnyaAdapter
+//                    setShimmerToStop()
+//                }
+//
+//                override fun onFailure(call: Call<ArrayList<AllYadnyaHomeAdminModel>>, t: Throwable) {
+//                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
+//                    setShimmerToStop()
+//                }
+//
+//            })
+//    }
+
+    private fun getAdminHomeDharmagitaData() {
+        ApiService.endpoint.getDharmagitaAdminHomeList()
+            .enqueue(object: Callback<ArrayList<AllDharmagitaHomeAdminModel>> {
                 override fun onResponse(
-                    call: Call<ArrayList<AllYadnyaHomeAdminModel>>,
-                    response: Response<ArrayList<AllYadnyaHomeAdminModel>>
+                    call: Call<ArrayList<AllDharmagitaHomeAdminModel>>,
+                    response: Response<ArrayList<AllDharmagitaHomeAdminModel>>
                 ) {
                     val datalist   = response.body()
                     if(datalist != null){
@@ -69,11 +110,10 @@ class HomeAdminFragment : Fragment() {
                     }
                     yadnyaAdapter = datalist?.let { AllYadnyaHomeAdminAdapter(it,
                         object : AllYadnyaHomeAdminAdapter.OnAdapterAllYadnyaHomeAdminListener{
-                            override fun onClick(result: AllYadnyaHomeAdminModel) {
+                            override fun onClick(result: AllDharmagitaHomeAdminModel) {
                                 val bundle = Bundle()
                                 val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
-                                bundle.putInt("id_yadnya", result.id_kategori)
-                                bundle.putString("nama_yadnya", result.nama_kategori)
+                                bundle.putInt("id_dharmagita", result.id_kategori)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -83,7 +123,7 @@ class HomeAdminFragment : Fragment() {
                     setShimmerToStop()
                 }
 
-                override fun onFailure(call: Call<ArrayList<AllYadnyaHomeAdminModel>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<AllDharmagitaHomeAdminModel>>, t: Throwable) {
                     Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
                     setShimmerToStop()
                 }

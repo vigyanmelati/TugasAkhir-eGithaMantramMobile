@@ -10,18 +10,18 @@
                     android:id="@+id/yadnya_admin"
                     android:title="Data Upacara Yadnya"
                     android:icon="@drawable/ic_baseline_home_work_24" />
-                <item
-                    android:id="@+id/tari_bali_admin"
-                    android:title="Data Tari Bali"
-                    android:icon="@drawable/tari" />
-                <item
-                    android:id="@+id/tabuh_admin"
-                    android:title="Data Tabuh"
-                    android:icon="@drawable/tabuh" />
-                <item
-                    android:id="@+id/gamelan_bali_admin"
-                    android:title="Data Gamelan Bali"
-                    android:icon="@drawable/gamelan" />
+<!--                <item-->
+<!--                    android:id="@+id/tari_bali_admin"-->
+<!--                    android:title="Data Tari Bali"-->
+<!--                    android:icon="@drawable/tari" />-->
+<!--                <item-->
+<!--                    android:id="@+id/tabuh_admin"-->
+<!--                    android:title="Data Tabuh"-->
+<!--                    android:icon="@drawable/tabuh" />-->
+<!--                <item-->
+<!--                    android:id="@+id/gamelan_bali_admin"-->
+<!--                    android:title="Data Gamelan Bali"-->
+<!--                    android:icon="@drawable/gamelan" />-->
                 <item
                     android:id="@+id/mantram_admin"
                     android:title="Data Mantram"
@@ -31,17 +31,30 @@
                     android:title="Kaji Mantram"
                     android:icon="@drawable/approve" />
                 <item
-                    android:id="@+id/kidung_admin"
-                    android:title="Data Kidung"
-                    android:icon="@drawable/kidung" />
+                    android:id="@+id/sekar_agung_admin"
+                    android:title="Data Sekar Agung"
+                    android:icon="@drawable/mantram" />
                 <item
-                    android:id="@+id/gita_admin"
-                    android:title="@string/data_gita"
+                    android:id="@+id/sekar_madya_admin"
+                    android:title="Data Sekar Madya"
+                    android:icon="@drawable/tabuh" />
+
+                <item
+                    android:id="@+id/sekar_alit_admin"
+                    android:title="Data Sekar Alit"
+                    android:icon="@drawable/gamelan" />
+                <item
+                    android:id="@+id/sekar_rare_admin"
+                    android:title="Data Sekar Rare"
                     android:icon="@drawable/gita" />
-                <item
-                    android:id="@+id/gita_approve"
-                    android:title="Kaji Dharmagita"
-                    android:icon="@drawable/approve" />
+<!--                <item-->
+<!--                    android:id="@+id/gita_admin"-->
+<!--                    android:title="@string/data_gita"-->
+<!--                    android:icon="@drawable/gita" />-->
+<!--                <item-->
+<!--                    android:id="@+id/gita_approve"-->
+<!--                    android:title="Kaji Dharmagita"-->
+<!--                    android:icon="@drawable/approve" />-->
                 <item
                     android:id="@+id/prosesi_upacara_admin"
                     android:title="Data Prosesi Upacara"

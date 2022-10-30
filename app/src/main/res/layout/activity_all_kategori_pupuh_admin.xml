@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".user.AllKategoriPupuhActivity">
+    tools:context=".admin.pupuh.AllKategoriPupuhAdminActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         android:paddingTop="18dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:visibility="visible"
-            android:id="@+id/shimmerKategoriPupuh"
+            android:id="@+id/shimmerKategoriPupuhAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
@@ -22,7 +22,7 @@
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
-            android:id="@+id/swipeKategoriPupuh"
+            android:id="@+id/swipeKategoriPupuhAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/daftar_nama"
+                    android:id="@+id/daftar_namaAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Daftar Sekar Alit"
@@ -40,7 +40,7 @@
                     android:textSize="30sp"
                     android:layout_marginBottom="20dp"/>
                 <TextView
-                    android:id="@+id/noKategoriPupuh"
+                    android:id="@+id/noKategoriPupuhAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -49,7 +49,7 @@
                     android:textStyle="bold"
                     android:textSize="17sp"/>
                 <TextView
-                    android:id="@+id/desc_kategori_pupuh"
+                    android:id="@+id/desc_kategori_pupuhAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sekar Alit atau sering disebut Pupuh adalah lagu yang mengandung cerita atau dapat juga berupa nasehat yang mengajarkan kebaikan."
@@ -57,7 +57,7 @@
                     android:textSize="15sp"
                     android:layout_marginBottom="20dp"/>
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/cariKategoriPupuh"
+                    android:id="@+id/cariKategoriPupuhAdmin"
                     app:iconifiedByDefault="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,12 +68,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKategoriPupuh1"
+                        android:id="@+id/allKategoriPupuh1Admin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_kategori_pupuh" />
+                        tools:listitem="@layout/layout_all_kategori_pupuh_admin" />
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKategoriPupuh2"
+                        android:id="@+id/allKategoriPupuh2Admin"
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -83,7 +83,7 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabPupuh"
+        android:id="@+id/fabPupuhAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
