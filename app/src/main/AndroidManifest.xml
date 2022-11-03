@@ -23,6 +23,18 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.pupuh.EditLirikPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AddLirikPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AllLirikPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.EditPupuhAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.pupuh.DetailPupuhAdminActivity"
             android:exported="false" />
         <activity

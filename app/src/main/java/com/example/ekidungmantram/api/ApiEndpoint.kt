@@ -694,6 +694,8 @@ interface ApiEndpoint {
     fun getListAudioPupuhAdmin(@Path("id_post") id:Int): Call<AudioPupuhAdminModel>
     @GET("admin/yadnyapupuhadmin/{id_pupuh}")
     fun getYadnyaPupuhAdmin(@Path("id_pupuh") id:Int): Call<YadnyaPupuhAdminModel>
+    @GET("admin/showpupuh/{id_post}")
+    fun getShowPupuhAdmin(@Path("id_post") id:Int) : Call<DetailPupuhAdminModel>
     @FormUrlEncoded
     @POST("admin/editpupuhadmin/{id_post}")
     fun updatePupuhAdmin (
@@ -706,6 +708,57 @@ interface ApiEndpoint {
     @POST("admin/deletepupuhadmin/{id_post}")
     fun deletePupuhAdmin (
         @Path("id_post") id:Int
+    ):Call<CrudModel>
+
+    @GET("admin/listbaitpupuhadmin/{id_post}")
+    fun getAllLirikPupuhAdmin(@Path("id_post") id:Int) : Call<ArrayList<AllLirikPupuhAdminModel>>
+
+    @FormUrlEncoded
+    @POST("admin/addlirikpupuhadmin/{id_post}")
+    fun createDataLirikPupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("bait_pupuh") baitPupuh:String,
+    ):Call<CrudModel>
+
+    @GET("admin/showlirikpupuhadmin/{id_det_post}")
+    fun getShowLirikPupuhAdmin(@Path("id_det_post") id:Int) : Call<DetailLirikPupuhAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/editlirikpupuhadmin/{id_det_post}")
+    fun updateDataLirikPupuhAdmin (
+        @Path("id_det_post") id:Int,
+        @Field("bait_pupuh") lirikPupuh:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/deletelirikpupuhadmin/{id_post}")
+    fun deleteDataLirikPupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("pupuh_id") idPupuh:Int,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/addvideoonpupuhadmin/{id_post}")
+    fun createDataVideoPupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/editvideopupuhadmin/{id_post}")
+    fun updateDataVideoPupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/deletevideoonpupuhadmin/{id_post}")
+    fun deleteDataVideoPupuhAdmin (
+        @Path("id_post") id:Int,
     ):Call<CrudModel>
 
     //User

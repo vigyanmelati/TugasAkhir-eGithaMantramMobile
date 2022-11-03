@@ -21,6 +21,9 @@ import com.example.ekidungmantram.adapter.admin.AudioPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.BaitPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.VideoPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.YadnyaPupuhAdminAdapter
+import com.example.ekidungmantram.admin.kidung.AddLirikKidungAdminActivity
+import com.example.ekidungmantram.admin.kidung.AllLirikKidungAdminActivity
+import com.example.ekidungmantram.admin.kidung.EditKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.model.*
@@ -89,9 +92,32 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             lihatSemuaaudiopupuhAdmin.visibility = View.GONE
             lihatSemuayadnyapupuhAdmin.visibility = View.GONE
 
+            goToListLirikPupuh.setOnClickListener {
+                val intent = Intent(this, AllLirikPupuhAdminActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            tambahLirikPupuh.setOnClickListener {
+                val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            toEditPupuh.setOnClickListener {
+                val intent = Intent(this, EditPupuhAdminActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
             deletePupuh.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hapus Kidung")
+                builder.setTitle("Hapus Pupuh")
                     .setMessage("Apakah anda yakin ingin menghapus kidung ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
