@@ -23,7 +23,13 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
-            android:name=".AllKategoriPupuhAdminActivity"
+            android:name=".admin.pupuh.DetailPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AddPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AllKategoriPupuhAdminActivity"
             android:exported="false" />
         <activity
             android:name=".admin.pupuh.AllPupuhAdminActivity"

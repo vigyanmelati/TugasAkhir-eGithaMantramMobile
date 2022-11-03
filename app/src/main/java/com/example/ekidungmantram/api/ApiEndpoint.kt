@@ -671,6 +671,43 @@ interface ApiEndpoint {
         @Path("id_post") id:Int
     ):Call<CrudModel>
 
+    //Pupuh
+    @GET("admin/listallpupuhadmin")
+    fun getPupuhMasterListAdmin() : Call<ArrayList<AllPupuhAdminModel>>
+    @GET("admin/listkategoripupuhadmin/{id_pupuh}")
+    fun getKategoriPupuhListAdmin(@Path("id_pupuh") id: Int) : Call<ArrayList<KategoriPupuhAdminModel>>
+    @FormUrlEncoded
+    @POST("admin/createpupuhadmin")
+    fun createDataPupuhAdmin (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_pupuh") id_pupuh:Int,
+    ):Call<CrudModel>
+    @GET("admin/detailpupuhadmin/{id_post}")
+    fun getDetailPupuhAdmin(@Path("id_post") id: Int) : Call<DetailPupuhAdminModel>
+    @GET("admin/detailbaitpupuhadmin/{id_post}")
+    fun getDetailBaitPupuhAdmin(@Path("id_post") id:Int) : Call<DetailBaitPupuhAdminModel>
+    @GET("admin/listvideopupuhadmin/{id_pupuh}")
+    fun getListVideoPupuhAdmin(@Path("id_pupuh") id:Int): Call<VideoPupuhAdminModel>
+    @GET("admin/listaudiopupuhadmin/{id_post}")
+    fun getListAudioPupuhAdmin(@Path("id_post") id:Int): Call<AudioPupuhAdminModel>
+    @GET("admin/yadnyapupuhadmin/{id_pupuh}")
+    fun getYadnyaPupuhAdmin(@Path("id_pupuh") id:Int): Call<YadnyaPupuhAdminModel>
+    @FormUrlEncoded
+    @POST("admin/editpupuhadmin/{id_post}")
+    fun updatePupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deletepupuhadmin/{id_post}")
+    fun deletePupuhAdmin (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
+
     //User
     //Yadnya
     @GET("listyadnya")
