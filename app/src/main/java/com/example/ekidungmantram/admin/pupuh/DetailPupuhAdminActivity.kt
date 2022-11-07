@@ -100,6 +100,22 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
+            goToListVideoPupuh.setOnClickListener {
+                val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            goToListAudioPupuh.setOnClickListener {
+                val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
             tambahLirikPupuh.setOnClickListener {
                 val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)

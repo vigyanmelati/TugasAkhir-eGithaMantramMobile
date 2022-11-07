@@ -23,6 +23,24 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.pupuh.EditAudioPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AddAudioPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AllAudioPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.EditVideoPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AddVideoPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AllVideoPupuhAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.pupuh.EditLirikPupuhAdminActivity"
             android:exported="false" />
         <activity

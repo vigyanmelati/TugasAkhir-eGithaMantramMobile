@@ -75,7 +75,7 @@ class HomeAdminActivity : AppCompatActivity() {
 
         if(role != "1") {
             val nav_Menu: Menu = navView.getMenu()
-            nav_Menu.findItem(R.id.approval).setVisible(false)
+//            nav_Menu.findItem(R.id.approval).setVisible(false)
             nav_Menu.findItem(R.id.kelola_admin).setVisible(false)
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }
@@ -88,8 +88,8 @@ class HomeAdminActivity : AppCompatActivity() {
 //                R.id.gamelan_bali_admin -> goToGamelan()
                 R.id.sekar_madya_admin -> goToKidung()
                 R.id.sekar_alit_admin -> goToPupuh()
-                R.id.mantram_admin -> goToMantram()
-                R.id.approval -> goToKajiMantram()
+//                R.id.mantram_admin -> goToMantram()
+//                R.id.approval -> goToKajiMantram()
 //                R.id.gita_admin ->goToGita()
 //                R.id.gita_approve -> goToKajiGita()
                 R.id.prosesi_upacara_admin -> goToProsesi()

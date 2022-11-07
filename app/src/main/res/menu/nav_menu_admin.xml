@@ -6,10 +6,7 @@
     <item android:title="Menu Admin">
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/yadnya_admin"
-                    android:title="Data Upacara Yadnya"
-                    android:icon="@drawable/ic_baseline_home_work_24" />
+
 <!--                <item-->
 <!--                    android:id="@+id/tari_bali_admin"-->
 <!--                    android:title="Data Tari Bali"-->
@@ -22,14 +19,14 @@
 <!--                    android:id="@+id/gamelan_bali_admin"-->
 <!--                    android:title="Data Gamelan Bali"-->
 <!--                    android:icon="@drawable/gamelan" />-->
-                <item
-                    android:id="@+id/mantram_admin"
-                    android:title="Data Mantram"
-                    android:icon="@drawable/mantram" />
-                <item
-                    android:id="@+id/approval"
-                    android:title="Kaji Mantram"
-                    android:icon="@drawable/approve" />
+<!--                <item-->
+<!--                    android:id="@+id/mantram_admin"-->
+<!--                    android:title="Data Mantram"-->
+<!--                    android:icon="@drawable/mantram" />-->
+<!--                <item-->
+<!--                    android:id="@+id/approval"-->
+<!--                    android:title="Kaji Mantram"-->
+<!--                    android:icon="@drawable/approve" />-->
                 <item
                     android:id="@+id/sekar_agung_admin"
                     android:title="Data Sekar Agung"
@@ -55,6 +52,10 @@
 <!--                    android:id="@+id/gita_approve"-->
 <!--                    android:title="Kaji Dharmagita"-->
 <!--                    android:icon="@drawable/approve" />-->
+                <item
+                    android:id="@+id/yadnya_admin"
+                    android:title="Data Upacara Yadnya"
+                    android:icon="@drawable/ic_baseline_home_work_24" />
                 <item
                     android:id="@+id/prosesi_upacara_admin"
                     android:title="Data Prosesi Upacara"
