@@ -789,6 +789,21 @@ interface ApiEndpoint {
         @Path("id_post") id:Int,
     ):Call<CrudModel>
 
+    @GET("admin/listyadnyanotonpupuh/{id_post}")
+    fun getDetailAllYadnyaNotOnPupuhAdmin(@Path("id_post") id:Int) : Call<YadnyaPupuhAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addyadnyaonpupuh/{id_post}")
+    fun addDataYadnyaToPupuhAdmin (
+        @Path("id_post") id:Int,
+        @Field("id_pupuh") idPupuh:Int,
+    ):Call<CrudModel>
+
+    @POST("admin/deleteyadnyaonpupuh/{id_post}")
+    fun deleteDataYadnyaOnPupuhAdmin (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
+
     //User
     //Yadnya
     @GET("listyadnya")
@@ -897,6 +912,8 @@ interface ApiEndpoint {
     fun getPupuhNewList(): Call<NewPupuhModel>
     @GET("listkategoripupuh/{id_pupuh}")
     fun getKategoriPupuh(@Path("id_pupuh") id: Int) : Call<ArrayList<KategoriPupuhModel>>
+    @GET("listkategoripupuhuser/{id_pupuh}/{id_user}")
+    fun getKategoriPupuhUser(@Path("id_pupuh") id: Int, @Path("id_user") id_user : Int) : Call<ArrayList<KategoriPupuhUserModel>>
     @GET("detailpupuh/{id_post}")
     fun getDetailPupuh(@Path("id_post") id: Int) : Call<DetailPupuhModel>
     @GET("detailbaitpupuh/{id_post}")
@@ -914,6 +931,115 @@ interface ApiEndpoint {
         @Field("deskripsi") deskripsi:String,
         @Field("gambar") gambar:String,
         @Field("id_pupuh") id_pupuh:Int,
+    ):Call<CrudModel>
+    @GET("showpupuh/{id_post}")
+    fun getShowPupuh(@Path("id_post") id:Int) : Call<DetailPupuhModel>
+    @FormUrlEncoded
+    @POST("editpupuh/{id_post}")
+    fun updatePupuh (
+        @Path("id_post") id:Int,
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+    ):Call<CrudModel>
+
+    @POST("deletepupuh/{id_post}")
+    fun deletePupuh (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
+
+    @GET("listbaitpupuh/{id_post}")
+    fun getAllLirikPupuh(@Path("id_post") id:Int) : Call<ArrayList<AllLirikPupuhModel>>
+
+    @FormUrlEncoded
+    @POST("addlirikpupuh/{id_post}")
+    fun createDataLirikPupuh (
+        @Path("id_post") id:Int,
+        @Field("bait_pupuh") baitPupuh:String,
+    ):Call<CrudModel>
+
+    @GET("showlirikpupuh/{id_det_post}")
+    fun getShowLirikPupuh(@Path("id_det_post") id:Int) : Call<DetailLirikPupuhModel>
+
+    @FormUrlEncoded
+    @POST("editlirikpupuh/{id_det_post}")
+    fun updateDataLirikPupuh (
+        @Path("id_det_post") id:Int,
+        @Field("bait_pupuh") lirikPupuh:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("deletelirikpupuh/{id_post}")
+    fun deleteDataLirikPupuh(
+        @Path("id_post") id:Int,
+        @Field("pupuh_id") idPupuh:Int,
+    ):Call<CrudModel>
+
+    @GET("showvideopupuh/{id_post}")
+    fun getShowVideoPupuh(@Path("id_post") id:Int) : Call<DetailVideoPupuhModel>
+
+    @FormUrlEncoded
+    @POST("addvideoonpupuh/{id_post}")
+    fun createDataVideoPupuh (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("editvideopupuh/{id_post}")
+    fun updateDataVideoPupuh (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @POST("deletevideoonpupuh/{id_post}")
+    fun deleteDataVideoPupuh (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("showaudiopupuh/{id_post}")
+    fun getShowAudioPupuh(@Path("id_post") id:Int) : Call<DetailAudioPupuhModel>
+
+    @FormUrlEncoded
+    @POST("addaudioonpupuh/{id_post}")
+    fun createDataAudioPupuh (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("editaudiopupuh/{id_post}")
+    fun updateDataAudioPupuh (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @POST("deleteaudioonpupuh/{id_post}")
+    fun deleteDataAudioPupuh (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("listyadnyanotonpupuh/{id_post}")
+    fun getDetailAllYadnyaNotOnPupuh(@Path("id_post") id:Int) : Call<YadnyaPupuhModel>
+
+    @FormUrlEncoded
+    @POST("addyadnyaonpupuh/{id_post}")
+    fun addDataYadnyaToPupuh (
+        @Path("id_post") id:Int,
+        @Field("id_pupuh") idPupuh:Int,
+    ):Call<CrudModel>
+
+    @POST("deleteyadnyaonpupuh/{id_post}")
+    fun deleteDataYadnyaOnPupuh (
+        @Path("id_post") id:Int
     ):Call<CrudModel>
 
     //Lagu Anak

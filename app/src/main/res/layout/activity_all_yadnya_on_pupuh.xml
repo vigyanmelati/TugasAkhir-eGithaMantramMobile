@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".user.AllKategoriPupuhActivity">
+    tools:context=".user.AllYadnyaOnPupuhActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,15 +14,15 @@
         android:paddingTop="18dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:visibility="visible"
-            android:id="@+id/shimmerKategoriPupuh"
+            android:id="@+id/shimmerPupuhYadnyaUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
-                layout="@layout/shimmer_all_kategori_pupuh"/>
+                layout="@layout/shimmer_all_tabuh"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
-            android:id="@+id/swipeKategoriPupuh"
+            android:id="@+id/swipePupuhYadnyaUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -30,23 +30,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/daftar_nama"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Daftar Sekar Alit"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="30sp"
-                        android:layout_marginBottom="20dp"/>
-
-                </LinearLayout>
+                    android:text="Daftar Yadnya"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:layout_marginBottom="20dp"/>
                 <TextView
-                    android:id="@+id/noKategoriPupuh"
+                    android:id="@+id/namaPupuhYadnyaUser"
+                    android:layout_marginTop="-14dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gamelan Bla"
+                    android:textColor="@color/grey_200"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:alpha="0.5"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:visibility="visible"
+                    android:id="@+id/noPupuhYadnyaUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -54,49 +60,40 @@
                     android:textColor="@color/shimmer_secondary"
                     android:textStyle="bold"
                     android:textSize="17sp"/>
-                <TextView
-                    android:id="@+id/desc_kategori_pupuh"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sekar Alit atau sering disebut Pupuh adalah lagu yang mengandung cerita atau dapat juga berupa nasehat yang mengajarkan kebaikan."
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="20dp"/>
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/cariKategoriPupuh"
+                    android:id="@+id/cariPupuhYadnyaUser"
                     app:iconifiedByDefault="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchview_background"
-                    app:queryHint="Masukan nama sekar alit"
+                    app:queryHint="Masukan nama yadnya"
                     android:layout_marginBottom="15dp"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKategoriPupuh1"
+                        android:id="@+id/allPupuhYadnyaUser1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_kategori_pupuh" />
+                        tools:listitem="@layout/layout_all_yadnya_on_pupuh_user" />
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKategoriPupuh2"
+                        android:id="@+id/allPupuhYadnyaUser2"
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_kategori_pupuh" />
+                        tools:listitem="@layout/layout_all_yadnya_on_pupuh_user" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabPupuh"
+        android:id="@+id/fabYadnyaAddPupuhUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_pupuh"
+        android:layout_gravity="start|bottom"
+        android:src="@drawable/ic_baseline_add_24"
         android:layout_margin="16dp"
         app:tint="@color/white"
         android:backgroundTint="@color/green_success"
         android:contentDescription="Add" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

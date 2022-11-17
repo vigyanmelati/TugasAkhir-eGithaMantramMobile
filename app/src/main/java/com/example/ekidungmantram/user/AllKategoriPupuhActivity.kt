@@ -1,12 +1,15 @@
 package com.example.ekidungmantram.user
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllLaguAnakAdapter
 import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
@@ -24,6 +27,7 @@ import retrofit2.Response
 class AllKategoriPupuhActivity : AppCompatActivity() {
     private lateinit var kategoriPupuhAdapter : KategoriPupuhAdapter
     private lateinit var setAdapter    : KategoriPupuhAdapter
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_pupuh)
@@ -48,10 +52,17 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                 swipeKategoriPupuh.isRefreshing = false
             }
 
+            sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+            val role          = sharedPreferences.getString("ROLE", null)
+            val id            = sharedPreferences.getString("ID_ADMIN", null)
+            val mesage = sharedPreferences.getString("MESAGE", null)
+
             fabPupuh.setOnClickListener {
                 val bundle = Bundle()
-                val intent = Intent(this, AddPupuhActivity::class.java)
-                bundle.putInt("id_kat_pupuh", postID)
+                val intent = Intent(this, LoginActivity::class.java)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", namaPost)
+                bundle.putString("desc_pupuh", descPost)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

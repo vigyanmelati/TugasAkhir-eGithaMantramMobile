@@ -12,6 +12,8 @@ import android.widget.Toast
 import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AdminModel
+import com.example.ekidungmantram.user.AddPupuhActivity
+import com.example.ekidungmantram.user.AllKategoriPupuhUserActivity
 import com.example.ekidungmantram.user.MainActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_login.*
@@ -63,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<AdminModel>
                 ) {
                     if(!response.body()?.error!!){
-                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role)
+                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role, response.body()?.message)
                         progressDialog.dismiss()
                     }else{
                         Toast.makeText(this@LoginActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
@@ -95,21 +97,45 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?) {
+    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?, mesage: String?) {
         sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val editor        = sharedPreferences.edit()
         editor.apply{
             putString("ID_ADMIN", idAdmin?.toString())
             putString("NAMA", nama)
             putString("ROLE", roleAdmin?.toString())
+            putString("MESAGE", mesage)
         }.apply()
         Toast.makeText(this, "Log In Sukses", Toast.LENGTH_SHORT).show()
-        goToAdmin()
+        if (roleAdmin.toString() != "3"){
+            goToAdmin()
+        }else{
+            goToUser()
+        }
     }
 
     private fun goToAdmin() {
         val intent = Intent(this, HomeAdminActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun goToUser() {
+        val bundle :Bundle ?= intent.extras
+        if (bundle != null) {
+            val id_pupuh = bundle.getInt("id_pupuh")
+            val nama_pupuh = bundle.getString("nama_pupuh").toString()
+            val desc_pupuh = bundle.getString("desc_pupuh").toString()
+
+            val bundle = Bundle()
+            val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
+            bundle.putInt("id_pupuh", id_pupuh)
+            bundle.putString("nama_pupuh", nama_pupuh)
+            bundle.putString("desc_pupuh", desc_pupuh)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

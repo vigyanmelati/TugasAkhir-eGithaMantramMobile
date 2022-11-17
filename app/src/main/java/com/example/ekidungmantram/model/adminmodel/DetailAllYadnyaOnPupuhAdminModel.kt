@@ -1,8 +1,7 @@
-package com.example.ekidungmantram.model
+package com.example.ekidungmantram.model.adminmodel
 
-data class YadnyaPupuhModel(val data: ArrayList<DataL>) {
+data class DetailAllYadnyaOnPupuhAdminModel (val data: ArrayList<DataL>) {
     data class DataL(
-        val id: Int,
         val id_post: Int,
         val id_kategori: Int,
         val kategori: String,
@@ -10,3 +9,4 @@ data class YadnyaPupuhModel(val data: ArrayList<DataL>) {
         val gambar: String
     )
 }
+

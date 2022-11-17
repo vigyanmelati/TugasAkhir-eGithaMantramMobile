@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.pupuh
+package com.example.ekidungmantram.user
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -10,44 +10,43 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.admin.AllDataLirikKidungAdminAdapter
+import com.example.ekidungmantram.adapter.AllDataLirikPupuhAdapter
 import com.example.ekidungmantram.adapter.admin.AllDataLirikPupuhAdminAdapter
-import com.example.ekidungmantram.admin.kidung.AddLirikKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.DetailKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.EditLirikKidungAdminActivity
+import com.example.ekidungmantram.admin.pupuh.AddLirikPupuhAdminActivity
+import com.example.ekidungmantram.admin.pupuh.AllLirikPupuhAdminActivity
+import com.example.ekidungmantram.admin.pupuh.EditLirikPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.adminmodel.AllLirikKidungAdminModel
+import com.example.ekidungmantram.model.AllLirikPupuhModel
 import com.example.ekidungmantram.model.adminmodel.AllLirikPupuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import kotlinx.android.synthetic.main.activity_all_lirik_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_all_lirik_pupuh.*
 import kotlinx.android.synthetic.main.activity_all_lirik_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllLirikPupuhAdminActivity : AppCompatActivity() {
-    private lateinit var setAdapter : AllDataLirikPupuhAdminAdapter
+class AllLirikPupuhActivity : AppCompatActivity() {
+    private lateinit var setAdapter : AllDataLirikPupuhAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_lirik_pupuh_admin)
+        setContentView(R.layout.activity_all_lirik_pupuh)
         supportActionBar!!.title = "Lirik Sekar Rare"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
             val namaPost = bundle.getString("nama_pupuh")
 
-            namaPupuhLirik.text = namaPost
-            allLirikPupuhAdmin.layoutManager = LinearLayoutManager(applicationContext)
+            namaPupuhLirikUser.text = namaPost
+            allLirikPupuhUser.layoutManager = LinearLayoutManager(applicationContext)
             getAllDataLirikPupuh(postID, namaPost!!)
 
-            swipeLirikPupuhAdmin.setOnRefreshListener {
+            swipeLirikPupuhUser.setOnRefreshListener {
                 getAllDataLirikPupuh(postID, namaPost)
-                swipeLirikPupuhAdmin.isRefreshing = false
+                swipeLirikPupuhUser.isRefreshing = false
             }
 
-            fabLirikPupuh.setOnClickListener {
-                val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
+            fabLirikPupuhUser.setOnClickListener {
+                val intent = Intent(this, AddLirikPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -56,23 +55,23 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun getAllDataLirikPupuh(postID: Int, namaPost: String) {
-        ApiService.endpoint.getAllLirikPupuhAdmin(postID)
-            .enqueue(object: Callback<ArrayList<AllLirikPupuhAdminModel>> {
+        ApiService.endpoint.getAllLirikPupuh(postID)
+            .enqueue(object: Callback<ArrayList<AllLirikPupuhModel>> {
                 override fun onResponse(
-                    call: Call<ArrayList<AllLirikPupuhAdminModel>>,
-                    response: Response<ArrayList<AllLirikPupuhAdminModel>>
+                    call: Call<ArrayList<AllLirikPupuhModel>>,
+                    response: Response<ArrayList<AllLirikPupuhModel>>
                 ) {
                     val datalist   = response.body()
                     if(datalist != null){
-                        swipeLirikPupuhAdmin.visibility   = View.VISIBLE
-                        shimmerLirikPupuhAdmin.visibility = View.GONE
+                        swipeLirikPupuhUser.visibility   = View.VISIBLE
+                        shimmerLirikPupuhUser.visibility = View.GONE
                     }else{
-                        swipeLirikPupuhAdmin.visibility   = View.GONE
-                        shimmerLirikPupuhAdmin.visibility = View.VISIBLE
+                        swipeLirikPupuhUser.visibility   = View.GONE
+                        shimmerLirikPupuhUser.visibility = View.VISIBLE
                     }
-                    setAdapter = AllDataLirikPupuhAdminAdapter(datalist!!)
+                    setAdapter = AllDataLirikPupuhAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
-                        val builder = AlertDialog.Builder(this@AllLirikPupuhAdminActivity)
+                        val builder = AlertDialog.Builder(this@AllLirikPupuhActivity)
                         builder.setTitle("Hapus Lirik Pupuh")
                             .setMessage("Apakah anda yakin ingin menghapus lirik pupuh ini?")
                             .setCancelable(true)
@@ -84,7 +83,7 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllLirikPupuhAdminActivity, EditLirikPupuhAdminActivity::class.java)
+                        val intent = Intent(this@AllLirikPupuhActivity, EditLirikPupuhActivity::class.java)
                         bundle.putInt("id_lirik_pupuh", it.id_lirik_pupuh)
                         bundle.putInt("id_pupuh", postID)
                         bundle.putString("nama_pupuh", namaPost)
@@ -92,13 +91,13 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    allLirikPupuhAdmin.adapter  = setAdapter
-                    noLirikPupuhAdmin.visibility = View.GONE
+                    allLirikPupuhUser.adapter  = setAdapter
+                    noLirikPupuhUser.visibility = View.GONE
                     setShimmerToStop()
 
                 }
 
-                override fun onFailure(call: Call<ArrayList<AllLirikPupuhAdminModel>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<AllLirikPupuhModel>>, t: Throwable) {
                     printLog("on failure: $t")
                 }
 
@@ -109,27 +108,27 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Menghapus Data")
         progressDialog.show()
-        ApiService.endpoint.deleteDataLirikPupuhAdmin(idLirikPupuh, postIDs).enqueue(object:
+        ApiService.endpoint.deleteDataLirikPupuh(idLirikPupuh, postIDs).enqueue(object:
             Callback<CrudModel> {
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
-                    Toast.makeText(this@AllLirikPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AllLirikPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     val bundle = Bundle()
-                    val intent = Intent(this@AllLirikPupuhAdminActivity, AllLirikPupuhAdminActivity::class.java)
+                    val intent = Intent(this@AllLirikPupuhActivity, AllLirikPupuhActivity::class.java)
                     bundle.putInt("id_pupuh", postIDs)
                     bundle.putString("nama_pupuh", postName)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else{
                     progressDialog.dismiss()
-                    Toast.makeText(this@AllLirikPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AllLirikPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                 progressDialog.dismiss()
-                Toast.makeText(this@AllLirikPupuhAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AllLirikPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -140,8 +139,8 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun setShimmerToStop() {
-        shimmerLirikPupuhAdmin.stopShimmer()
-        shimmerLirikPupuhAdmin.visibility = View.GONE
-        swipeLirikPupuhAdmin.visibility   = View.VISIBLE
+        shimmerLirikPupuhUser.stopShimmer()
+        shimmerLirikPupuhUser.visibility = View.GONE
+        swipeLirikPupuhUser.visibility   = View.VISIBLE
     }
 }

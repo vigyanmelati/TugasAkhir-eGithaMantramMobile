@@ -14,4 +14,5 @@
         android:id="@+id/list_yadnya"
         android:icon="@drawable/bookmark_list"
         android:title="Dharmagita Ditandai"/>
+
 </menu>

@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.pupuh
+package com.example.ekidungmantram.user
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -21,62 +21,52 @@ import com.example.ekidungmantram.adapter.admin.AudioPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.BaitPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.VideoPupuhAdminAdapter
 import com.example.ekidungmantram.adapter.admin.YadnyaPupuhAdminAdapter
-import com.example.ekidungmantram.admin.kidung.AddLirikKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.AllLirikKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.EditKidungAdminActivity
+import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
-import com.example.ekidungmantram.user.*
-import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.lihatSemuayadnyapupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.nodataaudiopupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.nodatayadnyapupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.rv_audio_pupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.rv_yadnya_pupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.shimmerDetailPupuh
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
+import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.goToListYadnyaPupuh
+import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.lihatSemuaaudiopupuhAdmin
+import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.lihatSemuavideopupuhAdmin
+import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.lihatSemuayadnyapupuhAdmin
+import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.nodatavideopupuhAdmin
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
 import kotlinx.android.synthetic.main.activity_detail_pupuh_user.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailPupuhAdminActivity : AppCompatActivity() {
+class DetailPupuhUserActivity : AppCompatActivity() {
     private var layoutManagerBait          : LinearLayoutManager? = null
-    private lateinit var baitPupuhAdapter : BaitPupuhAdminAdapter
-    private lateinit var videoPupuhAdapter  : VideoPupuhAdminAdapter
+    private lateinit var baitPupuhAdapter : BaitPupuhAdapter
+    private lateinit var videoPupuhAdapter  : VideoPupuhAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
-    private lateinit var audioPupuhAdapter  : AudioPupuhAdminAdapter
+    private lateinit var audioPupuhAdapter  : AudioPupuhAdapter
     private var gridLayoutManagerA      : GridLayoutManager? = null
-    private lateinit var yadnyaPupuhAdapter  : YadnyaPupuhAdminAdapter
+    private lateinit var yadnyaPupuhAdapter  : YadnyaPupuhAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_pupuh : Int = 0
-    private var id_pupuh_admin : Int = 0
-    private lateinit var nama_pupuh_admin :String
-    private lateinit var desc_pupuh_admin :String
+    private var id_pupuh_user : Int = 0
+    private lateinit var nama_pupuh_user :String
+    private lateinit var desc_pupuh_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_pupuh_admin)
+        setContentView(R.layout.activity_detail_pupuh_user)
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
-            id_pupuh = bundle.getInt("id_pupuh_admin")
+            id_pupuh = bundle.getInt("id_pupuh_user")
         }
         if (bundle!=null) {
-            val postID = bundle.getInt("id_pupuh_admin")
-            val nama_pupuh = bundle.getString("nama_pupuh_admin")
-            val nama_tag_pupuh = bundle.getString("nama_tag_pupuh_admin")
-            val gambar_pupuh = bundle.getString("gambar_pupuh_admin")
-            val tag_pupuh = bundle.getInt("tag_pupuh_admin")
+            val postID = bundle.getInt("id_pupuh_user")
+            val nama_pupuh = bundle.getString("nama_pupuh_user")
+            val nama_tag_pupuh = bundle.getString("nama_tag_pupuh_user")
+            val gambar_pupuh = bundle.getString("gambar_pupuh_user")
+            val tag_pupuh = bundle.getInt("tag_pupuh_user")
             Log.d("id_pupuh_admin",postID.toString())
-            id_pupuh_admin = bundle.getInt("id_pupuh_admin_kat")
-            nama_pupuh_admin = bundle.getString("nama_pupuh_admin_kat").toString()
-            desc_pupuh_admin = bundle.getString("desc_pupuh_admin_kat").toString()
+            id_pupuh_user = bundle.getInt("id_pupuh_user_kat")
+            nama_pupuh_user = bundle.getString("nama_pupuh_user_kat").toString()
+            desc_pupuh_user = bundle.getString("desc_pupuh_user_kat").toString()
 
             getDetailData(postID)
             getBaitData(postID)
@@ -87,35 +77,32 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
-            lihatSemuavideopupuhAdmin.visibility = View.GONE
-            lihatSemuaaudiopupuhAdmin.visibility = View.GONE
-            lihatSemuayadnyapupuhAdmin.visibility = View.GONE
 
-            goToListLirikPupuh.setOnClickListener {
-                val intent = Intent(this, AllLirikPupuhAdminActivity::class.java)
+            goToListLirikPupuhUser.setOnClickListener {
+                val intent = Intent(this, AllLirikPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            goToListVideoPupuh.setOnClickListener {
-                val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
+            goToListVideoPupuhUser.setOnClickListener {
+                val intent = Intent(this, AllVideoPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            goToListYadnyaPupuh.setOnClickListener {
+            goToListYadnyaPupuhUser.setOnClickListener {
                 val intent = Intent(this, AllYadnyaOnPupuhAdminActivity::class.java)
-                bundle.putInt("id_pupuh_admin", postID)
-                bundle.putString("nama_pupuh_admin", nama_pupuh)
+                bundle.putInt("id_pupuh_user", postID)
+                bundle.putString("nama_pupuh_user", nama_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            goToListAudioPupuh.setOnClickListener {
+            goToListAudioPupuhUser.setOnClickListener {
                 val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
@@ -123,7 +110,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            tambahLirikPupuh.setOnClickListener {
+            tambahLirikPupuhUser.setOnClickListener {
                 val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
@@ -131,15 +118,16 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            tambahVideoPupuh.setOnClickListener {
-                val intent = Intent(this, AddVideoPupuhAdminActivity::class.java)
+            tambahVideoPupuhUser.setOnClickListener {
+                val intent = Intent(this, AddVideoPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("nama_kat_pupuh_user", nama_pupuh_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            tambahAudioPupuh.setOnClickListener {
+            tambahAudioPupuhUser.setOnClickListener {
                 val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
@@ -147,25 +135,25 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            tambahYadnyaPupuh.setOnClickListener {
-                val intent = Intent(this, AddYadnyaToPupuhAdminActivity::class.java)
-                bundle.putInt("id_pupuh", postID)
-                bundle.putString("nama_pupuh", nama_pupuh)
+            tambahYadnyaPupuhUser.setOnClickListener {
+                val intent = Intent(this, AddYadnyaToPupuhActivity::class.java)
+                bundle.putInt("id_pupuh_user", postID)
+                bundle.putString("nama_pupuh_user", nama_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            toEditPupuh.setOnClickListener {
+            toEditPupuhUser.setOnClickListener {
                 val intent = Intent(this, EditPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
-            deletePupuh.setOnClickListener {
+            deletePupuhUser.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Hapus Pupuh")
-                    .setMessage("Apakah anda yakin ingin menghapus kidung ini?")
+                    .setMessage("Apakah anda yakin ingin menghapus pupuh ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
                         hapusPupuh(postID)
@@ -176,7 +164,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
 
         }
 
-        backToPupuhAdmin.setOnClickListener {
+        backToPupuhUser.setOnClickListener {
             goBack()
         }
     }
@@ -193,56 +181,57 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
-                    Toast.makeText(this@DetailPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailPupuhUserActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     goBack()
                 }else{
                     progressDialog.dismiss()
-                    Toast.makeText(this@DetailPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailPupuhUserActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                 progressDialog.dismiss()
-                Toast.makeText(this@DetailPupuhAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailPupuhUserActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriPupuhAdminActivity::class.java)
+        val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_pupuh_admin", id_pupuh)
-        bundle.putString("nama_pupuh_admin", nama_pupuh_admin)
-        bundle.putString("desc_pupuh_admin", desc_pupuh_admin)
+        bundle.putInt("id_pupuh_user", id_pupuh)
+        bundle.putString("nama_pupuh_user", nama_pupuh_user)
+        bundle.putString("desc_pupuh_user", desc_pupuh_user)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }
 
     private fun getDetailData(id: Int) {
-        ApiService.endpoint.getDetailPupuhAdmin(id).enqueue(object: Callback<DetailPupuhAdminModel> {
+        ApiService.endpoint.getDetailPupuh(id).enqueue(object:
+            Callback<DetailPupuhModel> {
             override fun onResponse(
-                call: Call<DetailPupuhAdminModel>,
-                response: Response<DetailPupuhAdminModel>
+                call: Call<DetailPupuhModel>,
+                response: Response<DetailPupuhModel>
             ) {
                 val result = response.body()!!
                 result.let {
-                    deskripsiPupuhAdmin.text   = result.deskripsi
-                    detailNamaPupuhAdmin.text  = result.nama_post
-                    detailPupuhAdmin.text = "Sekar Alit"
+                    deskripsiPupuhUser.text   = result.deskripsi
+                    detailNamaPupuhUser.text  = result.nama_post
+                    detailPupuhUser.text = "Sekar Alit"
                     if(result.gambar != null) {
-                        Glide.with(this@DetailPupuhAdminActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhAdmin)
+                        Glide.with(this@DetailPupuhUserActivity)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhUser)
                     }else{
-                        imageDetailPupuhAdmin.setImageResource(R.drawable.sample_image_yadnya)
+                        imageDetailPupuhUser.setImageResource(R.drawable.sample_image_yadnya)
                     }
 //                    playYoutubeVideo(result.video)
                 }
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailPupuhAdminModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailPupuhModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 
@@ -250,42 +239,42 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun getBaitData(id: Int) {
-        ApiService.endpoint.getDetailBaitPupuhAdmin(id).enqueue(object :
-            Callback<DetailBaitPupuhAdminModel> {
+        ApiService.endpoint.getDetailBaitPupuh(id).enqueue(object :
+            Callback<DetailBaitPupuhModel> {
             override fun onResponse(
-                call: Call<DetailBaitPupuhAdminModel>,
-                response: Response<DetailBaitPupuhAdminModel>
+                call: Call<DetailBaitPupuhModel>,
+                response: Response<DetailBaitPupuhModel>
             ) {
                 if(response.body()!!.data.toString() == "[]"){
                     tv_lirik.visibility = View.VISIBLE
-                    baitPupuhListAdmin.visibility   = View.GONE
-                    tambahLirikPupuh.visibility = View.VISIBLE
-                    goToListLirikPupuh.visibility = View.GONE
+                    baitPupuhList.visibility   = View.GONE
+                    tambahLirikPupuhUser.visibility = View.VISIBLE
+                    goToListLirikPupuhUser.visibility = View.GONE
                 }else{
                     tv_lirik.visibility = View.GONE
-                    baitPupuhListAdmin.visibility = View.VISIBLE
-                    tambahLirikPupuh.visibility = View.GONE
-                    goToListLirikPupuh.visibility = View.VISIBLE
+                    baitPupuhList.visibility = View.VISIBLE
+                    tambahLirikPupuhUser.visibility = View.GONE
+                    goToListLirikPupuhUser.visibility = View.VISIBLE
                 }
                 showBaitPupuhData(response.body()!!)
             }
 
-            override fun onFailure(call: Call<DetailBaitPupuhAdminModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailBaitPupuhModel>, t: Throwable) {
                 printLog("on failure: $t")
             }
 
         })
     }
 
-    private fun showBaitPupuhData(body: DetailBaitPupuhAdminModel) {
+    private fun showBaitPupuhData(body: DetailBaitPupuhModel) {
         val results = body.data
         baitPupuhAdapter.setData(results)
     }
 
     private fun setupRecyclerViewBait() {
-        baitPupuhAdapter = BaitPupuhAdminAdapter(arrayListOf())
-        baitPupuhListAdmin.apply {
-            layoutManagerBait = LinearLayoutManager(this@DetailPupuhAdminActivity)
+        baitPupuhAdapter = BaitPupuhAdapter(arrayListOf())
+        baitPupuhList.apply {
+            layoutManagerBait = LinearLayoutManager(this@DetailPupuhUserActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitPupuhAdapter
             setHasFixedSize(true)
@@ -314,24 +303,24 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
 //    }
 
     private fun setShimmerToStop() {
-        shimmerDetailPupuhAdmin.stopShimmer()
-        shimmerDetailPupuhAdmin.visibility = View.GONE
-        scrollDetailPupuhAdmin.visibility  = View.VISIBLE
+        shimmerDetailPupuhUser.stopShimmer()
+        shimmerDetailPupuhUser.visibility = View.GONE
+        scrollDetailPupuhUser.visibility  = View.VISIBLE
     }
 
     private fun setupRecyclerViewK() {
-        videoPupuhAdapter =  VideoPupuhAdminAdapter(arrayListOf(), object : VideoPupuhAdminAdapter.OnAdapterVideoPupuhAdminListener{
-            override fun onClick(result: VideoPupuhAdminModel.DataL) {
+        videoPupuhAdapter =  VideoPupuhAdapter(arrayListOf(), object : VideoPupuhAdapter.OnAdapterVideoPupuhListener{
+            override fun onClick(result: VideoPupuhModel.DataL) {
                 val bundle = Bundle()
-                val intent = Intent(this@DetailPupuhAdminActivity, VideoPupuhActivity::class.java)
+                val intent = Intent(this@DetailPupuhUserActivity, VideoPupuhActivity::class.java)
                 bundle.putString("video_pupuh", result.video)
                 bundle.putInt("id_pupuh_video", id_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
         })
-        rv_video_pupuhAdmin.apply {
-            gridLayoutManagerL = GridLayoutManager(this@DetailPupuhAdminActivity, 1, LinearLayoutManager.HORIZONTAL, false)
+        rv_video_pupuh.apply {
+            gridLayoutManagerL = GridLayoutManager(this@DetailPupuhUserActivity, 1, LinearLayoutManager.HORIZONTAL, false)
             layoutManager      = gridLayoutManagerL
             adapter            = videoPupuhAdapter
             setHasFixedSize(true)
@@ -339,18 +328,18 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerViewA() {
-        audioPupuhAdapter =  AudioPupuhAdminAdapter(arrayListOf(), object : AudioPupuhAdminAdapter.OnAdapterAudioPupuhAdminListener{
-            override fun onClick(result: AudioPupuhAdminModel.DataL) {
+        audioPupuhAdapter =  AudioPupuhAdapter(arrayListOf(), object : AudioPupuhAdapter.OnAdapterAudioPupuhListener{
+            override fun onClick(result: AudioPupuhModel.DataL) {
                 val bundle = Bundle()
-                val intent = Intent(this@DetailPupuhAdminActivity, AudioPupuhActivity::class.java)
+                val intent = Intent(this@DetailPupuhUserActivity, AudioPupuhActivity::class.java)
                 bundle.putString("audio_pupuh", result.audio)
                 bundle.putInt("id_pupuh_audio", id_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
         })
-        rv_audio_pupuhAdmin.apply {
-            gridLayoutManagerA = GridLayoutManager(this@DetailPupuhAdminActivity, 1, LinearLayoutManager.HORIZONTAL, false)
+        rv_audio_pupuh.apply {
+            gridLayoutManagerA = GridLayoutManager(this@DetailPupuhUserActivity, 1, LinearLayoutManager.HORIZONTAL, false)
             layoutManager      = gridLayoutManagerA
             adapter            = audioPupuhAdapter
             setHasFixedSize(true)
@@ -358,10 +347,10 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerViewY() {
-        yadnyaPupuhAdapter =  YadnyaPupuhAdminAdapter(arrayListOf(), object : YadnyaPupuhAdminAdapter.OnAdapterYadnyaPupuhAdminListener{
-            override fun onClick(result: YadnyaPupuhAdminModel.DataL) {
+        yadnyaPupuhAdapter =  YadnyaPupuhAdapter(arrayListOf(), object : YadnyaPupuhAdapter.OnAdapterYadnyaPupuhListener{
+            override fun onClick(result: YadnyaPupuhModel.DataL) {
                 val bundle = Bundle()
-                val intent = Intent(this@DetailPupuhAdminActivity, DetailYadnyaActivity::class.java)
+                val intent = Intent(this@DetailPupuhUserActivity, DetailYadnyaActivity::class.java)
                 bundle.putInt("id_yadnya", result.id_post)
                 bundle.putInt("id_kategori", result.id_kategori)
                 bundle.putString("nama_yadnya", result.nama_post)
@@ -372,8 +361,8 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             }
         })
 
-        rv_yadnya_pupuhAdmin.apply {
-            gridLayoutManagerY = GridLayoutManager(this@DetailPupuhAdminActivity, 1, LinearLayoutManager.HORIZONTAL, false)
+        rv_yadnya_pupuh.apply {
+            gridLayoutManagerY = GridLayoutManager(this@DetailPupuhUserActivity, 1, LinearLayoutManager.HORIZONTAL, false)
             layoutManager      = gridLayoutManagerY
             adapter            = yadnyaPupuhAdapter
             setHasFixedSize(true)
@@ -381,20 +370,20 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun getListVideoPupuh(id_pupuh: Int) {
-        ApiService.endpoint.getListVideoPupuhAdmin(id_pupuh)
-            .enqueue(object: Callback<VideoPupuhAdminModel> {
+        ApiService.endpoint.getListVideoPupuh(id_pupuh)
+            .enqueue(object: Callback<VideoPupuhModel> {
                 override fun onResponse(
-                    call: Call<VideoPupuhAdminModel>,
-                    response: Response<VideoPupuhAdminModel>
+                    call: Call<VideoPupuhModel>,
+                    response: Response<VideoPupuhModel>
                 ) {
                     if(response.body()!!.data.toString() == "[]"){
-                        nodatavideopupuhAdmin.visibility  = View.GONE
-                        rv_video_pupuhAdmin.visibility   = View.GONE
-                        tambahVideoPupuh.visibility = View.VISIBLE
-                        goToListVideoPupuh.visibility = View.GONE
+                        nodatavideopupuhUser.visibility  = View.GONE
+                        rv_video_pupuh.visibility   = View.GONE
+                        tambahVideoPupuhUser.visibility = View.VISIBLE
+                        goToListVideoPupuhUser.visibility = View.GONE
                     }else{
-                        nodatavideopupuhAdmin.visibility  = View.GONE
-                        rv_video_pupuhAdmin.visibility = View.VISIBLE
+                        nodatavideopupuhUser.visibility  = View.GONE
+                        rv_video_pupuh.visibility = View.VISIBLE
                         tambahVideoPupuh.visibility = View.GONE
                         goToListVideoPupuh.visibility = View.VISIBLE
                         Log.d("video",response.body().toString())
@@ -410,7 +399,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
 
                 }
 
-                override fun onFailure(call: Call<VideoPupuhAdminModel>, t: Throwable) {
+                override fun onFailure(call: Call<VideoPupuhModel>, t: Throwable) {
                     printLog("on failure: $t")
                 }
 
@@ -418,29 +407,29 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun getListAudioPupuh(id_post: Int) {
-        ApiService.endpoint.getListAudioPupuhAdmin(id_post)
-            .enqueue(object: Callback<AudioPupuhAdminModel> {
+        ApiService.endpoint.getListAudioPupuh(id_post)
+            .enqueue(object: Callback<AudioPupuhModel> {
                 override fun onResponse(
-                    call: Call<AudioPupuhAdminModel>,
-                    response: Response<AudioPupuhAdminModel>
+                    call: Call<AudioPupuhModel>,
+                    response: Response<AudioPupuhModel>
                 ) {
                     if(response.body()!!.data.toString() == "[]"){
-                        nodataaudiopupuhAdmin.visibility  = View.GONE
-                        rv_audio_pupuhAdmin.visibility   = View.GONE
-                        tambahAudioPupuh.visibility = View.VISIBLE
-                        goToListAudioPupuh.visibility = View.GONE
+                        nodataaudiopupuhUser.visibility  = View.GONE
+                        rv_audio_pupuh.visibility   = View.GONE
+                        tambahAudioPupuhUser.visibility = View.VISIBLE
+                        goToListAudioPupuhUser.visibility = View.GONE
                     }else{
-                        nodataaudiopupuhAdmin.visibility  = View.GONE
-                        rv_audio_pupuhAdmin.visibility = View.VISIBLE
-                        tambahAudioPupuh.visibility = View.GONE
-                        goToListAudioPupuh.visibility = View.VISIBLE
+                        nodataaudiopupuhUser.visibility  = View.GONE
+                        rv_audio_pupuh.visibility = View.VISIBLE
+                        tambahAudioPupuhUser.visibility = View.GONE
+                        goToListAudioPupuhUser.visibility = View.VISIBLE
                         Log.d("audio",response.body().toString())
                         showAudioPupuhData(response.body()!!)
                     }
 
                 }
 
-                override fun onFailure(call: Call<AudioPupuhAdminModel>, t: Throwable) {
+                override fun onFailure(call: Call<AudioPupuhModel>, t: Throwable) {
                     printLog("on failure: $t")
                 }
 
@@ -448,44 +437,44 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun getListYadnyaPupuh(id_pupuh: Int) {
-        ApiService.endpoint.getYadnyaPupuhAdmin(id_pupuh)
-            .enqueue(object: Callback<YadnyaPupuhAdminModel> {
+        ApiService.endpoint.getYadnyaPupuh(id_pupuh)
+            .enqueue(object: Callback<YadnyaPupuhModel> {
                 override fun onResponse(
-                    call: Call<YadnyaPupuhAdminModel>,
-                    response: Response<YadnyaPupuhAdminModel>
+                    call: Call<YadnyaPupuhModel>,
+                    response: Response<YadnyaPupuhModel>
                 ) {
                     if(response.body()!!.data.toString() == "[]"){
-                        nodatayadnyapupuhAdmin.visibility  = View.GONE
-                        rv_yadnya_pupuhAdmin.visibility   = View.GONE
-                        tambahYadnyaPupuh.visibility = View.VISIBLE
-                        goToListYadnyaPupuh.visibility = View.GONE
+                        nodatayadnyapupuhUser.visibility  = View.GONE
+                        rv_yadnya_pupuh.visibility   = View.GONE
+                        tambahYadnyaPupuhUser.visibility = View.VISIBLE
+                        goToListYadnyaPupuhUser.visibility = View.GONE
                     }else{
-                        nodatayadnyapupuhAdmin.visibility  = View.GONE
-                        rv_yadnya_pupuhAdmin.visibility = View.VISIBLE
-                        tambahYadnyaPupuh.visibility = View.GONE
-                        goToListYadnyaPupuh.visibility = View.VISIBLE
+                        nodatayadnyapupuhUser.visibility  = View.GONE
+                        rv_yadnya_pupuh.visibility = View.VISIBLE
+                        tambahYadnyaPupuhUser.visibility = View.GONE
+                        goToListYadnyaPupuhUser.visibility = View.VISIBLE
                         Log.d("yadnya",response.body().toString())
                         showYadnyaPupuhData(response.body()!!)
                     }
 
                 }
 
-                override fun onFailure(call: Call<YadnyaPupuhAdminModel>, t: Throwable) {
+                override fun onFailure(call: Call<YadnyaPupuhModel>, t: Throwable) {
                     printLog("on failure: $t")
                 }
 
             })
     }
 
-    private fun showVideoPupuhData(body: VideoPupuhAdminModel) {
+    private fun showVideoPupuhData(body: VideoPupuhModel) {
         val results = body.data
         videoPupuhAdapter.setData(results)
     }
-    private fun showAudioPupuhData(body: AudioPupuhAdminModel) {
+    private fun showAudioPupuhData(body: AudioPupuhModel) {
         val results = body.data
         audioPupuhAdapter.setData(results)
     }
-    private fun showYadnyaPupuhData(body: YadnyaPupuhAdminModel) {
+    private fun showYadnyaPupuhData(body: YadnyaPupuhModel) {
         val results = body.data
         yadnyaPupuhAdapter.setData(results)
     }

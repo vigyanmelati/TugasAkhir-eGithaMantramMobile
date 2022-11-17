@@ -23,6 +23,51 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".user.AddYadnyaToPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllYadnyaOnPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.EditAudioPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AddAudioPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllAudioPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.EditVideoPupuhUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AddVideoPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllVideoPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.EditLirikPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AddLirikPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllLirikPupuhActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.DetailPupuhUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.AllKategoriPupuhUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AddYadnyaToPupuhAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.pupuh.AllYadnyaOnPupuhAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.pupuh.EditAudioPupuhAdminActivity"
             android:exported="false" />
         <activity
