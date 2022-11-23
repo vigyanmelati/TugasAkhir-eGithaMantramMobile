@@ -1,12 +1,18 @@
 package com.example.ekidungmantram.user
 
+import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -14,12 +20,17 @@ import androidx.fragment.app.FragmentManager
 import com.example.ekidungmantram.AboutAppActivity
 import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.databinding.ActivityMainBinding
+import com.example.ekidungmantram.model.AdminModel
 import com.example.ekidungmantram.user.fragment.HomeFragment
 import com.example.ekidungmantram.user.fragment.ListYadnyaFragment
 import com.example.ekidungmantram.user.fragment.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private val listYadnya                  = ListYadnyaFragment()
     private val fm: FragmentManager         = supportFragmentManager
     private var active : Fragment           = homeFragment
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +66,23 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+        val role          = sharedPreferences.getString("ROLE", null)
+        val id            = sharedPreferences.getString("ID_ADMIN", null)
+        Log.d("id_admin", id.toString())
+
+        if(role != null) {
+            val nav_Menu: Menu = navView.getMenu()
+//            nav_Menu.findItem(R.id.approval).setVisible(false)
+            nav_Menu.findItem(R.id.logout_user).setVisible(true)
+            nav_Menu.findItem(R.id.login).setVisible(false)
+//            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
+        }else{
+            val nav_Menu: Menu = navView.getMenu()
+            nav_Menu.findItem(R.id.logout_user).setVisible(false)
+            nav_Menu.findItem(R.id.login).setVisible(true)
+        }
+
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
 //                R.id.tari_bali -> goToTari()
@@ -67,6 +96,7 @@ class MainActivity : AppCompatActivity() {
 //                R.id.mantram -> goToMantram()
 //                R.id.prosesi_upacara -> goToProsesi()
                 R.id.login -> goToLogin()
+                R.id.logout_user -> goToLogout(id?.toInt())
                 R.id.about -> goToAbout()
             }
 
@@ -98,6 +128,54 @@ class MainActivity : AppCompatActivity() {
 
     private fun setTitleActionBar(s: String) {
         supportActionBar!!.title = s
+    }
+
+    private fun goToLogout(id: Int?) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Log Out")
+            .setMessage("Apakah anda yakin ingin keluar dari halaman admin?")
+            .setCancelable(true)
+            .setPositiveButton("Iya") { _, _ ->
+                invalidateAdminSession(id)
+            }.setNegativeButton("Batal") { dialogInterface, _ ->
+                dialogInterface.cancel()
+            }.show()
+    }
+
+    private fun invalidateAdminSession(id: Int?) {
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Mencoba Logout")
+        progressDialog.show()
+        ApiService.endpoint.logoutAdmin(id!!)
+            .enqueue(object: Callback<AdminModel> {
+                override fun onResponse(
+                    call: Call<AdminModel>,
+                    response: Response<AdminModel>
+                ) {
+                    if(!response.body()?.error!!){
+                        sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+                        sharedPreferences.edit().remove("ID_ADMIN").apply()
+                        sharedPreferences.edit().remove("NAMA").apply()
+                        sharedPreferences.edit().remove("ROLE").apply()
+                        sharedPreferences.edit().remove("MESAGE").apply()
+                        sharedPreferences.edit().remove("LOGGED").apply()
+                        val intent = Intent(this@MainActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this@MainActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        progressDialog.dismiss()
+                    }else{
+                        Toast.makeText(this@MainActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        progressDialog.dismiss()
+                    }
+                }
+
+                override fun onFailure(call: Call<AdminModel>, t: Throwable) {
+                    Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+                    progressDialog.dismiss()
+                }
+
+            })
     }
 
     private fun goToTari() {
@@ -156,7 +234,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToLogin() {
+        val bundle = Bundle()
         val intent = Intent(this, LoginActivity::class.java)
+        bundle.putString("APP", "main")
+        intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }

@@ -198,6 +198,10 @@ class HomeAdminActivity : AppCompatActivity() {
                     if(!response.body()?.error!!){
                         sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
                         sharedPreferences.edit().remove("ID_ADMIN").apply()
+                        sharedPreferences.edit().remove("NAMA").apply()
+                        sharedPreferences.edit().remove("ROLE").apply()
+                        sharedPreferences.edit().remove("MESAGE").apply()
+                        sharedPreferences.edit().remove("LOGGED").apply()
                         val intent = Intent(this@HomeAdminActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()

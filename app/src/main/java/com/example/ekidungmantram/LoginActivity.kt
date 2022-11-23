@@ -15,6 +15,7 @@ import com.example.ekidungmantram.model.AdminModel
 import com.example.ekidungmantram.user.AddPupuhActivity
 import com.example.ekidungmantram.user.AllKategoriPupuhUserActivity
 import com.example.ekidungmantram.user.MainActivity
+import com.example.ekidungmantram.user.RegisterActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -33,13 +34,19 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         supportActionBar!!.hide()
-        back     = findViewById(R.id.back)
+//        back     = findViewById(R.id.back)
         submit   = findViewById(R.id.login_button)
         username = findViewById(R.id.username)
         password = findViewById(R.id.password)
 
-        back.setOnClickListener{
+        back_arrow.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        regis.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -65,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<AdminModel>
                 ) {
                     if(!response.body()?.error!!){
-                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role, response.body()?.message)
+                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role, response.body()?.message, response.body()!!.mobile_is_logged)
                         progressDialog.dismiss()
                     }else{
                         Toast.makeText(this@LoginActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
@@ -97,7 +104,7 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?, mesage: String?) {
+    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?, mesage: String?, logged: Int) {
         sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val editor        = sharedPreferences.edit()
         editor.apply{
@@ -105,6 +112,7 @@ class LoginActivity : AppCompatActivity() {
             putString("NAMA", nama)
             putString("ROLE", roleAdmin?.toString())
             putString("MESAGE", mesage)
+            putString("LOGGED", logged.toString())
         }.apply()
         Toast.makeText(this, "Log In Sukses", Toast.LENGTH_SHORT).show()
         if (roleAdmin.toString() != "3"){
@@ -120,7 +128,19 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun goToUser() {
+    private fun goToUser(){
+        val bundle :Bundle ?= intent.extras
+        val nama_app = bundle?.getString("APP").toString()
+        if (nama_app == "pupuh") {
+            goToPupuhUser()
+        }else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun goToPupuhUser() {
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             val id_pupuh = bundle.getInt("id_pupuh")

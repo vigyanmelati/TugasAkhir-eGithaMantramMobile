@@ -1,6 +1,8 @@
 package com.example.ekidungmantram.user.fragment
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +26,7 @@ import com.example.ekidungmantram.databinding.FragmentHomeBinding
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.user.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +47,7 @@ class HomeFragment : Fragment() {
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var gridLayoutManagerK      : GridLayoutManager? = null
     private var gridLayoutManagerM      : GridLayoutManager? = null
+    private lateinit var sharedPreferences : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +60,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        namaUser.visibility = View.GONE
+        sharedPreferences = requireActivity().getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+        val nama          = sharedPreferences.getString("NAMA", null)
+        val islogged          = sharedPreferences.getString("LOGGED", null)
+        if (nama != null){
+            namaUser.visibility = View.VISIBLE
+            namaUser.text    = "Selamat Datang, $nama!"
+        }else{
+            namaUser.visibility = View.GONE
+        }
+
 //        getYadnyaMasterData()
         getDharmagitaMasterData()
 //        setupRecyclerViewY()

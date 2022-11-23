@@ -100,7 +100,7 @@ class AddPupuhActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriPupuhActivity::class.java)
+        val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
         val bundle = Bundle()
         bundle.putInt("id_pupuh", id_pupuh)
         bundle.putString("nama_pupuh", nama_pupuh)

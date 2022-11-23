@@ -58,13 +58,25 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
             val mesage = sharedPreferences.getString("MESAGE", null)
 
             fabPupuh.setOnClickListener {
-                val bundle = Bundle()
-                val intent = Intent(this, LoginActivity::class.java)
-                bundle.putInt("id_pupuh", postID)
-                bundle.putString("nama_pupuh", namaPost)
-                bundle.putString("desc_pupuh", descPost)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                if(id == null){
+                    val bundle = Bundle()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    bundle.putString("APP", "pupuh")
+                    bundle.putInt("id_pupuh", postID)
+                    bundle.putString("nama_pupuh", namaPost)
+                    bundle.putString("desc_pupuh", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val bundle = Bundle()
+                    val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
+                    bundle.putInt("id_pupuh", postID)
+                    bundle.putString("nama_pupuh", namaPost)
+                    bundle.putString("desc_pupuh", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
             }
         }
 

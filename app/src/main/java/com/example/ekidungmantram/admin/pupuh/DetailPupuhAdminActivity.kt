@@ -212,7 +212,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     private fun goBack() {
         val intent = Intent(this, AllKategoriPupuhAdminActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_pupuh_admin", id_pupuh)
+        bundle.putInt("id_pupuh_admin", id_pupuh_admin)
         bundle.putString("nama_pupuh_admin", nama_pupuh_admin)
         bundle.putString("desc_pupuh_admin", desc_pupuh_admin)
         intent.putExtras(bundle)

@@ -20,6 +20,14 @@ interface ApiEndpoint {
         @Field("id_admin") idAdmin:Int
     ):Call<AdminModel>
 
+    @FormUrlEncoded
+    @POST("register")
+    fun registerUser (
+        @Field("email") email:String,
+        @Field("password") password:String,
+        @Field("name") name:String,
+    ):Call<CrudModel>
+
     //Admin
     //Home
     @GET("admin/listyadnya")

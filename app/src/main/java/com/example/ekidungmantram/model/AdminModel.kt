@@ -5,5 +5,6 @@ data class AdminModel(
     val message: String,
     val id_admin: Int,
     val nama : String,
-    val role : Int
+    val role : Int,
+    val mobile_is_logged : Int
 )
