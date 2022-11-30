@@ -14,12 +14,14 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllTabuhNotOnGamelanAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnPupuhAdminAdapter
 import com.example.ekidungmantram.admin.gamelan.DetailGamelanAdminActivity
+import com.example.ekidungmantram.admin.upacarayadnya.AddYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllTabuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.YadnyaPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_add_tabuh_to_gamelan_admin.*
 import kotlinx.android.synthetic.main.activity_add_yadnya_to_pupuh_admin.*
+import kotlinx.android.synthetic.main.activity_all_kategori_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +46,16 @@ class AddYadnyaToPupuhAdminActivity : AppCompatActivity() {
             swipePupuhAddYadnyaAdmin.setOnRefreshListener {
                 getAllDataYadnyaPupuh(postID, namaPost!!)
                 swipePupuhAddYadnyaAdmin.isRefreshing = false
+            }
+
+            fabYadnyaPupuhAdmin.setOnClickListener {
+//                val bundle = Bundle()
+                val intent = Intent(this, AddYadnyaAdminActivity::class.java)
+//                bundle.putInt("id_kat_pupuh_admin", postID)
+//                bundle.putString("nama_kat_pupuh_admin", namaPost)
+//                bundle.putString("desc_kat_pupuh_admin", descPost)
+//                intent.putExtras(bundle)
+                startActivity(intent)
             }
         }
     }

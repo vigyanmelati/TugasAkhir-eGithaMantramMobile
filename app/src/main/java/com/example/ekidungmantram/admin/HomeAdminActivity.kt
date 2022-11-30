@@ -25,6 +25,7 @@ import com.example.ekidungmantram.admin.gita.AllGitaAdminActivity
 import com.example.ekidungmantram.admin.kajidharmagita.ListDharmagitaNeedApprovalActivity
 import com.example.ekidungmantram.admin.kajimantram.ListMantramNeedApprovalActivity
 import com.example.ekidungmantram.admin.kidung.AllKidungAdminActivity
+import com.example.ekidungmantram.admin.laguanak.AllLaguAnakAdminActivity
 import com.example.ekidungmantram.admin.mantram.AllMantramAdminActivity
 import com.example.ekidungmantram.admin.prosesiupacara.AllProsesiAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AllPupuhAdminActivity
@@ -88,6 +89,7 @@ class HomeAdminActivity : AppCompatActivity() {
 //                R.id.gamelan_bali_admin -> goToGamelan()
                 R.id.sekar_madya_admin -> goToKidung()
                 R.id.sekar_alit_admin -> goToPupuh()
+                R.id.sekar_rare_admin -> goToLaguAnak()
 //                R.id.mantram_admin -> goToMantram()
 //                R.id.approval -> goToKajiMantram()
 //                R.id.gita_admin ->goToGita()
@@ -115,6 +117,11 @@ class HomeAdminActivity : AppCompatActivity() {
 
     private fun goToPupuh() {
         val intent = Intent(this, AllPupuhAdminActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToLaguAnak() {
+        val intent = Intent(this, AllLaguAnakAdminActivity::class.java)
         startActivity(intent)
     }
 

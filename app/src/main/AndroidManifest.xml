@@ -23,6 +23,27 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.laguanak.EditLirikLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AddLirikLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AllLirikLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AddLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.DetailLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AllKategoriLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AllLaguAnakAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.RegisterActivity"
             android:exported="false" />
         <activity

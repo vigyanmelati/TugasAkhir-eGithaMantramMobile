@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddLirikPupuhAdminActivity"
+    tools:context=".admin.laguanak.AddLirikLaguAnakAdminActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,7 +18,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Lirik Sekar Alit"
+                android:text="Tambah Lirik Sekar Rare"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -35,27 +35,27 @@
                 android:alpha="0.5"
                 android:layout_marginBottom="25dp"/>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddLirikPupuh"
+                android:id="@+id/layoutAddLirikLaguAnak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan lirik pupuh">
+                android:hint="Masukan lirik sekar rare">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lirikPupuhForm"
+                    android:id="@+id/lirikLaguAnakForm"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:inputType="text|textMultiLine"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitLirikPupuh"
+                android:id="@+id/submitLirikLaguAnak"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Lirik Pupuh"/>
+                android:text="Tambah Lirik Sekar Rare"/>
             <TextView
-                android:id="@+id/cancelSubmitLirikPupuh"
+                android:id="@+id/cancelSubmitLirikLaguAnak"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

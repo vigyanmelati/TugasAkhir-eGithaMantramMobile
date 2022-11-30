@@ -130,8 +130,39 @@ class HomeFragment : Fragment() {
         dharmagitaAdapter = NewDharmagitaAdapter(arrayListOf(), object : NewDharmagitaAdapter.OnAdapterListener{
             override fun onClick(result: NewDharmagitaModel.Data) {
                 val bundle = Bundle()
-                if(result.nama_post == "Sekar Madya"){
-                    val intent = Intent(activity, AllKidungActivity::class.java)
+                if(result.id_tag == 4){
+                    val bundle = Bundle()
+                    val intent = Intent(activity, DetailKidungActivity::class.java)
+                    bundle.putInt("id_kidung", result.id_post)
+                    bundle.putInt("tag_kidung", result.id_tag)
+                    bundle.putString("nama_kidung", result.nama_post)
+//                    bundle.putString("nama_tag_kidung", result.nama_tag)
+                    bundle.putString("gambar_kidung", result.gambar)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if(result.id_tag == 9){
+                    val bundle = Bundle()
+                    val intent = Intent(activity, AllKategoriLaguAnakActivity::class.java)
+                    bundle.putInt("id_lagu_anak", result.id_post)
+                    bundle.putString("nama_lagu_anak", result.nama_post)
+                    bundle.putString("desc_lagu_anak", result.deskripsi)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if(result.id_tag ==10){
+                    val bundle = Bundle()
+                    val intent = Intent(activity, AllKategoriPupuhActivity::class.java)
+                    bundle.putInt("id_pupuh", result.id_post)
+                    bundle.putString("nama_pupuh", result.nama_post)
+                    bundle.putString("desc_pupuh", result.deskripsi)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }else if(result.id_tag ==11){
+                    val bundle = Bundle()
+                    val intent = Intent(activity, AllKategoriKakawinActivity::class.java)
+                    bundle.putInt("id_kakawin", result.id_post)
+                    bundle.putString("nama_kakawin", result.nama_post)
+                    bundle.putString("desc_kakawin", result.deskripsi)
+                    intent.putExtras(bundle)
                     startActivity(intent)
                 }
             }

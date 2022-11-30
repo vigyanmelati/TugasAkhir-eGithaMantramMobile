@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddYadnyaToPupuhAdminActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".admin.laguanak.AllKategoriLaguAnakAdminActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,15 +14,15 @@
         android:paddingTop="18dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:visibility="visible"
-            android:id="@+id/shimmerPupuhAddYadnyaAdmin"
+            android:id="@+id/shimmerKategoriLaguAnakAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
-                layout="@layout/shimmer_all_tabuh"/>
+                layout="@layout/shimmer_all_kategori_pupuh"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
-            android:id="@+id/swipePupuhAddYadnyaAdmin"
+            android:id="@+id/swipeKategoriLaguAnakAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -31,16 +31,16 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/daftar_namaLaguAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Semua Yadnya"
+                    android:text="Daftar Sekar Rare"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:layout_marginBottom="20dp"/>
                 <TextView
-                    android:visibility="visible"
-                    android:id="@+id/noPupuhAddYadnyaAdmin"
+                    android:id="@+id/noKategoriLaguAnakAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -48,34 +48,42 @@
                     android:textColor="@color/shimmer_secondary"
                     android:textStyle="bold"
                     android:textSize="17sp"/>
+                <TextView
+                    android:id="@+id/desc_kategori_lagu_anakAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sekar Alit atau sering disebut Pupuh adalah lagu yang mengandung cerita atau dapat juga berupa nasehat yang mengajarkan kebaikan."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="20dp"/>
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/cariPupuhAddYadnyaAdmin"
+                    android:id="@+id/cariKategoriLaguAnakAdmin"
                     app:iconifiedByDefault="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchview_background"
-                    app:queryHint="Masukan nama yadnya"
+                    app:queryHint="Masukan nama sekar rare"
                     android:layout_marginBottom="15dp"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allAddPupuhYadnyaAdmin1"
+                        android:id="@+id/allKategoriLaguAnak1Admin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_yadnya_not_on_pupuh_admin" />
+                        tools:listitem="@layout/layout_all_kategori_lagu_anak_admin" />
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allAddPupuhYadnyaAdmin2"
+                        android:id="@+id/allKategoriLaguAnak2Admin"
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_yadnya_not_on_pupuh_admin" />
+                        tools:listitem="@layout/layout_all_kategori_lagu_anak_admin" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabYadnyaPupuhAdmin"
+        android:id="@+id/fabLaguAnakAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -84,4 +92,5 @@
         app:tint="@color/white"
         android:backgroundTint="@color/green_success"
         android:contentDescription="Add" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
