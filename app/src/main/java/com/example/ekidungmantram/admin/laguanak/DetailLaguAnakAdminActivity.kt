@@ -79,7 +79,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             goToListVideoLaguAnak.setOnClickListener {
-                val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllVideoLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
                 intent.putExtras(bundle)

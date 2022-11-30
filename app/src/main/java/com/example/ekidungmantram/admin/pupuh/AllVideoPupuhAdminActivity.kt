@@ -31,7 +31,7 @@ class AllVideoPupuhAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_video_pupuh_admin)
-        supportActionBar!!.title = "Video Sekar Rare"
+        supportActionBar!!.title = "Video Sekar Alit"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
