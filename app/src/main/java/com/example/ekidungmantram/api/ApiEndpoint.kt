@@ -1073,6 +1073,7 @@ interface ApiEndpoint {
         @Field("deskripsi") deskripsi:String,
         @Field("gambar") gambar:String,
         @Field("id_pupuh") id_pupuh:Int,
+        @Field("id_user") id_user:Int,
     ):Call<CrudModel>
     @GET("showpupuh/{id_post}")
     fun getShowPupuh(@Path("id_post") id:Int) : Call<DetailPupuhModel>

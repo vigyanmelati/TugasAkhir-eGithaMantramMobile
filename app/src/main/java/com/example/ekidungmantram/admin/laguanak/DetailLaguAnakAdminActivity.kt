@@ -95,7 +95,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             goToListAudioLaguAnak.setOnClickListener {
-                val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllAudioLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
                 intent.putExtras(bundle)
@@ -119,7 +119,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioLaguAnak.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
                 intent.putExtras(bundle)
