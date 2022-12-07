@@ -29,6 +29,7 @@
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_video_pupuh.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_video_pupuh_admin.xml" value="0.13903985507246377" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_video_pupuh_user.xml" value="0.13994565217391305" />
+        <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_yadnya_to_lagu_anak_admin.xml" value="0.11956521739130435" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_yadnya_to_pupuh.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_add_yadnya_to_pupuh_admin.xml" value="0.11594202898550725" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_audio_lagu_anak_admin.xml" value="0.1403985507246377" />
@@ -63,6 +64,7 @@
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_video_lagu_anak_admin.xml" value="0.1403985507246377" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_video_pupuh.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_video_pupuh_admin.xml" value="0.13451086956521738" />
+        <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_yadnya_on_lagu_anak_admin.xml" value="0.11956521739130435" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_yadnya_on_pupuh.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_all_yadnya_on_pupuh_admin.xml" value="0.11594202898550725" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_alll_lagu_anak.xml" value="0.13903985507246377" />
@@ -90,6 +92,7 @@
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_audio_pupuh.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_audio_pupuh_admin.xml" value="0.13903985507246377" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_kidung_admin.xml" value="0.1" />
+        <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_lagu_anak_admin.xml" value="0.11956521739130435" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_lirik_kidung_admin.xml" value="0.14628623188405798" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_lirik_lagu_anak.xml" value="0.1403985507246377" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/activity_edit_lirik_lagu_anak_admin.xml" value="0.1403985507246377" />
@@ -139,8 +142,10 @@
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_pupuh_admin.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_tabuh_not_on_gamelan_admin.xml" value="0.11594202898550725" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_tabuh_on_gamelan_admin.xml" value="0.11594202898550725" />
+        <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_not_on_lagu_anak_admin.xml" value="0.11956521739130435" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_not_on_pupuh_admin.xml" value="0.11594202898550725" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_not_on_pupuh_user.xml" value="0.13994565217391305" />
+        <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_on_lagu_anak_admin.xml" value="0.11956521739130435" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_on_pupuh_admin.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_all_yadnya_on_pupuh_user.xml" value="0.13994565217391305" />
         <entry key="..\:/Tugas Kuliah Semester 7/TugasAkhir-eGithaMobile/app/src/main/res/layout/layout_gita_detail_yadnya.xml" value="0.1308876811594203" />

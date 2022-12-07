@@ -87,7 +87,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             goToListYadnyaLaguAnak.setOnClickListener {
-                val intent = Intent(this, AllYadnyaOnPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaOnLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak_admin", postID)
                 bundle.putString("nama_lagu_anak_admin", nama_lagu_anak)
                 intent.putExtras(bundle)
@@ -127,7 +127,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             tambahYadnyaLaguAnak.setOnClickListener {
-                val intent = Intent(this, AddYadnyaToPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddYadnyaToLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
                 intent.putExtras(bundle)
@@ -135,7 +135,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             toEditLaguAnak.setOnClickListener {
-                val intent = Intent(this, EditPupuhAdminActivity::class.java)
+                val intent = Intent(this, EditLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
