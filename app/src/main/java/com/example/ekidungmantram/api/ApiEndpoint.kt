@@ -945,6 +945,138 @@ interface ApiEndpoint {
         @Path("id_post") id:Int
     ):Call<CrudModel>
 
+    //LaguAnak
+    @GET("admin/listallkakawinadmin")
+    fun getKakawinMasterListAdmin() : Call<ArrayList<AllKakawinAdminModel>>
+    @GET("admin/listkategorikakawinadmin/{id_kakawin}")
+    fun getKategoriKakawinListAdmin(@Path("id_kakawin") id: Int) : Call<ArrayList<KategoriKakawinAdminModel>>
+    @FormUrlEncoded
+    @POST("admin/createkakawinadmin")
+    fun createDataKakawinAdmin (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_kakawin") id_kakawin:Int,
+    ):Call<CrudModel>
+    @GET("admin/detailkakawinadmin/{id_post}")
+    fun getDetailKakawinAdmin(@Path("id_post") id: Int) : Call<DetailKakawinAdminModel>
+    @GET("admin/detailbaitkakawinadmin/{id_post}")
+    fun getDetailBaitKakawinAdmin(@Path("id_post") id:Int) : Call<DetailBaitKakawinAdminModel>
+    @GET("admin/listvideokakawinadmin/{id_kakawin}")
+    fun getListVideoKakawinAdmin(@Path("id_lagu_anak") id:Int): Call<VideoKakawinAdminModel>
+    @GET("admin/listaudiokakawinadmin/{id_post}")
+    fun getListAudioKakawinAdmin(@Path("id_post") id:Int): Call<AudioKakawinAdminModel>
+    @GET("admin/yadnyakakawinadmin/{id_kakawin}")
+    fun getYadnyaKakawinAdmin(@Path("id_kakawin") id:Int): Call<YadnyaKakawinAdminModel>
+    @GET("admin/showkakawin/{id_post}")
+    fun getShowKakawinAdmin(@Path("id_post") id:Int) : Call<DetailKakawinAdminModel>
+    @FormUrlEncoded
+    @POST("admin/editkakawinadmin/{id_post}")
+    fun updateKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deletekakawinadmin/{id_post}")
+    fun deleteKakawinAdmin (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
+
+    @GET("admin/listbaitkakawinadmin/{id_post}")
+    fun getAllLirikKakawinAdmin(@Path("id_post") id:Int) : Call<ArrayList<AllLirikKakawinAdminModel>>
+
+    @FormUrlEncoded
+    @POST("admin/addlirikkakawinadmin/{id_post}")
+    fun createDataLirikKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("bait_sekar_agung") baitSekarAgung:String,
+    ):Call<CrudModel>
+
+    @GET("admin/showlirikkakawinadmin/{id_det_post}")
+    fun getShowLirikKakawinAdmin(@Path("id_det_post") id:Int) : Call<DetailLirikKakawinAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/editlirikkakawinadmin/{id_det_post}")
+    fun updateDataLirikKakawinAdmin (
+        @Path("id_det_post") id:Int,
+        @Field("bait_sekar_agung") baitSekarAgung:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/deletelirikkakawinadmin/{id_post}")
+    fun deleteDataLirikKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("sekar_agung_id") idSekarAgung:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/showvideokakawinadmin/{id_post}")
+    fun getShowVideoKakawinAdmin(@Path("id_post") id:Int) : Call<DetailVideoKakawinAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addvideoonkakawinadmin/{id_post}")
+    fun createDataVideoKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/editvideokakawinadmin/{id_post}")
+    fun updateDataVideoKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deletevideoonkakawinadmin/{id_post}")
+    fun deleteDataVideoKakawinAdmin (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/showaudiokakawinadmin/{id_post}")
+    fun getShowAudioKakawinAdmin(@Path("id_post") id:Int) : Call<DetailAudioKakawinAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addaudioonkakawinadmin/{id_post}")
+    fun createDataAudioKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/editaudiokakawinadmin/{id_post}")
+    fun updateDataAudioKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deleteaudioonkakawinadmin/{id_post}")
+    fun deleteDataAudioKakawinAdmin (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/listyadnyanotonkakawin/{id_post}")
+    fun getDetailAllYadnyaNotOnKakawinAdmin(@Path("id_post") id:Int) : Call<YadnyaKakawinAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addyadnyaonkakawin/{id_post}")
+    fun addDataYadnyaToKakawinAdmin (
+        @Path("id_post") id:Int,
+        @Field("id_sekar_agung") idSekarAgung:Int,
+    ):Call<CrudModel>
+
+    @POST("admin/deleteyadnyaonkakawin/{id_post}")
+    fun deleteDataYadnyaOnKakawinAdmin (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
 
     //User
     //Yadnya
