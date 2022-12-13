@@ -21,6 +21,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
+import kotlinx.android.synthetic.main.activity_video_kidung.*
 import kotlinx.android.synthetic.main.activity_video_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import retrofit2.Call
@@ -69,7 +70,8 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
                     detailJenisVideoPupuh.text = "Pupuh "
                     if(result.gambar != null) {
                         Glide.with(this@VideoPupuhActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
+                            .load(result.gambar).into(imageVideoPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
                     }else{
                         imageVideoPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }

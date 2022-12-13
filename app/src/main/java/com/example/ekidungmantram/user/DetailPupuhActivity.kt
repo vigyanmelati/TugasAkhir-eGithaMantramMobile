@@ -17,6 +17,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.model.*
+import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.coroutines.CoroutineScope
@@ -114,7 +115,8 @@ class DetailPupuhActivity : AppCompatActivity() {
                     detailPupuh.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailPupuhActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuh)
+                            .load(result.gambar).into(imageDetailPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuh)
                     }else{
                         imageDetailPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }

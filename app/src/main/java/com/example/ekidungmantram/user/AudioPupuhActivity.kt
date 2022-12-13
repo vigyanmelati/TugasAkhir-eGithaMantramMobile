@@ -21,6 +21,7 @@ import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
 import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailLaguAnakModel
 import com.example.ekidungmantram.model.DetailPupuhModel
+import kotlinx.android.synthetic.main.activity_audio_kidung.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.seekbar_audio
@@ -108,7 +109,8 @@ class AudioPupuhActivity : AppCompatActivity() {
                     detailJenisAudioPupuh.text = "Pupuh "
                     if(result.gambar != null) {
                         Glide.with(this@AudioPupuhActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
+                            .load(result.gambar).into(imageAudioPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
                     }else{
                         imageAudioPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }

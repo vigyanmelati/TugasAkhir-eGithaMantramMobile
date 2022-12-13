@@ -113,12 +113,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.cari -> {
                     fm.beginTransaction().hide(active).show(searchFragment).commit()
                     active = searchFragment
-                    setTitleActionBar("Cari Yadnya")
+                    setTitleActionBar("Cari Dharmagita")
                 }
                 R.id.list_yadnya -> {
                     fm.beginTransaction().hide(active).show(listYadnya).commit()
                     active = listYadnya
-                    setTitleActionBar("Yadnya Ditandai")
+                    setTitleActionBar("Dharmagita Ditandai")
                 }
             }
             true
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     private fun goToLogout(id: Int?) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Log Out")
-            .setMessage("Apakah anda yakin ingin keluar dari halaman admin?")
+            .setMessage("Apakah anda yakin ingin keluar ?")
             .setCancelable(true)
             .setPositiveButton("Iya") { _, _ ->
                 invalidateAdminSession(id)

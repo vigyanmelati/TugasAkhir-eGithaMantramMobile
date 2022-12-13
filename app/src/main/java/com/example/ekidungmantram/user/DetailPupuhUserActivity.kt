@@ -25,6 +25,7 @@ import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
+import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.goToListYadnyaPupuh
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.lihatSemuaaudiopupuhAdmin
@@ -33,6 +34,10 @@ import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.lihatSemuayadn
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.nodatavideopupuhAdmin
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
 import kotlinx.android.synthetic.main.activity_detail_pupuh_user.*
+import kotlinx.android.synthetic.main.activity_detail_pupuh_user.baitPupuhList
+import kotlinx.android.synthetic.main.activity_detail_pupuh_user.rv_audio_pupuh
+import kotlinx.android.synthetic.main.activity_detail_pupuh_user.rv_video_pupuh
+import kotlinx.android.synthetic.main.activity_detail_pupuh_user.rv_yadnya_pupuh
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -222,7 +227,8 @@ class DetailPupuhUserActivity : AppCompatActivity() {
                     detailPupuhUser.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailPupuhUserActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhUser)
+                            .load(result.gambar).into(imageDetailPupuhUser)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhUser)
                     }else{
                         imageDetailPupuhUser.setImageResource(R.drawable.sample_image_yadnya)
                     }

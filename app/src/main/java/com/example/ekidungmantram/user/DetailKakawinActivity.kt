@@ -114,7 +114,8 @@ class DetailKakawinActivity : AppCompatActivity() {
                     detailKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@DetailKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawin)
+                            .load(result.gambar).into(imageDetailKakawin)
                     }else{
                         imageDetailKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }

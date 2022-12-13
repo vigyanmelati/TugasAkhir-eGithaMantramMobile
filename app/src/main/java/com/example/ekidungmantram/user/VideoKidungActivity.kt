@@ -20,6 +20,7 @@ import com.example.ekidungmantram.model.DetailPupuhModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import kotlinx.android.synthetic.main.activity_audio_kakawin.*
 import kotlinx.android.synthetic.main.activity_video_kidung.*
 import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import retrofit2.Call
@@ -67,7 +68,8 @@ class VideoKidungActivity : YouTubeBaseActivity() {
                     detailJenisVideoKidung.text = result.nama_kategori
                     if(result.gambar != null) {
                         Glide.with(this@VideoKidungActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
+                            .load(result.gambar).into(imageVideoKidung)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
                     }else{
                         imageVideoKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }

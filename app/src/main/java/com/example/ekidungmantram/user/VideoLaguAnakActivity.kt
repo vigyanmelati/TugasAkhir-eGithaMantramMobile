@@ -19,6 +19,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
+import kotlinx.android.synthetic.main.activity_video_kidung.*
 import kotlinx.android.synthetic.main.activity_video_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -67,7 +68,8 @@ class VideoLaguAnakActivity : YouTubeBaseActivity() {
                     detailJenisVideoLaguAnak.text = "Lagu Anak "
                     if(result.gambar != null) {
                         Glide.with(this@VideoLaguAnakActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoLaguAnak)
+                            .load(result.gambar).into(imageVideoLaguAnak)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoLaguAnak)
                     }else{
                         imageVideoLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }

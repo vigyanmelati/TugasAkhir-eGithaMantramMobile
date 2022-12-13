@@ -124,7 +124,8 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                     detailJenisLaguAnak.text = "Lagu Anak "
                     if(result.gambar != null) {
                         Glide.with(this@DetailLaguAnakActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnak)
+                            .load(result.gambar).into(imageDetailLaguAnak)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnak)
                     }else{
                         imageDetailLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }

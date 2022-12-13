@@ -20,6 +20,7 @@ import com.example.ekidungmantram.model.DetailPupuhModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_video_kakawin.*
 import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import retrofit2.Call
@@ -67,7 +68,8 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
                     detailJenisVideoKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@VideoKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
+                            .load(result.gambar).into(imageVideoKakawin)
                     }else{
                         imageVideoKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }

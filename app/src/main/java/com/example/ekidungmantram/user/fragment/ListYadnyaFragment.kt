@@ -18,6 +18,7 @@ import com.example.ekidungmantram.user.DetailKidungActivity
 import com.example.ekidungmantram.user.DetailLaguAnakActivity
 import com.example.ekidungmantram.user.DetailPupuhActivity
 import kotlinx.android.synthetic.main.fragment_list_yadnya.*
+import kotlinx.android.synthetic.main.layout_list_bookmarked.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,6 +53,7 @@ class ListYadnyaFragment : Fragment() {
             override fun onClick(result: Dharmagita) {
                 val bundle = Bundle()
                 if(result.id_tag == 4){
+                    jenis__bookmarked_yadnya.text = "Sekar Madya"
                     val intent = Intent(activity, DetailKidungActivity::class.java)
                     bundle.putInt("id_kidung", result.id_dharmagita)
                     bundle.putInt("tag_kidung", result.id_tag)
@@ -61,6 +63,7 @@ class ListYadnyaFragment : Fragment() {
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 9){
+                    jenis__bookmarked_yadnya.text = "Sekar Rare"
                     val intent = Intent(activity, DetailLaguAnakActivity::class.java)
                     bundle.putInt("id_lagu", result.id_dharmagita)
                     bundle.putInt("tag_lagu", result.id_tag)
@@ -70,6 +73,7 @@ class ListYadnyaFragment : Fragment() {
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 10) {
+                    jenis__bookmarked_yadnya.text = "Sekar Alit"
                     val intent = Intent(activity, DetailPupuhActivity::class.java)
                     bundle.putInt("id_pupuh", result.id_dharmagita)
                     bundle.putInt("tag_pupuh", result.id_tag)
@@ -79,6 +83,7 @@ class ListYadnyaFragment : Fragment() {
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }else if (result.id_tag == 11) {
+                    jenis__bookmarked_yadnya.text = "Sekar Agung"
                     val intent = Intent(activity, DetailKakawinActivity::class.java)
                     bundle.putInt("id_kakawin", result.id_dharmagita)
                     bundle.putInt("tag_kakawin", result.id_tag)

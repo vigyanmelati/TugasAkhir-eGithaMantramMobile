@@ -22,6 +22,7 @@ import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.android.synthetic.main.activity_detail_yadnya.*
+import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -117,7 +118,8 @@ class DetailKidungActivity : YouTubeBaseActivity() {
                     detailJenisKidung.text = "Kidung " + result.nama_kategori
                     if(result.gambar != null) {
                         Glide.with(this@DetailKidungActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKidung)
+                            .load(result.gambar).into(imageDetailKidung)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKidung)
                     }else{
                         imageDetailKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }

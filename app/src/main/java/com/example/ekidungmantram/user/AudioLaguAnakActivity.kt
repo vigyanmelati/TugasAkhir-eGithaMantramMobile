@@ -20,7 +20,10 @@ import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
 import com.example.ekidungmantram.model.DetailLaguAnakModel
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import kotlinx.android.synthetic.main.activity_audio_kidung.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
+import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
+import kotlinx.android.synthetic.main.activity_audio_lagu_anak.seekbar_audio
 import kotlinx.android.synthetic.main.activity_video_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_video_lagu_anak.youtubePlayerLaguAnak
 import retrofit2.Call
@@ -105,7 +108,8 @@ class AudioLaguAnakActivity : AppCompatActivity() {
                     detailJenisAudioLaguAnak.text = "Lagu Anak "
                     if (result.gambar != null) {
                         Glide.with(this@AudioLaguAnakActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
+                            .load(result.gambar).into(imageAudioLaguAnak)
                     } else {
                         imageAudioLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }

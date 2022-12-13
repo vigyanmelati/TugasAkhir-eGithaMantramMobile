@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.seekbar_audio
 import kotlinx.android.synthetic.main.activity_audio_pupuh.*
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -108,7 +109,8 @@ class AudioKakawinActivity : AppCompatActivity() {
                     detailJenisAudioKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@AudioKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
+                            .load(result.gambar).into(imageAudioKakawin)
                     }else{
                         imageAudioKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }
