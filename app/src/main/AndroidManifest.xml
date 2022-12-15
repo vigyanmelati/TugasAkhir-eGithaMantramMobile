@@ -4,9 +4,7 @@
     package="com.example.ekidungmantram">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
     <queries>
         <intent>
             <action android:name="com.google.android.youtube.api.service.START" />
@@ -23,6 +21,24 @@
         android:theme="@style/Theme.EKidungMantram"
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
+        <activity
+            android:name=".admin.kakawin.EditKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllLirikKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.DetailKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AddKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllKategoriKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllKakawinAdminActivity"
+            android:exported="false" />
         <activity
             android:name=".admin.laguanak.EditLaguAnakAdminActivity"
             android:exported="false" />

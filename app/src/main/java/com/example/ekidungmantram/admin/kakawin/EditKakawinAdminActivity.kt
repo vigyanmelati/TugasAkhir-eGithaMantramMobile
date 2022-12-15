@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.pupuh
+package com.example.ekidungmantram.admin.kakawin
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -11,25 +11,22 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.kidung.AllKidungAdminActivity
+import com.example.ekidungmantram.admin.kakawin.AllKategoriKakawinAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.DetailKidungAdminModel
-import com.example.ekidungmantram.model.adminmodel.DetailPupuhAdminModel
-import kotlinx.android.synthetic.main.activity_edit_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_edit_pupuh_admin.*
+import com.example.ekidungmantram.model.adminmodel.DetailKakawinAdminModel
+import kotlinx.android.synthetic.main.activity_edit_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
+class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
     private var yadnya : String? = null
@@ -37,63 +34,63 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_pupuh_admin)
+        setContentView(R.layout.activity_edit_kakawin_admin)
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
-            val postID = bundle.getInt("id_pupuh")
+            val postID = bundle.getInt("id_kakawin")
 
             setFormData(postID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.title = "Edit Sekar Alit"
+            supportActionBar!!.title = "Edit Sekar Agung"
 
-            selectEditedImagePupuh.setOnClickListener {
+            selectEditedImageKakawin.setOnClickListener {
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.type = "image/*"
                 startActivityForResult(intent, REQUEST_CODE)
             }
 
-            submitEditedPupuh.setOnClickListener {
-                val nama_post     = namaEditedPupuh.text.toString()
-                val deskripsi     = deskripsiEditedPupuh.text.toString()
+            submitEditedKakawin.setOnClickListener {
+                val nama_post     = namaEditedKakawin.text.toString()
+                val deskripsi     = deskripsiEditedKakawin.text.toString()
                 val gambar        = bitmapToString(bitmap).toString()
                 if(validateInput()){
-                    postEditedPupuh(postID, nama_post, deskripsi, gambar)
+                    postEditedKakawin(postID, nama_post, deskripsi, gambar)
                 }
             }
 
-            cancelSubmitEditedPupuh.setOnClickListener {
+            cancelSubmitEditedKakawin.setOnClickListener {
                 goBack()
             }
         }
     }
 
     private fun setFormData(postID: Int) {
-        ApiService.endpoint.getShowPupuhAdmin(postID).enqueue(object:
-            retrofit2.Callback<DetailPupuhAdminModel> {
+        ApiService.endpoint.getShowKakawinAdmin(postID).enqueue(object:
+            retrofit2.Callback<DetailKakawinAdminModel> {
             override fun onResponse(
-                call: Call<DetailPupuhAdminModel>,
-                response: Response<DetailPupuhAdminModel>
+                call: Call<DetailKakawinAdminModel>,
+                response: Response<DetailKakawinAdminModel>
             ) {
                 val result = response.body()!!
                 result.let {
-                    deskripsiEditedPupuh.setText(result.deskripsi)
-                    namaEditedPupuh.setText(result.nama_post)
-                    Glide.with(this@EditPupuhAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgPupuh)
+                    deskripsiEditedKakawin.setText(result.deskripsi)
+                    namaEditedKakawin.setText(result.nama_post)
+                    Glide.with(this@EditKakawinAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKakawin)
                 }
             }
 
-            override fun onFailure(call: Call<DetailPupuhAdminModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailKakawinAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
-    private fun postEditedPupuh(postID: Int, namaPost: String, deskripsi: String, gambar: String) {
+    private fun postEditedKakawin(postID: Int, namaPost: String, deskripsi: String, gambar: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updatePupuhAdmin(postID ,namaPost, deskripsi, gambar)
+        ApiService.endpoint.updateKakawinAdmin(postID ,namaPost, deskripsi, gambar)
             .enqueue(object: retrofit2.Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -101,17 +98,17 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
                 ) {
                     if(response.body()?.status == 200){
                         progressDialog.dismiss()
-                        Toast.makeText(this@EditPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                         goBack()
                     }else{
                         progressDialog.dismiss()
-                        Toast.makeText(this@EditPupuhAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@EditPupuhAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditKakawinAdminActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -123,22 +120,22 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriPupuhAdminActivity::class.java)
+        val intent = Intent(this, AllKategoriKakawinAdminActivity::class.java)
         startActivity(intent)
         finish()
     }
 
 
     private fun validateInput(): Boolean {
-        if(namaEditedPupuh.text.toString().isEmpty()){
-            layoutEditedNamaPupuh.isErrorEnabled = true
-            layoutEditedNamaPupuh.error = "Nama Pupuh tidak boleh kosong!"
+        if(namaEditedKakawin.text.toString().isEmpty()){
+            layoutEditedNamaKakawin.isErrorEnabled = true
+            layoutEditedNamaKakawin.error = "Nama Kakawin tidak boleh kosong!"
             return false
         }
 
-        if(deskripsiEditedPupuh.text.toString().isEmpty()){
-            layoutEditedDeskripsiPupuh.isErrorEnabled = true
-            layoutEditedDeskripsiPupuh.error = "Deskripsi Pupuh tidak boleh kosong!"
+        if(deskripsiEditedKakawin.text.toString().isEmpty()){
+            layoutEditedDeskripsiKakawin.isErrorEnabled = true
+            layoutEditedDeskripsiKakawin.error = "Deskripsi Kakawin tidak boleh kosong!"
             return false
         }
 
@@ -150,7 +147,7 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitEditedImgPupuh.setImageURI(imgUri) // handle chosen image
+            submitEditedImgKakawin.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
     }

@@ -31,7 +31,7 @@ class AllYadnyaOnPupuhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnya_on_pupuh)
-        supportActionBar!!.title = "Daftar Tabuh Gamelan"
+        supportActionBar!!.title = "Daftar Yadnya Sekar Alit"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh_user")
@@ -75,8 +75,8 @@ class AllYadnyaOnPupuhActivity : AppCompatActivity() {
                     setAdapter = AllYadnyaOnPupuhAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllYadnyaOnPupuhActivity)
-                        builder.setTitle("Hapus Yadnya dari Sekar Rare")
-                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar rare ini?")
+                        builder.setTitle("Hapus Yadnya dari Sekar Alit")
+                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar alit ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
                                 hapusTabuhGamelan(it.id, postID, name)
@@ -106,7 +106,7 @@ class AllYadnyaOnPupuhActivity : AppCompatActivity() {
                                     tabuhAdapter.setOnClickDelete {
                                         val builder = AlertDialog.Builder(this@AllYadnyaOnPupuhActivity)
                                         builder.setTitle("Hapus Yadnya dari Sekar Rare")
-                                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar rare ini?")
+                                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar alit ini?")
                                             .setCancelable(true)
                                             .setPositiveButton("Iya") { _, _ ->
                                                 hapusTabuhGamelan(it.id, postID, name)

@@ -30,7 +30,7 @@ class AllLirikPupuhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_lirik_pupuh)
-        supportActionBar!!.title = "Lirik Sekar Rare"
+        supportActionBar!!.title = "Lirik Sekar Alit"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")

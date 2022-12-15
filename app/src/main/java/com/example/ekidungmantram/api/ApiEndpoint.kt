@@ -963,7 +963,7 @@ interface ApiEndpoint {
     @GET("admin/detailbaitkakawinadmin/{id_post}")
     fun getDetailBaitKakawinAdmin(@Path("id_post") id:Int) : Call<DetailBaitKakawinAdminModel>
     @GET("admin/listvideokakawinadmin/{id_kakawin}")
-    fun getListVideoKakawinAdmin(@Path("id_lagu_anak") id:Int): Call<VideoKakawinAdminModel>
+    fun getListVideoKakawinAdmin(@Path("id_kakawin") id:Int): Call<VideoKakawinAdminModel>
     @GET("admin/listaudiokakawinadmin/{id_post}")
     fun getListAudioKakawinAdmin(@Path("id_post") id:Int): Call<AudioKakawinAdminModel>
     @GET("admin/yadnyakakawinadmin/{id_kakawin}")

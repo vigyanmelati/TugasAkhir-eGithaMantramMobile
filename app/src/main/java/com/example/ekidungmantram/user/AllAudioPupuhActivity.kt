@@ -30,7 +30,7 @@ class AllAudioPupuhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_audio_pupuh)
-        supportActionBar!!.title = "Audio Sekar Rare"
+        supportActionBar!!.title = "Audio Sekar Alit"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")

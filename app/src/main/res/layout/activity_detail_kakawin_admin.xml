@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.DetailKakawinActivity">
+    tools:context=".admin.kakawin.DetailKakawinAdminActivity">
     <com.facebook.shimmer.ShimmerFrameLayout
         android:visibility="visible"
-        android:id="@+id/shimmerDetailKakawin"
+        android:id="@+id/shimmerDetailKakawinAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
@@ -15,7 +15,7 @@
             layout="@layout/shimmer_detail_pupuh"/>
     </com.facebook.shimmer.ShimmerFrameLayout>
     <ScrollView
-        android:id="@+id/scrollDetailKakawin"
+        android:id="@+id/scrollDetailKakawinAdmin"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +30,7 @@
                 android:layout_height="300dp"
                 tools:ignore="MissingConstraints">
                 <ImageView
-                    android:id="@+id/imageDetailKakawin"
+                    android:id="@+id/imageDetailKakawinAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -46,37 +46,9 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <CheckBox
-                            android:id="@+id/bookmarked_kakawin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginRight="15dp"
-                            app:useMaterialThemeColors= "false"
-                            android:button="@drawable/selector_bookmark"/>
-                        <!--                        <ImageView-->
-                        <!--                            android:id="@+id/shareURL"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_alignParentRight="true"-->
-                        <!--                            android:layout_marginStart="20dp"-->
-                        <!--                            android:layout_marginTop="20dp"-->
-                        <!--                            android:layout_marginEnd="20dp"-->
-                        <!--                            android:layout_marginBottom="20dp"-->
-                        <!--                            android:src="@drawable/share" />-->
-                    </RelativeLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/backToKakawin"
+                            android:id="@+id/backToKakawinAdmin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -96,7 +68,7 @@
                     android:paddingBottom="55dp"
                     android:paddingLeft="10dp">
                     <TextView
-                        android:id="@+id/detailNamaKakawin"
+                        android:id="@+id/detailNamaKakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nama Sekar Agung"
@@ -104,7 +76,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
                     <TextView
-                        android:id="@+id/detailKakawin"
+                        android:id="@+id/detailKakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Jenis Sekar Agung"
@@ -131,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/deskripsiKakawin"
+                            android:id="@+id/deskripsiKakawinAdmin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
@@ -140,38 +112,76 @@
                             android:textSize="15sp" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal">
+                        <Button
+                            android:id="@+id/toEditKakawin"
+                            android:backgroundTint="@color/blue_strap"
+                            android:layout_width="165dp"
+                            android:textColor="@color/white"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="60dp"
+                            android:text="Edit Sekar Agung"/>
+                        <Button
+                            android:id="@+id/deleteKakawin"
+                            android:backgroundTint="@color/red_danger"
+                            android:layout_width="165dp"
+                            android:textColor="@color/white"
+                            android:layout_height="60dp"
+                            android:text="Hapus Sekar Agung"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_lirik"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lirik"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/tambahLirikKakawin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="+ Tambah Lirik Sekar Agung"
+                            android:textColor="@color/shimmer_secondary"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:layout_marginBottom="65dp"
+                            android:layout_marginTop="15dp"/>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/baitKakawinList"
+                                android:id="@+id/baitKakawinListAdmin"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:listitem="@layout/layout_list_detail_kakawin" />
                         </RelativeLayout>
                     </LinearLayout>
-                    <LinearLayout
+                    <Button
+                        android:visibility="visible"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="35dp"
+                        android:id="@+id/goToListLirikKakawin"
+                        android:backgroundTint="@color/grey_200"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/artiKakawinList"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                tools:listitem="@layout/layout_list_arti_kakawin" />
-                        </RelativeLayout>
-                    </LinearLayout>
+                        android:textColor="@color/white"
+                        android:layout_height="60dp"
+                        android:text="Atur Lirik Sekar Agung"/>
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,7 +195,19 @@
                             android:textStyle="bold"
                             android:textSize="15sp"/>
                         <TextView
-                            android:id="@+id/lihatSemuavideokakawin"
+                            android:visibility="gone"
+                            android:id="@+id/tambahVideoKakawin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="+ Tambah Video Sekar Agung"
+                            android:textColor="@color/shimmer_secondary"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:layout_marginBottom="65dp"
+                            android:layout_marginTop="15dp"/>
+                        <TextView
+                            android:id="@+id/lihatSemuavideokakawinAdmin"
                             android:gravity="end"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -194,7 +216,7 @@
                             android:textSize="12sp"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/nodatavideokakawin"
+                        android:id="@+id/nodatavideokakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -205,13 +227,24 @@
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_video_kakawin"
+                        android:id="@+id/rv_video_kakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         tools:listitem="@layout/layout_list_video_kakawin"
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
+                    <Button
+                        android:visibility="visible"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="35dp"
+                        android:id="@+id/goToListVideoKakawin"
+                        android:backgroundTint="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/white"
+                        android:layout_height="60dp"
+                        android:text="Atur Video Sekar Agung"/>
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -225,7 +258,19 @@
                             android:textStyle="bold"
                             android:textSize="15sp"/>
                         <TextView
-                            android:id="@+id/lihatSemuaaudiokakawin"
+                            android:visibility="gone"
+                            android:id="@+id/tambahAudioKakawin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="+ Tambah Audio Sekar Agung"
+                            android:textColor="@color/shimmer_secondary"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:layout_marginBottom="65dp"
+                            android:layout_marginTop="15dp"/>
+                        <TextView
+                            android:id="@+id/lihatSemuaaudiokakawinAdmin"
                             android:gravity="end"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -234,7 +279,7 @@
                             android:textSize="12sp"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/nodataaudiokakawin"
+                        android:id="@+id/nodataaudiokakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -245,13 +290,24 @@
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_audio_kakawin"
+                        android:id="@+id/rv_audio_kakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         tools:listitem="@layout/layout_list_audio_kakawin"
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
+                    <Button
+                        android:visibility="visible"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="35dp"
+                        android:id="@+id/goToListAudioKakawin"
+                        android:backgroundTint="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/white"
+                        android:layout_height="60dp"
+                        android:text="Atur Audio Sekar Agung"/>
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -265,7 +321,19 @@
                             android:textStyle="bold"
                             android:textSize="15sp"/>
                         <TextView
-                            android:id="@+id/lihatSemuayadnyakakawin"
+                            android:visibility="gone"
+                            android:id="@+id/tambahYadnyaKakawin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="+ Tambah Yadnya Sekar Agung"
+                            android:textColor="@color/shimmer_secondary"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:layout_marginBottom="65dp"
+                            android:layout_marginTop="15dp"/>
+                        <TextView
+                            android:id="@+id/lihatSemuayadnyakakawinAdmin"
                             android:gravity="end"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -274,7 +342,7 @@
                             android:textSize="12sp"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/nodatayadnyakakawin"
+                        android:id="@+id/nodatayadnyakakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -285,12 +353,22 @@
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_yadnya_kakawin"
+                        android:id="@+id/rv_yadnya_kakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         tools:listitem="@layout/layout_list_yadnya_kakawin"
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp"/>
+                    <Button
+                        android:visibility="visible"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="35dp"
+                        android:id="@+id/goToListYadnyaKakawin"
+                        android:backgroundTint="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/white"
+                        android:layout_height="60dp"
+                        android:text="Atur Yadnya Sekar Agung"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

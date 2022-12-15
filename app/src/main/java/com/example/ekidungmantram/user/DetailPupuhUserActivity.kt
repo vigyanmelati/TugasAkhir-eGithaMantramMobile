@@ -100,7 +100,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
             }
 
             goToListYadnyaPupuhUser.setOnClickListener {
-                val intent = Intent(this, AllYadnyaOnPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaOnPupuhActivity::class.java)
                 bundle.putInt("id_pupuh_user", postID)
                 bundle.putString("nama_pupuh_user", nama_pupuh)
                 intent.putExtras(bundle)
@@ -108,7 +108,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
             }
 
             goToListAudioPupuhUser.setOnClickListener {
-                val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllAudioPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)
@@ -390,8 +390,8 @@ class DetailPupuhUserActivity : AppCompatActivity() {
                     }else{
                         nodatavideopupuhUser.visibility  = View.GONE
                         rv_video_pupuh.visibility = View.VISIBLE
-                        tambahVideoPupuh.visibility = View.GONE
-                        goToListVideoPupuh.visibility = View.VISIBLE
+                        tambahVideoPupuhUser.visibility = View.GONE
+                        goToListVideoPupuhUser.visibility = View.VISIBLE
                         Log.d("video",response.body().toString())
                         showVideoPupuhData(response.body()!!)
                     }

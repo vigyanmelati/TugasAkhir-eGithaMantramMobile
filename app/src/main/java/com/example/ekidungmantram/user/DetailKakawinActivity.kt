@@ -30,6 +30,8 @@ class DetailKakawinActivity : AppCompatActivity() {
     private lateinit var db             : DharmagitaDb
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitKakawinAdapter : BaitKakawinAdapter
+    private var layoutManagerArti          : LinearLayoutManager? = null
+    private lateinit var artiKakawinAdapter : ArtiKakawinAdapter
     private lateinit var videoKakawinAdapter  : VideoKakawinAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioKakawinAdapter  : AudioKakawinAdapter
@@ -59,6 +61,7 @@ class DetailKakawinActivity : AppCompatActivity() {
             getListAudioKakawin(postID)
             getListYadnyaKakawin(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -139,6 +142,7 @@ class DetailKakawinActivity : AppCompatActivity() {
                 response: Response<DetailBaitKakawinModel>
             ) {
                 showBaitKakawinData(response.body()!!)
+                showArtiKakawinData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitKakawinModel>, t: Throwable) {
@@ -151,6 +155,12 @@ class DetailKakawinActivity : AppCompatActivity() {
     private fun showBaitKakawinData(body: DetailBaitKakawinModel) {
         val results = body.data
         baitKakawinAdapter.setData(results)
+//        artiKakawinAdapter.setData(results)
+    }
+
+    private fun showArtiKakawinData(body: DetailBaitKakawinModel) {
+        val results = body.data
+        artiKakawinAdapter.setData(results)
     }
 
     private fun setupRecyclerViewBait() {
@@ -159,6 +169,16 @@ class DetailKakawinActivity : AppCompatActivity() {
             layoutManagerBait = LinearLayoutManager(this@DetailKakawinActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitKakawinAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiKakawinAdapter = ArtiKakawinAdapter(arrayListOf())
+        artiKakawinList.apply {
+            layoutManagerBait = LinearLayoutManager(this@DetailKakawinActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiKakawinAdapter
             setHasFixedSize(true)
         }
     }
