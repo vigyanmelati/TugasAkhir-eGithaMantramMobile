@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AllAudioPupuhAdminActivity">
+    tools:context=".admin.kakawin.AllAudioKakawinAdminActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         android:paddingTop="18dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:visibility="visible"
-            android:id="@+id/shimmerAudioPupuhAdmin"
+            android:id="@+id/shimmerAudioKakawinAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
@@ -22,7 +22,7 @@
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
-            android:id="@+id/swipeAudioPupuhAdmin"
+            android:id="@+id/swipeAudioKakawinAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -39,7 +39,7 @@
                     android:textSize="30sp"
                     android:layout_marginBottom="20dp"/>
                 <TextView
-                    android:id="@+id/namaPupuhAudio"
+                    android:id="@+id/namaKakawinAudio"
                     android:layout_marginTop="-14dp"
                     android:paddingBottom="10dp"
                     android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:layout_marginBottom="20dp"/>
                 <TextView
                     android:visibility="visible"
-                    android:id="@+id/noAudioPupuhAdmin"
+                    android:id="@+id/noAudioKakawinAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -64,16 +64,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allAudioPupuhAdmin"
+                        android:id="@+id/allAudioKakawinAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_list_audio_pupuh_admin" />
+                        tools:listitem="@layout/layout_list_audio_kakawin_admin" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAudioPupuh"
+        android:id="@+id/fabAudioKakawin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

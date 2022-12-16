@@ -43,7 +43,7 @@ class AllLirikKakawinAdminActivity : AppCompatActivity() {
             }
 
             fabLirikKakawin.setOnClickListener {
-                val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddLirikKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -80,7 +80,7 @@ class AllLirikKakawinAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllLirikKakawinAdminActivity, EditLirikPupuhAdminActivity::class.java)
+                        val intent = Intent(this@AllLirikKakawinAdminActivity, EditLirikKakawinAdminActivity::class.java)
                         bundle.putInt("id_lirik_kakawin", it.id_lirik_sekar_agung)
                         bundle.putInt("id_kakawin", postID)
                         bundle.putString("nama_kakawin", namaPost)

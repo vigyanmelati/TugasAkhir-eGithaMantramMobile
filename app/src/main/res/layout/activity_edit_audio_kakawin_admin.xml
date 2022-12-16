@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddVideoPupuhAdminActivity"
+    tools:context=".admin.kakawin.EditAudioKakawinAdminActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,7 +18,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Video Sekar Alit Baru"
+                android:text="Edit Audio Sekar Agung"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -29,14 +29,14 @@
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Isi form dibawah dengan data yang sesuai"
+                android:text="Ubah data audio dengan data yang sesuai"
                 android:textColor="@color/grey_200"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:alpha="0.5"
                 android:layout_marginBottom="25dp"/>
             <ImageView
-                android:id="@+id/submitImgVideoPupuhAdmin"
+                android:id="@+id/submitEditedImgAudioKakawin"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="7dp"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:layout_marginBottom="20dp">
                 <Button
-                    android:id="@+id/selectImageVideoPupuhAdmin"
+                    android:id="@+id/selectEditedImageAudioKakawin"
                     android:backgroundTint="@color/grey_200"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
@@ -58,40 +58,40 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutNamaVideoPupuhAdmin"
+                android:id="@+id/layoutEditedNamaAudioKakawin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan nama video">
+                android:hint="Masukan nama audio">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/namaVideoPupuhAdmin"
+                    android:id="@+id/namaEditedAudioKakawin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutLinkVideoPupuhAdmin"
+                android:id="@+id/layoutEditedLinkAudioKakawin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan link video">
+                android:hint="Masukan link audio">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/linkVideoPupuhAdmin"
+                    android:id="@+id/namaEditedLinkAudioKakawin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitVideoPupuhAdmin"
-                android:backgroundTint="@color/green_success"
+                android:id="@+id/submitEditedAudioKakawin"
+                android:backgroundTint="@color/blue_strap"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Video"/>
+                android:text="Simpan Perubahan"/>
             <TextView
-                android:id="@+id/cancelSubmitAddVideoPupuhAdmin"
+                android:id="@+id/cancelSubmitEditedAudioKakawin"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

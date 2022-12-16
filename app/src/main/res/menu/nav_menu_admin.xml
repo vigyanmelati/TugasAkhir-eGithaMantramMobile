@@ -44,6 +44,10 @@
                     android:id="@+id/sekar_rare_admin"
                     android:title="Data Sekar Rare"
                     android:icon="@drawable/gita" />
+                <item
+                    android:id="@+id/approval"
+                    android:title="Kaji Dharmagita"
+                    android:icon="@drawable/approve" />
 <!--                <item-->
 <!--                    android:id="@+id/gita_admin"-->
 <!--                    android:title="@string/data_gita"-->
@@ -64,6 +68,10 @@
                     android:id="@+id/kelola_admin"
                     android:title="Kelola Admin"
                     android:icon="@drawable/admin" />
+                <item
+                    android:id="@+id/kelola_user"
+                    android:title="Kelola Pengguna"
+                    android:icon="@drawable/ic_user" />
             </group>
         </menu>
     </item>

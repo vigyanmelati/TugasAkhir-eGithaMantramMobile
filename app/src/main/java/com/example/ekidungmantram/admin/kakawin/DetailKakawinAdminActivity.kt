@@ -82,7 +82,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             goToListVideoKakawin.setOnClickListener {
-                val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllVideoKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -90,7 +90,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             goToListYadnyaKakawin.setOnClickListener {
-                val intent = Intent(this, AllYadnyaOnPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaonKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin_admin", postID)
                 bundle.putString("nama_kakawin_admin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -98,7 +98,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             goToListAudioKakawin.setOnClickListener {
-                val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AllAudioKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -106,7 +106,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             tambahLirikKakawin.setOnClickListener {
-                val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddLirikKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -114,7 +114,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             tambahVideoKakawin.setOnClickListener {
-                val intent = Intent(this, AddVideoPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddVideoKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -122,7 +122,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioKakawin.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)
@@ -130,7 +130,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             tambahYadnyaKakawin.setOnClickListener {
-                val intent = Intent(this, AddYadnyaToPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddYadnyaToKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)

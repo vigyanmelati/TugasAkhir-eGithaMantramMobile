@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddVideoPupuhAdminActivity"
+    tools:context=".admin.kakawin.AddLirikKakawinAdminActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,13 +18,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Video Sekar Alit Baru"
+                android:text="Tambah Lirik Sekar Agung"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"/>
             <TextView
-                android:id="@+id/tests"
                 android:layout_marginTop="-14dp"
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"
@@ -35,63 +34,28 @@
                 android:textStyle="bold"
                 android:alpha="0.5"
                 android:layout_marginBottom="25dp"/>
-            <ImageView
-                android:id="@+id/submitImgVideoPupuhAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="7dp"
-                android:src="@drawable/rectangle"
-                android:scaleType="fitXY"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginBottom="20dp">
-                <Button
-                    android:id="@+id/selectImageVideoPupuhAdmin"
-                    android:backgroundTint="@color/grey_200"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:textSize="12sp"
-                    android:text="Pilih Gambar"/>
-            </LinearLayout>
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutNamaVideoPupuhAdmin"
+                android:id="@+id/layoutAddLirikKakawin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan nama video">
+                android:hint="Masukan lirik sekar agung">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/namaVideoPupuhAdmin"
+                    android:id="@+id/lirikKakawinForm"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutLinkVideoPupuhAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan link video">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/linkVideoPupuhAdmin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:layout_height="150dp"
+                    android:inputType="text|textMultiLine"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitVideoPupuhAdmin"
+                android:id="@+id/submitLirikKakawin"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Video"/>
+                android:text="Tambah Lirik Sekar Agung"/>
             <TextView
-                android:id="@+id/cancelSubmitAddVideoPupuhAdmin"
+                android:id="@+id/cancelSubmitLirikKakawin"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

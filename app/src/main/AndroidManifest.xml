@@ -22,6 +22,36 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.kakawin.AddYadnyaToKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllYadnyaonKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.EditAudioKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AddAudioKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllAudioKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.EditVideoKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AddVideoKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AllVideoKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.EditLirikKakawinAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AddLirikKakawinAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.kakawin.EditKakawinAdminActivity"
             android:exported="false" />
         <activity
