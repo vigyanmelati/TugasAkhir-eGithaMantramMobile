@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.kakawin
+package com.example.ekidungmantram.admin.kidung
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -12,61 +12,61 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.kakawin.AllAudioKakawinAdminActivity
+import com.example.ekidungmantram.admin.kidung.AllVideoKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import kotlinx.android.synthetic.main.activity_add_audio_kakawin_admin.*
+import kotlinx.android.synthetic.main.activity_add_video_kidung_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class AddAudioKakawinAdminActivity : AppCompatActivity() {
+class AddVideoKidungAdminActivity : AppCompatActivity() {
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
-    private var id_kakawin : Int = 0
+    private var id_kidung : Int = 0
 
-    private lateinit var nama_kakawin :String
+    private lateinit var nama_kidung :String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_audio_kakawin_admin)
+        setContentView(R.layout.activity_add_video_kidung_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Audio Sekar Agung"
+        supportActionBar!!.title = "Tambah Video Sekar Madya"
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
-            id_kakawin = bundle.getInt("id_kakawin")
-            nama_kakawin = bundle.getString("nama_kat_kakawin_admin").toString()
+            id_kidung = bundle.getInt("id_kidung")
+            nama_kidung = bundle.getString("nama_kat_kidung_admin").toString()
         }
 
-        selectImageAudioKakawinAdmin.setOnClickListener {
+        selectImageVideoKidungAdmin.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-        submitAudioKakawinAdmin.setOnClickListener {
-            val judul_audio     = namaAudioKakawinAdmin.text.toString()
-            val audio     = linkAudioKakawinAdmin.text.toString()
+        submitVideoKidungAdmin.setOnClickListener {
+            val judul_video     = namaVideoKidungAdmin.text.toString()
+            val video     = linkVideoKidungAdmin.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
             if(validateInput()){
-                postAudioKakawinAdmin(judul_audio, audio, gambar)
+                postVideoKidungAdmin(judul_video, video, gambar)
             }
         }
 
-        cancelSubmitAddAudioKakawinAdmin.setOnClickListener {
+        cancelSubmitAddVideoKidungAdmin.setOnClickListener {
             goBack()
         }
     }
 
-    private fun postAudioKakawinAdmin(judul_audio: String, audio: String, gambar: String) {
+    private fun postVideoKidungAdmin(judul_video: String, video: String, gambar: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataAudioKakawinAdmin(id_kakawin, judul_audio, audio, gambar)
+        ApiService.endpoint.createDataVideoKidungAdmin(id_kidung, judul_video, video, gambar)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -74,43 +74,43 @@ class AddAudioKakawinAdminActivity : AppCompatActivity() {
                 ) {
                     if(response.body()?.status == 200){
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddVideoKidungAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                         goBack()
                     }else{
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddVideoKidungAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioKakawinAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddVideoKidungAdminActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllAudioKakawinAdminActivity::class.java)
+        val intent = Intent(this, AllVideoKidungAdminActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_kakawin", id_kakawin)
-        bundle.putString("nama_kakawin", nama_kakawin)
-//        bundle.putString("desc_kakawin_admin", desc_kakawin)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
+//        bundle.putString("desc_kidung_admin", desc_kidung)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }
 
     private fun validateInput(): Boolean {
-        if(namaAudioKakawinAdmin.text.toString().isEmpty()){
-            layoutNamaAudioKakawinAdmin.isErrorEnabled = true
-            layoutNamaAudioKakawinAdmin.error = "Nama audio tidak boleh kosong!"
+        if(namaVideoKidungAdmin.text.toString().isEmpty()){
+            layoutNamaVideoKidungAdmin.isErrorEnabled = true
+            layoutNamaVideoKidungAdmin.error = "Nama video tidak boleh kosong!"
             return false
         }
 
-        if(linkAudioKakawinAdmin.text.toString().isEmpty()){
-            layoutLinkAudioKakawinAdmin.isErrorEnabled = true
-            layoutLinkAudioKakawinAdmin.error = "Link audio tidak boleh kosong!"
+        if(linkVideoKidungAdmin.text.toString().isEmpty()){
+            layoutLinkVideoKidungAdmin.isErrorEnabled = true
+            layoutLinkVideoKidungAdmin.error = "Link video tidak boleh kosong!"
             return false
         }
 
@@ -122,7 +122,7 @@ class AddAudioKakawinAdminActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitImgAudioKakawinAdmin.setImageURI(imgUri) // handle chosen image
+            submitImgVideoKidungAdmin.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
     }

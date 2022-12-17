@@ -177,14 +177,14 @@ interface ApiEndpoint {
     @GET("admin/listlirikkidungadmin/{id_post}")
     fun getDetailAllLirikKidungAdmin(@Path("id_post") id:Int) : Call<ArrayList<DetailAllLirikKidungAdminModel>>
 
-    @GET("admin/listvideokidungadmin/{id_kakawin}")
-    fun getListVideoKidungAdmin(@Path("id_kakawin") id:Int): Call<VideoKidungAdminModel>
+    @GET("admin/listvideokidungadmin/{id_kidung}")
+    fun getListVideoKidungAdmin(@Path("id_kidung") id:Int): Call<VideoKidungAdminModel>
 
     @GET("admin/listaudiokidungadmin/{id_post}")
     fun getListAudioKidungAdmin(@Path("id_post") id:Int): Call<AudioKidungAdminModel>
 
-    @GET("admin/yadnyakidungadmin/{id_kakawin}")
-    fun getYadnyaKidungAdmin(@Path("id_kakawin") id:Int): Call<YadnyaKidungAdminModel>
+    @GET("admin/yadnyakidungadmin/{id_kidung}")
+    fun getYadnyaKidungAdmin(@Path("id_kidung") id:Int): Call<YadnyaKidungAdminModel>
 
     @FormUrlEncoded
     @POST("admin/createkidung")
@@ -304,7 +304,7 @@ interface ApiEndpoint {
         @Field("id_kidung") idKidung:Int,
     ):Call<CrudModel>
 
-    @POST("admin/deleteyadnyaonkakawin/{id_post}")
+    @POST("admin/deleteyadnyaonkidung/{id_post}")
     fun deleteDataYadnyaOnKidungAdmin (
         @Path("id_post") id:Int
     ):Call<CrudModel>

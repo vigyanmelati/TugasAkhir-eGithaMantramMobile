@@ -29,7 +29,7 @@ class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnyaon_kakawin_admin)
-        supportActionBar!!.title = "Daftar Tabuh Gamelan"
+        supportActionBar!!.title = "Daftar Yadnya"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin_admin")

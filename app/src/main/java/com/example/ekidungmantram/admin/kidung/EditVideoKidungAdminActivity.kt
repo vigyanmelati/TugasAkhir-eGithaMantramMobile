@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.kakawin
+package com.example.ekidungmantram.admin.kidung
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -14,84 +14,84 @@ import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.kakawin.AllAudioKakawinAdminActivity
+import com.example.ekidungmantram.admin.kidung.AllVideoKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.DetailAudioKakawinAdminModel
-import kotlinx.android.synthetic.main.activity_edit_audio_kakawin_admin.*
+import com.example.ekidungmantram.model.adminmodel.DetailVideoKidungAdminModel
+import kotlinx.android.synthetic.main.activity_edit_video_kidung_admin.*
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class EditAudioKakawinAdminActivity : AppCompatActivity() {
+class EditVideoKidungAdminActivity : AppCompatActivity() {
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
-    private var id_kakawin : Int = 0
-    private lateinit var nama_kakawin :String
+    private var id_kidung : Int = 0
+    private lateinit var nama_kidung :String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_audio_kakawin_admin)
+        setContentView(R.layout.activity_edit_video_kidung_admin)
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
-            val audioID = bundle.getInt("id_audio_kakawin")
-            id_kakawin = bundle.getInt("id_kakawin")
-            nama_kakawin = bundle.getString("nama_kakawin").toString()
+            val videoID = bundle.getInt("id_video_kidung")
+            id_kidung = bundle.getInt("id_kidung")
+            nama_kidung = bundle.getString("nama_kidung").toString()
 
-            setFormData(audioID)
+            setFormData(videoID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.title = "Edit Audio Sekar Agung"
+            supportActionBar!!.title = "Edit Video Sekar Madya"
 
-            selectEditedImageAudioKakawin.setOnClickListener {
+            selectEditedImageVideoKidung.setOnClickListener {
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.type = "image/*"
                 startActivityForResult(intent, REQUEST_CODE)
             }
 
-            submitEditedAudioKakawin.setOnClickListener {
-                val nama_post     = namaEditedAudioKakawin.text.toString()
-                val link     = namaEditedLinkAudioKakawin.text.toString()
+            submitEditedVideoKidung.setOnClickListener {
+                val nama_post     = namaEditedVideoKidung.text.toString()
+                val link     = namaEditedLinkVideoKidung.text.toString()
                 val gambar        = bitmapToString(bitmap).toString()
                 if(validateInput()){
-                    postEditedKakawin(audioID, nama_post,gambar,link)
+                    postEditedKidung(videoID, nama_post,gambar,link)
                 }
             }
 
-            cancelSubmitEditedAudioKakawin.setOnClickListener {
+            cancelSubmitEditedVideoKidung.setOnClickListener {
                 goBack()
             }
         }
     }
 
     private fun setFormData(postID: Int) {
-        ApiService.endpoint.getShowAudioKakawinAdmin(postID).enqueue(object:
-            retrofit2.Callback<DetailAudioKakawinAdminModel> {
+        ApiService.endpoint.getShowVideoKidungAdmin(postID).enqueue(object:
+            retrofit2.Callback<DetailVideoKidungAdminModel> {
             override fun onResponse(
-                call: Call<DetailAudioKakawinAdminModel>,
-                response: Response<DetailAudioKakawinAdminModel>
+                call: Call<DetailVideoKidungAdminModel>,
+                response: Response<DetailVideoKidungAdminModel>
             ) {
                 val result = response.body()!!
                 result.let {
-                    namaEditedLinkAudioKakawin.setText(result.audio)
-                    namaEditedAudioKakawin.setText(result.judul_audio)
-                    Glide.with(this@EditAudioKakawinAdminActivity).load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawin)
+                    namaEditedLinkVideoKidung.setText(result.video)
+                    namaEditedVideoKidung.setText(result.judul_video)
+                    Glide.with(this@EditVideoKidungAdminActivity).load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoKidung)
                 }
             }
 
-            override fun onFailure(call: Call<DetailAudioKakawinAdminModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailVideoKidungAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
-    private fun postEditedKakawin(postID: Int, judul_audio: String, gambar_audio: String, audio: String) {
+    private fun postEditedKidung(postID: Int, judul_video: String, gambar_video: String, video: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updateDataAudioKakawinAdmin(postID ,judul_audio, gambar_audio, audio)
+        ApiService.endpoint.updateDataVideoKidungAdmin(postID ,judul_video, gambar_video, video)
             .enqueue(object: retrofit2.Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -99,17 +99,17 @@ class EditAudioKakawinAdminActivity : AppCompatActivity() {
                 ) {
                     if(response.body()?.status == 200){
                         progressDialog.dismiss()
-                        Toast.makeText(this@EditAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditVideoKidungAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                         goBack()
                     }else{
                         progressDialog.dismiss()
-                        Toast.makeText(this@EditAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditVideoKidungAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@EditAudioKakawinAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditVideoKidungAdminActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -117,10 +117,10 @@ class EditAudioKakawinAdminActivity : AppCompatActivity() {
 
 
     private fun goBack() {
-        val intent = Intent(this, AllAudioKakawinAdminActivity::class.java)
+        val intent = Intent(this, AllVideoKidungAdminActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_kakawin", id_kakawin)
-        bundle.putString("nama_kakawin", nama_kakawin)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
@@ -128,15 +128,15 @@ class EditAudioKakawinAdminActivity : AppCompatActivity() {
 
 
     private fun validateInput(): Boolean {
-        if(namaEditedAudioKakawin.text.toString().isEmpty()){
-            layoutEditedNamaAudioKakawin.isErrorEnabled = true
-            layoutEditedNamaAudioKakawin.error = "Nama audio tidak boleh kosong!"
+        if(namaEditedVideoKidung.text.toString().isEmpty()){
+            layoutEditedNamaVideoKidung.isErrorEnabled = true
+            layoutEditedNamaVideoKidung.error = "Nama video tidak boleh kosong!"
             return false
         }
 
-        if(namaEditedLinkAudioKakawin.text.toString().isEmpty()){
-            layoutEditedLinkAudioKakawin.isErrorEnabled = true
-            layoutEditedLinkAudioKakawin.error = "Link audio tidak boleh kosong!"
+        if(namaEditedLinkVideoKidung.text.toString().isEmpty()){
+            layoutEditedLinkVideoKidung.isErrorEnabled = true
+            layoutEditedLinkVideoKidung.error = "Link video tidak boleh kosong!"
             return false
         }
 
@@ -148,7 +148,7 @@ class EditAudioKakawinAdminActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitEditedImgAudioKakawin.setImageURI(imgUri) // handle chosen image
+            submitEditedImgVideoKidung.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
     }

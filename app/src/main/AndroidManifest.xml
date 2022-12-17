@@ -22,6 +22,30 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.kidung.AddYadnyaToKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AllYadnyaonKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.EditAudioKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AddAudioKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AllAudioKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.EditVideoKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AddVideoKidungAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AllVideoKidungAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.kakawin.AddYadnyaToKakawinAdminActivity"
             android:exported="false" />
         <activity
