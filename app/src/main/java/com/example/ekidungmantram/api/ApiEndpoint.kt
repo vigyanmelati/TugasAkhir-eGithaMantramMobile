@@ -177,6 +177,15 @@ interface ApiEndpoint {
     @GET("admin/listlirikkidungadmin/{id_post}")
     fun getDetailAllLirikKidungAdmin(@Path("id_post") id:Int) : Call<ArrayList<DetailAllLirikKidungAdminModel>>
 
+    @GET("admin/listvideokidungadmin/{id_kakawin}")
+    fun getListVideoKidungAdmin(@Path("id_kakawin") id:Int): Call<VideoKidungAdminModel>
+
+    @GET("admin/listaudiokidungadmin/{id_post}")
+    fun getListAudioKidungAdmin(@Path("id_post") id:Int): Call<AudioKidungAdminModel>
+
+    @GET("admin/yadnyakidungadmin/{id_kakawin}")
+    fun getYadnyaKidungAdmin(@Path("id_kakawin") id:Int): Call<YadnyaKidungAdminModel>
+
     @FormUrlEncoded
     @POST("admin/createkidung")
     fun createDataKidungAdmin (
@@ -231,6 +240,73 @@ interface ApiEndpoint {
     fun deleteDataLirikKidungAdmin (
         @Path("id_det_post") id:Int,
         @Field("kidung_id") idKidung:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/showvideokidungadmin/{id_post}")
+    fun getShowVideoKidungAdmin(@Path("id_post") id:Int) : Call<DetailVideoKidungAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addvideoonkidungadmin/{id_post}")
+    fun createDataVideoKidungAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/editvideokidungadmin/{id_post}")
+    fun updateDataVideoKidungAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_video") judulVideo:String,
+        @Field("gambar_video") gambarVideo:String,
+        @Field("video") Video:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deletevideoonkidungadmin/{id_post}")
+    fun deleteDataVideoKidungAdmin (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/showaudiokakawinadmin/{id_post}")
+    fun getShowAudioKidungAdmin(@Path("id_post") id:Int) : Call<DetailAudioKidungAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addaudioonkidungadmin/{id_post}")
+    fun createDataAudioKidungAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @FormUrlEncoded
+    @POST("admin/editaudiokidungadmin/{id_post}")
+    fun updateDataAudioKidungAdmin (
+        @Path("id_post") id:Int,
+        @Field("judul_audio") judulAudio:String,
+        @Field("gambar_audio") gambarAudio:String,
+        @Field("audio") Audio:String,
+    ):Call<CrudModel>
+
+    @POST("admin/deleteaudioonkidungadmin/{id_post}")
+    fun deleteDataAudioKidungAdmin (
+        @Path("id_post") id:Int,
+    ):Call<CrudModel>
+
+    @GET("admin/listyadnyanotonkidung/{id_post}")
+    fun getDetailAllYadnyaNotOnKidungAdmin(@Path("id_post") id:Int) : Call<YadnyaKidungAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/addyadnyaonkidung/{id_post}")
+    fun addDataYadnyaToKidungAdmin (
+        @Path("id_post") id:Int,
+        @Field("id_kidung") idKidung:Int,
+    ):Call<CrudModel>
+
+    @POST("admin/deleteyadnyaonkakawin/{id_post}")
+    fun deleteDataYadnyaOnKidungAdmin (
+        @Path("id_post") id:Int
     ):Call<CrudModel>
 
     //Gamelan
