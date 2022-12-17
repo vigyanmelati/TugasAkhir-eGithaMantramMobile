@@ -18,7 +18,7 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_lirik_kakawin_admin)
-        supportActionBar!!.title = "Tambah Lirik Sekar Alit"
+        supportActionBar!!.title = "Tambah Lirik Sekar Agung"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")

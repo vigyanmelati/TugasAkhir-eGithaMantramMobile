@@ -21,7 +21,7 @@ class EditLirikKidungAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_lirik_kidung_admin)
-        supportActionBar!!.title = "Edit Arti Mantram"
+        supportActionBar!!.title = "Edit Lirik Sekar Madya"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val lirikID = bundle.getInt("id_lirik_kidung")

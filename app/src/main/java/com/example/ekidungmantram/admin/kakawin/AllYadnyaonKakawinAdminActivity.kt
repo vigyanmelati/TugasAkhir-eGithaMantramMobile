@@ -73,8 +73,8 @@ class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
                     setAdapter = AllYadnyaonKakawinAdminAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllYadnyaonKakawinAdminActivity)
-                        builder.setTitle("Hapus Yadnya dari Sekar Rare")
-                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar rare ini?")
+                        builder.setTitle("Hapus Yadnya dari Sekar Agung")
+                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar agung ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
                                 hapusTabuhGamelan(it.id, postID, name)
@@ -103,8 +103,8 @@ class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
                                     tabuhAdapter = AllYadnyaonKakawinAdminAdapter(filter as ArrayList<YadnyaKakawinAdminModel.DataL>)
                                     tabuhAdapter.setOnClickDelete {
                                         val builder = AlertDialog.Builder(this@AllYadnyaonKakawinAdminActivity)
-                                        builder.setTitle("Hapus Yadnya dari Sekar Rare")
-                                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar rare ini?")
+                                        builder.setTitle("Hapus Yadnya dari Sekar Agung")
+                                            .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar agung ini?")
                                             .setCancelable(true)
                                             .setPositiveButton("Iya") { _, _ ->
                                                 hapusTabuhGamelan(it.id, postID, name)

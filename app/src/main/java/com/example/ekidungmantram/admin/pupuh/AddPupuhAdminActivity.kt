@@ -36,7 +36,7 @@ class AddPupuhAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_pupuh_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Pupuh"
+        supportActionBar!!.title = "Tambah Sekar Alit"
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {

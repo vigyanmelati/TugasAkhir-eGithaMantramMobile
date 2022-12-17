@@ -45,7 +45,7 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
 
             setFormData(postID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.title = "Edit Kidung"
+            supportActionBar!!.title = "Edit Sekar Madya"
 
             selectEditedImageKidung.setOnClickListener {
                 val intent = Intent(Intent.ACTION_PICK)

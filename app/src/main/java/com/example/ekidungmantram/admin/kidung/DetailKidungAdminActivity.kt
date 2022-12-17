@@ -137,8 +137,8 @@ class DetailKidungAdminActivity : AppCompatActivity() {
 
             deleteKidung.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hapus Kidung")
-                    .setMessage("Apakah anda yakin ingin menghapus kidung ini?")
+                builder.setTitle("Hapus Sekar Madya")
+                    .setMessage("Apakah anda yakin ingin menghapus sekar madya ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
                         hapusKidung(postID)

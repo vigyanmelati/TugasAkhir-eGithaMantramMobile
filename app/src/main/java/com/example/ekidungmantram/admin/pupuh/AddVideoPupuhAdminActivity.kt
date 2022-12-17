@@ -35,7 +35,7 @@ class AddVideoPupuhAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_video_pupuh_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Video Pupuh"
+        supportActionBar!!.title = "Tambah Video Sekar Alit"
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {

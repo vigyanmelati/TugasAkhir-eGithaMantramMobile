@@ -24,6 +24,7 @@ import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.AudioKakawinActivity
 import com.example.ekidungmantram.user.DetailYadnyaActivity
 import com.example.ekidungmantram.user.VideoKakawinActivity
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -146,8 +147,8 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
 
             deleteKakawin.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hapus Kakawin")
-                    .setMessage("Apakah anda yakin ingin menghapus kidung ini?")
+                builder.setTitle("Hapus Sekar Agung")
+                    .setMessage("Apakah anda yakin ingin menghapus sekar agung ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
                         hapusKakawin(postID)
@@ -216,7 +217,8 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                     detailKakawinAdmin.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailKakawinAdminActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawinAdmin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawinAdmin)
+                            .load(result.gambar).into(imageDetailKakawinAdmin)
                     }else{
                         imageDetailKakawinAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }

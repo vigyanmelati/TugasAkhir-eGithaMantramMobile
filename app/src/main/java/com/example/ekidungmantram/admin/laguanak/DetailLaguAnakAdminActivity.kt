@@ -18,6 +18,7 @@ import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
+import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.deletePupuh
@@ -213,7 +214,8 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                     detailLaguAnakAdmin.text = "Sekar Rare"
                     if(result.gambar != null) {
                         Glide.with(this@DetailLaguAnakAdminActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnakAdmin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnakAdmin)
+                            .load(result.gambar).into(imageDetailLaguAnakAdmin)
                     }else{
                         imageDetailLaguAnakAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }

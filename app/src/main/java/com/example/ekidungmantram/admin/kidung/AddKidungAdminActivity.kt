@@ -35,7 +35,7 @@ class AddKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_kidung_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Kidung"
+        supportActionBar!!.title = "Tambah Sekar Madya"
         setupSpinnerYadnya()
 
         selectImageKidung.setOnClickListener {

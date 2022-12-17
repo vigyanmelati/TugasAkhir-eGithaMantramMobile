@@ -29,6 +29,7 @@ import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.lihatSemuayadnyapupuh
@@ -164,8 +165,8 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
 
             deletePupuh.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hapus Pupuh")
-                    .setMessage("Apakah anda yakin ingin menghapus kidung ini?")
+                builder.setTitle("Hapus Sekar Alit")
+                    .setMessage("Apakah anda yakin ingin menghapus sekar alit ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
                         hapusPupuh(postID)
@@ -233,7 +234,8 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                     detailPupuhAdmin.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailPupuhAdminActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhAdmin)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhAdmin)
+                            .load(result.gambar).into(imageDetailPupuhAdmin)
                     }else{
                         imageDetailPupuhAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }

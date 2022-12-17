@@ -34,7 +34,7 @@ class AddKakawinAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_kakawin_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Kakawin"
+        supportActionBar!!.title = "Tambah Sekar Agung"
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
