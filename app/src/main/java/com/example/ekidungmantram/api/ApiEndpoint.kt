@@ -1361,7 +1361,7 @@ interface ApiEndpoint {
         @Path("id_post") id:Int,
         @Field("judul_audio") judulAudio:String,
         @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Field("audio") audio:String,
     ):Call<CrudModel>
 
     @FormUrlEncoded
@@ -1370,7 +1370,7 @@ interface ApiEndpoint {
         @Path("id_post") id:Int,
         @Field("judul_audio") judulAudio:String,
         @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Field("audio") audio:String,
     ):Call<CrudModel>
 
     @POST("deleteaudioonpupuh/{id_post}")

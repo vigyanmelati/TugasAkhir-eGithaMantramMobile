@@ -66,7 +66,7 @@ class AddAudioKakawinAdminActivity : AppCompatActivity() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataAudioKakawinAdmin(id_kakawin, judul_audio, audio, gambar)
+        ApiService.endpoint.createDataAudioKakawinAdmin(id_kakawin, judul_audio, gambar, audio)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,

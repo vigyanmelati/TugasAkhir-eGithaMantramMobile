@@ -46,7 +46,7 @@ class AllAudioPupuhActivity : AppCompatActivity() {
             }
 
             fabAudioPupuhUser.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioPupuhActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)

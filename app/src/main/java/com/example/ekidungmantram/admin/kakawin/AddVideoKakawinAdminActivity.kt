@@ -66,7 +66,7 @@ class AddVideoKakawinAdminActivity : AppCompatActivity() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataVideoKakawinAdmin(id_kakawin, judul_video, video, gambar)
+        ApiService.endpoint.createDataVideoKakawinAdmin(id_kakawin, judul_video, gambar, video)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,

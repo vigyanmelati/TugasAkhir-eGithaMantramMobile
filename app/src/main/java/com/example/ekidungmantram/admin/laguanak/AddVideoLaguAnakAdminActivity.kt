@@ -67,7 +67,7 @@ class AddVideoLaguAnakAdminActivity : AppCompatActivity() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataVideoLaguAnakAdmin(id_lagu_anak, judul_video, video, gambar)
+        ApiService.endpoint.createDataVideoLaguAnakAdmin(id_lagu_anak, judul_video, gambar, video)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
