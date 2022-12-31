@@ -27,6 +27,7 @@ import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_all_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
+import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -203,7 +204,8 @@ class DetailKidungAdminActivity : AppCompatActivity() {
 
                     if(result.gambar != null) {
                         Glide.with(this@DetailKidungAdminActivity)
-                            .load(Constant.IMAGE_URL+result.gambar).into(imageDetailKidungAdmin)
+//                            .load(Constant.IMAGE_URL+result.gambar).into(imageDetailKidungAdmin)
+                            .load(result.gambar).into(imageDetailKidungAdmin)
                     }else{
                         imageDetailKidungAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }

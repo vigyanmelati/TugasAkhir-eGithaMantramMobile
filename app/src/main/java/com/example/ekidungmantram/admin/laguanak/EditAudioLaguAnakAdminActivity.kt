@@ -21,6 +21,7 @@ import com.example.ekidungmantram.model.adminmodel.DetailAudioLaguAnakAdminModel
 import com.example.ekidungmantram.model.adminmodel.DetailAudioPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_edit_audio_lagu_anak_admin.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh_admin.*
+import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
@@ -78,7 +79,9 @@ class EditAudioLaguAnakAdminActivity : AppCompatActivity() {
                 result.let {
                     namaEditedLinkAudioLaguAnak.setText(result.audio)
                     namaEditedAudioLaguAnak.setText(result.judul_audio)
-                    Glide.with(this@EditAudioLaguAnakAdminActivity).load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioLaguAnak)
+                    Glide.with(this@EditAudioLaguAnakAdminActivity)
+                        .load(result.gambar_audio).into(submitEditedImgAudioLaguAnak)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioLaguAnak)
                 }
             }
 

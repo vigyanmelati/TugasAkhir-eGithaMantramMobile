@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.adminmodel.YadnyaKidungAdminModel
 
@@ -28,7 +29,8 @@ class YadnyaKidungAdminAdapter (val results:ArrayList<YadnyaKidungAdminModel.Dat
         holder.title.setText(result.nama_post)
         holder.kategori.setText(result.kategori)
 //        holder.gambar.setImageResource(result.gambar)
-        Glide.with(holder.view).load(result.gambar).into(holder.gambar)
+//        Glide.with(holder.view).load(result.gambar).into(holder.gambar)
+        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
         }

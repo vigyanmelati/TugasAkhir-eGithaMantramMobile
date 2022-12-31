@@ -20,6 +20,7 @@ import com.example.ekidungmantram.admin.kakawin.AllKategoriKakawinAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailKakawinAdminModel
+import kotlinx.android.synthetic.main.activity_edit_audio_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Response
@@ -75,7 +76,9 @@ class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLis
                 result.let {
                     deskripsiEditedKakawin.setText(result.deskripsi)
                     namaEditedKakawin.setText(result.nama_post)
-                    Glide.with(this@EditKakawinAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKakawin)
+                    Glide.with(this@EditKakawinAdminActivity)
+                        .load(result.gambar).into(submitEditedImgKakawin)
+//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKakawin)
                 }
             }
 

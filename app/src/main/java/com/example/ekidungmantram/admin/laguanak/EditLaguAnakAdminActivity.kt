@@ -21,6 +21,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailLaguAnakAdminModel
 import com.example.ekidungmantram.model.adminmodel.DetailPupuhAdminModel
+import kotlinx.android.synthetic.main.activity_edit_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_lagu_anak_admin.*
 import kotlinx.android.synthetic.main.activity_edit_pupuh_admin.*
 import retrofit2.Call
@@ -77,7 +78,9 @@ class EditLaguAnakAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLi
                 result.let {
                     deskripsiEditedLaguAnak.setText(result.deskripsi)
                     namaEditedLaguAnak.setText(result.nama_post)
-                    Glide.with(this@EditLaguAnakAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgLaguAnak)
+                    Glide.with(this@EditLaguAnakAdminActivity)
+                        .load(result.gambar).into(submitEditedImgLaguAnak)
+//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgLaguAnak)
                 }
             }
 

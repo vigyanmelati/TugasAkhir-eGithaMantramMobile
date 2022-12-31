@@ -18,6 +18,7 @@ import com.example.ekidungmantram.admin.kakawin.AllVideoKakawinAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailVideoKakawinAdminModel
+import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import retrofit2.Call
@@ -77,7 +78,9 @@ class EditVideoKakawinAdminActivity : AppCompatActivity() {
                 result.let {
                     namaEditedLinkVideoKakawin.setText(result.video)
                     namaEditedVideoKakawin.setText(result.judul_video)
-                    Glide.with(this@EditVideoKakawinAdminActivity).load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoKakawin)
+                    Glide.with(this@EditVideoKakawinAdminActivity)
+//                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoKakawin)
+                        .load(result.gambar_video).into(submitEditedImgVideoKakawin)
                 }
             }
 

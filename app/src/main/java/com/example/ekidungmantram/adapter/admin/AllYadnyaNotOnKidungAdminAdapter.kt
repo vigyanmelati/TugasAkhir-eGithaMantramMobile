@@ -41,7 +41,7 @@ class AllYadnyaNotOnKidungAdminAdapter (private var results: ArrayList<YadnyaKid
                 title.textSize = 15F
             }
             title.text = data.nama_post
-//            jenis.text = "Tabuh Bali"
+            jenis.text = data.kategori
             if(data.gambar != null){
                 Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
             }else{

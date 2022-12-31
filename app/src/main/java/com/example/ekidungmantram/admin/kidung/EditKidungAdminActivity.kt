@@ -22,6 +22,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailKidungAdminModel
 import com.example.ekidungmantram.model.adminmodel.DetailMantramAdminModel
+import kotlinx.android.synthetic.main.activity_edit_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_edit_mantram_admin.*
 import retrofit2.Call
@@ -56,11 +57,10 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
             submitEditedKidung.setOnClickListener {
                 val nama_post     = namaEditedKidung.text.toString()
                 val kategori      = yadnya
-                val video         = linkEditedKidung.text.toString()
                 val deskripsi     = deskripsiEditedKidung.text.toString()
                 val gambar        = bitmapToString(bitmap).toString()
                 if(validateInput()){
-                    postEditedKidung(postID, nama_post, kategori!!, video, deskripsi, gambar)
+                    postEditedKidung(postID, nama_post, kategori!!, deskripsi, gambar)
                 }
             }
 
@@ -81,9 +81,10 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
                 result.let {
                     deskripsiEditedKidung.setText(result.deskripsi)
                     namaEditedKidung.setText(result.nama_post)
-                    linkEditedKidung.setText(result.video)
                     setupSpinnerYadnya(result.nama_kategori)
-                    Glide.with(this@EditKidungAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKidung)
+                    Glide.with(this@EditKidungAdminActivity)
+                        .load(result.gambar).into(submitEditedImgKidung)
+//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKidung)
                 }
             }
 
@@ -94,11 +95,11 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
         })
     }
 
-    private fun postEditedKidung(postID: Int, namaPost: String, kategori: String, video: String, deskripsi: String, gambar: String) {
+    private fun postEditedKidung(postID: Int, namaPost: String, kategori: String, deskripsi: String, gambar: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updateDataKidungAdmin(postID ,namaPost, video, kategori, deskripsi, gambar)
+        ApiService.endpoint.updateDataKidungAdmin(postID ,namaPost, kategori, deskripsi, gambar)
             .enqueue(object: retrofit2.Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -152,11 +153,6 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
             return false
         }
 
-        if(linkEditedKidung.text.toString().isEmpty()){
-            layoutEditedLinkKidung.isErrorEnabled = true
-            layoutEditedLinkKidung.error = "Link Youtube tidak boleh kosong!"
-            return false
-        }
 
         if(deskripsiEditedKidung.text.toString().isEmpty()){
             layoutEditedDeskripsiKidung.isErrorEnabled = true

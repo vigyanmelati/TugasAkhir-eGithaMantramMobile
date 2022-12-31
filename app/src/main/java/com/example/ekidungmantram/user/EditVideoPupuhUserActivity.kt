@@ -19,6 +19,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailVideoPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailVideoPupuhAdminModel
+import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_video_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_video_pupuh_user.*
 import retrofit2.Call
@@ -78,7 +79,9 @@ class EditVideoPupuhUserActivity : AppCompatActivity() {
                 result.let {
                     namaEditedLinkVideoPupuh.setText(result.video)
                     namaEditedVideoPupuh.setText(result.judul_video)
-                    Glide.with(this@EditVideoPupuhUserActivity).load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoPupuh)
+                    Glide.with(this@EditVideoPupuhUserActivity)
+                        .load(result.gambar_video).into(submitEditedImgVideoPupuh)
+//                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoPupuh)
                 }
             }
 

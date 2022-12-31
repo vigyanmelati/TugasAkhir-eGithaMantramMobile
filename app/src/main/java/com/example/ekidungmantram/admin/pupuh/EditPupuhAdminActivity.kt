@@ -22,6 +22,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailKidungAdminModel
 import com.example.ekidungmantram.model.adminmodel.DetailPupuhAdminModel
+import kotlinx.android.synthetic.main.activity_edit_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_edit_pupuh_admin.*
 import retrofit2.Call
@@ -78,7 +79,9 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
                 result.let {
                     deskripsiEditedPupuh.setText(result.deskripsi)
                     namaEditedPupuh.setText(result.nama_post)
-                    Glide.with(this@EditPupuhAdminActivity).load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgPupuh)
+                    Glide.with(this@EditPupuhAdminActivity)
+                        .load(result.gambar).into(submitEditedImgPupuh)
+//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgPupuh)
                 }
             }
 

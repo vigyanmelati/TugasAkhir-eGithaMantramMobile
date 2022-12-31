@@ -190,7 +190,6 @@ interface ApiEndpoint {
     @POST("admin/createkidung")
     fun createDataKidungAdmin (
         @Field("nama_post") namaPost:String,
-        @Field("video") video:String,
         @Field("kategori") kategori:String,
         @Field("deskripsi") deskripsi:String,
         @Field("gambar") gambar:String,
@@ -204,7 +203,6 @@ interface ApiEndpoint {
     fun updateDataKidungAdmin (
         @Path("id_post") id:Int,
         @Field("nama_post") namaPost:String,
-        @Field("video") video:String,
         @Field("kategori") kategori:String,
         @Field("deskripsi") deskripsi:String,
         @Field("gambar") gambar:String,

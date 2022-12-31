@@ -72,7 +72,7 @@ class AllYadnyaonKidungAdminActivity : AppCompatActivity() {
                     setAdapter = AllYadnyaonKidungAdminAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllYadnyaonKidungAdminActivity)
-                        builder.setTitle("Hapus Yadnya dari Sekar Rare")
+                        builder.setTitle("Hapus Yadnya dari Sekar Madya")
                             .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar madya ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
@@ -102,7 +102,7 @@ class AllYadnyaonKidungAdminActivity : AppCompatActivity() {
                                     tabuhAdapter = AllYadnyaonKidungAdminAdapter(filter as ArrayList<YadnyaKidungAdminModel.DataL>)
                                     tabuhAdapter.setOnClickDelete {
                                         val builder = AlertDialog.Builder(this@AllYadnyaonKidungAdminActivity)
-                                        builder.setTitle("Hapus Yadnya dari Sekar Rare")
+                                        builder.setTitle("Hapus Yadnya dari Sekar Madya")
                                             .setMessage("Apakah anda yakin ingin menghapus yadnya dari sekar rare ini?")
                                             .setCancelable(true)
                                             .setPositiveButton("Iya") { _, _ ->

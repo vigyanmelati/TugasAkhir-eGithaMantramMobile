@@ -21,6 +21,7 @@ import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailAudioPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh_admin.*
+import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
@@ -44,7 +45,7 @@ class EditAudioPupuhActivity : AppCompatActivity() {
 
             setFormData(audioID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.title = "Edit Audio Sekar Rare"
+            supportActionBar!!.title = "Edit Audio Sekar Alit"
 
             selectEditedImageAudioPupuhUser.setOnClickListener {
                 val intent = Intent(Intent.ACTION_PICK)
@@ -78,7 +79,9 @@ class EditAudioPupuhActivity : AppCompatActivity() {
                 result.let {
                     namaEditedLinkAudioPupuhUser.setText(result.audio)
                     namaEditedAudioPupuhUser.setText(result.judul_audio)
-                    Glide.with(this@EditAudioPupuhActivity).load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
+                    Glide.with(this@EditAudioPupuhActivity)
+                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
                 }
             }
 

@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Video Sekar Agung"
+                    android:text="Video Sekar Madya"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="30sp"

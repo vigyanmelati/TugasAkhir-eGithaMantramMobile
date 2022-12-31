@@ -44,7 +44,8 @@ class AllKidungAdminAdapter(private var results: ArrayList<AllKidungAdminModel>,
             title.text = data.nama_post
             jenis.text = "Kidung "+data.kategori
             if(data.gambar != null){
-                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
+                Glide.with(itemView).load(data.gambar).into(gambar)
+//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.sample_image_yadnya)
             }

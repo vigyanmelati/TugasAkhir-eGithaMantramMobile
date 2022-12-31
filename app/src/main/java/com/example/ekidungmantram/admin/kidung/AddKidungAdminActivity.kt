@@ -47,11 +47,11 @@ class AddKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
         submitKidung.setOnClickListener {
             val nama_post     = namaKidung.text.toString()
             val kategori      = yadnya
-            val video         = linkKidung.text.toString()
+//            val video         = linkKidung.text.toString()
             val deskripsi     = deskripsiKidung.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
             if(validateInput()){
-                postKidung(nama_post, kategori!!, video, deskripsi, gambar)
+                postKidung(nama_post, kategori!!, deskripsi, gambar)
             }
         }
 
@@ -60,11 +60,11 @@ class AddKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
         }
     }
 
-    private fun postKidung(namaPost: String, kategori: String, video: String, deskripsi: String, gambar: String) {
+    private fun postKidung(namaPost: String, kategori: String, deskripsi: String, gambar: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataKidungAdmin(namaPost, video, kategori, deskripsi, gambar)
+        ApiService.endpoint.createDataKidungAdmin(namaPost,  kategori, deskripsi, gambar)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -113,11 +113,11 @@ class AddKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
             return false
         }
 
-        if(linkKidung.text.toString().isEmpty()){
-            layoutLinkKidung.isErrorEnabled = true
-            layoutLinkKidung.error = "Link Youtube tidak boleh kosong!"
-            return false
-        }
+//        if(linkKidung.text.toString().isEmpty()){
+//            layoutLinkKidung.isErrorEnabled = true
+//            layoutLinkKidung.error = "Link Youtube tidak boleh kosong!"
+//            return false
+//        }
 
         if(deskripsiKidung.text.toString().isEmpty()){
             layoutDeskripsiKidung.isErrorEnabled = true

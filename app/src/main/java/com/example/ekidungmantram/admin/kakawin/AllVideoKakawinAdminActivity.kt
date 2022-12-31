@@ -27,7 +27,7 @@ class AllVideoKakawinAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_video_kakawin_admin)
-        supportActionBar!!.title = "Video Sekar Alit"
+        supportActionBar!!.title = "Video Sekar Agung"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")
