@@ -11,16 +11,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllDataAudioPupuhAdapter
-import com.example.ekidungmantram.adapter.admin.AllDataAudioPupuhAdminAdapter
-import com.example.ekidungmantram.admin.pupuh.AddAudioPupuhAdminActivity
-import com.example.ekidungmantram.admin.pupuh.AllAudioPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.EditAudioPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AudioPupuhModel
-import com.example.ekidungmantram.model.adminmodel.AudioPupuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhActivity
 import kotlinx.android.synthetic.main.activity_all_audio_pupuh.*
-import kotlinx.android.synthetic.main.activity_all_audio_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

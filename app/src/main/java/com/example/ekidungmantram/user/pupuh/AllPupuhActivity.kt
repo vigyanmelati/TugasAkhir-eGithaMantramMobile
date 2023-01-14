@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,13 +8,10 @@ import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.AllKidungAdapter
 import com.example.ekidungmantram.adapter.AllPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.AllKidungModel
 import com.example.ekidungmantram.model.AllPupuhModel
-import kotlinx.android.synthetic.main.activity_all_kidung.*
-import kotlinx.android.synthetic.main.activity_all_kidung.allKidung2
+import com.example.ekidungmantram.user.AllKategoriPupuhActivity
 import kotlinx.android.synthetic.main.activity_all_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback

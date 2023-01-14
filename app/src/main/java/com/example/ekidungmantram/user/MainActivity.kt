@@ -26,6 +26,9 @@ import com.example.ekidungmantram.model.AdminModel
 import com.example.ekidungmantram.user.fragment.HomeFragment
 import com.example.ekidungmantram.user.fragment.ListYadnyaFragment
 import com.example.ekidungmantram.user.fragment.SearchFragment
+import com.example.ekidungmantram.user.kakawin.AllKakawinActivity
+import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import retrofit2.Call

@@ -4,16 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.AllGamelanAdapter
 import com.example.ekidungmantram.adapter.AllGitaAdapter
 import com.example.ekidungmantram.admin.kidung.AllKidungAdminActivity
 import com.example.ekidungmantram.model.AllGitaModel
-import com.example.ekidungmantram.user.AllKidungActivity
-import kotlinx.android.synthetic.main.activity_all_gamelan.*
 import kotlinx.android.synthetic.main.activity_all_gita.*
 
 class AllGitaAdminActivity : AppCompatActivity() {

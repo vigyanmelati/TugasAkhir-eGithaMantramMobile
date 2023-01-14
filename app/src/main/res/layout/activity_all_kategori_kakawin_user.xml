@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".user.kidung.AllKidungActivity">
+    tools:context=".user.kakawin.AllKategoriKakawinUserActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,15 +14,15 @@
         android:paddingTop="18dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:visibility="visible"
-            android:id="@+id/shimmerKidung"
+            android:id="@+id/shimmerKategoriKakawinUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
-                layout="@layout/shimmer_all_kidung"/>
+                layout="@layout/shimmer_all_kategori_kakawin"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
-            android:id="@+id/swipeKidung"
+            android:id="@+id/swipeKategoriKakawinUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
@@ -30,16 +30,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Sekar Madya"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="30sp"
-                    android:layout_marginBottom="20dp"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/daftar_nama_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daftar Sekar Agung"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:layout_marginBottom="20dp"/>
+                </LinearLayout>
                 <TextView
-                    android:id="@+id/noKidung"
+                    android:id="@+id/noKategoriKakawinUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -48,45 +54,45 @@
                     android:textStyle="bold"
                     android:textSize="17sp"/>
                 <TextView
-                    android:id="@+id/desc_kidung"
+                    android:id="@+id/desc_kategori_kakawin_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sekar madya atau kidung adalah bentuk Dharmagita yang menggunakan bahasa Bali Tengah atau Kawi dan sering digunakan untuk upacara keagamaan "
+                    android:text="Sekar Agung atau Tembang Gede meliputi lagu-lagu berbahasa Kawi yang diikat oleh hukum guru lagu, pada umumnya dinyanyikan dalam kaitan upacara"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:layout_marginBottom="20dp"/>
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/cariKidung"
+                    android:id="@+id/cariKategoriKakawinUser"
                     app:iconifiedByDefault="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchview_background"
-                    app:queryHint="Masukan nama sekar madya"
+                    app:queryHint="Masukan nama sekar agung"
                     android:layout_marginBottom="15dp"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKidung1"
+                        android:id="@+id/allKategoriKakawin1User"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_kidung" />
+                        tools:listitem="@layout/layout_all_kategori_kakawin_user" />
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allKidung2"
+                        android:id="@+id/allKategoriKakawin2User"
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/layout_all_kidung" />
+                        tools:listitem="@layout/layout_all_kategori_kakawin_user" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabKidung"
+        android:id="@+id/fabKakawinUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_pupuh"
+        android:src="@drawable/ic_baseline_add_24"
         android:layout_margin="16dp"
         app:tint="@color/white"
         android:backgroundTint="@color/green_success"

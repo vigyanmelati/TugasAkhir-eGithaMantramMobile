@@ -11,15 +11,11 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.AllLaguAnakAdapter
 import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
-import com.example.ekidungmantram.admin.kidung.AddKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.AllLaguAnakModel
 import com.example.ekidungmantram.model.KategoriPupuhModel
+import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
-import kotlinx.android.synthetic.main.activity_all_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_alll_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

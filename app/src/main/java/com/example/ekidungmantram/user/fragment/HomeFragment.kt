@@ -25,8 +25,9 @@ import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.FragmentHomeBinding
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

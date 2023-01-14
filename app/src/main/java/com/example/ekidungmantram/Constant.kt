@@ -2,8 +2,8 @@ package com.example.ekidungmantram
 
 object Constant  {
 //    const val BASE_URL: String      = "https://api-wahyu.devmptr.com/api/"
+//    const val BASE_URL: String      = "http://192.168.1.11:8000/api/"
     const val BASE_URL: String      = "http://192.168.1.11:8000/api/"
-//    const val BASE_URL: String      = "http://172.20.10.5:8000/api/"
 //    const val BASE_URL: String      = "http://192.168.0.107:8000/api/"
     const val IMAGE_URL: String     = "http://192.168.1.11:8000/gambarku/"
 //    const val IMAGE_URL: String     = "https://api-wahyu.devmptr.com/gambarku/"

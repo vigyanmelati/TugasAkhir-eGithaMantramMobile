@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.pupuh.AddAudioPupuhActivity"
+    tools:context=".user.laguanak.AddLaguAnakActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,7 +18,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Audio Pupuh Baru"
+                android:text="Tambah Sekar Rare Baru"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -36,7 +36,7 @@
                 android:alpha="0.5"
                 android:layout_marginBottom="25dp"/>
             <ImageView
-                android:id="@+id/submitImgAudioPupuhUser"
+                android:id="@+id/submitImgLaguAnak"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="7dp"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:layout_marginBottom="20dp">
                 <Button
-                    android:id="@+id/selectImageAudioPupuhUser"
+                    android:id="@+id/selectImageLaguAnak"
                     android:backgroundTint="@color/grey_200"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
@@ -58,40 +58,40 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutNamaAudioPupuhUser"
+                android:id="@+id/layoutNamaLaguAnak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan nama audio">
+                android:hint="Masukan nama sekar agung">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/namaAudioPupuhUser"
+                    android:id="@+id/namaLaguAnak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutLinkAudioPupuhUser"
+                android:id="@+id/layoutDeskripsiLaguAnak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan link audio">
+                android:hint="Masukan deskripsi sekar agung">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/linkAudioPupuhUser"
+                    android:id="@+id/deskripsiLaguAnak"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:layout_height="150dp"
+                    android:inputType="text|textMultiLine"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitAudioPupuhUser"
+                android:id="@+id/submitLaguAnak"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Audio"/>
+                android:text="Tambah Sekar Rare"/>
             <TextView
-                android:id="@+id/cancelSubmitAddAudioPupuhUser"
+                android:id="@+id/cancelSubmitAddLaguAnak"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

@@ -1,8 +1,10 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.laguanak
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
@@ -12,62 +14,73 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllAudioPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import kotlinx.android.synthetic.main.activity_add_audio_pupuh.*
-import kotlinx.android.synthetic.main.activity_add_audio_pupuh_admin.*
+import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakUserActivity
+import kotlinx.android.synthetic.main.activity_add_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class AddAudioPupuhActivity : AppCompatActivity() {
+@Suppress("DEPRECATION")
+class AddLaguAnakActivity : AppCompatActivity() {
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
-    private var id_pupuh : Int = 0
-
-    private lateinit var nama_pupuh :String
+    private var id_lagu_anak : Int = 0
+    private lateinit var nama_lagu_anak :String
+    private lateinit var desc_lagu_anak :String
+    private var id_user: Int = 0
+    private lateinit var sharedPreferences: SharedPreferences
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_audio_pupuh)
+        setContentView(R.layout.activity_add_lagu_anak)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Audio Pupuh"
+        supportActionBar!!.title = "Tambah Sekar Rare"
+
+        sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+        val role          = sharedPreferences.getString("ROLE", null)
+        val id            = sharedPreferences.getString("ID_ADMIN", null)
+        if (id != null) {
+            id_user =  id.toInt()
+        }
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
-            id_pupuh = bundle.getInt("id_pupuh")
-            nama_pupuh = bundle.getString("nama_kat_pupuh_user").toString()
+            id_lagu_anak = bundle.getInt("id_kat_lagu_anak")
+            nama_lagu_anak = bundle.getString("nama_kat_lagu_anak").toString()
+            desc_lagu_anak = bundle.getString("desc_kat_lagu_anak").toString()
         }
 
-        selectImageAudioPupuhUser.setOnClickListener {
+
+        selectImageLaguAnak.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-        submitAudioPupuhUser.setOnClickListener {
-            val judul_audio     = namaAudioPupuhUser.text.toString()
-            val audio     = linkAudioPupuhUser.text.toString()
+        submitLaguAnak.setOnClickListener {
+            val nama_post     = namaLaguAnak.text.toString()
+            val deskripsi     = deskripsiLaguAnak.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
             if(validateInput()){
-                postAudioPupuhAdmin(judul_audio, audio, gambar)
+                postLaguAnak(nama_post, deskripsi, gambar, id_user)
             }
         }
 
-        cancelSubmitAddAudioPupuhUser.setOnClickListener {
+        cancelSubmitAddLaguAnak.setOnClickListener {
             goBack()
         }
     }
 
-    private fun postAudioPupuhAdmin(judul_audio: String, audio: String, gambar: String) {
+    private fun postLaguAnak(namaPost: String, deskripsi: String, gambar: String, id_user: Int) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataAudioPupuh(id_pupuh, judul_audio, gambar, audio)
+        ApiService.endpoint.createDataLaguAnak(namaPost, deskripsi, gambar, id_lagu_anak, id_user)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -75,43 +88,43 @@ class AddAudioPupuhActivity : AppCompatActivity() {
                 ) {
                     if(response.body()?.status == 200){
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddLaguAnakActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                         goBack()
                     }else{
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddLaguAnakActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddLaguAnakActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllAudioPupuhActivity::class.java)
+        val intent = Intent(this, AllKategoriLaguAnakUserActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_pupuh", id_pupuh)
-        bundle.putString("nama_pupuh", nama_pupuh)
-//        bundle.putString("desc_pupuh_admin", desc_pupuh)
+        bundle.putInt("id_lagu_anak", id_lagu_anak)
+        bundle.putString("nama_lagu_anak", nama_lagu_anak)
+        bundle.putString("desc_lagu_anak", desc_lagu_anak)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }
 
     private fun validateInput(): Boolean {
-        if(namaAudioPupuhUser.text.toString().isEmpty()){
-            layoutNamaAudioPupuhUser.isErrorEnabled = true
-            layoutNamaAudioPupuhUser.error = "Nama audio tidak boleh kosong!"
+        if(namaLaguAnak.text.toString().isEmpty()){
+            layoutNamaLaguAnak.isErrorEnabled = true
+            layoutNamaLaguAnak.error = "Nama LaguAnak tidak boleh kosong!"
             return false
         }
 
-        if(linkAudioPupuhUser.text.toString().isEmpty()){
-            layoutLinkAudioPupuhUser.isErrorEnabled = true
-            layoutLinkAudioPupuhUser.error = "Link audio tidak boleh kosong!"
+        if(deskripsiLaguAnak.text.toString().isEmpty()){
+            layoutDeskripsiLaguAnak.isErrorEnabled = true
+            layoutDeskripsiLaguAnak.error = "Deskripsi LaguAnak tidak boleh kosong!"
             return false
         }
 
@@ -123,7 +136,7 @@ class AddAudioPupuhActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitImgAudioPupuhUser.setImageURI(imgUri) // handle chosen image
+            submitImgLaguAnak.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
     }

@@ -1,23 +1,24 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.kidung
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.user.kidung.AllKidungActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
-import kotlinx.android.synthetic.main.activity_add_pupuh.*
+import kotlinx.android.synthetic.main.activity_add_kidung.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,62 +26,46 @@ import java.io.ByteArrayOutputStream
 import java.util.*
 
 @Suppress("DEPRECATION")
-class AddPupuhActivity : AppCompatActivity() {
+class AddKidungActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
-    private var id_pupuh : Int = 0
-    private lateinit var nama_pupuh :String
-    private lateinit var desc_pupuh :String
-    private var id_user: Int = 0
-    private lateinit var sharedPreferences: SharedPreferences
+    private var yadnya : String? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_pupuh)
+        setContentView(R.layout.activity_add_kidung)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Pupuh"
+        supportActionBar!!.title = "Tambah Sekar Madya"
+        setupSpinnerYadnya()
 
-        sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
-        val role          = sharedPreferences.getString("ROLE", null)
-        val id            = sharedPreferences.getString("ID_ADMIN", null)
-        if (id != null) {
-           id_user =  id.toInt()
-        }
-
-        val bundle :Bundle ?= intent.extras
-        if (bundle != null) {
-            id_pupuh = bundle.getInt("id_kat_pupuh")
-            nama_pupuh = bundle.getString("nama_kat_pupuh").toString()
-            desc_pupuh = bundle.getString("desc_kat_pupuh").toString()
-        }
-
-
-        selectImagePupuh.setOnClickListener {
+        selectImageKidung.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-        submitPupuh.setOnClickListener {
-            val nama_post     = namaPupuh.text.toString()
-            val deskripsi     = deskripsiPupuh.text.toString()
+        submitKidung.setOnClickListener {
+            val nama_post     = namaKidung.text.toString()
+            val kategori      = yadnya
+//            val video         = linkKidung.text.toString()
+            val deskripsi     = deskripsiKidung.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
             if(validateInput()){
-                postPupuh(nama_post, deskripsi, gambar, id_user)
+                postKidung(nama_post, kategori!!, deskripsi, gambar)
             }
         }
 
-        cancelSubmitAddPupuh.setOnClickListener {
+        cancelSubmitAddKidung.setOnClickListener {
             goBack()
         }
     }
 
-    private fun postPupuh(namaPost: String, deskripsi: String, gambar: String, id_user: Int) {
+    private fun postKidung(namaPost: String, kategori: String, deskripsi: String, gambar: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataPupuh(namaPost, deskripsi, gambar, id_pupuh, id_user)
+        ApiService.endpoint.createDataKidungAdmin(namaPost,  kategori, deskripsi, gambar)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -88,47 +73,65 @@ class AddPupuhActivity : AppCompatActivity() {
                 ) {
                     if(response.body()?.status == 200){
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddKidungActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                         goBack()
                     }else{
                         progressDialog.dismiss()
-                        Toast.makeText(this@AddPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddKidungActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@AddPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddKidungActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
-        val bundle = Bundle()
-        bundle.putInt("id_pupuh", id_pupuh)
-        bundle.putString("nama_pupuh", nama_pupuh)
-        bundle.putString("desc_pupuh", desc_pupuh)
-        intent.putExtras(bundle)
+        val intent = Intent(this, AllKidungActivity::class.java)
         startActivity(intent)
         finish()
     }
 
+    private fun setupSpinnerYadnya() {
+        val options = listOf("Dewa Yadnya", "Pitra Yadnya", "Manusa Yadnya", "Rsi Yadnya", "Bhuta Yadnya")
+        val adapter = ArrayAdapter(this, R.layout.spinner_yadnya, options)
+        with(jenisKidung){
+            setText("Dewa Yadnya", false)
+            if(jenisKidung.text.toString().isNotEmpty())
+                yadnya = jenisKidung.text.toString()
+            onItemClickListener = this@AddKidungActivity
+            setAdapter(adapter)
+        }
+    }
+
     private fun validateInput(): Boolean {
-        if(namaPupuh.text.toString().isEmpty()){
-            layoutNamaPupuh.isErrorEnabled = true
-            layoutNamaPupuh.error = "Nama Pupuh tidak boleh kosong!"
+        if(namaKidung.text.toString().isEmpty()){
+            layoutNamaKidung.isErrorEnabled = true
+            layoutNamaKidung.error = "Nama Kidung tidak boleh kosong!"
             return false
         }
 
-        if(deskripsiPupuh.text.toString().isEmpty()){
-            layoutDeskripsiPupuh.isErrorEnabled = true
-            layoutDeskripsiPupuh.error = "Deskripsi Pupuh tidak boleh kosong!"
+//        if(linkKidung.text.toString().isEmpty()){
+//            layoutLinkKidung.isErrorEnabled = true
+//            layoutLinkKidung.error = "Link Youtube tidak boleh kosong!"
+//            return false
+//        }
+
+        if(deskripsiKidung.text.toString().isEmpty()){
+            layoutDeskripsiKidung.isErrorEnabled = true
+            layoutDeskripsiKidung.error = "Deskripsi Kidung tidak boleh kosong!"
             return false
         }
 
         return true
+    }
+
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        val item = p0?.getItemAtPosition(p2).toString()
+        yadnya = item
     }
 
     @Deprecated("Deprecated in Java")
@@ -136,7 +139,7 @@ class AddPupuhActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitImgPupuh.setImageURI(imgUri) // handle chosen image
+            submitImgKidung.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
     }

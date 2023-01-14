@@ -22,6 +22,24 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".AddKidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.kidung.AllKidungUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.laguanak.AddLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.laguanak.AllKategoriLaguAnakUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.kakawin.AddKakawinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.kakawin.AllKategoriKakawinUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.kidung.AddYadnyaToKidungAdminActivity"
             android:exported="false" />
         <activity
@@ -154,7 +172,7 @@
             android:name=".user.EditAudioPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AddAudioPupuhActivity"
+            android:name=".user.pupuh.AddAudioPupuhActivity"
             android:exported="false" />
         <activity
             android:name=".user.AllAudioPupuhActivity"
@@ -181,7 +199,7 @@
             android:name=".user.DetailPupuhUserActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllKategoriPupuhUserActivity"
+            android:name=".user.pupuh.AllKategoriPupuhUserActivity"
             android:exported="false" />
         <activity
             android:name=".admin.pupuh.AddYadnyaToPupuhAdminActivity"
@@ -280,13 +298,13 @@
             android:name=".user.AllKategoriPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllKakawinActivity"
+            android:name=".user.kakawin.AllKakawinActivity"
             android:exported="false" />
         <activity
             android:name=".user.AlllLaguAnakActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllPupuhActivity"
+            android:name=".user.pupuh.AllPupuhActivity"
             android:exported="false" />
         <activity
             android:name=".ListGitaActivity"
@@ -564,7 +582,7 @@
             android:exported="false"
             android:parentActivityName=".user.MainActivity" />
         <activity
-            android:name=".user.AllKidungActivity"
+            android:name=".user.kidung.AllKidungActivity"
             android:exported="false"
             android:parentActivityName=".user.MainActivity" />
         <activity

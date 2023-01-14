@@ -14,6 +14,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnKakawinAdminAdapter
 import com.example.ekidungmantram.admin.kakawin.AllYadnyaonKakawinAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.AddYadnyaAdminActivity
+import com.example.ekidungmantram.admin.upacarayadnya.AllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.YadnyaKakawinAdminModel
@@ -46,7 +47,7 @@ class AddYadnyaToKakawinAdminActivity : AppCompatActivity() {
 
             fabYadnyaKakawinAdmin.setOnClickListener {
 //                val bundle = Bundle()
-                val intent = Intent(this, AddYadnyaAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaAdminActivity::class.java)
 //                bundle.putInt("id_kat_kakawin_admin", postID)
 //                bundle.putString("nama_kat_kakawin_admin", namaPost)
 //                bundle.putString("desc_kat_kakawin_admin", descPost)

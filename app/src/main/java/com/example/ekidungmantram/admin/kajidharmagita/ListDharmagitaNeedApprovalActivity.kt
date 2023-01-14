@@ -7,14 +7,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.AllGitaAdapter
 import com.example.ekidungmantram.adapter.admin.AllDharmagitaNeedApprovalAdminAdapter
-import com.example.ekidungmantram.model.AllGitaModel
 import com.example.ekidungmantram.model.adminmodel.AllDharmagitaAdminModel
-import com.example.ekidungmantram.user.AllKidungActivity
-import kotlinx.android.synthetic.main.activity_all_gita.*
 import kotlinx.android.synthetic.main.activity_list_dharmagita_need_approval.*
-import kotlinx.android.synthetic.main.activity_list_mantram_need_approval.*
 
 class ListDharmagitaNeedApprovalActivity : AppCompatActivity() {
     private lateinit var rvDharmagita: RecyclerView

@@ -1,13 +1,15 @@
 package com.example.ekidungmantram.adapter
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.ItemSlideBinding
 import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.kakawin.AllKakawinActivity
+import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 
 
 class CardSliderAdapter(private val items: List<CardSliderData>) :RecyclerView.Adapter<CardSliderAdapter.CardViewHolder>() {

@@ -209,7 +209,7 @@ class SearchFragment : Fragment() {
                                     allYadnya1.visibility      = View.VISIBLE
                                     allYadnya2.visibility      = View.GONE
                                 }else if(p0.length > 2){
-                                    val filter = datalist.filter { it.nama_post.contains("$p0", true) }
+                                    val filter = datalist.filter { it.nama_post.contains("$p0", true)}
                                     alldharmagitaAdapter = AllDharmagitaAdapter(filter as ArrayList<AllDharmagitaModel>,
                                         object : AllDharmagitaAdapter.OnAdapterAllDharmagitaListener{
                                             override fun onClick(result: AllDharmagitaModel) {

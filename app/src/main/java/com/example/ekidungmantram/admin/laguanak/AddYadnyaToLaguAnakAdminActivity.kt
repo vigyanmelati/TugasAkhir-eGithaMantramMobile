@@ -15,6 +15,7 @@ import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnLaguAnakAdminAdapt
 import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnPupuhAdminAdapter
 import com.example.ekidungmantram.admin.pupuh.AllYadnyaOnPupuhAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.AddYadnyaAdminActivity
+import com.example.ekidungmantram.admin.upacarayadnya.AllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.YadnyaLaguAnakAdminModel
@@ -49,7 +50,7 @@ class AddYadnyaToLaguAnakAdminActivity : AppCompatActivity() {
 
             fabYadnyaLaguAnakAdmin.setOnClickListener {
 //                val bundle = Bundle()
-                val intent = Intent(this, AddYadnyaAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaAdminActivity::class.java)
 //                bundle.putInt("id_kat_pupuh_admin", postID)
 //                bundle.putString("nama_kat_pupuh_admin", namaPost)
 //                bundle.putString("desc_kat_pupuh_admin", descPost)

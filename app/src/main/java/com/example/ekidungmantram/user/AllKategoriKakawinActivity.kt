@@ -1,20 +1,21 @@
 package com.example.ekidungmantram.user
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriKakawinAdapter
-import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriKakawinModel
-import com.example.ekidungmantram.model.KategoriPupuhModel
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_kakawin.*
-import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.daftar_nama
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +24,7 @@ import retrofit2.Response
 class AllKategoriKakawinActivity : AppCompatActivity() {
     private lateinit var kategoriKakawinAdapter : KategoriKakawinAdapter
     private lateinit var setAdapter    : KategoriKakawinAdapter
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_kakawin)
@@ -45,6 +47,32 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
             swipeKategoriKakawin.setOnRefreshListener {
                 getAllKategoriKakawin(postID)
                 swipeKategoriKakawin.isRefreshing = false
+            }
+            sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+            val role          = sharedPreferences.getString("ROLE", null)
+            val id            = sharedPreferences.getString("ID_ADMIN", null)
+            val mesage = sharedPreferences.getString("MESAGE", null)
+
+            fabKakawin.setOnClickListener {
+                if(id == null){
+                    val bundle = Bundle()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    bundle.putString("APP", "kakawin")
+                    bundle.putInt("id_kakawin", postID)
+                    bundle.putString("nama_kakawin", namaPost)
+                    bundle.putString("desc_kakawin", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val bundle = Bundle()
+                    val intent = Intent(this, AllKategoriKakawinUserActivity::class.java)
+                    bundle.putInt("id_kakawin", postID)
+                    bundle.putString("nama_kakawin", namaPost)
+                    bundle.putString("desc_kakawin", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
             }
         }
 

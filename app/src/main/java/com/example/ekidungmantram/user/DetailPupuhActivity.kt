@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.bumptech.glide.Glide
-import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.model.*
-import kotlinx.android.synthetic.main.activity_detail_kidung.*
-import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
+import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,18 +1,24 @@
 package com.example.ekidungmantram.user
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriLaguAnakAdapter
 import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriLaguAnakModel
 import com.example.ekidungmantram.model.KategoriPupuhModel
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
+import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakUserActivity
+import kotlinx.android.synthetic.main.activity_all_kategori_kakawin.*
 import kotlinx.android.synthetic.main.activity_all_kategori_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.daftar_nama
@@ -23,6 +29,7 @@ import retrofit2.Response
 class AllKategoriLaguAnakActivity : AppCompatActivity() {
     private lateinit var kategoriLaguAnakAdapter : KategoriLaguAnakAdapter
     private lateinit var setAdapter    : KategoriLaguAnakAdapter
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_lagu_anak)
@@ -45,6 +52,32 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
             swipeKategoriLaguAnak.setOnRefreshListener {
                 getAllKategoriLaguAnak(postID)
                 swipeKategoriLaguAnak.isRefreshing = false
+            }
+            sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+            val role          = sharedPreferences.getString("ROLE", null)
+            val id            = sharedPreferences.getString("ID_ADMIN", null)
+            val mesage = sharedPreferences.getString("MESAGE", null)
+
+            fabLaguAnak.setOnClickListener {
+                if(id == null){
+                    val bundle = Bundle()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    bundle.putString("APP", "laguAnak")
+                    bundle.putInt("id_lagu_anak", postID)
+                    bundle.putString("nama_lagu_anak", namaPost)
+                    bundle.putString("desc_lagu_anak", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val bundle = Bundle()
+                    val intent = Intent(this, AllKategoriLaguAnakUserActivity::class.java)
+                    bundle.putInt("id_lagu_anak", postID)
+                    bundle.putString("nama_lagu_anak", namaPost)
+                    bundle.putString("desc_lagu_anak", descPost)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
             }
         }
 

@@ -15,6 +15,7 @@ import com.example.ekidungmantram.adapter.admin.AllTabuhNotOnGamelanAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnPupuhAdminAdapter
 import com.example.ekidungmantram.admin.gamelan.DetailGamelanAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.AddYadnyaAdminActivity
+import com.example.ekidungmantram.admin.upacarayadnya.AllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllTabuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
@@ -50,7 +51,7 @@ class AddYadnyaToPupuhAdminActivity : AppCompatActivity() {
 
             fabYadnyaPupuhAdmin.setOnClickListener {
 //                val bundle = Bundle()
-                val intent = Intent(this, AddYadnyaAdminActivity::class.java)
+                val intent = Intent(this, AllYadnyaAdminActivity::class.java)
 //                bundle.putInt("id_kat_pupuh_admin", postID)
 //                bundle.putString("nama_kat_pupuh_admin", namaPost)
 //                bundle.putString("desc_kat_pupuh_admin", descPost)

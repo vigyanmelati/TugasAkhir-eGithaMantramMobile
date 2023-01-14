@@ -1194,6 +1194,17 @@ interface ApiEndpoint {
     fun getListAudioKidung(@Path("id_post") id:Int): Call<AudioKidungModel>
     @GET("yadnyakidung/{id_kidung}")
     fun getYadnyaKidung(@Path("id_kidung") id:Int): Call<YadnyaKidungModel>
+    @GET("listkategorikidunguser/{id_kidung}/{id_user}")
+    fun getKategoriKidungUser( @Path("id_user") id_user : Int) : Call<ArrayList<KategoriKidungUserModel>>
+    @FormUrlEncoded
+    @POST("createkidung")
+    fun createDataKidung (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_kidung") id_kidung:Int,
+        @Field("id_user") id_user:Int,
+    ):Call<CrudModel>
 
     //Mantram
     @GET("listallmantram")
@@ -1406,6 +1417,17 @@ interface ApiEndpoint {
     fun getListAudioLaguAnak(@Path("id_post") id:Int): Call<AudioLaguAnakModel>
     @GET("yadnyalaguanak/{id_lagu_anak}")
     fun getYadnyaLaguAnak(@Path("id_lagu_anak") id:Int): Call<YadnyaLaguAnakModel>
+    @GET("listkategorilaguanakuser/{id_lagu_anak}/{id_user}")
+    fun getKategoriLaguAnakUser(@Path("id_lagu_anak") id: Int, @Path("id_user") id_user : Int) : Call<ArrayList<KategoriLaguAnakUserModel>>
+    @FormUrlEncoded
+    @POST("createlaguanak")
+    fun createDataLaguAnak (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_lagu_anak") id_lagu_anak:Int,
+        @Field("id_user") id_user:Int,
+    ):Call<CrudModel>
 
     //Kakawin
     @GET("listallkakawin")
@@ -1422,4 +1444,30 @@ interface ApiEndpoint {
     fun getListAudioKakawin(@Path("id_post") id:Int): Call<AudioKakawinModel>
     @GET("yadnyakakawin/{id_kakawin}")
     fun getYadnyaKakawin(@Path("id_kakawin") id:Int): Call<YadnyaKakawinModel>
+    @GET("listkategorikakawinuser/{id_kakawin}/{id_user}")
+    fun getKategoriKakawinUser(@Path("id_kakawin") id: Int, @Path("id_user") id_user : Int) : Call<ArrayList<KategoriKakawinUserModel>>
+    @FormUrlEncoded
+    @POST("createkakawin")
+    fun createDataKakawin (
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+        @Field("id_kakawin") id_pupuh:Int,
+        @Field("id_user") id_user:Int,
+    ):Call<CrudModel>
+    @GET("showkakawin/{id_post}")
+    fun getShowKakawin(@Path("id_post") id:Int) : Call<DetailKakawinModel>
+    @FormUrlEncoded
+    @POST("editkakawin/{id_post}")
+    fun updateKakawin (
+        @Path("id_post") id:Int,
+        @Field("nama_post") namaPost:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("gambar") gambar:String,
+    ):Call<CrudModel>
+
+    @POST("deletekakawin/{id_post}")
+    fun deleteKakawin (
+        @Path("id_post") id:Int
+    ):Call<CrudModel>
 }
