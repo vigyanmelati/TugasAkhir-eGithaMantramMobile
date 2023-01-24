@@ -1,48 +1,45 @@
-package com.example.ekidungmantram.admin.adminmanager
+package com.example.ekidungmantram.admin.usermanager
 
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.bumptech.glide.Glide
-import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.mantram.AllMantramAdminActivity
+import com.example.ekidungmantram.admin.adminmanager.AllAdminActivity
+import com.example.ekidungmantram.admin.adminmanager.EditAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailDataAdminModel
-import com.example.ekidungmantram.model.adminmodel.DetailMantramAdminModel
 import kotlinx.android.synthetic.main.activity_detail_admin.*
-import kotlinx.android.synthetic.main.activity_detail_mantram_admin.*
+import kotlinx.android.synthetic.main.activity_detail_user.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailAdminActivity : AppCompatActivity() {
+class DetailUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_admin)
+        setContentView(R.layout.activity_detail_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Detail Ahli Dharmagita"
+        supportActionBar!!.title = "Detail Pengguna"
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val userID = bundle.getInt("id_user")
             getDetailData(userID)
 
-//            toEditAdmin.setOnClickListener {
+//            toEditUser.setOnClickListener {
 //                goToEditAdmin(userID)
 //            }
 
-            deleteAdmin.setOnClickListener {
+            deleteUser.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hapus Ahli Dharmagita")
-                    .setMessage("Apakah anda yakin ingin menghapus ahli Dharmagita ini?")
+                builder.setTitle("Hapus Pengguna")
+                    .setMessage("Apakah anda yakin ingin menghapus pengguna ini?")
                     .setCancelable(true)
                     .setPositiveButton("Iya") { _, _ ->
-                        hapusAdmin(userID)
+                        hapusUser(userID)
                     }.setNegativeButton("Batal") { dialogInterface, _ ->
                         dialogInterface.cancel()
                     }.show()
@@ -50,7 +47,7 @@ class DetailAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun hapusAdmin(userID: Int) {
+    private fun hapusUser(userID: Int) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Menghapus Data")
         progressDialog.show()
@@ -58,17 +55,17 @@ class DetailAdminActivity : AppCompatActivity() {
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
-                    Toast.makeText(this@DetailAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailUserActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     goBack()
                 }else{
                     progressDialog.dismiss()
-                    Toast.makeText(this@DetailAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailUserActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                 progressDialog.dismiss()
-                Toast.makeText(this@DetailAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailUserActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -90,8 +87,8 @@ class DetailAdminActivity : AppCompatActivity() {
             ) {
                 val result = response.body()!!
                 result.let {
-                    namaDetailAdmin.setText(result.name)
-                    emailDetailAdmin.setText(result.email)
+                    namaDetailUser.setText(result.name)
+                    emailDetailUser.setText(result.email)
                 }
             }
 
@@ -103,7 +100,7 @@ class DetailAdminActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllAdminActivity::class.java)
+        val intent = Intent(this, AllUserActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -96,6 +96,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllLirikPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -128,6 +129,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddLirikPupuhAdminActivity"
+    tools:context=".user.pupuh.RecordAudioPupuhActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,45 +18,55 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Lirik Sekar Alit"
+                android:text="Record Audio"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"/>
-            <TextView
-                android:id="@+id/desc_lirik_pupuh_admin"
-                android:layout_marginTop="-14dp"
-                android:paddingBottom="10dp"
+
+            <ImageView
+                android:id="@+id/submitImgAudioKidungAdmin"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/audiorecord"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Isi form dibawah dengan data yang sesuai"
-                android:textColor="@color/grey_200"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:alpha="0.5"
-                android:layout_marginBottom="25dp"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddLirikPupuh"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan lirik pupuh">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lirikPupuhForm"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:inputType="text|textMultiLine"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp">
+                <Button
+                    android:id="@+id/startAudioPupuh"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:textSize="12sp"
+                    android:text="Start"/>
+
+                <Button
+                    android:id="@+id/stopAudioPupuh"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Stop"/>
+            </LinearLayout>
+
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitLirikPupuh"
+                android:id="@+id/submitAudioKidungAdmin"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Lirik Pupuh"/>
+                android:text="Simpan Audio"/>
             <TextView
-                android:id="@+id/cancelSubmitLirikPupuh"
+                android:id="@+id/cancelSubmitAddAudioKidungAdmin"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

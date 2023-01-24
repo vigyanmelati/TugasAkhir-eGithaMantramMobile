@@ -24,7 +24,10 @@ class AddLirikPupuhAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
             val namaPost = bundle.getString("nama_pupuh")
+            val padalingsa = bundle.getString("padalingsa")
             Log.d("id_add_pupuh", postID.toString())
+
+            desc_lirik_pupuh_admin.text = padalingsa
 
             submitLirikPupuh.setOnClickListener {
                 val lirikPupuh     = lirikPupuhForm.text.toString()

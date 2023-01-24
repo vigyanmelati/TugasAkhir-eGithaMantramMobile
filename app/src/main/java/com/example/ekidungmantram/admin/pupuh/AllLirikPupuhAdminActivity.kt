@@ -28,6 +28,7 @@ import retrofit2.Response
 
 class AllLirikPupuhAdminActivity : AppCompatActivity() {
     private lateinit var setAdapter : AllDataLirikPupuhAdminAdapter
+    private lateinit var padalingsa :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_lirik_pupuh_admin)
@@ -36,6 +37,7 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
             val namaPost = bundle.getString("nama_pupuh")
+            padalingsa = bundle.getString("padalingsa").toString()
 
             namaPupuhLirik.text = namaPost
             allLirikPupuhAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -49,6 +51,7 @@ class AllLirikPupuhAdminActivity : AppCompatActivity() {
             fabLirikPupuh.setOnClickListener {
                 val intent = Intent(this, AddLirikPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
+                bundle.putString("padalingsa", padalingsa)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

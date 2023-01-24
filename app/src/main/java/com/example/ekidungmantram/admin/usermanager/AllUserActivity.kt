@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.admin.adminmanager
+package com.example.ekidungmantram.admin.usermanager
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,34 +6,35 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataAdminAdapter
+import com.example.ekidungmantram.adapter.user.AllDataUserAdapter
+import com.example.ekidungmantram.admin.adminmanager.DetailAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllDataAdminModel
 import kotlinx.android.synthetic.main.activity_all_admin.*
+import kotlinx.android.synthetic.main.activity_all_user.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllAdminActivity : AppCompatActivity() {
-    private lateinit var adminAdapter  : AllDataAdminAdapter
-    private lateinit var setAdapter    : AllDataAdminAdapter
+class AllUserActivity : AppCompatActivity() {
+    private lateinit var adminAdapter  : AllDataUserAdapter
+    private lateinit var setAdapter    : AllDataUserAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_admin)
-
+        setContentView(R.layout.activity_all_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Kelola Ahli Dharmagita"
+        supportActionBar!!.title = "Kelola Pengguna"
 
-        allDataAdmin1.layoutManager = LinearLayoutManager(applicationContext)
-        allDataAdmin2.layoutManager = LinearLayoutManager(applicationContext)
-        getAllDataAdmin()
+        allDataUser1.layoutManager = LinearLayoutManager(applicationContext)
+        allDataUser2.layoutManager = LinearLayoutManager(applicationContext)
+        getAllDataUser()
 
-        swipeAdminManager.setOnRefreshListener {
-            getAllDataAdmin()
-            swipeAdminManager.isRefreshing = false
+        swipeUserManager.setOnRefreshListener {
+            getAllDataUser()
+            swipeUserManager.isRefreshing = false
         }
 
 //        fabAdmin.setOnClickListener {
@@ -46,8 +47,8 @@ class AllAdminActivity : AppCompatActivity() {
         Log.d("HomeFragment", message)
     }
 
-    private fun getAllDataAdmin() {
-        ApiService.endpoint.getAllListAdmin()
+    private fun getAllDataUser() {
+        ApiService.endpoint.getAllListUser()
             .enqueue(object: Callback<ArrayList<AllDataAdminModel>> {
                 override fun onResponse(
                     call: Call<ArrayList<AllDataAdminModel>>,
@@ -55,62 +56,62 @@ class AllAdminActivity : AppCompatActivity() {
                 ) {
                     val datalist   = response.body()
                     if(datalist != null){
-                        swipeAdminManager.visibility   = View.VISIBLE
-                        shimmerAdminManager.visibility = View.GONE
+                        swipeUserManager.visibility   = View.VISIBLE
+                        shimmerUserManager.visibility = View.GONE
                     }else{
-                        swipeAdminManager.visibility   = View.GONE
-                        shimmerAdminManager.visibility = View.VISIBLE
+                        swipeUserManager.visibility   = View.GONE
+                        shimmerUserManager.visibility = View.VISIBLE
                     }
-                    setAdapter = datalist?.let { AllDataAdminAdapter(it,
-                        object : AllDataAdminAdapter.OnAdapterAllDataAdminListener{
+                    setAdapter = datalist?.let { AllDataUserAdapter(it,
+                        object : AllDataUserAdapter.OnAdapterAllDataUserListener{
                             override fun onClick(result: AllDataAdminModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@AllAdminActivity, DetailAdminActivity::class.java)
+                                val intent = Intent(this@AllUserActivity, DetailUserActivity::class.java)
                                 bundle.putInt("id_user", result.id_user)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
                         }) }!!
-                    allDataAdmin1.adapter  = setAdapter
-                    noAdminData.visibility = View.GONE
+                    allDataUser1.adapter  = setAdapter
+                    noUserData.visibility = View.GONE
                     setShimmerToStop()
 
-                    cariDataAdmin.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                    cariDataUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                         androidx.appcompat.widget.SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(p0: String?): Boolean = false
 
                         override fun onQueryTextChange(p0: String?): Boolean {
                             if(p0 != null){
                                 if(p0.isEmpty()){
-                                    noAdminData.visibility   = View.GONE
-                                    allDataAdmin1.visibility = View.VISIBLE
-                                    allDataAdmin2.visibility = View.GONE
+                                    noUserData.visibility   = View.GONE
+                                    allDataUser1.visibility = View.VISIBLE
+                                    allDataUser2.visibility = View.GONE
                                 }else if(p0.length > 2){
                                     val filter = datalist.filter { it.name.contains("$p0", true) }
-                                    adminAdapter = AllDataAdminAdapter(filter as ArrayList<AllDataAdminModel>,
-                                        object : AllDataAdminAdapter.OnAdapterAllDataAdminListener{
+                                    adminAdapter = AllDataUserAdapter(filter as ArrayList<AllDataAdminModel>,
+                                        object : AllDataUserAdapter.OnAdapterAllDataUserListener{
                                             override fun onClick(result: AllDataAdminModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@AllAdminActivity, DetailAdminActivity::class.java)
+                                                val intent = Intent(this@AllUserActivity, DetailUserActivity::class.java)
                                                 bundle.putInt("id_user", result.id_user)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
                                         })
                                     if(filter.isEmpty()){
-                                        noAdminData.visibility   = View.VISIBLE
-                                        allDataAdmin1.visibility = View.GONE
-                                        allDataAdmin2.visibility = View.GONE
+                                        noUserData.visibility   = View.VISIBLE
+                                        allDataUser1.visibility = View.GONE
+                                        allDataUser2.visibility = View.GONE
                                     }
                                     if(p0.isNotEmpty()){
-                                        noAdminData.visibility   = View.GONE
-                                        allDataAdmin2.visibility = View.VISIBLE
-                                        allDataAdmin2.adapter    = adminAdapter
-                                        allDataAdmin1.visibility = View.INVISIBLE
+                                        noUserData.visibility   = View.GONE
+                                        allDataUser2.visibility = View.VISIBLE
+                                        allDataUser2.adapter    = adminAdapter
+                                        allDataUser1.visibility = View.INVISIBLE
                                     }else{
-                                        allDataAdmin1.visibility = View.VISIBLE
-                                        allDataAdmin2.visibility = View.GONE
-                                        noAdminData.visibility   = View.GONE
+                                        allDataUser1.visibility = View.VISIBLE
+                                        allDataUser2.visibility = View.GONE
+                                        noUserData.visibility   = View.GONE
                                     }
                                 }
                             }
@@ -128,8 +129,8 @@ class AllAdminActivity : AppCompatActivity() {
     }
 
     private fun setShimmerToStop() {
-        shimmerAdminManager.stopShimmer()
-        shimmerAdminManager.visibility = View.GONE
-        swipeAdminManager.visibility   = View.VISIBLE
+        shimmerUserManager.stopShimmer()
+        shimmerUserManager.visibility = View.GONE
+        swipeUserManager.visibility   = View.VISIBLE
     }
 }

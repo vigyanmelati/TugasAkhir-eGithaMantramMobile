@@ -57,6 +57,16 @@ class AddAudioPupuhActivity : AppCompatActivity() {
             }
         }
 
+        recordAudioPupuhUser.setOnClickListener {
+            val intent = Intent(this, RecordAudioPupuhActivity::class.java)
+//            val bundle = Bundle()
+//            bundle.putInt("id_pupuh", id_pupuh)
+//            bundle.putString("nama_pupuh", nama_pupuh)
+////        bundle.putString("desc_pupuh_admin", desc_pupuh)
+//            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+
         cancelSubmitAddAudioPupuhUser.setOnClickListener {
             goBack()
         }

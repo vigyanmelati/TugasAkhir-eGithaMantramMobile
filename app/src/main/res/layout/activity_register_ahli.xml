@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".admin.RegisterAhliActivity"
     android:padding="18dp"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/back_arrow"
+        android:id="@+id/back_arrow_regis_ahli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -39,24 +39,25 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="30sp"/>
 
-<!--            <TextView-->
-<!--                android:id="@+id/login_desc"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/login_desc"-->
-<!--                android:textColor="#787474"-->
-<!--                android:textSize="15sp"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:text="Ahli Dharmagita"
+                android:textSize="20sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/usernameLayout"
-                android:layout_marginTop="80dp"
+                android:id="@+id/nameLayout_regis_ahli"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@android:color/transparent"
@@ -64,18 +65,38 @@
                 android:paddingLeft="-15dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
+                    android:id="@+id/name_regis_ahli"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="Email"
+                    android:hint="Name"
                     android:drawableEnd="@drawable/user"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/passwordLayout"
+                android:id="@+id/usernameLayout_regis_ahli"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:paddingLeft="-15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username_regis_ahli"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Email"
+                    android:drawableEnd="@drawable/ic_email"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/passwordLayout_regis_ahli"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +106,7 @@
                 android:paddingLeft="-15dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
+                    android:id="@+id/password_regis_ahli"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -93,56 +114,58 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/fileLayout_regis_ahli"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:paddingLeft="-15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/file_regis_ahli"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Link File Bukti Ahli Dharmagita"
+                    android:drawableEnd="@drawable/ic_file"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/signup_button_ahli"
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Login"
+                android:text="Sign Up"
                 android:backgroundTint="#EC3F40"/>
-
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:text="Don't have an account?"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/regis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Sign Up Pengguna"
-                    android:textStyle="bold"
-                    android:textColor="@color/red_200"
-                    android:textSize="15sp"/>
 
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"
-                    android:text="or"
+                    android:text="Already have an account?"
                     android:textSize="15sp"/>
 
                 <TextView
-                    android:id="@+id/regis_ahli"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/login_regis_ahli"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sign Up Ahli Dharmagita"
+                    android:text="Login"
                     android:textStyle="bold"
                     android:textColor="@color/red_200"
                     android:textSize="15sp"/>

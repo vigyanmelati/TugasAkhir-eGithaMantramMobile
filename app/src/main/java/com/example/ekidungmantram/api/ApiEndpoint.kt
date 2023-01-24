@@ -28,12 +28,27 @@ interface ApiEndpoint {
         @Field("name") name:String,
     ):Call<CrudModel>
 
+    @FormUrlEncoded
+    @POST("registerahli")
+    fun registerAhli (
+        @Field("email") email:String,
+        @Field("password") password:String,
+        @Field("name") name:String,
+        @Field("file") file:String,
+    ):Call<CrudModel>
+
     //Admin
     //Home
     @GET("admin/listyadnya")
     fun getYadnyaAdminHomeList(): Call<ArrayList<AllYadnyaHomeAdminModel>>
     @GET("admin/listdharmagita")
     fun getDharmagitaAdminHomeList(): Call<ArrayList<AllDharmagitaHomeAdminModel>>
+    @GET("admin/listnoapprovaldharmagita")
+    fun getDharmagitaNoApprovalAdminHomeList(): Call<JumlahModel>
+    @GET("admin/listnoapprovalahli")
+    fun getAhliNoApprovalAdminHomeList(): Call<JumlahModel>
+    @GET("admin/listapprovaldharmagita")
+    fun getDharmagitaApprovalAdminHomeList(): Call<JumlahModel>
 
     //Mantram
     @GET("admin/listallmantram")
@@ -103,6 +118,10 @@ interface ApiEndpoint {
         @Path("id_post") id:Int,
         @Field("stats") stats:String,
     ):Call<CrudModel>
+
+    //User Management
+    @GET("admin/listuser")
+    fun getAllListUser() : Call<ArrayList<AllDataAdminModel>>
 
     //Admin Management
     @GET("admin/listadmin")
@@ -1194,7 +1213,7 @@ interface ApiEndpoint {
     fun getListAudioKidung(@Path("id_post") id:Int): Call<AudioKidungModel>
     @GET("yadnyakidung/{id_kidung}")
     fun getYadnyaKidung(@Path("id_kidung") id:Int): Call<YadnyaKidungModel>
-    @GET("listkategorikidunguser/{id_kidung}/{id_user}")
+    @GET("listkategorikidunguser/{id_user}")
     fun getKategoriKidungUser( @Path("id_user") id_user : Int) : Call<ArrayList<KategoriKidungUserModel>>
     @FormUrlEncoded
     @POST("createkidung")

@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ekidungmantram.admin.HomeAdminActivity
+import com.example.ekidungmantram.admin.RegisterAhliActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AdminModel
 import com.example.ekidungmantram.user.*
@@ -48,6 +49,12 @@ class LoginActivity : AppCompatActivity() {
 
         regis.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        regis_ahli.setOnClickListener {
+            val intent = Intent(this, RegisterAhliActivity::class.java)
             startActivity(intent)
             finish()
         }

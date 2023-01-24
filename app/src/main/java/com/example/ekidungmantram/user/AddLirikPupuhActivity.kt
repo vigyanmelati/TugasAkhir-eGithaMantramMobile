@@ -24,6 +24,7 @@ class AddLirikPupuhActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
             val namaPost = bundle.getString("nama_pupuh")
+            val padalingsa = bundle.getString("padalingsa")
             Log.d("id_add_pupuh", postID.toString())
 
             submitLirikPupuhUser.setOnClickListener {
@@ -32,6 +33,8 @@ class AddLirikPupuhActivity : AppCompatActivity() {
                     postLirik(postID, lirikPupuh, namaPost!!)
                 }
             }
+
+            padalingsa_user.text = padalingsa
 
             cancelSubmitLirikPupuhUser.setOnClickListener {
                 goBack(postID, namaPost!!)

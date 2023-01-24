@@ -33,6 +33,7 @@ import com.example.ekidungmantram.admin.pupuh.AllPupuhAdminActivity
 import com.example.ekidungmantram.admin.tabuh.AllTabuhAdminActivity
 import com.example.ekidungmantram.admin.tari.AllTariAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.AllYadnyaAdminActivity
+import com.example.ekidungmantram.admin.usermanager.AllUserActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AdminModel
 import com.example.ekidungmantram.user.MainActivity
@@ -79,6 +80,8 @@ class HomeAdminActivity : AppCompatActivity() {
             val nav_Menu: Menu = navView.getMenu()
 //            nav_Menu.findItem(R.id.approval).setVisible(false)
             nav_Menu.findItem(R.id.kelola_admin).setVisible(false)
+            nav_Menu.findItem(R.id.approval_ahli).setVisible(false)
+            nav_Menu.findItem(R.id.kelola_user).setVisible(false)
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }
 
@@ -98,6 +101,7 @@ class HomeAdminActivity : AppCompatActivity() {
 //                R.id.gita_approve -> goToKajiGita()
                 R.id.prosesi_upacara_admin -> goToProsesi()
                 R.id.kelola_admin -> goToAdmin()
+                R.id.kelola_user -> goToUser()
                 R.id.logout -> goToLogout(id?.toInt())
                 R.id.about_admin -> goToAbout()
             }
@@ -174,6 +178,11 @@ class HomeAdminActivity : AppCompatActivity() {
 
     private fun goToAdmin() {
         val intent = Intent(this, AllAdminActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToUser() {
+        val intent = Intent(this, AllUserActivity::class.java)
         startActivity(intent)
     }
 

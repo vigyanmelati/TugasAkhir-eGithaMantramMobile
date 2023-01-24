@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.pupuh.AddLirikPupuhAdminActivity"
+    tools:context=".admin.usermanager.DetailUserActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,52 +18,55 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Lirik Sekar Alit"
+                android:text="Detail Pengguna"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"/>
-            <TextView
-                android:id="@+id/desc_lirik_pupuh_admin"
-                android:layout_marginTop="-14dp"
-                android:paddingBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Isi form dibawah dengan data yang sesuai"
-                android:textColor="@color/grey_200"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:alpha="0.5"
-                android:layout_marginBottom="25dp"/>
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddLirikPupuh"
+                android:id="@+id/layoutNamaDetailUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan lirik pupuh">
+                android:hint="Nama pengguna">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lirikPupuhForm"
+                    android:id="@+id/namaDetailUser"
+                    android:enabled="false"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:inputType="text|textMultiLine"/>
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:layout_marginTop="30dp"
-                android:id="@+id/submitLirikPupuh"
-                android:backgroundTint="@color/green_success"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Tambah Lirik Pupuh"/>
-            <TextView
-                android:id="@+id/cancelSubmitLirikPupuh"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="15dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutEmailDetailUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Batal"
-                android:textSize="15sp"/>
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Email pengguna">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailDetailUser"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <Button
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/deleteUser"
+                    android:backgroundTint="@color/red_danger"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:text="Hapus pengguna"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

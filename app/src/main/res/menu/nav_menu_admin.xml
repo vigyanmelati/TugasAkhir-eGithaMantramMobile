@@ -45,6 +45,14 @@
                     android:title="Data Sekar Rare"
                     android:icon="@drawable/gita" />
                 <item
+                    android:id="@+id/yadnya_admin"
+                    android:title="Data Upacara Yadnya"
+                    android:icon="@drawable/ic_baseline_home_work_24" />
+                <item
+                    android:id="@+id/prosesi_upacara_admin"
+                    android:title="Data Prosesi Upacara"
+                    android:icon="@drawable/list" />
+                <item
                     android:id="@+id/approval"
                     android:title="Kaji Dharmagita"
                     android:icon="@drawable/approve" />
@@ -57,16 +65,12 @@
 <!--                    android:title="Kaji Dharmagita"-->
 <!--                    android:icon="@drawable/approve" />-->
                 <item
-                    android:id="@+id/yadnya_admin"
-                    android:title="Data Upacara Yadnya"
-                    android:icon="@drawable/ic_baseline_home_work_24" />
-                <item
-                    android:id="@+id/prosesi_upacara_admin"
-                    android:title="Data Prosesi Upacara"
-                    android:icon="@drawable/list" />
+                    android:id="@+id/approval_ahli"
+                    android:title="Kaji Ahli Dharmagita"
+                    android:icon="@drawable/ic_acc_ahli" />
                 <item
                     android:id="@+id/kelola_admin"
-                    android:title="Kelola Admin"
+                    android:title="Kelola Ahli Dharmagita"
                     android:icon="@drawable/admin" />
                 <item
                     android:id="@+id/kelola_user"

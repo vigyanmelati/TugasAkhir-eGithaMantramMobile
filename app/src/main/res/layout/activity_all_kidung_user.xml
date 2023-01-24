@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
-                layout="@layout/shimmer_all_kategori_kidung"/>
+                layout="@layout/shimmer_all_kidung"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:visibility="gone"
@@ -38,7 +38,7 @@
                         android:id="@+id/daftar_nama_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Daftar Sekar Agung"
+                        android:text="Daftar Sekar Madya"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="30sp"
@@ -57,7 +57,7 @@
                     android:id="@+id/desc_kategori_kidung_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sekar Agung atau Tembang Gede meliputi lagu-lagu berbahasa Kawi yang diikat oleh hukum guru lagu, pada umumnya dinyanyikan dalam kaitan upacara"
+                    android:text="Sekar Madya atau Tembang Gede meliputi lagu-lagu berbahasa Kawi yang diikat oleh hukum guru lagu, pada umumnya dinyanyikan dalam kaitan upacara"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:layout_marginBottom="20dp"/>
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchview_background"
-                    app:queryHint="Masukan nama sekar agung"
+                    app:queryHint="Masukan nama sekar madya"
                     android:layout_marginBottom="15dp"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

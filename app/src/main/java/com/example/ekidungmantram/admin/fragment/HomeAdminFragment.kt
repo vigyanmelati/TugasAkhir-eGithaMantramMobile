@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -21,6 +22,7 @@ import com.example.ekidungmantram.admin.upacarayadnya.SelectedAllYadnyaAdminActi
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllDharmagitaHomeAdminModel
 import com.example.ekidungmantram.model.adminmodel.AllYadnyaHomeAdminModel
+import com.example.ekidungmantram.model.adminmodel.JumlahModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home_admin.*
 import retrofit2.Call
@@ -44,10 +46,16 @@ class HomeAdminFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         yadnyaAdminHome.layoutManager = GridLayoutManager(activity, 2, LinearLayoutManager.VERTICAL, false)
         getAdminHomeDharmagitaData()
+        getAdminHomeAhliNoApprovalData()
+        getAdminHomeDharmagitaNoApprovalData()
         sharedPreferences = getActivity()!!.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val nama          = sharedPreferences.getString("NAMA", null)
+        val role          = sharedPreferences.getString("ROLE", null)
         namaAdmin.text    = "Selamat Datang, $nama!"
 
+        if(role != "1"){
+            card_ahli.visibility = View.GONE
+        }
         swipeAdmin.setOnRefreshListener {
             getAdminHomeDharmagitaData()
             swipeAdmin.isRefreshing = false
@@ -86,6 +94,88 @@ class HomeAdminFragment : Fragment() {
 //                }
 //
 //                override fun onFailure(call: Call<ArrayList<AllYadnyaHomeAdminModel>>, t: Throwable) {
+//                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
+//                    setShimmerToStop()
+//                }
+//
+//            })
+//    }
+
+    private fun getAdminHomeDharmagitaNoApprovalData() {
+        ApiService.endpoint.getDharmagitaNoApprovalAdminHomeList()
+            .enqueue(object: Callback<JumlahModel> {
+                override fun onResponse(
+                    call: Call<JumlahModel>,
+                    response: Response<JumlahModel>
+                ) {
+                    val datalist   = response.body()?.jumlah
+                    if(datalist != null){
+                        swipeAdmin.visibility = View.VISIBLE
+                        shimmerHomeAdmin.visibility = View.GONE
+                    }else{
+                        swipeAdmin.visibility = View.GONE
+                        shimmerHomeAdmin.visibility = View.VISIBLE
+                    }
+                    no_approve.text = datalist.toString()
+                    setShimmerToStop()
+                }
+
+                override fun onFailure(call: Call<JumlahModel>, t: Throwable) {
+                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
+                    setShimmerToStop()
+                }
+
+            })
+    }
+
+    private fun getAdminHomeAhliNoApprovalData() {
+        ApiService.endpoint.getAhliNoApprovalAdminHomeList()
+            .enqueue(object: Callback<JumlahModel> {
+                override fun onResponse(
+                    call: Call<JumlahModel>,
+                    response: Response<JumlahModel>
+                ) {
+                    val datalist   = response.body()?.jumlah
+                    if(datalist != null){
+                        swipeAdmin.visibility = View.VISIBLE
+                        shimmerHomeAdmin.visibility = View.GONE
+                    }else{
+                        swipeAdmin.visibility = View.GONE
+                        shimmerHomeAdmin.visibility = View.VISIBLE
+                    }
+                    ahli_approve.text = datalist.toString()
+                    setShimmerToStop()
+                }
+
+                override fun onFailure(call: Call<JumlahModel>, t: Throwable) {
+                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
+                    setShimmerToStop()
+                }
+
+            })
+    }
+
+//    private fun getAdminHomeDharmagitaApprovalData() {
+//        ApiService.endpoint.getDharmagitaApprovalAdminHomeList()
+//            .enqueue(object: Callback<JumlahModel> {
+//                override fun onResponse(
+//                    call: Call<JumlahModel>,
+//                    response: Response<JumlahModel>
+//                ) {
+//                    val datalist   = response.body()?.jumlah
+//                    Log.d("approve", datalist.toString())
+//                    if(datalist != null){
+//                        swipeAdmin.visibility = View.VISIBLE
+//                        shimmerHomeAdmin.visibility = View.GONE
+//                    }else{
+//                        swipeAdmin.visibility = View.GONE
+//                        shimmerHomeAdmin.visibility = View.VISIBLE
+//                    }
+//                    approve.text = datalist.toString()
+//                    setShimmerToStop()
+//                }
+//
+//                override fun onFailure(call: Call<JumlahModel>, t: Throwable) {
 //                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
 //                    setShimmerToStop()
 //                }
