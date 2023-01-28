@@ -53,7 +53,7 @@
                     android:title="Data Prosesi Upacara"
                     android:icon="@drawable/list" />
                 <item
-                    android:id="@+id/approval"
+                    android:id="@+id/approval_dharmagita"
                     android:title="Kaji Dharmagita"
                     android:icon="@drawable/approve" />
 <!--                <item-->

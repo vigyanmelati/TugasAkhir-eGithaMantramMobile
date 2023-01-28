@@ -50,6 +50,19 @@ interface ApiEndpoint {
     @GET("admin/listapprovaldharmagita")
     fun getDharmagitaApprovalAdminHomeList(): Call<JumlahModel>
 
+    @GET("admin/listnotapprovedahli")
+    fun getAllNotApprovedAhliListAdmin() : Call<ArrayList<AllDataAdminModel>>
+
+    @GET("admin/detailneedapprovalahli/{id_user}")
+    fun getDetailNeedApprovalAhliAdmin(@Path("id_user") id:Int) : Call<DetailDataAdminModel>
+
+    @FormUrlEncoded
+    @POST("admin/approveahli/{id_user}")
+    fun approveAhli (
+        @Path("id_user") id:Int,
+        @Field("stats") stats:String,
+    ):Call<CrudModel>
+
     //Mantram
     @GET("admin/listallmantram")
     fun getAllMantramListAdmin() : Call<ArrayList<AllMantramAdminModel>>
@@ -1282,6 +1295,34 @@ interface ApiEndpoint {
     fun getDharmagitaNewList(): Call<NewDharmagitaModel>
     @GET("listallgita")
     fun getGitaAllList(): Call<ArrayList<AllDharmagitaModel>>
+    @GET("listnotapproveddharmagita")
+    fun getAllNotApprovedDharmagitaListAdmin() : Call<ArrayList<AllDharmagitaApprovalModel>>
+    @FormUrlEncoded
+    @POST("approvedharmagita/{id_post}")
+    fun approveDharmagita (
+        @Path("id_post") id:Int,
+        @Field("stats") stats:String,
+    ):Call<CrudModel>
+    @GET("listnotapprovedvideodharmagita")
+    fun getAllNotApprovedVideoDharmagitaListAdmin() : Call<ArrayList<AllVideoApprovalModel>>
+    @FormUrlEncoded
+    @POST("approvevideodharmagita/{id_video}")
+    fun approveVideoDharmagita (
+        @Path("id_video") id:Int,
+        @Field("stats") stats:String,
+    ):Call<CrudModel>
+    @GET("listnotapprovedaudiodharmagita")
+    fun getAllNotApprovedAudioDharmagitaListAdmin() : Call<ArrayList<AllAudioApprovalModel>>
+    @FormUrlEncoded
+    @POST("approveaudiodharmagita/{id_audio}")
+    fun approveAudioDharmagita (
+        @Path("id_audio") id:Int,
+        @Field("stats") stats:String,
+    ):Call<CrudModel>
+    @GET("listnoapprovalvideo")
+    fun getVideoNoApprovalAdminHomeList(): Call<JumlahModel>
+    @GET("listnoapprovalaudio")
+    fun getAudioNoApprovalAdminHomeList(): Call<JumlahModel>
 
     //Pupuh
     @GET("listallpupuh")

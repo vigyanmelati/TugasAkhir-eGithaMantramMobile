@@ -7,15 +7,15 @@
     tools:context=".admin.kajidharmagita.DetailDharmagitaNeedApprovalActivity">
     <com.facebook.shimmer.ShimmerFrameLayout
         android:visibility="visible"
-        android:id="@+id/shimmerDetailGitaNAAdmin"
+        android:id="@+id/shimmerDetailDharmagitaNA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
         <include
-            layout="@layout/shimmer_detail_gita"/>
+            layout="@layout/shimmer_detail_pupuh"/>
     </com.facebook.shimmer.ShimmerFrameLayout>
     <ScrollView
-        android:id="@+id/scrollDetailGitaNAAdmin"
+        android:id="@+id/scrollDetailDharmagitaNA"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +30,7 @@
                 android:layout_height="300dp"
                 tools:ignore="MissingConstraints">
                 <ImageView
-                    android:id="@+id/imageDetailGitaNAAdmin"
+                    android:id="@+id/imageDetailDharmagitaNA"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -46,8 +46,9 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <ImageView
-                            android:id="@+id/backToGitaNAAdmin"
+                            android:id="@+id/backToDharmagitaNA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -66,42 +67,19 @@
                     android:paddingRight="20dp"
                     android:paddingBottom="55dp"
                     android:paddingLeft="10dp">
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/layoutKeterNA"
-                        android:visibility="gone"
-                        android:layout_width="90dp"
-                        android:layout_height="22dp"
-                        app:cardCornerRadius="10dp"
-                        android:layout_marginBottom="5dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                            <TextView
-                                android:id="@+id/keteranganGitaNAAdmin"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/green_success"
-                                android:textSize="15sp"
-                                android:text="Sakral"
-                                android:textColor="@color/white"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
                     <TextView
-                        android:id="@+id/detailNamaGitaNAAdmin"
+                        android:id="@+id/detailNamaDharmagitaNA"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nama Gita"
+                        android:text="Nama Sekar Agung"
                         android:textSize="30sp"
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
                     <TextView
-                        android:id="@+id/detailJenisGitaNAAdmin"
+                        android:id="@+id/detailDharmagitaNA"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Jenis Gita"
+                        android:text="Jenis Sekar Agung"
                         android:textSize="15sp"
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
@@ -120,124 +98,50 @@
                     android:orientation="vertical"
                     android:padding="10dp">
                     <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/deskripsiDharmagitaNA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
+                            android:textColor="@color/black"
+                            android:justificationMode="inter_word"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <com.google.android.youtube.player.YouTubePlayerView
-                            android:id="@+id/youtubePlayerGitaNAAdmin"
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginTop="10dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Deskripsi Gita"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:justificationMode="inter_word"
-                            android:textSize="16sp"
-                            android:layout_marginBottom="5dp"/>
-                        <TextView
-                            android:id="@+id/deskripsiGitaNAAdmin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:justificationMode="inter_word"
-                            android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
-                            android:textColor="@color/black"
-                            android:textSize="15sp" />
+                            android:layout_height="wrap_content">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/baitDharmagitaNAList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/layout_list_detail_dharmagita" />
+                        </RelativeLayout>
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/layoutBaitGitaNAAdmin"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible"
-                        android:layout_marginBottom="20dp">
-                        <LinearLayout
-                            android:layout_marginBottom="5dp"
+                        android:orientation="vertical">
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_gravity="center_horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/artiDharmagitaNAList"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Bait Gita"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                        <TextView
-                            android:id="@+id/baitGitaNAAdmin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
-                            android:textColor="@color/black"
-                            android:justificationMode="inter_word"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layoutArtiGitaNAAdmin"
-                        android:visibility="visible"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="30dp">
-                        <LinearLayout
-                            android:layout_marginBottom="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_gravity="center_horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Arti Gita"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                        <TextView
-                            android:id="@+id/artiGitaNAAdmin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
-                            android:textColor="@color/black"
-                            android:justificationMode="inter_word"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layoutCatatanGitaNAAdmin"
-                        android:visibility="visible"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="30dp">
-                        <LinearLayout
-                            android:layout_marginBottom="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_gravity="center_horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Catatan"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                        <TextView
-                            android:id="@+id/catatanGitaNAAdmin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Atma Wedana adalah upacara yadnya yang bertujuan untuk menyucikan sang atma pitara setelah prosesi ngaben atau sawa wedana selesai yang dilaksanakan dengan upacara Nyekah atau Mamukur. Melalui upacara Atma Wedana ini yang diawali dengan dilaksanakannya upacara ngangget don bingin sebagai sarana ngawi sekah utawi puspa sarira sajeroning upacara mamukur sehingga nantinya roh atau atman leluhur kita itu menjadi Dewa Pitara untuk selanjutnya dapat menstanakannya di Kemulan."
-                            android:textColor="@color/black"
-                            android:justificationMode="inter_word"
-                            android:textSize="15sp" />
+                                tools:listitem="@layout/layout_list_arti_dharmagita" />
+                        </RelativeLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -246,21 +150,22 @@
                         android:orientation="horizontal"
                         android:gravity="center_horizontal">
                         <Button
-                            android:id="@+id/acceptGita"
+                            android:id="@+id/acceptDharmagitaNA"
                             android:backgroundTint="@color/green_success"
                             android:layout_width="160dp"
                             android:textColor="@color/white"
                             android:layout_marginRight="10dp"
                             android:layout_height="60dp"
-                            android:text="Terima Gita"/>
+                            android:text="Terima Dharmagita"/>
                         <Button
-                            android:id="@+id/rejectGita"
+                            android:id="@+id/rejectDharmagitaNA"
                             android:backgroundTint="@color/red_danger"
                             android:layout_width="160dp"
                             android:textColor="@color/white"
                             android:layout_height="60dp"
-                            android:text="Tolak Gita"/>
+                            android:text="Tolak Dharmagita"/>
                     </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

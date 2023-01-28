@@ -4,7 +4,10 @@
     package="com.example.ekidungmantram">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
     <queries>
         <intent>
             <action android:name="com.google.android.youtube.api.service.START" />
@@ -21,6 +24,30 @@
         android:theme="@style/Theme.EKidungMantram"
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
+        <activity
+            android:name=".DetailAudioDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailVideoDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajidharmagita.ListAudioDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajidharmagita.ListVideoDharmagitaNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajidharmagita.ListAllDharmagitaNotApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajiahlidharmagita.PdfViewAhliDharmagitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajiahlidharmagita.DetailAhliNeedApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kajiahlidharmagita.ListAhliNeedApprovalActivity"
+            android:exported="false" />
         <activity
             android:name=".admin.usermanager.DetailUserActivity"
             android:exported="false" />
@@ -317,9 +344,6 @@
             android:exported="false" />
         <activity
             android:name=".user.pupuh.AllPupuhActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ListGitaActivity"
             android:exported="false" />
         <activity
             android:name=".admin.kajidharmagita.DetailDharmagitaNeedApprovalActivity"

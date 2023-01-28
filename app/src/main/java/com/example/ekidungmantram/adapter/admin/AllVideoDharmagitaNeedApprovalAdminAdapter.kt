@@ -7,17 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.AllDharmagitaApprovalModel
-import com.example.ekidungmantram.model.adminmodel.AllDharmagitaAdminModel
+import com.example.ekidungmantram.model.AllVideoApprovalModel
 
-class AllDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList<AllDharmagitaApprovalModel>, val listener: AllDharmagitaNeedApprovalAdminAdapter.OnAdapterAllDharmagitaNAAdminListener)
-    : RecyclerView.Adapter<AllDharmagitaNeedApprovalAdminAdapter.ViewHolder>() {
+class AllVideoDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList<AllVideoApprovalModel>, val listener: AllVideoDharmagitaNeedApprovalAdminAdapter.OnAdapterAllVideoDharmagitaNAAdminListener)
+    : RecyclerView.Adapter<AllVideoDharmagitaNeedApprovalAdminAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val inflatedView = layoutInflater.inflate(R.layout.layout_all_gita_need_approval_admin, parent, false)
+        val inflatedView = layoutInflater.inflate(R.layout.layout_list_video_na_admin, parent, false)
         return ViewHolder(inflatedView)
     }
 
@@ -32,22 +31,24 @@ class AllDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList<AllD
     override fun getItemCount(): Int = results.size
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        private var title : TextView = view.findViewById(R.id.titleNA_gita_admin)
-        private var jenis : TextView = view.findViewById(R.id.jenisNA_gita_admin)
-        private var gambar : ImageView = view.findViewById(R.id.gitaNA_img_admin)
-        fun bindItem(data: AllDharmagitaApprovalModel) {
+        private var title : TextView = view.findViewById(R.id.title_video_NAAdmin)
+        private var jenis : TextView = view.findViewById(R.id.jenis_video_NAAdmin)
+        private var nama_post : TextView = view.findViewById(R.id.nama_post_video_NAAdmin)
+        private var gambar : ImageView = view.findViewById(R.id.video_NAAdmin)
+        fun bindItem(data: AllVideoApprovalModel) {
             if(data.nama_post.length > 20){
                 title.textSize = 15F
             }
-            title.text = data.nama_post
+            title.text = data.judul_video
             if(data.nama_tag != null){
                 jenis.text = data.nama_tag
             }else{
                 jenis.text = "Dharmagita"
             }
-            if(data.gambar != null){
+            nama_post.text = data.nama_post
+            if(data.gambar_video != null){
 //                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
-                Glide.with(itemView).load(data.gambar).into(gambar)
+                Glide.with(itemView).load(data.gambar_video).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.meditation)
             }
@@ -55,7 +56,7 @@ class AllDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList<AllD
 
     }
 
-    interface OnAdapterAllDharmagitaNAAdminListener {
-        fun onClick(result: AllDharmagitaApprovalModel)
+    interface OnAdapterAllVideoDharmagitaNAAdminListener {
+        fun onClick(result: AllVideoApprovalModel)
     }
 }

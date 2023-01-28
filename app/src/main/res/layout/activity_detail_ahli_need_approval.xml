@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.kajiahlidharmagita.DetailAhliNeedApprovalActivity"
+    android:orientation="vertical"
+    android:padding="18dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detail Ahli Dharmagita"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutNamaDetailAhliNA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Nama ahli Dharmagita">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/namaDetailAhliNA"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutEmailDetailAhliNA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Email ahli Dharmagita">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailDetailAhliNA"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="File Bukti Ahli Dharmagita"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/toFileAhli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Lihat File"
+                    android:layout_marginLeft="68dp"
+                    android:backgroundTint="@color/grey_200"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <Button
+                    android:id="@+id/acceptAhli"
+                    android:backgroundTint="@color/green_success"
+                    android:layout_width="160dp"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="60dp"
+                    android:text="Terima Ahli Dharmagita"/>
+                <Button
+                    android:id="@+id/rejectAhli"
+                    android:backgroundTint="@color/red_danger"
+                    android:layout_width="160dp"
+                    android:textColor="@color/white"
+                    android:layout_height="60dp"
+                    android:text="Tolak Ahli Dharmagita"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -56,6 +56,15 @@
                     android:textSize="12sp"
                     android:layout_marginLeft="30dp"
                     android:text="Stop"/>
+
+                <Button
+                    android:id="@+id/playAudioPupuh"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Play"/>
             </LinearLayout>
 
             <Button

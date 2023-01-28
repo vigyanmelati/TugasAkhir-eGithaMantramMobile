@@ -22,6 +22,8 @@ import com.example.ekidungmantram.admin.adminmanager.AllAdminActivity
 import com.example.ekidungmantram.admin.fragment.HomeAdminFragment
 import com.example.ekidungmantram.admin.gamelan.AllGamelanAdminActivity
 import com.example.ekidungmantram.admin.gita.AllGitaAdminActivity
+import com.example.ekidungmantram.admin.kajiahlidharmagita.ListAhliNeedApprovalActivity
+import com.example.ekidungmantram.admin.kajidharmagita.ListAllDharmagitaNotApprovalActivity
 import com.example.ekidungmantram.admin.kajidharmagita.ListDharmagitaNeedApprovalActivity
 import com.example.ekidungmantram.admin.kajimantram.ListMantramNeedApprovalActivity
 import com.example.ekidungmantram.admin.kakawin.AllKakawinAdminActivity
@@ -82,6 +84,7 @@ class HomeAdminActivity : AppCompatActivity() {
             nav_Menu.findItem(R.id.kelola_admin).setVisible(false)
             nav_Menu.findItem(R.id.approval_ahli).setVisible(false)
             nav_Menu.findItem(R.id.kelola_user).setVisible(false)
+            nav_Menu.findItem(R.id.approval_dharmagita).setVisible(false)
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }
 
@@ -102,6 +105,8 @@ class HomeAdminActivity : AppCompatActivity() {
                 R.id.prosesi_upacara_admin -> goToProsesi()
                 R.id.kelola_admin -> goToAdmin()
                 R.id.kelola_user -> goToUser()
+                R.id.approval_ahli -> goToApprovalAhli()
+                R.id.approval_dharmagita -> goToKajiGita()
                 R.id.logout -> goToLogout(id?.toInt())
                 R.id.about_admin -> goToAbout()
             }
@@ -142,7 +147,12 @@ class HomeAdminActivity : AppCompatActivity() {
     }
 
     private fun goToKajiGita() {
-        val intent = Intent(this, ListDharmagitaNeedApprovalActivity::class.java)
+        val intent = Intent(this, ListAllDharmagitaNotApprovalActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToApprovalAhli() {
+        val intent = Intent(this, ListAhliNeedApprovalActivity::class.java)
         startActivity(intent)
     }
 

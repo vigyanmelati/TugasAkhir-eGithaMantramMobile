@@ -172,6 +172,7 @@ class SearchFragment : Fragment() {
                                     bundle.putInt("tag_lagu", result.id_tag)
                                     bundle.putString("nama_lagu", result.nama_post)
                                     bundle.putString("gambar_lagu", result.gambar)
+                                    Log.d("lirik_anak", result.bait_lagu.toString())
                                     intent.putExtras(bundle)
                                     startActivity(intent)
                                 }else if (result.id_tag == 10) {
