@@ -17,10 +17,7 @@ import com.example.ekidungmantram.adapter.AudioPupuhAdapter
 import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.adapter.VideoPupuhAdapter
 import com.example.ekidungmantram.adapter.YadnyaPupuhAdapter
-import com.example.ekidungmantram.adapter.admin.AudioPupuhAdminAdapter
-import com.example.ekidungmantram.adapter.admin.BaitPupuhAdminAdapter
-import com.example.ekidungmantram.adapter.admin.VideoPupuhAdminAdapter
-import com.example.ekidungmantram.adapter.admin.YadnyaPupuhAdminAdapter
+import com.example.ekidungmantram.adapter.admin.*
 import com.example.ekidungmantram.admin.kidung.AddLirikKidungAdminActivity
 import com.example.ekidungmantram.admin.kidung.AllLirikKidungAdminActivity
 import com.example.ekidungmantram.admin.kidung.EditKidungAdminActivity
@@ -30,6 +27,7 @@ import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
 import kotlinx.android.synthetic.main.activity_detail_kakawin.*
+import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.lihatSemuayadnyapupuh
@@ -51,6 +49,8 @@ import retrofit2.Response
 class DetailPupuhAdminActivity : AppCompatActivity() {
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitPupuhAdapter : BaitPupuhAdminAdapter
+    private var layoutManagerArti         : LinearLayoutManager? = null
+    private lateinit var artiPupuhAdapter : ArtiPupuhAdapter
     private lateinit var videoPupuhAdapter  : VideoPupuhAdminAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioPupuhAdapter  : AudioPupuhAdminAdapter
@@ -85,6 +85,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             getListAudioPupuh(postID)
             getListYadnyaPupuh(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -236,8 +237,8 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                     detailPupuhAdmin.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailPupuhAdminActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhAdmin)
-                            .load(result.gambar).into(imageDetailPupuhAdmin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuhAdmin)
+//                            .load(result.gambar).into(imageDetailPupuhAdmin)
                     }else{
                         imageDetailPupuhAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -272,6 +273,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                     goToListLirikPupuh.visibility = View.VISIBLE
                 }
                 showBaitPupuhData(response.body()!!)
+                showArtiPupuhData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitPupuhAdminModel>, t: Throwable) {
@@ -292,6 +294,21 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             layoutManagerBait = LinearLayoutManager(this@DetailPupuhAdminActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitPupuhAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun showArtiPupuhData(body: DetailBaitPupuhAdminModel) {
+        val results = body.data
+        artiPupuhAdapter.setData(results)
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiPupuhAdapter = ArtiPupuhAdapter(arrayListOf())
+        artiPupuhListAdmin.apply {
+            layoutManagerArti = LinearLayoutManager(this@DetailPupuhAdminActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiPupuhAdapter
             setHasFixedSize(true)
         }
     }

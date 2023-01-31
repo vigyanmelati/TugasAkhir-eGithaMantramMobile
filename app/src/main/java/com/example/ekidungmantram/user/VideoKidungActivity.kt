@@ -68,8 +68,8 @@ class VideoKidungActivity : YouTubeBaseActivity() {
                     detailJenisVideoKidung.text = result.nama_kategori
                     if(result.gambar != null) {
                         Glide.with(this@VideoKidungActivity)
-                            .load(result.gambar).into(imageVideoKidung)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
+//                            .load(result.gambar).into(imageVideoKidung)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
                     }else{
                         imageVideoKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }

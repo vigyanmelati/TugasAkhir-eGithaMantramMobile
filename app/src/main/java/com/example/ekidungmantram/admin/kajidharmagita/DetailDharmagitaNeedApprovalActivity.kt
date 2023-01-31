@@ -43,6 +43,10 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
     private lateinit var baitLaguAnakAdapter : BaitLaguAnakApprovalAdapter
     private var layoutManagerArti          : LinearLayoutManager? = null
     private lateinit var artiKakawinAdapter : ArtiDharmagitaAdapter
+    private var layoutManagerArtiPupuh          : LinearLayoutManager? = null
+    private lateinit var artiPupuhAdapter : ArtiPupuhNAAdapter
+    private var layoutManagerArtiLaguAnak          : LinearLayoutManager? = null
+    private lateinit var artiLaguAnakAdapter : ArtiLaguAnakNAAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_dharmagita_need_approval)
@@ -56,14 +60,18 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
                 getDetailDataKidung(postID)
                 getBaitDataKidung(postID)
                 setupRecyclerViewBaitKidung()
+                arti_visible.visibility = View.GONE
+                artiDharmagitaNAList.visibility = View.GONE
             }else if (tagID == 9){
                 getDetailDataLaguAnak(postID)
                 getBaitDataLaguAnak(postID)
                 setupRecyclerViewBaitLaguAnak()
+                setupRecyclerViewArtiLaguAnak()
             }else if (tagID == 10){
                 getDetailDataPupuh(postID)
                 getBaitDataPupuh(postID)
                 setupRecyclerViewBaitPupuh()
+                setupRecyclerViewArtiPupuh()
             }else if (tagID == 11){
                 getDetailDataKakawin(postID)
                 getBaitDataKakawin(postID)
@@ -140,8 +148,8 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
                     detailDharmagitaNA.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@DetailDharmagitaNeedApprovalActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawin)
-                            .load(result.gambar).into(imageDetailDharmagitaNA)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailDharmagitaNA)
+//                            .load(result.gambar).into(imageDetailDharmagitaNA)
                     }else{
                         imageDetailDharmagitaNA.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -218,6 +226,7 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
             ) {
                 Log.d("bait_pupuh", response.body().toString())
                 showBaitPupuhData(response.body()!!)
+                showArtiDataPupuh(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitPupuhModel>, t: Throwable) {
@@ -238,6 +247,21 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
             layoutManagerBaitPupuh = LinearLayoutManager(this@DetailDharmagitaNeedApprovalActivity)
             layoutManager     = layoutManagerBaitPupuh
             adapter           = baitPupuhAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun showArtiDataPupuh(body: DetailBaitPupuhModel) {
+        val results = body.data
+        artiPupuhAdapter.setData(results)
+    }
+
+    private fun setupRecyclerViewArtiPupuh() {
+        artiPupuhAdapter = ArtiPupuhNAAdapter(arrayListOf())
+        artiDharmagitaNAList.apply {
+            layoutManagerArtiPupuh = LinearLayoutManager(this@DetailDharmagitaNeedApprovalActivity)
+            layoutManager     = layoutManagerArtiPupuh
+            adapter           = artiPupuhAdapter
             setHasFixedSize(true)
         }
     }
@@ -280,6 +304,7 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
                 response: Response<DetailKidungModel>
             ) {
                 val result = response.body()!!
+                Log.d("detail_kidung", response.body().toString())
                 result.let {
                     deskripsiDharmagitaNA.text   = result.deskripsi
                     detailNamaDharmagitaNA.text  = result.nama_post
@@ -289,7 +314,7 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
                             .load(result.gambar).into(imageDetailDharmagitaNA)
 //                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKidung)
                     }else{
-                        imageDetailKidung.setImageResource(R.drawable.sample_image_yadnya)
+                        imageDetailDharmagitaNA.setImageResource(R.drawable.sample_image_yadnya)
                     }
 //                    playYoutubeVideo(result.video)
                 }
@@ -334,6 +359,7 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
         }
     }
 
+
     private fun getDetailDataLaguAnak(id: Int) {
         ApiService.endpoint.getDetailLaguAnak(id).enqueue(object: Callback<DetailLaguAnakModel> {
             override fun onResponse(
@@ -372,6 +398,7 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
                 response: Response<DetailBaitLaguAnakModel>
             ) {
                 showBaitLaguAnakData(response.body()!!)
+                showArtiDataLaguAnak(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitLaguAnakModel>, t: Throwable) {
@@ -392,6 +419,20 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
             layoutManagerBaitLaguAnak = LinearLayoutManager(this@DetailDharmagitaNeedApprovalActivity)
             layoutManager     = layoutManagerBaitLaguAnak
             adapter           = baitLaguAnakAdapter
+            setHasFixedSize(true)
+        }
+    }
+    private fun showArtiDataLaguAnak(body: DetailBaitLaguAnakModel) {
+        val results = body.data
+        artiLaguAnakAdapter.setData(results)
+    }
+
+    private fun setupRecyclerViewArtiLaguAnak() {
+        artiLaguAnakAdapter = ArtiLaguAnakNAAdapter(arrayListOf())
+        artiDharmagitaNAList.apply {
+            layoutManagerArtiLaguAnak = LinearLayoutManager(this@DetailDharmagitaNeedApprovalActivity)
+            layoutManager     = layoutManagerArtiLaguAnak
+            adapter           = artiLaguAnakAdapter
             setHasFixedSize(true)
         }
     }

@@ -46,8 +46,8 @@ class AllDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList<AllD
                 jenis.text = "Dharmagita"
             }
             if(data.gambar != null){
-//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
-                Glide.with(itemView).load(data.gambar).into(gambar)
+                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
+//                Glide.with(itemView).load(data.gambar).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.meditation)
             }

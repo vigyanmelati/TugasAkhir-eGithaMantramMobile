@@ -108,8 +108,8 @@ class AudioLaguAnakActivity : AppCompatActivity() {
                     detailJenisAudioLaguAnak.text = "Lagu Anak "
                     if (result.gambar != null) {
                         Glide.with(this@AudioLaguAnakActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
-                            .load(result.gambar).into(imageAudioLaguAnak)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
+//                            .load(result.gambar).into(imageAudioLaguAnak)
                     } else {
                         imageAudioLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }

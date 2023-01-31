@@ -70,8 +70,8 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
                     detailJenisVideoPupuh.text = "Pupuh "
                     if(result.gambar != null) {
                         Glide.with(this@VideoPupuhActivity)
-                            .load(result.gambar).into(imageVideoPupuh)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
+//                            .load(result.gambar).into(imageVideoPupuh)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
                     }else{
                         imageVideoPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }

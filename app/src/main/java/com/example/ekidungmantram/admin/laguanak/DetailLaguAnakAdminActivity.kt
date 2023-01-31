@@ -30,6 +30,8 @@ import retrofit2.Response
 class DetailLaguAnakAdminActivity : AppCompatActivity() {
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitLaguAnakAdapter : BaitLaguAnakAdminAdapter
+    private var layoutManagerArti         : LinearLayoutManager? = null
+    private lateinit var artiLaguAnakAdapter : ArtiLaguAnakAdminAdapter
     private lateinit var videoLaguAnakAdapter  : VideoLaguAnakAdminAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioLaguAnakAdapter  : AudioLaguAnakAdminAdapter
@@ -64,6 +66,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             getListAudioLaguAnak(postID)
             getListYadnyaLaguAnak(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -214,8 +217,8 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                     detailLaguAnakAdmin.text = "Sekar Rare"
                     if(result.gambar != null) {
                         Glide.with(this@DetailLaguAnakAdminActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnakAdmin)
-                            .load(result.gambar).into(imageDetailLaguAnakAdmin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnakAdmin)
+//                            .load(result.gambar).into(imageDetailLaguAnakAdmin)
                     }else{
                         imageDetailLaguAnakAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -250,6 +253,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                     goToListLirikLaguAnak.visibility = View.VISIBLE
                 }
                 showBaitLaguAnakData(response.body()!!)
+                showArtiLaguAnakData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitLaguAnakAdminModel>, t: Throwable) {
@@ -270,6 +274,21 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             layoutManagerBait = LinearLayoutManager(this@DetailLaguAnakAdminActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitLaguAnakAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun showArtiLaguAnakData(body: DetailBaitLaguAnakAdminModel) {
+        val results = body.data
+        artiLaguAnakAdapter.setData(results)
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiLaguAnakAdapter = ArtiLaguAnakAdminAdapter(arrayListOf())
+        artiLaguAnakListAdmin.apply {
+            layoutManagerArti = LinearLayoutManager(this@DetailLaguAnakAdminActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiLaguAnakAdapter
             setHasFixedSize(true)
         }
     }

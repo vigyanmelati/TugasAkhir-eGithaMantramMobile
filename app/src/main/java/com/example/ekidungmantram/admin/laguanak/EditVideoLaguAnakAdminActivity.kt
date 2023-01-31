@@ -80,8 +80,8 @@ class EditVideoLaguAnakAdminActivity : AppCompatActivity() {
                     namaEditedLinkVideoLaguAnak.setText(result.video)
                     namaEditedVideoLaguAnak.setText(result.judul_video)
                     Glide.with(this@EditVideoLaguAnakAdminActivity)
-                        .load(result.gambar_video).into(submitEditedImgVideoLaguAnak)
-//                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoLaguAnak)
+//                        .load(result.gambar_video).into(submitEditedImgVideoLaguAnak)
+                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoLaguAnak)
                 }
             }
 

@@ -79,8 +79,8 @@ class EditVideoKakawinAdminActivity : AppCompatActivity() {
                     namaEditedLinkVideoKakawin.setText(result.video)
                     namaEditedVideoKakawin.setText(result.judul_video)
                     Glide.with(this@EditVideoKakawinAdminActivity)
-//                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoKakawin)
-                        .load(result.gambar_video).into(submitEditedImgVideoKakawin)
+                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoKakawin)
+//                        .load(result.gambar_video).into(submitEditedImgVideoKakawin)
                 }
             }
 

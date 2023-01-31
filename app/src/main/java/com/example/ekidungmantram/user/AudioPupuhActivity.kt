@@ -109,8 +109,8 @@ class AudioPupuhActivity : AppCompatActivity() {
                     detailJenisAudioPupuh.text = "Pupuh "
                     if(result.gambar != null) {
                         Glide.with(this@AudioPupuhActivity)
-                            .load(result.gambar).into(imageAudioPupuh)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
+//                            .load(result.gambar).into(imageAudioPupuh)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
                     }else{
                         imageAudioPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }

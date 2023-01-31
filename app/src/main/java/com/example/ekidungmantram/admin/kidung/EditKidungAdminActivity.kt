@@ -83,8 +83,8 @@ class EditKidungAdminActivity : AppCompatActivity(), AdapterView.OnItemClickList
                     namaEditedKidung.setText(result.nama_post)
                     setupSpinnerYadnya(result.nama_kategori)
                     Glide.with(this@EditKidungAdminActivity)
-                        .load(result.gambar).into(submitEditedImgKidung)
-//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKidung)
+//                        .load(result.gambar).into(submitEditedImgKidung)
+                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKidung)
                 }
             }
 

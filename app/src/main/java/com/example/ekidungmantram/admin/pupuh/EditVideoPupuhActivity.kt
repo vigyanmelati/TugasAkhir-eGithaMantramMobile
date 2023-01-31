@@ -81,8 +81,8 @@ class EditVideoPupuhActivity : AppCompatActivity() {
                     namaEditedLinkVideoPupuh.setText(result.video)
                     namaEditedVideoPupuh.setText(result.judul_video)
                     Glide.with(this@EditVideoPupuhActivity)
-                        .load(result.gambar_video).into(submitEditedImgVideoPupuh)
-//                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoPupuh)
+//                        .load(result.gambar_video).into(submitEditedImgVideoPupuh)
+                        .load(Constant.IMAGE_URL+result.gambar_video).into(submitEditedImgVideoPupuh)
                 }
             }
 

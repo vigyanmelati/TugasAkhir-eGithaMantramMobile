@@ -108,8 +108,8 @@ class AudioKidungActivity : AppCompatActivity() {
                     detailJenisAudioKidung.text = result.nama_kategori
                     if(result.gambar != null) {
                         Glide.with(this@AudioKidungActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKidung)
-                            .load(result.gambar).into(imageAudioKidung)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKidung)
+//                            .load(result.gambar).into(imageAudioKidung)
                     }else{
                         imageAudioKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }

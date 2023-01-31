@@ -832,6 +832,7 @@ interface ApiEndpoint {
     fun createDataLirikPupuhAdmin (
         @Path("id_post") id:Int,
         @Field("bait_pupuh") baitPupuh:String,
+        @Field("arti_pupuh") artiPupuh:String,
     ):Call<CrudModel>
 
     @GET("admin/showlirikpupuhadmin/{id_det_post}")
@@ -842,6 +843,7 @@ interface ApiEndpoint {
     fun updateDataLirikPupuhAdmin (
         @Path("id_det_post") id:Int,
         @Field("bait_pupuh") lirikPupuh:String,
+        @Field("arti_pupuh") artiPupuh:String,
     ):Call<CrudModel>
 
     @FormUrlEncoded
@@ -965,6 +967,7 @@ interface ApiEndpoint {
     fun createDataLirikLaguAnakAdmin (
         @Path("id_post") id:Int,
         @Field("bait_lagu") baitLagu:String,
+        @Field("arti_lagu") artiLagu:String,
     ):Call<CrudModel>
 
     @GET("admin/showliriklaguanakadmin/{id_det_post}")
@@ -975,6 +978,7 @@ interface ApiEndpoint {
     fun updateDataLirikLaguAnakAdmin (
         @Path("id_det_post") id:Int,
         @Field("bait_lagu") baitLagu:String,
+        @Field("arti_lagu") artiLagu:String,
     ):Call<CrudModel>
 
     @FormUrlEncoded
@@ -1098,6 +1102,7 @@ interface ApiEndpoint {
     fun createDataLirikKakawinAdmin (
         @Path("id_post") id:Int,
         @Field("bait_sekar_agung") baitSekarAgung:String,
+        @Field("arti_sekar_agung") artiSekarAgung:String,
     ):Call<CrudModel>
 
     @GET("admin/showlirikkakawinadmin/{id_det_post}")
@@ -1108,6 +1113,7 @@ interface ApiEndpoint {
     fun updateDataLirikKakawinAdmin (
         @Path("id_det_post") id:Int,
         @Field("bait_sekar_agung") baitSekarAgung:String,
+        @Field("arti_sekar_agung") artiSekarAgung:String,
     ):Call<CrudModel>
 
     @FormUrlEncoded
@@ -1323,6 +1329,11 @@ interface ApiEndpoint {
     fun getVideoNoApprovalAdminHomeList(): Call<JumlahModel>
     @GET("listnoapprovalaudio")
     fun getAudioNoApprovalAdminHomeList(): Call<JumlahModel>
+    @GET("detailvideodharmagita/{id_video}")
+    fun getDetailVideoDharmagita(@Path("id_video") id: Int) : Call<VideoDharmagitaModel>
+    @GET("detailaudiodharmagita/{id_audio}")
+    fun getDetailAudioDharmagita(@Path("id_audio") id: Int) : Call<AudioDharmagitaModel>
+
 
     //Pupuh
     @GET("listallpupuh")
@@ -1376,6 +1387,7 @@ interface ApiEndpoint {
     fun createDataLirikPupuh (
         @Path("id_post") id:Int,
         @Field("bait_pupuh") baitPupuh:String,
+        @Field("arti_pupuh") artiPupuh:String,
     ):Call<CrudModel>
 
     @GET("showlirikpupuh/{id_det_post}")
@@ -1386,6 +1398,7 @@ interface ApiEndpoint {
     fun updateDataLirikPupuh (
         @Path("id_det_post") id:Int,
         @Field("bait_pupuh") lirikPupuh:String,
+        @Field("arti_pupuh") artiPupuh:String,
     ):Call<CrudModel>
 
     @FormUrlEncoded
@@ -1498,6 +1511,8 @@ interface ApiEndpoint {
     fun getDetailKakawin(@Path("id_post") id: Int) : Call<DetailKakawinModel>
     @GET("detailbaitkakawin/{id_post}")
     fun getDetailBaitKakawin(@Path("id_post") id:Int) : Call<DetailBaitKakawinModel>
+    @GET("detailartikakawin/{id_post}")
+    fun getDetailArtiKakawin(@Path("id_post") id:Int) : Call<DetailArtiKakawinModel>
     @GET("listvideokakawin/{id_kakawin}")
     fun getListVideoKakawin(@Path("id_kakawin") id:Int): Call<VideoKakawinModel>
     @GET("listaudiokakawin/{id_post}")

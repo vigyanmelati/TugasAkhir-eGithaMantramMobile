@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataAudioPupuhAdminAdapter
 import com.example.ekidungmantram.model.AudioPupuhModel
@@ -34,7 +35,8 @@ class AllDataAudioPupuhAdapter (private var results: ArrayList<AudioPupuhModel.D
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val result = results[position]
         holder.tittle.setText(result.judul_audio)
-        Glide.with(holder.view).load(result.gambar_audio).into(holder.audio)
+//        Glide.with(holder.view).load(result.gambar_audio).into(holder.audio)
+        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.audio)
         holder.editl.setOnClickListener {
             onclickEdit?.invoke(result)
         }

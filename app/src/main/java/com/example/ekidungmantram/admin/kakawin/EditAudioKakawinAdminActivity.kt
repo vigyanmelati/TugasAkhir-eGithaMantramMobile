@@ -78,8 +78,8 @@ class EditAudioKakawinAdminActivity : AppCompatActivity() {
                     namaEditedLinkAudioKakawin.setText(result.audio)
                     namaEditedAudioKakawin.setText(result.judul_audio)
                     Glide.with(this@EditAudioKakawinAdminActivity)
-                        .load(result.gambar_audio).into(submitEditedImgAudioKakawin)
-//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawin)
+//                        .load(result.gambar_audio).into(submitEditedImgAudioKakawin)
+                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawin)
                 }
             }
 

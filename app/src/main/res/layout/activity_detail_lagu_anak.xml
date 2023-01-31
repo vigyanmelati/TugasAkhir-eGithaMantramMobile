@@ -145,6 +145,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bait Sekar Rare"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="5dp"/>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -153,6 +161,30 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:listitem="@layout/layout_list_detail_lagu_anak" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arti Sekar Rare"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="5dp"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/artiLaguAnakList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/layout_list_arti_lagu_anak" />
                         </RelativeLayout>
                     </LinearLayout>
                     <LinearLayout

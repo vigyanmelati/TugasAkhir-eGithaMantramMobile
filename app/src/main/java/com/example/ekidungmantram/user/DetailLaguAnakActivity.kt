@@ -24,6 +24,7 @@ import com.example.ekidungmantram.model.*
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_detail_yadnya.*
@@ -39,6 +40,8 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
     private lateinit var db             : DharmagitaDb
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitLaguAnakAdapter : BaitLaguAnakAdapter
+    private var layoutManagerArti          : LinearLayoutManager? = null
+    private lateinit var artiLaguAnakAdapter : ArtiLaguAnakAdapter
     private lateinit var videoLaguAnakAdapter  : VideoLaguAnakAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioLaguAnakAdapter  : AudioLaguAnakAdapter
@@ -68,6 +71,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
             getListAudioLaguAnak(postID)
             getListYadnyaLaguAnak(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -124,8 +128,8 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                     detailJenisLaguAnak.text = "Lagu Anak "
                     if(result.gambar != null) {
                         Glide.with(this@DetailLaguAnakActivity)
-                            .load(result.gambar).into(imageDetailLaguAnak)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnak)
+//                            .load(result.gambar).into(imageDetailLaguAnak)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailLaguAnak)
                     }else{
                         imageDetailLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -149,6 +153,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 response: Response<DetailBaitLaguAnakModel>
             ) {
                 showBaitLaguAnakData(response.body()!!)
+                showArtiLaguAnakData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitLaguAnakModel>, t: Throwable) {
@@ -163,12 +168,27 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
         baitLaguAnakAdapter.setData(results)
     }
 
+    private fun showArtiLaguAnakData(body: DetailBaitLaguAnakModel) {
+        val results = body.data
+        artiLaguAnakAdapter.setData(results)
+    }
+
     private fun setupRecyclerViewBait() {
         baitLaguAnakAdapter = BaitLaguAnakAdapter(arrayListOf())
         baitLaguAnakList.apply {
             layoutManagerBait = LinearLayoutManager(this@DetailLaguAnakActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitLaguAnakAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiLaguAnakAdapter = ArtiLaguAnakAdapter(arrayListOf())
+        artiLaguAnakList.apply {
+            layoutManagerArti = LinearLayoutManager(this@DetailLaguAnakActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiLaguAnakAdapter
             setHasFixedSize(true)
         }
     }

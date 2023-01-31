@@ -29,8 +29,9 @@ class AddLirikPupuhActivity : AppCompatActivity() {
 
             submitLirikPupuhUser.setOnClickListener {
                 val lirikPupuh     = lirikPupuhForm.text.toString()
+                val artiPupuh     = artiPupuhForm.text.toString()
                 if(validateInput()){
-                    postLirik(postID, lirikPupuh, namaPost!!)
+                    postLirik(postID, lirikPupuh, namaPost!!, artiPupuh)
                 }
             }
 
@@ -42,11 +43,11 @@ class AddLirikPupuhActivity : AppCompatActivity() {
         }
     }
 
-    private fun postLirik(postID: Int, lirikPupuh: String, nama:String) {
+    private fun postLirik(postID: Int, lirikPupuh: String, nama:String, artiPupuh: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataLirikPupuh(postID, lirikPupuh).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.createDataLirikPupuh(postID, lirikPupuh, artiPupuh).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -70,6 +71,11 @@ class AddLirikPupuhActivity : AppCompatActivity() {
         if(lirikPupuhFormUser.text.toString().isEmpty()){
             layoutAddLirikPupuhUser.isErrorEnabled = true
             layoutAddLirikPupuhUser.error = "Lirik Pupuh tidak boleh kosong!"
+            return false
+        }
+        if(artiPupuhFormUser.text.toString().isEmpty()){
+            layoutAddArtiPupuhUser.isErrorEnabled = true
+            layoutAddArtiPupuhUser.error = "Arti lirik Pupuh tidak boleh kosong!"
             return false
         }
 

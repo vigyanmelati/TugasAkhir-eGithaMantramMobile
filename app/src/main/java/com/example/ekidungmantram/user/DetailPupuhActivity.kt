@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
@@ -17,6 +18,7 @@ import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
+import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +31,8 @@ class DetailPupuhActivity : AppCompatActivity() {
     private lateinit var db             : DharmagitaDb
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitPupuhAdapter : BaitPupuhAdapter
+    private var layoutManagerArti          : LinearLayoutManager? = null
+    private lateinit var artiPupuhAdapter : ArtiPupuhAdapter
     private lateinit var videoPupuhAdapter  : VideoPupuhAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioPupuhAdapter  : AudioPupuhAdapter
@@ -58,6 +62,7 @@ class DetailPupuhActivity : AppCompatActivity() {
             getListAudioPupuh(postID)
             getListYadnyaPupuh(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -113,8 +118,8 @@ class DetailPupuhActivity : AppCompatActivity() {
                     detailPupuh.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailPupuhActivity)
-                            .load(result.gambar).into(imageDetailPupuh)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuh)
+//                            .load(result.gambar).into(imageDetailPupuh)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailPupuh)
                     }else{
                         imageDetailPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -138,6 +143,7 @@ class DetailPupuhActivity : AppCompatActivity() {
                 response: Response<DetailBaitPupuhModel>
             ) {
                 showBaitPupuhData(response.body()!!)
+                showArtiPupuhData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitPupuhModel>, t: Throwable) {
@@ -152,12 +158,27 @@ class DetailPupuhActivity : AppCompatActivity() {
         baitPupuhAdapter.setData(results)
     }
 
+    private fun showArtiPupuhData(body: DetailBaitPupuhModel) {
+        val results = body.data
+        artiPupuhAdapter.setData(results)
+    }
+
     private fun setupRecyclerViewBait() {
         baitPupuhAdapter = BaitPupuhAdapter(arrayListOf())
         baitPupuhList.apply {
             layoutManagerBait = LinearLayoutManager(this@DetailPupuhActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitPupuhAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiPupuhAdapter = ArtiPupuhAdapter(arrayListOf())
+        artiPupuhList.apply {
+            layoutManagerArti = LinearLayoutManager(this@DetailPupuhActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiPupuhAdapter
             setHasFixedSize(true)
         }
     }

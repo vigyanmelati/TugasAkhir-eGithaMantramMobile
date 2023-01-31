@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
@@ -56,6 +57,7 @@ class DetailKakawinActivity : AppCompatActivity() {
 
             getDetailData(postID)
             getBaitData(postID)
+//            getArtiData(postID)
             getListVideoKakawin(postID)
             getListAudioKakawin(postID)
             getListYadnyaKakawin(postID)
@@ -116,8 +118,8 @@ class DetailKakawinActivity : AppCompatActivity() {
                     detailKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@DetailKakawinActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawin)
-                            .load(result.gambar).into(imageDetailKakawin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawin)
+//                            .load(result.gambar).into(imageDetailKakawin)
                     }else{
                         imageDetailKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -151,6 +153,24 @@ class DetailKakawinActivity : AppCompatActivity() {
         })
     }
 
+//    private fun getArtiData(id: Int) {
+//        ApiService.endpoint.getDetailArtiKakawin(id).enqueue(object :
+//            Callback<DetailArtiKakawinModel> {
+//            override fun onResponse(
+//                call: Call<DetailArtiKakawinModel>,
+//                response: Response<DetailArtiKakawinModel>
+//            ) {
+//                showArtiKakawinData(response.body()!!)
+//                Log.d("arti_kakawin_1",response.body().toString())
+//            }
+//
+//            override fun onFailure(call: Call<DetailArtiKakawinModel>, t: Throwable) {
+//                printLog("on failure: $t")
+//            }
+//
+//        })
+//    }
+
     private fun showBaitKakawinData(body: DetailBaitKakawinModel) {
         val results = body.data
         baitKakawinAdapter.setData(results)
@@ -175,7 +195,7 @@ class DetailKakawinActivity : AppCompatActivity() {
     private fun setupRecyclerViewArti() {
         artiKakawinAdapter = ArtiKakawinAdapter(arrayListOf())
         artiKakawinList.apply {
-            layoutManagerBait = LinearLayoutManager(this@DetailKakawinActivity)
+            layoutManagerArti = LinearLayoutManager(this@DetailKakawinActivity)
             layoutManager     = layoutManagerArti
             adapter           = artiKakawinAdapter
             setHasFixedSize(true)

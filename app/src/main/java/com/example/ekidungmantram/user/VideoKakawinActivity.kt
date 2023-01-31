@@ -68,8 +68,8 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
                     detailJenisVideoKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@VideoKakawinActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
-                            .load(result.gambar).into(imageVideoKakawin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
+//                            .load(result.gambar).into(imageVideoKakawin)
                     }else{
                         imageVideoKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }

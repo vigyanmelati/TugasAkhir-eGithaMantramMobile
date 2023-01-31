@@ -80,8 +80,8 @@ class EditPupuhAdminActivity : AppCompatActivity(), AdapterView.OnItemClickListe
                     deskripsiEditedPupuh.setText(result.deskripsi)
                     namaEditedPupuh.setText(result.nama_post)
                     Glide.with(this@EditPupuhAdminActivity)
-                        .load(result.gambar).into(submitEditedImgPupuh)
-//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgPupuh)
+//                        .load(result.gambar).into(submitEditedImgPupuh)
+                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgPupuh)
                 }
             }
 

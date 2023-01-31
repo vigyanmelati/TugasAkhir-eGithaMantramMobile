@@ -40,8 +40,8 @@ class AllPupuhAdapter (private var results: ArrayList<AllPupuhModel>, val listen
             }
             title.text = data.nama_post
             if(data.gambar != null){
-//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
-                Glide.with(itemView).load(data.gambar).into(gambar)
+                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
+//                Glide.with(itemView).load(data.gambar).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.sample_image_yadnya)
             }

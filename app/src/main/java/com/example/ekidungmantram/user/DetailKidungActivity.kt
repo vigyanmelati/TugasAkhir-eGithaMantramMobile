@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
@@ -113,8 +114,8 @@ class DetailKidungActivity : YouTubeBaseActivity() {
                     detailJenisKidung.text = "Kidung " + result.nama_kategori
                     if(result.gambar != null) {
                         Glide.with(this@DetailKidungActivity)
-                            .load(result.gambar).into(imageDetailKidung)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKidung)
+//                            .load(result.gambar).into(imageDetailKidung)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKidung)
                     }else{
                         imageDetailKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }

@@ -31,8 +31,9 @@ class EditLirikKakawinAdminActivity : AppCompatActivity() {
 
             submitEditedLirikKakawin.setOnClickListener {
                 val lirikKakawin = lirikEditedKakawin.text.toString()
+                val artiKakawin = artiEditedKakawin.text.toString()
                 if(validateInput()){
-                    editLirik(postID, lirikID, lirikKakawin, namaPost!!)
+                    editLirik(postID, lirikID, lirikKakawin, namaPost!!, artiKakawin)
                 }
             }
 
@@ -42,11 +43,11 @@ class EditLirikKakawinAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun editLirik(postId:Int, lirikID: Int, lirikKakawin: String, nama: String) {
+    private fun editLirik(postId:Int, lirikID: Int, lirikKakawin: String, nama: String, artiKakawin: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updateDataLirikKakawinAdmin(lirikID, lirikKakawin).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.updateDataLirikKakawinAdmin(lirikID, lirikKakawin, artiKakawin).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -69,7 +70,12 @@ class EditLirikKakawinAdminActivity : AppCompatActivity() {
     private fun validateInput(): Boolean {
         if(lirikEditedKakawin.text.toString().isEmpty()){
             layoutEditedLirikKakawin.isErrorEnabled = true
-            layoutEditedLirikKakawin.error = "Lirik Kakawin tidak boleh kosong!"
+            layoutEditedLirikKakawin.error = "Lirik Sekar Agung tidak boleh kosong!"
+            return false
+        }
+        if(artiEditedKakawin.text.toString().isEmpty()){
+            layoutEditedArtiKakawin.isErrorEnabled = true
+            layoutEditedArtiKakawin.error = "Arti Lirik Sekar Agung tidak boleh kosong!"
             return false
         }
 
@@ -86,6 +92,7 @@ class EditLirikKakawinAdminActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     lirikEditedKakawin.setText(result.bait_sekar_agung)
+                    artiEditedKakawin.setText(result.arti_sekar_agung)
                 }
             }
 

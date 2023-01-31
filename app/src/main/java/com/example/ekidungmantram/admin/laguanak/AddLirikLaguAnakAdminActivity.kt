@@ -12,6 +12,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import kotlinx.android.synthetic.main.activity_add_lirik_lagu_anak_admin.*
 import kotlinx.android.synthetic.main.activity_add_lirik_pupuh_admin.*
+import kotlinx.android.synthetic.main.layout_list_arti_pupuh.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -28,8 +29,9 @@ class AddLirikLaguAnakAdminActivity : AppCompatActivity() {
 
             submitLirikLaguAnak.setOnClickListener {
                 val lirikLaguAnak     = lirikLaguAnakForm.text.toString()
+                val artiLaguAnak     = artiLaguAnakForm.text.toString()
                 if(validateInput()){
-                    postLirik(postID, lirikLaguAnak, namaPost!!)
+                    postLirik(postID, lirikLaguAnak, namaPost!!, artiLaguAnak)
                 }
             }
 
@@ -39,11 +41,11 @@ class AddLirikLaguAnakAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun postLirik(postID: Int, lirikLaguAnak: String, nama:String) {
+    private fun postLirik(postID: Int, lirikLaguAnak: String, nama:String, artiLaguAnak: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataLirikLaguAnakAdmin(postID, lirikLaguAnak).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.createDataLirikLaguAnakAdmin(postID, lirikLaguAnak, artiLaguAnak).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -67,6 +69,11 @@ class AddLirikLaguAnakAdminActivity : AppCompatActivity() {
         if(lirikLaguAnakForm.text.toString().isEmpty()){
             layoutAddLirikLaguAnak.isErrorEnabled = true
             layoutAddLirikLaguAnak.error = "Lirik Sekar Rare tidak boleh kosong!"
+            return false
+        }
+        if(artiLaguAnakForm.text.toString().isEmpty()){
+            layoutAddArtiLaguAnak.isErrorEnabled = true
+            layoutAddArtiLaguAnak.error = "Arti lirik Sekar Rare tidak boleh kosong!"
             return false
         }
 

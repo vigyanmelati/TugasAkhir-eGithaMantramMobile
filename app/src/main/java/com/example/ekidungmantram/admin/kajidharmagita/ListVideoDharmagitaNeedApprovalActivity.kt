@@ -65,7 +65,7 @@ class ListVideoDharmagitaNeedApprovalActivity : AppCompatActivity() {
                         object : AllVideoDharmagitaNeedApprovalAdminAdapter.OnAdapterAllVideoDharmagitaNAAdminListener{
                             override fun onClick(result: AllVideoApprovalModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@ListVideoDharmagitaNeedApprovalActivity, DetailMantramNeedApprovalActivity::class.java)
+                                val intent = Intent(this@ListVideoDharmagitaNeedApprovalActivity, DetailVideoDharmagitaNeedApprovalActivity::class.java)
                                 bundle.putInt("id_video_dharmagita", result.id_video)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
@@ -91,7 +91,7 @@ class ListVideoDharmagitaNeedApprovalActivity : AppCompatActivity() {
                                         object : AllVideoDharmagitaNeedApprovalAdminAdapter.OnAdapterAllVideoDharmagitaNAAdminListener{
                                             override fun onClick(result: AllVideoApprovalModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@ListVideoDharmagitaNeedApprovalActivity, DetailMantramNeedApprovalActivity::class.java)
+                                                val intent = Intent(this@ListVideoDharmagitaNeedApprovalActivity, DetailVideoDharmagitaNeedApprovalActivity::class.java)
                                                 bundle.putInt("id_video_dharmagita", result.id_video)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)

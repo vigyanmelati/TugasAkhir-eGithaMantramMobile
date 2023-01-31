@@ -204,8 +204,8 @@ class DetailKidungAdminActivity : AppCompatActivity() {
 
                     if(result.gambar != null) {
                         Glide.with(this@DetailKidungAdminActivity)
-//                            .load(Constant.IMAGE_URL+result.gambar).into(imageDetailKidungAdmin)
-                            .load(result.gambar).into(imageDetailKidungAdmin)
+                            .load(Constant.IMAGE_URL+result.gambar).into(imageDetailKidungAdmin)
+//                            .load(result.gambar).into(imageDetailKidungAdmin)
                     }else{
                         imageDetailKidungAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }

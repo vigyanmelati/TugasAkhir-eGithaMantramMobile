@@ -79,8 +79,8 @@ class EditLaguAnakAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLi
                     deskripsiEditedLaguAnak.setText(result.deskripsi)
                     namaEditedLaguAnak.setText(result.nama_post)
                     Glide.with(this@EditLaguAnakAdminActivity)
-                        .load(result.gambar).into(submitEditedImgLaguAnak)
-//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgLaguAnak)
+//                        .load(result.gambar).into(submitEditedImgLaguAnak)
+                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgLaguAnak)
                 }
             }
 

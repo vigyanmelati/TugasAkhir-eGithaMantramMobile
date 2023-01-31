@@ -78,8 +78,8 @@ class EditAudioKidungAdminActivity : AppCompatActivity() {
                     namaEditedLinkAudioKidung.setText(result.audio)
                     namaEditedAudioKidung.setText(result.judul_audio)
                     Glide.with(this@EditAudioKidungAdminActivity)
-                        .load(result.gambar_audio).into(submitEditedImgAudioKidung)
-//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKidung)
+//                        .load(result.gambar_audio).into(submitEditedImgAudioKidung)
+                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKidung)
                 }
             }
 

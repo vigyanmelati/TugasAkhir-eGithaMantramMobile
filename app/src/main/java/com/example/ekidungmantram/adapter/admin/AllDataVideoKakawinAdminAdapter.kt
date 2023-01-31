@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.adminmodel.VideoKakawinAdminModel
 
@@ -32,7 +33,8 @@ class AllDataVideoKakawinAdminAdapter (private var results: ArrayList<VideoKakaw
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val result = results[position]
         holder.tittle.setText(result.judul_video)
-        Glide.with(holder.view).load(result.gambar_video).into(holder.video)
+//        Glide.with(holder.view).load(result.gambar_video).into(holder.video)
+        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_video).into(holder.video)
         holder.editl.setOnClickListener {
             onclickEdit?.invoke(result)
         }

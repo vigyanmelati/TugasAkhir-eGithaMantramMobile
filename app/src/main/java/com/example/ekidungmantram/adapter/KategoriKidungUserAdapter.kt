@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.KategoriKidungUserModel
 
@@ -40,8 +41,8 @@ class KategoriKidungUserAdapter (private var results: ArrayList<KategoriKidungUs
             title.text = data.nama_post
             jenis.text = "Kidung "+data.kategori
             if(data.gambar != null){
-//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
-                Glide.with(itemView).load(data.gambar).into(gambar)
+                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
+//                Glide.with(itemView).load(data.gambar).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.sample_image_yadnya)
             }

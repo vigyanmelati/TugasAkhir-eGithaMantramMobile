@@ -29,7 +29,8 @@ class VideoLaguAnakAdapter (val results:ArrayList<VideoLaguAnakModel.DataL>, val
         val result = results[position]
         holder.title.setText(result.judul_video)
 //        holder.gambar.setImageResource(result.gambar_video)
-        Glide.with(holder.view).load(result.gambar_video).into(holder.gambar)
+//        Glide.with(holder.view).load(result.gambar_video).into(holder.gambar)
+        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_video).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
         }

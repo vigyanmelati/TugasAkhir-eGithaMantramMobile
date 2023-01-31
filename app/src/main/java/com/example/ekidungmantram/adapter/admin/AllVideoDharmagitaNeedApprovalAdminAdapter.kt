@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.model.AllDharmagitaApprovalModel
 import com.example.ekidungmantram.model.AllVideoApprovalModel
@@ -47,8 +48,8 @@ class AllVideoDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList
             }
             nama_post.text = data.nama_post
             if(data.gambar_video != null){
-//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar).into(gambar)
-                Glide.with(itemView).load(data.gambar_video).into(gambar)
+                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar_video).into(gambar)
+//                Glide.with(itemView).load(data.gambar_video).into(gambar)
             }else{
                 gambar.setImageResource(R.drawable.meditation)
             }

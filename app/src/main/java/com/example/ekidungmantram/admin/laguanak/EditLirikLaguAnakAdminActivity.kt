@@ -33,8 +33,9 @@ class EditLirikLaguAnakAdminActivity : AppCompatActivity() {
 
             submitEditedLirikLaguAnak.setOnClickListener {
                 val lirikLaguAnak = lirikEditedLaguAnak.text.toString()
+                val artiLaguAnak = artiEditedLaguAnak.text.toString()
                 if(validateInput()){
-                    editLirik(postID, lirikID, lirikLaguAnak, namaPost!!)
+                    editLirik(postID, lirikID, lirikLaguAnak, namaPost!!, artiLaguAnak)
                 }
             }
 
@@ -44,11 +45,11 @@ class EditLirikLaguAnakAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun editLirik(postId:Int, lirikID: Int, lirikLaguAnak: String, nama: String) {
+    private fun editLirik(postId:Int, lirikID: Int, lirikLaguAnak: String, nama: String, artiLaguAnak: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updateDataLirikLaguAnakAdmin(lirikID, lirikLaguAnak).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.updateDataLirikLaguAnakAdmin(lirikID, lirikLaguAnak, artiLaguAnak).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -74,6 +75,11 @@ class EditLirikLaguAnakAdminActivity : AppCompatActivity() {
             layoutEditedLirikLaguAnak.error = "Lirik Sekar Rare tidak boleh kosong!"
             return false
         }
+        if(artiEditedLaguAnak.text.toString().isEmpty()){
+            layoutEditedArtiLaguAnak.isErrorEnabled = true
+            layoutEditedArtiLaguAnak.error = "Arti lirik Sekar Rare tidak boleh kosong!"
+            return false
+        }
 
         return true
     }
@@ -88,6 +94,7 @@ class EditLirikLaguAnakAdminActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     lirikEditedLaguAnak.setText(result.bait_lagu)
+                    artiEditedLaguAnak.setText(result.arti_lagu)
                 }
             }
 

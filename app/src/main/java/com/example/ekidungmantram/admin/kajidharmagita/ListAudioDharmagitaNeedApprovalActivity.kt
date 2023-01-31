@@ -64,7 +64,7 @@ class ListAudioDharmagitaNeedApprovalActivity : AppCompatActivity() {
                         object : AllAudioDharmagitaNeedApprovalAdminAdapter.OnAdapterAllAudioDharmagitaNAAdminListener{
                             override fun onClick(result: AllAudioApprovalModel) {
                                 val bundle = Bundle()
-                                val intent = Intent(this@ListAudioDharmagitaNeedApprovalActivity, DetailMantramNeedApprovalActivity::class.java)
+                                val intent = Intent(this@ListAudioDharmagitaNeedApprovalActivity, DetailAudioDharmagitaNeedApprovalActivity::class.java)
                                 bundle.putInt("id_audio_dharmagita", result.id_audio)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
@@ -90,7 +90,7 @@ class ListAudioDharmagitaNeedApprovalActivity : AppCompatActivity() {
                                         object : AllAudioDharmagitaNeedApprovalAdminAdapter.OnAdapterAllAudioDharmagitaNAAdminListener{
                                             override fun onClick(result: AllAudioApprovalModel) {
                                                 val bundle = Bundle()
-                                                val intent = Intent(this@ListAudioDharmagitaNeedApprovalActivity, DetailMantramNeedApprovalActivity::class.java)
+                                                val intent = Intent(this@ListAudioDharmagitaNeedApprovalActivity, DetailAudioDharmagitaNeedApprovalActivity::class.java)
                                                 bundle.putInt("id_audio_dharmagita", result.id_audio)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)

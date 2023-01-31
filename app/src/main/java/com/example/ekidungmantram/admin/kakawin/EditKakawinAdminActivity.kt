@@ -77,8 +77,8 @@ class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLis
                     deskripsiEditedKakawin.setText(result.deskripsi)
                     namaEditedKakawin.setText(result.nama_post)
                     Glide.with(this@EditKakawinAdminActivity)
-                        .load(result.gambar).into(submitEditedImgKakawin)
-//                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKakawin)
+//                        .load(result.gambar).into(submitEditedImgKakawin)
+                        .load(Constant.IMAGE_URL+result.gambar).into(submitEditedImgKakawin)
                 }
             }
 

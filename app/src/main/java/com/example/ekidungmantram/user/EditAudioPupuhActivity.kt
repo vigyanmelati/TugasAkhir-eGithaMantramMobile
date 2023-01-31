@@ -80,8 +80,8 @@ class EditAudioPupuhActivity : AppCompatActivity() {
                     namaEditedLinkAudioPupuhUser.setText(result.audio)
                     namaEditedAudioPupuhUser.setText(result.judul_audio)
                     Glide.with(this@EditAudioPupuhActivity)
-                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
-//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
+//                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
+                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
                 }
             }
 

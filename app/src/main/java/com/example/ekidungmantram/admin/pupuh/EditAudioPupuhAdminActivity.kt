@@ -79,8 +79,8 @@ class EditAudioPupuhAdminActivity : AppCompatActivity() {
                     namaEditedLinkAudioPupuh.setText(result.audio)
                     namaEditedAudioPupuh.setText(result.judul_audio)
                     Glide.with(this@EditAudioPupuhAdminActivity)
-                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
-//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
+//                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
+                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuh)
                 }
             }
 

@@ -33,8 +33,9 @@ class EditLirikPupuhActivity : AppCompatActivity() {
 
             submitEditedLirikPupuhUser.setOnClickListener {
                 val lirikPupuh = lirikEditedPupuh.text.toString()
+                val artiPupuh = artiEditedPupuh.text.toString()
                 if(validateInput()){
-                    editLirik(postID, lirikID, lirikPupuh, namaPost!!)
+                    editLirik(postID, lirikID, lirikPupuh, namaPost!!,artiPupuh)
                 }
             }
 
@@ -44,11 +45,11 @@ class EditLirikPupuhActivity : AppCompatActivity() {
         }
     }
 
-    private fun editLirik(postId:Int, lirikID: Int, lirikPupuh: String, nama: String) {
+    private fun editLirik(postId:Int, lirikID: Int, lirikPupuh: String, nama: String, artiPupuh: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.updateDataLirikPupuh(lirikID, lirikPupuh).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.updateDataLirikPupuh(lirikID, lirikPupuh, artiPupuh).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -71,7 +72,12 @@ class EditLirikPupuhActivity : AppCompatActivity() {
     private fun validateInput(): Boolean {
         if(lirikEditedPupuhUser.text.toString().isEmpty()){
             layoutEditedLirikPupuhUser.isErrorEnabled = true
-            layoutEditedLirikPupuhUser.error = "Lirik Pupuh tidak boleh kosong!"
+            layoutEditedLirikPupuhUser.error = "Lirik Sekar Alit tidak boleh kosong!"
+            return false
+        }
+        if(artiEditedPupuhUser.text.toString().isEmpty()){
+            layoutEditedArtiPupuhUser.isErrorEnabled = true
+            layoutEditedArtiPupuhUser.error = "Arti lirik Sekar Alit tidak boleh kosong!"
             return false
         }
 
@@ -88,6 +94,7 @@ class EditLirikPupuhActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     lirikEditedPupuhUser.setText(result.bait_pupuh)
+                    artiEditedPupuhUser.setText(result.arti_pupuh)
                 }
             }
 

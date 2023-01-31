@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.admin.AudioKakawinAdminAdapter
-import com.example.ekidungmantram.adapter.admin.BaitKakawinAdminAdapter
-import com.example.ekidungmantram.adapter.admin.VideoKakawinAdminAdapter
-import com.example.ekidungmantram.adapter.admin.YadnyaKakawinAdminAdapter
+import com.example.ekidungmantram.adapter.admin.*
 import com.example.ekidungmantram.admin.kakawin.*
 import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
@@ -33,6 +30,8 @@ import retrofit2.Response
 class DetailKakawinAdminActivity : AppCompatActivity() {
     private var layoutManagerBait          : LinearLayoutManager? = null
     private lateinit var baitKakawinAdapter : BaitKakawinAdminAdapter
+    private var layoutManagerArti         : LinearLayoutManager? = null
+    private lateinit var artiKakawinAdapter : ArtiKakawinAdminAdapter
     private lateinit var videoKakawinAdapter  : VideoKakawinAdminAdapter
     private var gridLayoutManagerL      : GridLayoutManager? = null
     private lateinit var audioKakawinAdapter  : AudioKakawinAdminAdapter
@@ -67,6 +66,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             getListAudioKakawin(postID)
             getListYadnyaKakawin(postID)
             setupRecyclerViewBait()
+            setupRecyclerViewArti()
             setupRecyclerViewK()
             setupRecyclerViewA()
             setupRecyclerViewY()
@@ -217,8 +217,8 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                     detailKakawinAdmin.text = "Sekar Alit"
                     if(result.gambar != null) {
                         Glide.with(this@DetailKakawinAdminActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawinAdmin)
-                            .load(result.gambar).into(imageDetailKakawinAdmin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawinAdmin)
+//                            .load(result.gambar).into(imageDetailKakawinAdmin)
                     }else{
                         imageDetailKakawinAdmin.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -253,6 +253,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                     goToListLirikKakawin.visibility = View.VISIBLE
                 }
                 showBaitKakawinData(response.body()!!)
+                showArtiKakawinData(response.body()!!)
             }
 
             override fun onFailure(call: Call<DetailBaitKakawinAdminModel>, t: Throwable) {
@@ -273,6 +274,21 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             layoutManagerBait = LinearLayoutManager(this@DetailKakawinAdminActivity)
             layoutManager     = layoutManagerBait
             adapter           = baitKakawinAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun showArtiKakawinData(body: DetailBaitKakawinAdminModel) {
+        val results = body.data
+        artiKakawinAdapter.setData(results)
+    }
+
+    private fun setupRecyclerViewArti() {
+        artiKakawinAdapter = ArtiKakawinAdminAdapter(arrayListOf())
+        artiKakawinListAdmin.apply {
+            layoutManagerArti = LinearLayoutManager(this@DetailKakawinAdminActivity)
+            layoutManager     = layoutManagerArti
+            adapter           = artiKakawinAdapter
             setHasFixedSize(true)
         }
     }

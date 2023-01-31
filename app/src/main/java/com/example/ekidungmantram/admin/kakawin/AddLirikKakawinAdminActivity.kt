@@ -27,8 +27,9 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
 
             submitLirikKakawin.setOnClickListener {
                 val lirikKakawin     = lirikKakawinForm.text.toString()
+                val artiKakawin     = artiKakawinForm.text.toString()
                 if(validateInput()){
-                    postLirik(postID, lirikKakawin, namaPost!!)
+                    postLirik(postID, lirikKakawin, namaPost!!, artiKakawin)
                 }
             }
 
@@ -38,11 +39,11 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun postLirik(postID: Int, lirikKakawin: String, nama:String) {
+    private fun postLirik(postID: Int, lirikKakawin: String, nama:String, artiKakawin: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataLirikKakawinAdmin(postID, lirikKakawin).enqueue(object: retrofit2.Callback<CrudModel>{
+        ApiService.endpoint.createDataLirikKakawinAdmin(postID, lirikKakawin, artiKakawin).enqueue(object: retrofit2.Callback<CrudModel>{
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
@@ -65,7 +66,13 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
     private fun validateInput(): Boolean {
         if(lirikKakawinForm.text.toString().isEmpty()){
             layoutAddLirikKakawin.isErrorEnabled = true
-            layoutAddLirikKakawin.error = "Lirik Kakawin tidak boleh kosong!"
+            layoutAddLirikKakawin.error = "Lirik Sekar Agung tidak boleh kosong!"
+            return false
+        }
+
+        if(artiKakawinForm.text.toString().isEmpty()){
+            layoutAddArtiKakawin.isErrorEnabled = true
+            layoutAddArtiKakawin.error = "Arti Sekar Agung tidak boleh kosong!"
             return false
         }
 

@@ -109,8 +109,8 @@ class AudioKakawinActivity : AppCompatActivity() {
                     detailJenisAudioKakawin.text = "Sekar Agung "
                     if(result.gambar != null) {
                         Glide.with(this@AudioKakawinActivity)
-//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
-                            .load(result.gambar).into(imageAudioKakawin)
+                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
+//                            .load(result.gambar).into(imageAudioKakawin)
                     }else{
                         imageAudioKakawin.setImageResource(R.drawable.sample_image_yadnya)
                     }
