@@ -303,22 +303,24 @@ interface ApiEndpoint {
     @GET("admin/showaudiokakawinadmin/{id_post}")
     fun getShowAudioKidungAdmin(@Path("id_post") id:Int) : Call<DetailAudioKidungAdminModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/addaudioonkidungadmin/{id_post}")
     fun createDataAudioKidungAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/editaudiokidungadmin/{id_post}")
     fun updateDataAudioKidungAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     @POST("admin/deleteaudioonkidungadmin/{id_post}")
@@ -1019,22 +1021,24 @@ interface ApiEndpoint {
     @GET("admin/showaudiolaguanakadmin/{id_post}")
     fun getShowAudioLaguAnakAdmin(@Path("id_post") id:Int) : Call<DetailAudioLaguAnakAdminModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/addaudioonlaguanakadmin/{id_post}")
     fun createDataAudioLaguAnakAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/editaudiolaguanakadmin/{id_post}")
     fun updateDataAudioLaguAnakAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     @POST("admin/deleteaudioonlaguanakadmin/{id_post}")
@@ -1154,22 +1158,24 @@ interface ApiEndpoint {
     @GET("admin/showaudiokakawinadmin/{id_post}")
     fun getShowAudioKakawinAdmin(@Path("id_post") id:Int) : Call<DetailAudioKakawinAdminModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/addaudioonkakawinadmin/{id_post}")
     fun createDataAudioKakawinAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("admin/editaudiokakawinadmin/{id_post}")
     fun updateDataAudioKakawinAdmin (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") Audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     @POST("admin/deleteaudioonkakawinadmin/{id_post}")
@@ -1449,13 +1455,14 @@ interface ApiEndpoint {
         @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("editaudiopupuh/{id_post}")
     fun updateDataAudioPupuh (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") audio:String,
+        @Part("judul_audio") judulAudio:RequestBody,
+        @Part("gambar_audio") gambarAudio:RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     @POST("deleteaudioonpupuh/{id_post}")

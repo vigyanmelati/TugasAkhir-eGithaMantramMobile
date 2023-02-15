@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user.pupuh
+package com.example.ekidungmantram.admin.laguanak
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,17 +10,17 @@ import android.os.Environment
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.ekidungmantram.R
-import kotlinx.android.synthetic.main.activity_record_audio_edit_pupuh.*
-import kotlinx.android.synthetic.main.activity_record_audio_pupuh.*
+import kotlinx.android.synthetic.main.activity_record_audio_kidung.*
+import kotlinx.android.synthetic.main.activity_record_audio_lagu_anak.*
 import java.util.*
 
-class RecordAudioEditPupuhActivity : AppCompatActivity() {
+class RecordAudioLaguAnakActivity : AppCompatActivity() {
     lateinit var mr : MediaRecorder
     var random: Random? = null
     var RandomAudioFileName = "ABCDEFGHIJKLMNOP"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_record_audio_edit_pupuh)
+        setContentView(R.layout.activity_record_audio_lagu_anak)
         random = Random()
 
 //        var path : String = Environment.getExternalStorageDirectory().toString()+"/myrec.3gp" //store the data
@@ -28,25 +28,25 @@ class RecordAudioEditPupuhActivity : AppCompatActivity() {
         mr = MediaRecorder()
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.RECORD_AUDIO,
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 111)
-        startAudioPupuhEdit.isEnabled = true
+        startAudioLaguAnak.isEnabled = true
 
         //start recording
-        startAudioPupuhEdit.setOnClickListener {
+        startAudioLaguAnak.setOnClickListener {
             mr.setAudioSource(MediaRecorder.AudioSource.MIC)
             mr.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             mr.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
             mr.setOutputFile(path)
             mr.prepare()
             mr.start()
-            stopAudioPupuhEdit.isEnabled = true
-            startAudioPupuhEdit.isEnabled = false
+            stopAudioLaguAnak.isEnabled = true
+            startAudioLaguAnak.isEnabled = false
         }
 
         //stop recording
-        stopAudioPupuhEdit.setOnClickListener {
+        stopAudioLaguAnak.setOnClickListener {
             mr.stop()
-            startAudioPupuhEdit.isEnabled = true
-            stopAudioPupuhEdit.isEnabled = false
+            startAudioLaguAnak.isEnabled = true
+            stopAudioLaguAnak.isEnabled = false
 
 //            Toast.makeText(this, "Recording Completed", Toast.LENGTH_LONG).show()
 //            val returnIntent = Intent()
@@ -57,14 +57,14 @@ class RecordAudioEditPupuhActivity : AppCompatActivity() {
         }
 
 //        play recording
-        playAudioPupuhEdit.setOnClickListener {
+        playAudioLaguAnak.setOnClickListener {
             var mp = MediaPlayer()
             mp.setDataSource(path)
             mp.prepare()
             mp.start()
         }
 
-        submitAudioPupuhAdminEdit.setOnClickListener {
+        submitAudioLaguAnakAdmin.setOnClickListener {
             Toast.makeText(this, "Audio Record Disimpan", Toast.LENGTH_LONG).show()
             val returnIntent = Intent()
 //            val audioFile = File(path)
@@ -76,8 +76,8 @@ class RecordAudioEditPupuhActivity : AppCompatActivity() {
 
 
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED){
-            startAudioPupuhEdit.isEnabled = true
-            stopAudioPupuhEdit.isEnabled = false
+            startAudioLaguAnak.isEnabled = true
+            stopAudioLaguAnak.isEnabled = false
         }
 
     }
@@ -89,7 +89,7 @@ class RecordAudioEditPupuhActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode==111 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            startAudioPupuhEdit.isEnabled = true
+            startAudioLaguAnak.isEnabled = true
         }
     }
 

@@ -123,7 +123,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioLaguAnak.setOnClickListener {
-                val intent = Intent(this, AddAudioLaguAnakAdminActivity::class.java)
+                val intent = Intent(this, AddAudioLaguAnakNewActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
                 intent.putExtras(bundle)

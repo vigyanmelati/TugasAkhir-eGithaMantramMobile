@@ -36,6 +36,42 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="s">
         <activity
+            android:name=".admin.laguanak.RecordAudioEditLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.EditAudioLaguAnakNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.RecordAudioLaguAnakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.laguanak.AddAudioLaguAnakNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.RecordAudioEditKidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.EditAudioKidungNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.RecordAudioKidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kidung.AddAudioKidungNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.RecordAudioEditKakawinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.EditAudioKakawinNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.RecordAudioKakawinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.kakawin.AddAudioKakawinNewActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.pupuh.RecordAudioEditPupuhActivity"
             android:exported="false" />
         <activity

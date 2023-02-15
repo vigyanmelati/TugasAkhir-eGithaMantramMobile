@@ -123,7 +123,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioKakawin.setOnClickListener {
-                val intent = Intent(this, AddAudioKakawinAdminActivity::class.java)
+                val intent = Intent(this, AddAudioKakawinNewActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
                 intent.putExtras(bundle)

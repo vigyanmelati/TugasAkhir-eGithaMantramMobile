@@ -43,7 +43,7 @@ class AllAudioKakawinAdminActivity : AppCompatActivity() {
             }
 
             fabAudioKakawin.setOnClickListener {
-                val intent = Intent(this, AddAudioKakawinAdminActivity::class.java)
+                val intent = Intent(this, AddAudioKakawinNewActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -80,7 +80,7 @@ class AllAudioKakawinAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllAudioKakawinAdminActivity, EditAudioKakawinAdminActivity::class.java)
+                        val intent = Intent(this@AllAudioKakawinAdminActivity, EditAudioKakawinNewActivity::class.java)
                         bundle.putInt("id_audio_kakawin", it.id_audio)
                         bundle.putInt("id_kakawin", postID)
                         bundle.putString("nama_kakawin", namaPost)

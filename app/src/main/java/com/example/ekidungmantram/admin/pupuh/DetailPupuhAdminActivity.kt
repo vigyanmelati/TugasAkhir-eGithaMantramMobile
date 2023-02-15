@@ -26,6 +26,7 @@ import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
 import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
@@ -144,7 +145,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioPupuh.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioPupuhNewActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)

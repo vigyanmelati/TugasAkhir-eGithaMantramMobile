@@ -114,7 +114,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
             }
 
             tambahAudioKidung.setOnClickListener {
-                val intent = Intent(this, AddAudioKidungAdminActivity::class.java)
+                val intent = Intent(this, AddAudioKidungNewActivity::class.java)
                 bundle.putInt("id_kidung", postID)
                 bundle.putString("nama_kidung", nama_kidung)
                 intent.putExtras(bundle)

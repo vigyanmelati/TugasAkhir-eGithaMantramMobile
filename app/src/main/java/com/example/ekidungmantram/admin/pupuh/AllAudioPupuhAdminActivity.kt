@@ -16,6 +16,8 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AudioPupuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.VideoPupuhAdminModel
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
+import com.example.ekidungmantram.user.pupuh.EditAudioPupuhNewActivity
 import kotlinx.android.synthetic.main.activity_all_audio_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_all_video_pupuh_admin.*
 import retrofit2.Call
@@ -43,7 +45,7 @@ class AllAudioPupuhAdminActivity : AppCompatActivity() {
             }
 
             fabAudioPupuh.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioPupuhNewActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -80,7 +82,7 @@ class AllAudioPupuhAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllAudioPupuhAdminActivity, EditAudioPupuhAdminActivity::class.java)
+                        val intent = Intent(this@AllAudioPupuhAdminActivity, EditAudioPupuhNewActivity::class.java)
                         bundle.putInt("id_audio_pupuh", it.id_audio)
                         bundle.putInt("id_pupuh", postID)
                         bundle.putString("nama_pupuh", namaPost)

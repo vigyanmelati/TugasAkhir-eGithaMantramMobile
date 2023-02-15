@@ -41,7 +41,7 @@ class AllAudioKidungAdminActivity : AppCompatActivity() {
             }
 
             fabAudioKidung.setOnClickListener {
-                val intent = Intent(this, AddAudioKidungAdminActivity::class.java)
+                val intent = Intent(this, AddAudioKidungNewActivity::class.java)
                 bundle.putInt("id_kidung", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -78,7 +78,7 @@ class AllAudioKidungAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllAudioKidungAdminActivity, EditAudioKidungAdminActivity::class.java)
+                        val intent = Intent(this@AllAudioKidungAdminActivity, EditAudioKidungNewActivity::class.java)
                         bundle.putInt("id_audio_kidung", it.id_audio)
                         bundle.putInt("id_kidung", postID)
                         bundle.putString("nama_kidung", namaPost)

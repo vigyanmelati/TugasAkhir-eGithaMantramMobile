@@ -52,9 +52,9 @@ class AddAudioKakawinAdminActivity : AppCompatActivity() {
             val judul_audio     = namaAudioKakawinAdmin.text.toString()
             val audio     = linkAudioKakawinAdmin.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
-            if(validateInput()){
-                postAudioKakawinAdmin(judul_audio, audio, gambar)
-            }
+//            if(validateInput()){
+//                postAudioKakawinAdmin(judul_audio, audio, gambar)
+//            }
         }
 
         cancelSubmitAddAudioKakawinAdmin.setOnClickListener {
@@ -62,33 +62,33 @@ class AddAudioKakawinAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun postAudioKakawinAdmin(judul_audio: String, audio: String, gambar: String) {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Mengunggah Data")
-        progressDialog.show()
-        ApiService.endpoint.createDataAudioKakawinAdmin(id_kakawin, judul_audio, gambar, audio)
-            .enqueue(object: Callback<CrudModel> {
-                override fun onResponse(
-                    call: Call<CrudModel>,
-                    response: Response<CrudModel>
-                ) {
-                    if(response.body()?.status == 200){
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        goBack()
-                    }else{
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
-                    progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioKakawinAdminActivity, t.message, Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
+//    private fun postAudioKakawinAdmin(judul_audio: String, audio: String, gambar: String) {
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("Mengunggah Data")
+//        progressDialog.show()
+//        ApiService.endpoint.createDataAudioKakawinAdmin(id_kakawin, judul_audio, gambar, audio)
+//            .enqueue(object: Callback<CrudModel> {
+//                override fun onResponse(
+//                    call: Call<CrudModel>,
+//                    response: Response<CrudModel>
+//                ) {
+//                    if(response.body()?.status == 200){
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                        goBack()
+//                    }else{
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
+//                    progressDialog.dismiss()
+//                    Toast.makeText(this@AddAudioKakawinAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
+//    }
 
     private fun goBack() {
         val intent = Intent(this, AllAudioKakawinAdminActivity::class.java)

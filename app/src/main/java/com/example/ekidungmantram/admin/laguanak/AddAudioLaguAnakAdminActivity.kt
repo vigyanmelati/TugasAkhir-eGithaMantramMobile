@@ -53,9 +53,9 @@ class AddAudioLaguAnakAdminActivity : AppCompatActivity() {
             val judul_audio     = namaAudioLaguAnakAdmin.text.toString()
             val audio     = linkAudioLaguAnakAdmin.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
-            if(validateInput()){
-                postAudioLaguAnakAdmin(judul_audio, audio, gambar)
-            }
+//            if(validateInput()){
+//                postAudioLaguAnakAdmin(judul_audio, audio, gambar)
+//            }
         }
 
         cancelSubmitAddAudioLaguAnakAdmin.setOnClickListener {
@@ -63,33 +63,33 @@ class AddAudioLaguAnakAdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun postAudioLaguAnakAdmin(judul_audio: String, audio: String, gambar: String) {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Mengunggah Data")
-        progressDialog.show()
-        ApiService.endpoint.createDataAudioLaguAnakAdmin(id_lagu_anak, judul_audio, gambar, audio)
-            .enqueue(object: Callback<CrudModel> {
-                override fun onResponse(
-                    call: Call<CrudModel>,
-                    response: Response<CrudModel>
-                ) {
-                    if(response.body()?.status == 200){
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioLaguAnakAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        goBack()
-                    }else{
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioLaguAnakAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
-                    progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioLaguAnakAdminActivity, t.message, Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
+//    private fun postAudioLaguAnakAdmin(judul_audio: String, audio: String, gambar: String) {
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("Mengunggah Data")
+//        progressDialog.show()
+//        ApiService.endpoint.createDataAudioLaguAnakAdmin(id_lagu_anak, judul_audio, gambar, audio)
+//            .enqueue(object: Callback<CrudModel> {
+//                override fun onResponse(
+//                    call: Call<CrudModel>,
+//                    response: Response<CrudModel>
+//                ) {
+//                    if(response.body()?.status == 200){
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioLaguAnakAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                        goBack()
+//                    }else{
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioLaguAnakAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
+//                    progressDialog.dismiss()
+//                    Toast.makeText(this@AddAudioLaguAnakAdminActivity, t.message, Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
+//    }
 
     private fun goBack() {
         val intent = Intent(this, AllAudioLaguAnakAdminActivity::class.java)

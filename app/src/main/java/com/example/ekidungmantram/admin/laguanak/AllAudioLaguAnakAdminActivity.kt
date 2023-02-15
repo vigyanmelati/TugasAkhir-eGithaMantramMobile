@@ -46,7 +46,7 @@ class AllAudioLaguAnakAdminActivity : AppCompatActivity() {
             }
 
             fabAudioLaguAnak.setOnClickListener {
-                val intent = Intent(this, AddAudioLaguAnakAdminActivity::class.java)
+                val intent = Intent(this, AddAudioLaguAnakNewActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -83,7 +83,7 @@ class AllAudioLaguAnakAdminActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllAudioLaguAnakAdminActivity, EditAudioLaguAnakAdminActivity::class.java)
+                        val intent = Intent(this@AllAudioLaguAnakAdminActivity, EditAudioLaguAnakNewActivity::class.java)
                         bundle.putInt("id_audio_lagu_anak", it.id_audio)
                         bundle.putInt("id_lagu_anak", postID)
                         bundle.putString("nama_lagu_anak", namaPost)

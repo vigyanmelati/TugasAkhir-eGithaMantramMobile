@@ -57,9 +57,9 @@ class EditAudioPupuhActivity : AppCompatActivity() {
                 val nama_post     = namaEditedAudioPupuhUser.text.toString()
                 val link     = namaEditedLinkAudioPupuhUser.text.toString()
                 val gambar        = bitmapToString(bitmap).toString()
-                if(validateInput()){
-                    postEditedPupuh(audioID, nama_post,gambar,link)
-                }
+//                if(validateInput()){
+//                    postEditedPupuh(audioID, nama_post,gambar,link)
+//                }
             }
 
             cancelSubmitEditedAudioPupuhUser.setOnClickListener {
@@ -92,33 +92,33 @@ class EditAudioPupuhActivity : AppCompatActivity() {
         })
     }
 
-    private fun postEditedPupuh(postID: Int, judul_audio: String, gambar_audio: String, audio: String) {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Mengunggah Data")
-        progressDialog.show()
-        ApiService.endpoint.updateDataAudioPupuh(postID ,judul_audio, gambar_audio, audio)
-            .enqueue(object: retrofit2.Callback<CrudModel> {
-                override fun onResponse(
-                    call: Call<CrudModel>,
-                    response: Response<CrudModel>
-                ) {
-                    if(response.body()?.status == 200){
-                        progressDialog.dismiss()
-                        Toast.makeText(this@EditAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        goBack()
-                    }else{
-                        progressDialog.dismiss()
-                        Toast.makeText(this@EditAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
-                    progressDialog.dismiss()
-                    Toast.makeText(this@EditAudioPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
+//    private fun postEditedPupuh(postID: Int, judul_audio: String, gambar_audio: String, audio: String) {
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("Mengunggah Data")
+//        progressDialog.show()
+//        ApiService.endpoint.updateDataAudioPupuh(postID ,judul_audio, gambar_audio, audio)
+//            .enqueue(object: retrofit2.Callback<CrudModel> {
+//                override fun onResponse(
+//                    call: Call<CrudModel>,
+//                    response: Response<CrudModel>
+//                ) {
+//                    if(response.body()?.status == 200){
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@EditAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                        goBack()
+//                    }else{
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@EditAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
+//                    progressDialog.dismiss()
+//                    Toast.makeText(this@EditAudioPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
+//    }
 
 
     private fun goBack() {

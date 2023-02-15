@@ -1,47 +1,44 @@
-package com.example.ekidungmantram.user.pupuh
+package com.example.ekidungmantram.admin.kidung
 
 import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.*
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toFile
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllAudioPupuhAdminActivity
+import com.example.ekidungmantram.admin.kidung.AllAudioKidungAdminActivity
+import com.example.ekidungmantram.admin.kidung.RecordAudioKidungActivity
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.createCustomTempFile
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.uriToFile
-import com.example.ekidungmantram.user.AllAudioPupuhActivity
-import kotlinx.android.synthetic.main.activity_add_audio_pupuh_new.*
+import kotlinx.android.synthetic.main.activity_add_audio_kidung_new.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.*
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
-
-class AddAudioPupuhNewActivity : AppCompatActivity() {
+class AddAudioKidungNewActivity : AppCompatActivity() {
     private val REQUEST_CODE = 100
     private val REQUEST_CODE_AUDIO = 101
     private var bitmap: Bitmap? = null
@@ -49,37 +46,37 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
     private var audioUri: Uri? = null
     private var file: File? = null
     private var filePath: String? = null
-    private var id_pupuh: Int = 0
+    private var id_kidung: Int = 0
     val RQS_RECORDING = 1
 
-    private lateinit var nama_pupuh: String
+    private lateinit var nama_kidung: String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_audio_pupuh_new)
+        setContentView(R.layout.activity_add_audio_kidung_new)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Tambah Audio Pupuh"
+        supportActionBar!!.title = "Tambah Audio Sekar Madya"
 
         val bundle: Bundle? = intent.extras
         if (bundle != null) {
-            id_pupuh = bundle.getInt("id_pupuh")
-            nama_pupuh = bundle.getString("nama_kat_pupuh_user").toString()
+            id_kidung = bundle.getInt("id_kidung")
+            nama_kidung = bundle.getString("nama_kidung").toString()
         }
 
-        selectImageAudioPupuhUserNew.setOnClickListener {
+        selectImageAudioKidungUserNew.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-//        selectAudioPupuhUserNew.setOnClickListener {
+//        selectAudioKidungUserNew.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_GET_CONTENT)
 //            intent.type = "audio/*"
 //            startActivityForResult(intent, REQUEST_CODE_AUDIO)
 //        }
 
-        selectAudioPupuhUserNew.setOnClickListener {
+        selectAudioKidungUserNew.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 112)
             } else {
@@ -89,10 +86,10 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
             }
         }
 
-        submitAudioPupuhUserNew.setOnClickListener {
+        submitAudioKidungUserNew.setOnClickListener {
 //            audioUri?.let { it1 -> uploadFile(it1) }
 //            uploadFile(audioUri!!)
-            val judul_audio = namaAudioPupuhUserNew.text.toString()
+            val judul_audio = namaAudioKidungUserNew.text.toString()
 //            val audio = audioToString(filePath!!)
             val gambar = bitmapToString(bitmap).toString()
             if (validateInput()) {
@@ -101,76 +98,40 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
 
         }
 
-        recordAudioPupuhUserNew.setOnClickListener {
-            val intent = Intent(this, RecordAudioPupuhActivity::class.java)
+        recordAudioKidungUserNew.setOnClickListener {
+            val intent = Intent(this, RecordAudioKidungActivity::class.java)
             startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
         }
 
-        cancelSubmitAddAudioPupuhUserNew.setOnClickListener {
+        cancelSubmitAddAudioKidungUserNew.setOnClickListener {
             goBack()
         }
 
     }
 
-//    private fun postAudioPupuhAdmin(judul_audio: String, gambar: String, part: MultipartBody.Part) {
-//        val progressDialog = ProgressDialog(this)
-//        progressDialog.setMessage("Mengunggah Data")
-//        progressDialog.show()
-//        ApiService.endpoint.createDataAudioPupuh(id_pupuh, judul_audio, gambar, part)
-//            .enqueue(object : Callback<CrudModel> {
-//                override fun onResponse(
-//                    call: Call<CrudModel>,
-//                    response: Response<CrudModel>
-//                ) {
-//                    if (response.body()?.status == 200) {
-//                        progressDialog.dismiss()
-//                        Toast.makeText(
-//                            this@AddAudioPupuhNewActivity,
-//                            response.body()?.message,
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                        goBack()
-//                    } else {
-//                        progressDialog.dismiss()
-//                        Toast.makeText(
-//                            this@AddAudioPupuhNewActivity,
-//                            response.body()?.message,
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
-//                    progressDialog.dismiss()
-//                    Toast.makeText(this@AddAudioPupuhNewActivity, t.message, Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//
-//            })
-//    }
 
     private fun goBack() {
-        val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
+        val intent = Intent(this, AllAudioKidungAdminActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_pupuh", id_pupuh)
-        bundle.putString("nama_pupuh", nama_pupuh)
-//        bundle.putString("desc_pupuh_admin", desc_pupuh)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
+//        bundle.putString("desc_kidung_admin", desc_kidung)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }
 
     private fun validateInput(): Boolean {
-        if (namaAudioPupuhUserNew.text.toString().isEmpty()) {
-            layoutNamaAudioPupuhUserNew.isErrorEnabled = true
-            layoutNamaAudioPupuhUserNew.error = "Nama audio tidak boleh kosong!"
+        if (namaAudioKidungUserNew.text.toString().isEmpty()) {
+            layoutNamaAudioKidungUserNew.isErrorEnabled = true
+            layoutNamaAudioKidungUserNew.error = "Nama audio tidak boleh kosong!"
             return false
         }
 
-//        if(linkAudioPupuhUser.text.toString().isEmpty()){
-//            layoutLinkAudioPupuhUser.isErrorEnabled = true
-//            layoutLinkAudioPupuhUser.error = "Link audio tidak boleh kosong!"
+//        if(linkAudioKidungUser.text.toString().isEmpty()){
+//            layoutLinkAudioKidungUser.isErrorEnabled = true
+//            layoutLinkAudioKidungUser.error = "Link audio tidak boleh kosong!"
 //            return false
 //        }
 
@@ -182,7 +143,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val imgUri: Uri? = data?.data
-            submitImgAudioPupuhUserNew.setImageURI(imgUri) // handle chosen image
+            submitImgAudioKidungUserNew.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imgUri)
         }
 
@@ -196,7 +157,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
             if (audioUri != null) {
                 val path = audioUri?.let { getPathFromUri(this, it) }
                 filePath = audioUri!!.path
-                selectAudioPupuhUserNew.text = path.toString()
+                selectAudioKidungUserNew.text = path.toString()
             }
             uriAudio = MediaStore.Audio.Media.getContentUriForPath(audioUri.toString())
         }
@@ -210,12 +171,12 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
                     val file_audio = File(result)
                     if(file_audio != null){
                         file = file_audio
-                        selectAudioPupuhUserNew.text = file!!.name
+                        selectAudioKidungUserNew.text = file!!.name
                     }else{
-                        Toast.makeText(this,"File Aneh",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"File Aneh", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this,"Gada filepath rekaman",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Gada filepath rekaman", Toast.LENGTH_SHORT).show()
                 }
                 Toast.makeText(this, "Saved: $result", Toast.LENGTH_LONG).show()
                 Log.d("path_audio", "Saved Path::$result")
@@ -249,7 +210,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.createDataAudioPupuh(id_pupuh, judul, gambar_audio, nama, audioFile)
+        ApiService.endpoint.createDataAudioKidungAdmin(id_kidung, judul, gambar_audio, nama, audioFile)
             .enqueue(object : Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -258,7 +219,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
                     if (response.body()?.status == 200) {
                         progressDialog.dismiss()
                         Toast.makeText(
-                            this@AddAudioPupuhNewActivity,
+                            this@AddAudioKidungNewActivity,
                             response.body()?.message,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -266,7 +227,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
                     } else {
                         progressDialog.dismiss()
                         Toast.makeText(
-                            this@AddAudioPupuhNewActivity,
+                            this@AddAudioKidungNewActivity,
                             response.body()?.message,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -275,7 +236,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<CrudModel>, t: Throwable) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioPupuhNewActivity, t.message, Toast.LENGTH_SHORT)
+                    Toast.makeText(this@AddAudioKidungNewActivity, t.message, Toast.LENGTH_SHORT)
                         .show()
                 }
 

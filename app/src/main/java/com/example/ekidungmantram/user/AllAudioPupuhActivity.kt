@@ -17,6 +17,7 @@ import com.example.ekidungmantram.model.AudioPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.user.pupuh.AddAudioPupuhActivity
 import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
+import com.example.ekidungmantram.user.pupuh.EditAudioPupuhNewActivity
 import kotlinx.android.synthetic.main.activity_all_audio_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,7 +81,7 @@ class AllAudioPupuhActivity : AppCompatActivity() {
                     }
                     setAdapter.setOnClickEdit {
                         val bundle = Bundle()
-                        val intent = Intent(this@AllAudioPupuhActivity, EditAudioPupuhAdminActivity::class.java)
+                        val intent = Intent(this@AllAudioPupuhActivity, EditAudioPupuhNewActivity::class.java)
                         bundle.putInt("id_audio_pupuh", it.id_audio)
                         bundle.putInt("id_pupuh", postID)
                         bundle.putString("nama_pupuh", namaPost)
