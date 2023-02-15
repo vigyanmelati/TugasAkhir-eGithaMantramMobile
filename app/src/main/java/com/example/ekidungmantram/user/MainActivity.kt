@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val role          = sharedPreferences.getString("ROLE", null)
         val id            = sharedPreferences.getString("ID_ADMIN", null)
+        val loged           = sharedPreferences.getString("LOGGED", null)
         Log.d("id_admin", id.toString())
 
         if(role != null) {

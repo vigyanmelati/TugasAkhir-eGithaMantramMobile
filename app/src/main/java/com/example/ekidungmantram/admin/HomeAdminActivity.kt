@@ -77,6 +77,14 @@ class HomeAdminActivity : AppCompatActivity() {
         sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val role          = sharedPreferences.getString("ROLE", null)
         val id            = sharedPreferences.getString("ID_ADMIN", null)
+        val loged           = sharedPreferences.getString("LOGGED", null)
+
+        if(loged == "1" && role == "3"){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
         if(role != "1") {
             val nav_Menu: Menu = navView.getMenu()

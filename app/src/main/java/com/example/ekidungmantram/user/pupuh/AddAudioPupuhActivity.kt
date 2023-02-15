@@ -16,6 +16,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.user.AllAudioPupuhActivity
 import kotlinx.android.synthetic.main.activity_add_audio_pupuh.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,7 +54,7 @@ class AddAudioPupuhActivity : AppCompatActivity() {
             val audio     = linkAudioPupuhUser.text.toString()
             val gambar        = bitmapToString(bitmap).toString()
             if(validateInput()){
-                postAudioPupuhAdmin(judul_audio, audio, gambar)
+//                postAudioPupuhAdmin(judul_audio, audio, gambar)
             }
         }
 
@@ -72,33 +73,33 @@ class AddAudioPupuhActivity : AppCompatActivity() {
         }
     }
 
-    private fun postAudioPupuhAdmin(judul_audio: String, audio: String, gambar: String) {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Mengunggah Data")
-        progressDialog.show()
-        ApiService.endpoint.createDataAudioPupuh(id_pupuh, judul_audio, gambar, audio)
-            .enqueue(object: Callback<CrudModel> {
-                override fun onResponse(
-                    call: Call<CrudModel>,
-                    response: Response<CrudModel>
-                ) {
-                    if(response.body()?.status == 200){
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        goBack()
-                    }else{
-                        progressDialog.dismiss()
-                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
-                    progressDialog.dismiss()
-                    Toast.makeText(this@AddAudioPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
+//    private fun postAudioPupuhAdmin(judul_audio: String, audio: MultipartBody.Part, gambar: String) {
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("Mengunggah Data")
+//        progressDialog.show()
+//        ApiService.endpoint.createDataAudioPupuh(id_pupuh, judul_audio, gambar, audio)
+//            .enqueue(object: Callback<CrudModel> {
+//                override fun onResponse(
+//                    call: Call<CrudModel>,
+//                    response: Response<CrudModel>
+//                ) {
+//                    if(response.body()?.status == 200){
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                        goBack()
+//                    }else{
+//                        progressDialog.dismiss()
+//                        Toast.makeText(this@AddAudioPupuhActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<CrudModel>, t: Throwable) {
+//                    progressDialog.dismiss()
+//                    Toast.makeText(this@AddAudioPupuhActivity, t.message, Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
+//    }
 
     private fun goBack() {
         val intent = Intent(this, AllAudioPupuhActivity::class.java)

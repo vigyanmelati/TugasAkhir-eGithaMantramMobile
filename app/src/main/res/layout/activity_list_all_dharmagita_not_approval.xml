@@ -65,7 +65,7 @@
                     android:id="@+id/toListDharmagita"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="150dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/ic_next"/>
 
             </LinearLayout>
@@ -119,7 +119,7 @@
                     android:id="@+id/toListVideo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="150dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/ic_next"/>
 
             </LinearLayout>
@@ -173,7 +173,7 @@
                     android:id="@+id/toListAudio"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="150dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/ic_next"/>
 
             </LinearLayout>

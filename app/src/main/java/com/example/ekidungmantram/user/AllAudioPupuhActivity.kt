@@ -16,6 +16,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AudioPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.user.pupuh.AddAudioPupuhActivity
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
 import kotlinx.android.synthetic.main.activity_all_audio_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,7 +43,7 @@ class AllAudioPupuhActivity : AppCompatActivity() {
             }
 
             fabAudioPupuhUser.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhActivity::class.java)
+                val intent = Intent(this, AddAudioPupuhNewActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -139,4 +140,6 @@ class AllAudioPupuhActivity : AppCompatActivity() {
         shimmerAudioPupuhUser.visibility = View.GONE
         swipeAudioPupuhUser.visibility   = View.VISIBLE
     }
+
+
 }

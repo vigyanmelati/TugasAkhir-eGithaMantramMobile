@@ -43,7 +43,7 @@
                 <Button
                     android:id="@+id/startAudioPupuh"
                     android:backgroundTint="@color/grey_200"
-                    android:layout_width="150dp"
+                    android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:textSize="12sp"
                     android:text="Start"/>
@@ -51,7 +51,7 @@
                 <Button
                     android:id="@+id/stopAudioPupuh"
                     android:backgroundTint="@color/grey_200"
-                    android:layout_width="150dp"
+                    android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:textSize="12sp"
                     android:layout_marginLeft="30dp"
@@ -60,7 +60,7 @@
                 <Button
                     android:id="@+id/playAudioPupuh"
                     android:backgroundTint="@color/grey_200"
-                    android:layout_width="150dp"
+                    android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:textSize="12sp"
                     android:layout_marginLeft="30dp"
@@ -69,7 +69,7 @@
 
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitAudioKidungAdmin"
+                android:id="@+id/submitAudioPupuhAdmin"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

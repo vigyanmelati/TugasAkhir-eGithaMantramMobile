@@ -18,6 +18,13 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDharmagitaAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllYadnyaHomeAdminAdapter
 import com.example.ekidungmantram.admin.ListYadnyaAdminActivity
+import com.example.ekidungmantram.admin.kajiahlidharmagita.ListAhliNeedApprovalActivity
+import com.example.ekidungmantram.admin.kajidharmagita.ListAllDharmagitaNotApprovalActivity
+import com.example.ekidungmantram.admin.kajidharmagita.ListDharmagitaNeedApprovalActivity
+import com.example.ekidungmantram.admin.kakawin.AllKakawinAdminActivity
+import com.example.ekidungmantram.admin.kidung.AllKidungAdminActivity
+import com.example.ekidungmantram.admin.laguanak.AllLaguAnakAdminActivity
+import com.example.ekidungmantram.admin.pupuh.AllPupuhAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.SelectedAllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllDharmagitaHomeAdminModel
@@ -59,6 +66,14 @@ class HomeAdminFragment : Fragment() {
         swipeAdmin.setOnRefreshListener {
             getAdminHomeDharmagitaData()
             swipeAdmin.isRefreshing = false
+        }
+        to_ahli_dharmagita.setOnClickListener {
+            val intent = Intent(activity, ListAhliNeedApprovalActivity::class.java)
+            startActivity(intent)
+        }
+        to_dharmagita.setOnClickListener {
+            val intent = Intent(activity, ListDharmagitaNeedApprovalActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -201,11 +216,24 @@ class HomeAdminFragment : Fragment() {
                     yadnyaAdapter = datalist?.let { AllYadnyaHomeAdminAdapter(it,
                         object : AllYadnyaHomeAdminAdapter.OnAdapterAllYadnyaHomeAdminListener{
                             override fun onClick(result: AllDharmagitaHomeAdminModel) {
-                                val bundle = Bundle()
-                                val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
-                                bundle.putInt("id_dharmagita", result.id_kategori)
-                                intent.putExtras(bundle)
-                                startActivity(intent)
+                                if(result.nama_post == "Sekar Agung"){
+                                    val intent = Intent(activity, AllKakawinAdminActivity::class.java)
+                                    startActivity(intent)
+                                }else if(result.nama_post == "Sekar Madya"){
+                                    val intent = Intent(activity, AllKidungAdminActivity::class.java)
+                                    startActivity(intent)
+                                }else if(result.nama_post == "Sekar Alit"){
+                                    val intent = Intent(activity, AllPupuhAdminActivity::class.java)
+                                    startActivity(intent)
+                                }else if(result.nama_post == "Sekar Rare"){
+                                    val intent = Intent(activity, AllLaguAnakAdminActivity::class.java)
+                                    startActivity(intent)
+                                }
+//                                val bundle = Bundle()
+//                                val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
+//                                bundle.putInt("id_dharmagita", result.id_kategori)
+//                                intent.putExtras(bundle)
+//                                startActivity(intent)
                             }
                         }) }!!
 

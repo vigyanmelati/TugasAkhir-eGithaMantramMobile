@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/red_danger"
     app:cardElevation="5dp"
+    app:cardCornerRadius="15dp"
     app:cardPreventCornerOverlap="true"
     android:layout_marginBottom="10dp"
     app:layout_goneMarginBottom="15dp">
@@ -58,19 +59,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="14dp"/>
 
-                <TextView
-                    android:id="@+id/jenis_video_NAAdmin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="14dp"/>
+
             </LinearLayout>
 
         </LinearLayout>

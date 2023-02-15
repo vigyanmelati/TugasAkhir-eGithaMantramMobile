@@ -69,8 +69,8 @@ class AllVideoKakawinAdminActivity : AppCompatActivity() {
                     setAdapter = AllDataVideoKakawinAdminAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllVideoKakawinAdminActivity)
-                        builder.setTitle("Hapus Video Kakawin")
-                            .setMessage("Apakah anda yakin ingin menghapus video kakawin ini?")
+                        builder.setTitle("Hapus Video Sekar Agung")
+                            .setMessage("Apakah anda yakin ingin menghapus video Sekar Agung ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
                                 hapusVideoKakawin(it.id_video, postID, namaPost)

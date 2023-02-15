@@ -43,8 +43,9 @@ class AudioPupuhActivity : AppCompatActivity() {
         if (bundle != null) {
             val postID = bundle.getInt("id_pupuh_audio")
             val audio = bundle.getString("audio_pupuh")
+            val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
-                val audio_uri = audio.toUri()
+                val audio_uri = audio_constant.toUri()
                 Log.d("audio_uri",audio_uri.toString())
                 val mediaplayer = MediaPlayer.create(this,audio_uri)
                 seekbar_audio.progress = 0

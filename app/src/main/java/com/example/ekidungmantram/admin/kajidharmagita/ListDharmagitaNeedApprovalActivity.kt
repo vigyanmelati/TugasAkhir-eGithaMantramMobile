@@ -71,6 +71,7 @@ class ListDharmagitaNeedApprovalActivity : AppCompatActivity() {
                                 val intent = Intent(this@ListDharmagitaNeedApprovalActivity, DetailDharmagitaNeedApprovalActivity::class.java)
                                 bundle.putInt("id_dharmagita", result.id_post)
                                 bundle.putInt("id_tag_dharmagita", result.id_tag)
+                                bundle.putString("tag_dharmagita", result.nama_tag)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -98,6 +99,7 @@ class ListDharmagitaNeedApprovalActivity : AppCompatActivity() {
                                                 val intent = Intent(this@ListDharmagitaNeedApprovalActivity, DetailDharmagitaNeedApprovalActivity::class.java)
                                                 bundle.putInt("id_dharmagita", result.id_post)
                                                 bundle.putInt("id_tag_dharmagita", result.id_tag)
+                                                bundle.putString("tag_dharmagita", result.nama_tag)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

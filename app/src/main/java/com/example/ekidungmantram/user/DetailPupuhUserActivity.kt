@@ -19,6 +19,7 @@ import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
 import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
@@ -127,7 +128,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
             }
 
             tambahAudioPupuhUser.setOnClickListener {
-                val intent = Intent(this, AddAudioPupuhAdminActivity::class.java)
+                val intent = Intent(this, AddAudioPupuhNewActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)

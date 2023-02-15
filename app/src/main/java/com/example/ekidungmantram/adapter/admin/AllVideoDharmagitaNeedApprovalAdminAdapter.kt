@@ -33,7 +33,7 @@ class AllVideoDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private var title : TextView = view.findViewById(R.id.title_video_NAAdmin)
-        private var jenis : TextView = view.findViewById(R.id.jenis_video_NAAdmin)
+//        private var jenis : TextView = view.findViewById(R.id.jenis_video_NAAdmin)
         private var nama_post : TextView = view.findViewById(R.id.nama_post_video_NAAdmin)
         private var gambar : ImageView = view.findViewById(R.id.video_NAAdmin)
         fun bindItem(data: AllVideoApprovalModel) {
@@ -41,11 +41,11 @@ class AllVideoDharmagitaNeedApprovalAdminAdapter (private var results: ArrayList
                 title.textSize = 15F
             }
             title.text = data.judul_video
-            if(data.nama_tag != null){
-                jenis.text = data.nama_tag
-            }else{
-                jenis.text = "Dharmagita"
-            }
+//            if(data.nama_tag != null){
+//                jenis.text = data.nama_tag
+//            }else{
+//                jenis.text = "Dharmagita"
+//            }
             nama_post.text = data.nama_post
             if(data.gambar_video != null){
                 Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar_video).into(gambar)

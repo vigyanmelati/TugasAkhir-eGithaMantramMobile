@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.AddLirikPupuhActivity"
+    tools:context=".user.pupuh.AddAudioPupuhNewActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView
@@ -18,13 +18,13 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tambah Lirik Sekar Alit"
+                android:text="Tambah Audio Pupuh Baru"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"/>
             <TextView
-                android:id="@+id/padalingsa_user"
+                android:id="@+id/tests"
                 android:layout_marginTop="-14dp"
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"
@@ -35,41 +35,75 @@
                 android:textStyle="bold"
                 android:alpha="0.5"
                 android:layout_marginBottom="25dp"/>
+            <ImageView
+                android:id="@+id/submitImgAudioPupuhUserNew"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="7dp"
+                android:src="@drawable/rectangle"
+                android:scaleType="fitXY"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="20dp">
+                <Button
+                    android:id="@+id/selectImageAudioPupuhUserNew"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:textSize="12sp"
+                    android:text="Pilih Gambar"/>
+            </LinearLayout>
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddLirikPupuhUser"
+                android:id="@+id/layoutNamaAudioPupuhUserNew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan lirik pupuh">
+                android:hint="Masukan nama audio">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lirikPupuhFormUser"
+                    android:id="@+id/namaAudioPupuhUserNew"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:inputType="text|textMultiLine"/>
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAddArtiPupuhUser"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Masukan arti lirik pupuh">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/artiPupuhFormUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:inputType="text|textMultiLine"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="File Audio"/>
+                <Button
+                    android:id="@+id/selectAudioPupuhUserNew"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="150dp"
+                    android:text="Pilih Audio"/>
+            </LinearLayout>
+
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/submitLirikPupuhUser"
+                android:id="@+id/recordAudioPupuhUserNew"
+                android:backgroundTint="@color/red_danger"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Record Audio"/>
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/submitAudioPupuhUserNew"
                 android:backgroundTint="@color/green_success"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Tambah Lirik Pupuh"/>
+                android:text="Tambah Audio"/>
             <TextView
-                android:id="@+id/cancelSubmitLirikPupuhUser"
+                android:id="@+id/cancelSubmitAddAudioPupuhUserNew"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

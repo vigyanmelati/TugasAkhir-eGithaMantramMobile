@@ -69,8 +69,8 @@ class AllLirikKakawinAdminActivity : AppCompatActivity() {
                     setAdapter = AllDataLirikKakawinAdminAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllLirikKakawinAdminActivity)
-                        builder.setTitle("Hapus Lirik Kakawin")
-                            .setMessage("Apakah anda yakin ingin menghapus lirik kakawin ini?")
+                        builder.setTitle("Hapus Lirik Sekar Agung")
+                            .setMessage("Apakah anda yakin ingin menghapus lirik Sekar Agung ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
                                 hapusLirikKakawin(it.id_lirik_sekar_agung, postID, namaPost)

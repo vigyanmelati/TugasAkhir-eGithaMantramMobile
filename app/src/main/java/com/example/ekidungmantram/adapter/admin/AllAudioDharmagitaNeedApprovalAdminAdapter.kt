@@ -33,7 +33,7 @@ class AllAudioDharmagitaNeedApprovalAdminAdapter  (private var results: ArrayLis
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private var title : TextView = view.findViewById(R.id.title_audio_NAAdmin)
-        private var jenis : TextView = view.findViewById(R.id.jenis_audio_NAAdmin)
+//        private var jenis : TextView = view.findViewById(R.id.jenis_audio_NAAdmin)
         private var nama_post : TextView = view.findViewById(R.id.nama_post_audio_NAAdmin)
         private var gambar : ImageView = view.findViewById(R.id.audio_NAAdmin)
         fun bindItem(data: AllAudioApprovalModel) {
@@ -41,11 +41,11 @@ class AllAudioDharmagitaNeedApprovalAdminAdapter  (private var results: ArrayLis
                 title.textSize = 15F
             }
             title.text = data.judul_audio
-            if(data.nama_tag != null){
-                jenis.text = data.nama_tag
-            }else{
-                jenis.text = "Dharmagita"
-            }
+//            if(data.nama_tag != null){
+//                jenis.text = data.nama_tag
+//            }else{
+//                jenis.text = "Dharmagita"
+//            }
             nama_post.text = data.nama_post
             if(data.gambar_audio != null){
                 Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar_audio).into(gambar)

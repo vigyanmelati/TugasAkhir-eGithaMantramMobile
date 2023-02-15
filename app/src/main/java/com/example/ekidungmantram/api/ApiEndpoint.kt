@@ -2,6 +2,8 @@ package com.example.ekidungmantram.api
 
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -1437,13 +1439,14 @@ interface ApiEndpoint {
     @GET("showaudiopupuh/{id_post}")
     fun getShowAudioPupuh(@Path("id_post") id:Int) : Call<DetailAudioPupuhModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("addaudioonpupuh/{id_post}")
     fun createDataAudioPupuh (
         @Path("id_post") id:Int,
-        @Field("judul_audio") judulAudio:String,
-        @Field("gambar_audio") gambarAudio:String,
-        @Field("audio") audio:String,
+        @Part("judul_audio") judulAudio: RequestBody,
+        @Part("gambar_audio") gambarAudio: RequestBody,
+        @Part("name_audio") nameAudio: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     @FormUrlEncoded

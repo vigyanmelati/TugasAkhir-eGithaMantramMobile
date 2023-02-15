@@ -69,8 +69,8 @@ class AllAudioKakawinAdminActivity : AppCompatActivity() {
                     setAdapter = AllDataAudioKakawinAdminAdapter(datalist!!)
                     setAdapter.setOnClickDelete {
                         val builder = AlertDialog.Builder(this@AllAudioKakawinAdminActivity)
-                        builder.setTitle("Hapus Audio Kakawin")
-                            .setMessage("Apakah anda yakin ingin menghapus audio kakawin ini?")
+                        builder.setTitle("Hapus Audio Sekar Agung")
+                            .setMessage("Apakah anda yakin ingin menghapus audio sekar agung ini?")
                             .setCancelable(true)
                             .setPositiveButton("Iya") { _, _ ->
                                 hapusAudioKakawin(it.id_audio, postID, namaPost)

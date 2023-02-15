@@ -172,7 +172,7 @@ class SearchFragment : Fragment() {
                                     bundle.putInt("tag_lagu", result.id_tag)
                                     bundle.putString("nama_lagu", result.nama_post)
                                     bundle.putString("gambar_lagu", result.gambar)
-                                    Log.d("lirik_anak", result.bait_lagu.toString())
+                                    Log.d("lirik_anak", result.bait.toString())
                                     intent.putExtras(bundle)
                                     startActivity(intent)
                                 }else if (result.id_tag == 10) {
@@ -210,7 +210,7 @@ class SearchFragment : Fragment() {
                                     allYadnya1.visibility      = View.VISIBLE
                                     allYadnya2.visibility      = View.GONE
                                 }else if(p0.length > 2){
-                                    val filter = datalist.filter { it.nama_post.contains("$p0", true) }
+                                    val filter = datalist.filter { it.bait.contains("$p0", true) || it.nama_post.contains("$p0", true) }
                                     alldharmagitaAdapter = AllDharmagitaAdapter(filter as ArrayList<AllDharmagitaModel>,
                                         object : AllDharmagitaAdapter.OnAdapterAllDharmagitaListener{
                                             override fun onClick(result: AllDharmagitaModel) {

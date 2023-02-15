@@ -55,24 +55,30 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_dharmagita")
             val tagID = bundle.getInt("id_tag_dharmagita")
+            val namaTag = bundle.getInt("tag_dharmagita")
+//            detailDharmagitaNA.text = namaTag.toString()
             Log.d("tag_test", tagID.toString())
             if(tagID == 4){
+                detailDharmagitaNA.text = "Sekar Madya"
                 getDetailDataKidung(postID)
                 getBaitDataKidung(postID)
                 setupRecyclerViewBaitKidung()
                 arti_visible.visibility = View.GONE
                 artiDharmagitaNAList.visibility = View.GONE
             }else if (tagID == 9){
+                detailDharmagitaNA.text = "Sekar Rare"
                 getDetailDataLaguAnak(postID)
                 getBaitDataLaguAnak(postID)
                 setupRecyclerViewBaitLaguAnak()
                 setupRecyclerViewArtiLaguAnak()
             }else if (tagID == 10){
+                detailDharmagitaNA.text = "Sekar Alit"
                 getDetailDataPupuh(postID)
                 getBaitDataPupuh(postID)
                 setupRecyclerViewBaitPupuh()
                 setupRecyclerViewArtiPupuh()
             }else if (tagID == 11){
+                detailDharmagitaNA.text = "Sekar Agung"
                 getDetailDataKakawin(postID)
                 getBaitDataKakawin(postID)
                 setupRecyclerViewBaitKakawin()
