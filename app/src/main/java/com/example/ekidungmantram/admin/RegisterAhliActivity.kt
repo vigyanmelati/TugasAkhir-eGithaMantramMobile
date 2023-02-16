@@ -10,25 +10,36 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
+import com.example.ekidungmantram.uriToFile
+import com.example.ekidungmantram.uriToFilePdf
 import com.example.ekidungmantram.user.MainActivity
 import com.example.ekidungmantram.user.RegisterActivity
 import kotlinx.android.synthetic.main.activity_add_mantram_admin.*
+import kotlinx.android.synthetic.main.activity_alll_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register_ahli.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
 class RegisterAhliActivity : AppCompatActivity() {
-//    private val REQUEST_CODE     = 100
-//    private var file: File?  = null
+    private val REQUEST_CODE     = 100
+    private var file: File?  = null
+    private var fileUri: Uri? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,29 +59,37 @@ class RegisterAhliActivity : AppCompatActivity() {
             finish()
         }
 
-//        selectFileAhli.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_GET_CONTENT)
-//            intent.type = "application/pdf"
+        selectFileAhli.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "application/pdf"
 //            intent.addCategory(Intent.CATEGORY_OPENABLE)
-//            startActivityForResult(intent, REQUEST_CODE)
-//        }
+            startActivityForResult(intent, REQUEST_CODE)
+        }
 
         signup_button_ahli.setOnClickListener{
             val inputname = name_regis_ahli.text.toString()
             val inputusername = username_regis_ahli.text.toString()
             val inputpassword = password_regis_ahli.text.toString()
-            val file       = file_regis_ahli.text.toString()
+//            val file       = file_regis_ahli.text.toString()
             if(validateInput()){
-                register(inputusername, inputpassword, inputname, file)
+                file?.let { it1 -> register(inputusername, inputpassword, inputname, it1) }
             }
         }
     }
 
-    private fun register(email: String, password: String, name: String, file: String) {
+    private fun register(email: String, password: String, name: String, file: File) {
+        val name_file = file.name
+        val email_ahli = email.toRequestBody("text/plain".toMediaType())
+        val pass_ahli = password.toRequestBody("text/plain".toMediaType())
+        val name_ahli = name.toRequestBody("text/plain".toMediaType())
+        val name_file_ahli = name_file.toRequestBody("text/plain".toMediaType())
+        val requestFile = file.asRequestBody("audio/mpeg".toMediaTypeOrNull())
+        val ahliFile = MultipartBody.Part.createFormData("part", file.name, requestFile)
+
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Mengunggah Data")
         progressDialog.show()
-        ApiService.endpoint.registerAhli(email, password,name, file)
+        ApiService.endpoint.registerAhli(email_ahli, pass_ahli,name_ahli, name_file_ahli, ahliFile)
             .enqueue(object: Callback<CrudModel> {
                 override fun onResponse(
                     call: Call<CrudModel>,
@@ -118,25 +137,26 @@ class RegisterAhliActivity : AppCompatActivity() {
             return false
         }
 
-        if(file_regis_ahli.text.toString().isEmpty()){
-            fileLayout_regis_ahli.isErrorEnabled = true
-            fileLayout_regis_ahli.error = "Password tidak boleh kosong!"
-            return false
-        }
+//        if(file_regis_ahli.text.toString().isEmpty()){
+//            fileLayout_regis_ahli.isErrorEnabled = true
+//            fileLayout_regis_ahli.error = "Password tidak boleh kosong!"
+//            return false
+//        }
 
         return true
     }
 
-//    @Deprecated("Deprecated in Java")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
-//            val pdfUri = data?.data!!
-//            val uri: Uri = data?.data!!
-//            val uriString: String = uri.toString()
-////            val imgUri: Uri? = data?.data
-////            selectFileAhli.setImageURI(imgUri) // handle chosen image
-//            file = MediaStore.Files.getContentUri (uriString)
-//        }
-//    }
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
+            fileUri = data?.data as Uri
+            Log.d("file_uri", fileUri.toString())
+            val myFile = fileUri?.let { uriToFilePdf(it, this) }
+            Log.d("myfile_ahli", myFile.toString())
+            file =  myFile
+            file_ahli_text.visibility   = View.VISIBLE
+            file_ahli_text.text = file!!.name
+        }
+    }
 }

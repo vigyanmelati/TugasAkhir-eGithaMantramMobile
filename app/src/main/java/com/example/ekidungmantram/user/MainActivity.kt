@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.ekidungmantram.AboutAppActivity
 import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.admin.adminmanager.DetailProfileActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.databinding.ActivityMainBinding
 import com.example.ekidungmantram.model.AdminModel
@@ -80,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 //            nav_Menu.findItem(R.id.approval).setVisible(false)
             nav_Menu.findItem(R.id.logout_user).setVisible(true)
             nav_Menu.findItem(R.id.login).setVisible(false)
+            nav_Menu.findItem(R.id.profile).setVisible(true)
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }else{
             val nav_Menu: Menu = navView.getMenu()
@@ -102,6 +104,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.login -> goToLogin()
                 R.id.logout_user -> goToLogout(id?.toInt())
                 R.id.about -> goToAbout()
+                R.id.profile -> goToDetailProfile()
             }
 
             true
@@ -129,6 +132,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     private fun setTitleActionBar(s: String) {
         supportActionBar!!.title = s
@@ -180,6 +185,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+    }
+
+    private fun goToDetailProfile() {
+        val intent = Intent(this, DetailProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToTari() {

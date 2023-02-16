@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -113,7 +114,8 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
                 result.let {
 //                    namaEditedLinkAudioKidungUser.setText(result.audio)
                     namaEditedAudioKidungUser.setText(result.judul_audio)
-                    selectAudioKidungUserNewEdit.text = result.audio
+                    audio_file_text_edit_kidung.visibility   = View.VISIBLE
+                    audio_file_text_edit_kidung.text = result.audio
                     Glide.with(this@EditAudioKidungNewActivity)
 //                        .load(result.gambar_audio).into(submitEditedImgAudioKidung)
                         .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKidungUser)
@@ -199,9 +201,11 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
             file =  myFile
             Log.d("file_audio", file.toString())
             if (audioUri != null) {
-                val path = audioUri?.let { getPathFromUri(this, it) }
-                filePath = audioUri!!.path
-                selectAudioKidungUserNewEdit.text = path.toString()
+//                val path = audioUri?.let { getPathFromUri(this, it) }
+//                filePath = audioUri!!.path
+//                selectAudioKidungUserNewEdit.text = path.toString()
+                audio_file_text_edit_kidung.visibility   = View.VISIBLE
+                audio_file_text_edit_kidung.text = file!!.name
             }
             uriAudio = MediaStore.Audio.Media.getContentUriForPath(audioUri.toString())
         }
@@ -215,7 +219,9 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
                     val file_audio = File(result)
                     if(file_audio != null){
                         file = file_audio
-                        selectAudioKidungUserNewEdit.text = file!!.name
+//                        selectAudioKidungUserNewEdit.text = file!!.name
+                        audio_file_text_edit_kidung.visibility   = View.VISIBLE
+                        audio_file_text_edit_kidung.text = file!!.name
                     }else{
                         Toast.makeText(this,"File Aneh", Toast.LENGTH_SHORT).show()
                     }

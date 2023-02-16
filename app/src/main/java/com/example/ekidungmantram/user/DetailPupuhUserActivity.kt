@@ -86,7 +86,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
             }
 
             goToListVideoPupuhUser.setOnClickListener {
-                val intent = Intent(this, AllVideoPupuhActivity::class.java)
+                val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)
@@ -102,7 +102,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
             }
 
             goToListAudioPupuhUser.setOnClickListener {
-                val intent = Intent(this, AllAudioPupuhActivity::class.java)
+                val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 intent.putExtras(bundle)

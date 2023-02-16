@@ -23,6 +23,11 @@ fun createCustomTempFile(context: Context): File {
     return File.createTempFile(timeStamp, ".mp3", storageDir)
 }
 
+fun createCustomTempFilePdf(context: Context): File {
+    val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+    return File.createTempFile(timeStamp, ".pdf", storageDir)
+}
+
 fun createFile(application: Application): File {
     val mediaDir = application.externalMediaDirs.firstOrNull()?.let {
         File(it, application.resources.getString(R.string.app_name)).apply { mkdirs() }
@@ -40,6 +45,21 @@ fun createFile(application: Application): File {
 fun uriToFile(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = createCustomTempFile(context)
+
+    val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
+    val outputStream: OutputStream = FileOutputStream(myFile)
+    val buf = ByteArray(1024)
+    var len: Int
+    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+    outputStream.close()
+    inputStream.close()
+
+    return myFile
+}
+
+fun uriToFilePdf(selectedImg: Uri, context: Context): File {
+    val contentResolver: ContentResolver = context.contentResolver
+    val myFile = createCustomTempFilePdf(context)
 
     val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
     val outputStream: OutputStream = FileOutputStream(myFile)

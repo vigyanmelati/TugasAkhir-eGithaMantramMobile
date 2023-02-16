@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -154,9 +155,11 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
             file =  myFile
             Log.d("file_audio", file.toString())
             if (audioUri != null) {
-                val path = audioUri?.let { getPathFromUri(this, it) }
-                filePath = audioUri!!.path
-                selectAudioKakawinUserNew.text = path.toString()
+//                val path = audioUri?.let { getPathFromUri(this, it) }
+//                filePath = audioUri!!.path
+//                selectAudioKakawinUserNew.text = path.toString()
+                audio_file_text_add_kakawin.visibility   = View.VISIBLE
+                audio_file_text_add_kakawin.text = file!!.name
             }
             uriAudio = MediaStore.Audio.Media.getContentUriForPath(audioUri.toString())
         }
@@ -170,7 +173,9 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
                     val file_audio = File(result)
                     if(file_audio != null){
                         file = file_audio
-                        selectAudioKakawinUserNew.text = file!!.name
+//                        selectAudioKakawinUserNew.text = file!!.name
+                        audio_file_text_add_kakawin.visibility   = View.VISIBLE
+                        audio_file_text_add_kakawin.text = file!!.name
                     }else{
                         Toast.makeText(this,"File Aneh", Toast.LENGTH_SHORT).show()
                     }

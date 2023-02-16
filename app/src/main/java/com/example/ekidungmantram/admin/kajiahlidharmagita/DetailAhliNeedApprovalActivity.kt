@@ -1,12 +1,14 @@
 package com.example.ekidungmantram.admin.kajiahlidharmagita
 
 import android.app.ProgressDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
@@ -98,9 +100,21 @@ class DetailAhliNeedApprovalActivity : AppCompatActivity() {
 //                        intent.putExtras(bundle)
 //                        startActivity(intent)
 //                    }
+//                    toFileAhli.setOnClickListener {
+//                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.file))
+//                        startActivity(intent)
+//                    }
+
                     toFileAhli.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.file))
-                        startActivity(intent)
+                        val pdfUrl = Constant.PDF_URL + result.file
+                        val pdfIntent = Intent(Intent.ACTION_VIEW)
+                        pdfIntent.setDataAndType(Uri.parse(pdfUrl), "application/pdf")
+                        pdfIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        try {
+                            startActivity(pdfIntent)
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(this@DetailAhliNeedApprovalActivity, "No PDF viewer app found", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }

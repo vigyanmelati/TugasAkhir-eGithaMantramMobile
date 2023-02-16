@@ -30,13 +30,23 @@ interface ApiEndpoint {
         @Field("name") name:String,
     ):Call<CrudModel>
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
+//    @POST("registerahli")
+//    fun registerAhli (
+//        @Field("email") email:String,
+//        @Field("password") password:String,
+//        @Field("name") name:String,
+//        @Field("file") file:String,
+//    ):Call<CrudModel>
+
+    @Multipart
     @POST("registerahli")
     fun registerAhli (
-        @Field("email") email:String,
-        @Field("password") password:String,
-        @Field("name") name:String,
-        @Field("file") file:String,
+        @Part("email") email:RequestBody,
+        @Part("password") password:RequestBody,
+        @Part("name") name:RequestBody,
+        @Part("name_file") nameFileAhli: RequestBody,
+        @Part part: MultipartBody.Part,
     ):Call<CrudModel>
 
     //Admin

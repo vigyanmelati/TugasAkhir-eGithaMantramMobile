@@ -87,6 +87,10 @@
                     android:id="@+id/logout"
                     android:title="Logout"
                     android:icon="@drawable/logout" />
+                <item
+                    android:id="@+id/profile_admin"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_acc" />
             </group>
         </menu>
     </item>

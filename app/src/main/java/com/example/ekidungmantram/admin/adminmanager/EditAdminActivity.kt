@@ -24,7 +24,7 @@ class EditAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_admin)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Edit Admin"
+        supportActionBar!!.title = "Edit Profile"
 
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
@@ -130,7 +130,7 @@ class EditAdminActivity : AppCompatActivity() {
 
     private fun goBack(id: Int) {
         val bundle = Bundle()
-        val intent = Intent(this, DetailAdminActivity::class.java)
+        val intent = Intent(this, DetailProfileActivity::class.java)
         bundle.putInt("id_user", id)
         intent.putExtras(bundle)
         startActivity(intent)

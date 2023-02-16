@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -111,7 +112,8 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
                 result.let {
 //                    namaEditedLinkAudioKakawinUser.setText(result.audio)
                     namaEditedAudioKakawinUser.setText(result.judul_audio)
-                    selectAudioKakawinUserNewEdit.text = result.audio
+                    audio_file_text_edit_kakawin.visibility   = View.VISIBLE
+                    audio_file_text_edit_kakawin.text = result.audio
                     Glide.with(this@EditAudioKakawinNewActivity)
 //                        .load(result.gambar_audio).into(submitEditedImgAudioKakawin)
                         .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawinUser)
@@ -197,9 +199,11 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
             file =  myFile
             Log.d("file_audio", file.toString())
             if (audioUri != null) {
-                val path = audioUri?.let { getPathFromUri(this, it) }
-                filePath = audioUri!!.path
-                selectAudioKakawinUserNewEdit.text = path.toString()
+//                val path = audioUri?.let { getPathFromUri(this, it) }
+//                filePath = audioUri!!.path
+//                selectAudioKakawinUserNewEdit.text = path.toString()
+                audio_file_text_edit_kakawin.visibility   = View.VISIBLE
+                audio_file_text_edit_kakawin.text = file!!.name
             }
             uriAudio = MediaStore.Audio.Media.getContentUriForPath(audioUri.toString())
         }
@@ -213,7 +217,9 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
                     val file_audio = File(result)
                     if(file_audio != null){
                         file = file_audio
-                        selectAudioKakawinUserNewEdit.text = file!!.name
+//                        selectAudioKakawinUserNewEdit.text = file!!.name
+                        audio_file_text_edit_kakawin.visibility   = View.VISIBLE
+                        audio_file_text_edit_kakawin.text = file!!.name
                     }else{
                         Toast.makeText(this,"File Aneh", Toast.LENGTH_SHORT).show()
                     }

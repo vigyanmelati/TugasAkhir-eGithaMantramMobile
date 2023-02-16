@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -121,7 +122,8 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
                 result.let {
 //                    namaEditedLinkAudioPupuhUser.setText(result.audio)
                     namaEditedAudioPupuhUser.setText(result.judul_audio)
-                    selectAudioPupuhUserNewEdit.text = result.audio
+                    audio_file_text_edit_pupuh.visibility   = View.VISIBLE
+                    audio_file_text_edit_pupuh.text = result.audio
                     Glide.with(this@EditAudioPupuhNewActivity)
 //                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
                         .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuhUser)
@@ -207,9 +209,11 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
             file =  myFile
             Log.d("file_audio", file.toString())
             if (audioUri != null) {
-                val path = audioUri?.let { getPathFromUri(this, it) }
-                filePath = audioUri!!.path
-                selectAudioPupuhUserNewEdit.text = path.toString()
+//                val path = audioUri?.let { getPathFromUri(this, it) }
+//                filePath = audioUri!!.path
+//                selectAudioPupuhUserNewEdit.text = path.toString()
+                audio_file_text_edit_pupuh.visibility   = View.VISIBLE
+                audio_file_text_edit_pupuh.text = file!!.name
             }
             uriAudio = MediaStore.Audio.Media.getContentUriForPath(audioUri.toString())
         }
@@ -223,7 +227,9 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
                     val file_audio = File(result)
                     if(file_audio != null){
                         file = file_audio
-                        selectAudioPupuhUserNewEdit.text = file!!.name
+//                        selectAudioPupuhUserNewEdit.text = file!!.name
+                        audio_file_text_edit_pupuh.visibility   = View.VISIBLE
+                        audio_file_text_edit_pupuh.text = file!!.name
                     }else{
                         Toast.makeText(this,"File Aneh",Toast.LENGTH_SHORT).show()
                     }

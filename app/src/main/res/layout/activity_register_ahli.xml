@@ -114,27 +114,50 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/fileLayout_regis_ahli"
-                android:layout_marginTop="30dp"
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                android:id="@+id/fileLayout_regis_ahli"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:boxBackgroundColor="@android:color/transparent"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:paddingLeft="-15dp">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/file_regis_ahli"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="text"-->
+<!--                    android:hint="Link File Bukti Ahli Dharmagita"-->
+<!--                    android:drawableEnd="@drawable/ic_file"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@android:color/transparent"
-                android:background="@android:color/transparent"
-                android:paddingLeft="-15dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/file_regis_ahli"
-                    android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="Link File Bukti Ahli Dharmagita"
-                    android:drawableEnd="@drawable/ic_file"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
+                    android:text="File Bukti Ahli Dharmagita"/>
+                <Button
+                    android:id="@+id/selectFileAhli"
+                    android:backgroundTint="@color/grey_200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="50dp"
+                    android:text="Pilih"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/file_ahli_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="File Bukti Ahli Dharmagita"
+                android:visibility="gone"/>
             <Button
                 android:id="@+id/signup_button_ahli"
                 android:layout_marginTop="50dp"

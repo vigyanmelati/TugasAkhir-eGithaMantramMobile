@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.ekidungmantram.AboutAppActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.admin.adminmanager.AllAdminActivity
+import com.example.ekidungmantram.admin.adminmanager.DetailProfileActivity
 import com.example.ekidungmantram.admin.fragment.HomeAdminFragment
 import com.example.ekidungmantram.admin.gamelan.AllGamelanAdminActivity
 import com.example.ekidungmantram.admin.gita.AllGitaAdminActivity
@@ -117,6 +118,7 @@ class HomeAdminActivity : AppCompatActivity() {
                 R.id.approval_dharmagita -> goToKajiGita()
                 R.id.logout -> goToLogout(id?.toInt())
                 R.id.about_admin -> goToAbout()
+                R.id.profile_admin -> goToDetailProfile()
             }
 
             true
@@ -132,6 +134,11 @@ class HomeAdminActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun goToDetailProfile() {
+        val intent = Intent(this, DetailProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToPupuh() {

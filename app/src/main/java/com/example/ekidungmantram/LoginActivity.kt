@@ -117,6 +117,9 @@ class LoginActivity : AppCompatActivity() {
         val editor        = sharedPreferences.edit()
         editor.apply{
             putString("ID_ADMIN", idAdmin?.toString())
+            if (idAdmin != null) {
+                putInt("ID_ADMIN_INT", idAdmin)
+            }
             putString("NAMA", nama)
             putString("ROLE", roleAdmin?.toString())
             putString("MESAGE", mesage)
