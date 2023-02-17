@@ -17,10 +17,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BaitLaguAnakAdapter
 import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
-import com.example.ekidungmantram.model.DetailBaitPupuhModel
-import com.example.ekidungmantram.model.DetailLaguAnakModel
-import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.*
 import kotlinx.android.synthetic.main.activity_audio_kidung.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
@@ -43,6 +40,7 @@ class AudioPupuhActivity : AppCompatActivity() {
         if (bundle != null) {
             val postID = bundle.getInt("id_pupuh_audio")
             val audio = bundle.getString("audio_pupuh")
+            val id_audio = bundle.getInt("id_audio_pupuh")
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -88,6 +86,7 @@ class AudioPupuhActivity : AppCompatActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
         }
         backToAudioPupuh.setOnClickListener {
@@ -106,12 +105,41 @@ class AudioPupuhActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiAudioPupuh.text   = result.deskripsi
-                    detailNamaAudioPupuh.text  = result.nama_post
-                    detailJenisAudioPupuh.text = "Pupuh "
-                    if(result.gambar != null) {
+//                    detailNamaAudioPupuh.text  = result.nama_post
+//                    detailJenisAudioPupuh.text = "Pupuh "
+//                    if(result.gambar != null) {
+//                        Glide.with(this@AudioPupuhActivity)
+////                            .load(result.gambar).into(imageAudioPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
+//                    }else{
+//                        imageAudioPupuh.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailPupuhModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataAudio(id: Int) {
+        ApiService.endpoint.getShowAudioPupuh(id).enqueue(object: Callback<DetailAudioPupuhModel> {
+            override fun onResponse(
+                call: Call<DetailAudioPupuhModel>,
+                response: Response<DetailAudioPupuhModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+                    detailNamaAudioPupuh.text  = result.judul_audio
+                    detailJenisAudioPupuh.text = "Sekar Alit "
+                    if(result.gambar_audio != null) {
                         Glide.with(this@AudioPupuhActivity)
 //                            .load(result.gambar).into(imageAudioPupuh)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioPupuh)
+                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioPupuh)
                     }else{
                         imageAudioPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -120,7 +148,7 @@ class AudioPupuhActivity : AppCompatActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailPupuhModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailAudioPupuhModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

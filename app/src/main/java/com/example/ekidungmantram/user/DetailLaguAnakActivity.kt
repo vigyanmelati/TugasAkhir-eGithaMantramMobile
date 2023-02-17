@@ -227,6 +227,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 val intent = Intent(this@DetailLaguAnakActivity, VideoLaguAnakActivity::class.java)
                 bundle.putString("video", result.video)
                 bundle.putInt("id_lagu_video", id_lagu)
+                bundle.putInt("id_video_lagu", result.id_video)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -246,6 +247,7 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 val intent = Intent(this@DetailLaguAnakActivity, AudioLaguAnakActivity::class.java)
                 bundle.putString("audio", result.audio)
                 bundle.putInt("id_lagu_audio", id_lagu)
+                bundle.putInt("id_audio_lagu", result.id_audio)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

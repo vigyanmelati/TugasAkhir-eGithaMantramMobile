@@ -284,6 +284,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailKidungAdminActivity, VideoKidungActivity::class.java)
                 bundle.putString("video_kidung", result.video)
                 bundle.putInt("id_kidung_video", id_kidung)
+                bundle.putInt("id_video_kidung", result.id_video)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -303,6 +304,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailKidungAdminActivity, AudioKidungActivity::class.java)
                 bundle.putString("audio_kidung", result.audio)
                 bundle.putInt("id_kidung_audio", id_kidung)
+                bundle.putInt("id_audio_kidung", result.id_audio)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

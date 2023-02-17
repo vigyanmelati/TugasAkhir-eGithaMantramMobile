@@ -17,6 +17,7 @@ import com.example.ekidungmantram.model.DetailBaitKidungModel
 import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKidungModel
 import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.adminmodel.DetailVideoKidungAdminModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -37,6 +38,7 @@ class VideoKidungActivity : YouTubeBaseActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung_video")
             val video = bundle.getString("video_kidung")
+            val id_video = bundle.getInt("id_video_kidung")
             Log.d("id_kidung_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -47,6 +49,7 @@ class VideoKidungActivity : YouTubeBaseActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataVideo(id_video)
             setupRecyclerViewBait()
         }
         backToVideoKidung.setOnClickListener {
@@ -64,12 +67,42 @@ class VideoKidungActivity : YouTubeBaseActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiVideoKidung.text   = result.deskripsi
-                    detailNamaVideoKidung.text  = result.nama_post
+//                    detailNamaVideoKidung.text  = result.nama_post
                     detailJenisVideoKidung.text = result.nama_kategori
-                    if(result.gambar != null) {
+//                    if(result.gambar != null) {
+//                        Glide.with(this@VideoKidungActivity)
+////                            .load(result.gambar).into(imageVideoKidung)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
+//                    }else{
+//                        imageVideoKidung.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailKidungModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataVideo(id: Int) {
+        ApiService.endpoint.getShowVideoKidungAdmin(id).enqueue(object: Callback<DetailVideoKidungAdminModel> {
+            override fun onResponse(
+                call: Call<DetailVideoKidungAdminModel>,
+                response: Response<DetailVideoKidungAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiVideoKidung.text   = result.deskripsi
+                    detailNamaVideoKidung.text  = result.judul_video
+//                    detailJenisVideoKidung.text = result.nama_kategori
+                    if(result.gambar_video != null) {
                         Glide.with(this@VideoKidungActivity)
 //                            .load(result.gambar).into(imageVideoKidung)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKidung)
+                            .load(Constant.IMAGE_URL + result.gambar_video).into(imageVideoKidung)
                     }else{
                         imageVideoKidung.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -78,7 +111,7 @@ class VideoKidungActivity : YouTubeBaseActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailKidungModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailVideoKidungAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

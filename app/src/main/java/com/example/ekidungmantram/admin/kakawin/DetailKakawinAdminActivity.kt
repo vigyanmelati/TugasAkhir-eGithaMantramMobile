@@ -331,6 +331,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailKakawinAdminActivity, VideoKakawinActivity::class.java)
                 bundle.putString("video_kakawin", result.video)
                 bundle.putInt("id_kakawin_video", id_kakawin)
+                bundle.putInt("id_video_kakawin", result.id_video)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -350,6 +351,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailKakawinAdminActivity, AudioKakawinActivity::class.java)
                 bundle.putString("audio_kakawin", result.audio)
                 bundle.putInt("id_kakawin_audio", id_kakawin)
+                bundle.putInt("id_audio_kakawin", result.id_audio)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

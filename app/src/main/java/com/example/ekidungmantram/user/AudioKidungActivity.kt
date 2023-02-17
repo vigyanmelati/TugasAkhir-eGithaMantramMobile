@@ -21,6 +21,7 @@ import com.example.ekidungmantram.model.DetailBaitKidungModel
 import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKidungModel
 import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.adminmodel.DetailAudioKidungAdminModel
 import kotlinx.android.synthetic.main.activity_audio_kakawin.*
 import kotlinx.android.synthetic.main.activity_audio_kidung.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
@@ -43,6 +44,7 @@ class AudioKidungActivity : AppCompatActivity() {
         if (bundle != null) {
             val postID = bundle.getInt("id_kidung_audio")
             val audio = bundle.getString("audio_kidung")
+                val id_audio = bundle.getInt("id_audio_kidung")
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -88,6 +90,7 @@ class AudioKidungActivity : AppCompatActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
         }
         backToAudioKidung.setOnClickListener {
@@ -105,11 +108,41 @@ class AudioKidungActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiAudioKidung.text   = result.deskripsi
-                    detailNamaAudioKidung.text  = result.nama_post
+//                    detailNamaAudioKidung.text  = result.nama_post
                     detailJenisAudioKidung.text = result.nama_kategori
-                    if(result.gambar != null) {
+//                    if(result.gambar != null) {
+//                        Glide.with(this@AudioKidungActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKidung)
+////                            .load(result.gambar).into(imageAudioKidung)
+//                    }else{
+//                        imageAudioKidung.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailKidungModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataAudio(id: Int) {
+        ApiService.endpoint.getShowAudioKidungAdmin(id).enqueue(object: Callback<DetailAudioKidungAdminModel> {
+            override fun onResponse(
+                call: Call<DetailAudioKidungAdminModel>,
+                response: Response<DetailAudioKidungAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiAudioKidung.text   = result.deskripsi
+                    detailNamaAudioKidung.text  = result.judul_audio
+//                    detailJenisAudioKidung.text = result.nama_kategori
+                    if(result.gambar_audio != null) {
                         Glide.with(this@AudioKidungActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKidung)
+                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioKidung)
 //                            .load(result.gambar).into(imageAudioKidung)
                     }else{
                         imageAudioKidung.setImageResource(R.drawable.sample_image_yadnya)
@@ -119,7 +152,7 @@ class AudioKidungActivity : AppCompatActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailKidungModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailAudioKidungAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

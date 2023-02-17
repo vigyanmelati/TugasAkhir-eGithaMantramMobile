@@ -21,6 +21,7 @@ import com.example.ekidungmantram.model.DetailBaitKakawinModel
 import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKakawinModel
 import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.adminmodel.DetailAudioKidungAdminModel
 import kotlinx.android.synthetic.main.activity_audio_kakawin.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
@@ -43,6 +44,7 @@ class AudioKakawinActivity : AppCompatActivity() {
         if (bundle != null) {
             val postID = bundle.getInt("id_kakawin_audio")
             val audio = bundle.getString("audio_kakawin")
+            val id_audio = bundle.getInt("id_audio_kakawin")
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -88,6 +90,7 @@ class AudioKakawinActivity : AppCompatActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
         }
         backToAudioKakawin.setOnClickListener {
@@ -106,11 +109,41 @@ class AudioKakawinActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiAudioKakawin.text   = result.deskripsi
-                    detailNamaAudioKakawin.text  = result.nama_post
+//                    detailNamaAudioKakawin.text  = result.nama_post
+//                    detailJenisAudioKakawin.text = "Sekar Agung "
+//                    if(result.gambar != null) {
+//                        Glide.with(this@AudioKakawinActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
+////                            .load(result.gambar).into(imageAudioKakawin)
+//                    }else{
+//                        imageAudioKakawin.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailKakawinModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataAudio(id: Int) {
+        ApiService.endpoint.getShowAudioKidungAdmin(id).enqueue(object: Callback<DetailAudioKidungAdminModel> {
+            override fun onResponse(
+                call: Call<DetailAudioKidungAdminModel>,
+                response: Response<DetailAudioKidungAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiAudioKakawin.text   = result.deskripsi
+                    detailNamaAudioKakawin.text  = result.judul_audio
                     detailJenisAudioKakawin.text = "Sekar Agung "
-                    if(result.gambar != null) {
+                    if(result.gambar_audio != null) {
                         Glide.with(this@AudioKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKakawin)
+                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioKakawin)
 //                            .load(result.gambar).into(imageAudioKakawin)
                     }else{
                         imageAudioKakawin.setImageResource(R.drawable.sample_image_yadnya)
@@ -120,7 +153,7 @@ class AudioKakawinActivity : AppCompatActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailKakawinModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailAudioKidungAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

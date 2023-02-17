@@ -336,6 +336,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailPupuhUserActivity, VideoPupuhActivity::class.java)
                 bundle.putString("video_pupuh", result.video)
                 bundle.putInt("id_pupuh_video", id_pupuh)
+                bundle.putInt("id_video_pupuh", result.id_video)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -354,6 +355,7 @@ class DetailPupuhUserActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 val intent = Intent(this@DetailPupuhUserActivity, AudioPupuhActivity::class.java)
                 bundle.putString("audio_pupuh", result.audio)
+                bundle.putInt("id_audio_pupuh", result.id_audio)
                 bundle.putInt("id_pupuh_audio", id_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)

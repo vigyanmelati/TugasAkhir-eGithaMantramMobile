@@ -18,6 +18,7 @@ import com.example.ekidungmantram.adapter.BaitLaguAnakAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
 import com.example.ekidungmantram.model.DetailLaguAnakModel
+import com.example.ekidungmantram.model.adminmodel.DetailAudioLaguAnakAdminModel
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_audio_kidung.*
@@ -42,6 +43,7 @@ class AudioLaguAnakActivity : AppCompatActivity() {
         if (bundle != null) {
             val postID = bundle.getInt("id_lagu_audio")
             val audio = bundle.getString("audio")
+            val id_audio = bundle.getInt("id_audio_lagu")
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -87,6 +89,7 @@ class AudioLaguAnakActivity : AppCompatActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
         }
         backToAudioLaguAnak.setOnClickListener {
@@ -105,11 +108,41 @@ class AudioLaguAnakActivity : AppCompatActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiAudioLaguAnak.text = result.deskripsi
-                    detailNamaAudioLaguAnak.text = result.nama_post
-                    detailJenisAudioLaguAnak.text = "Lagu Anak "
-                    if (result.gambar != null) {
+//                    detailNamaAudioLaguAnak.text = result.nama_post
+//                    detailJenisAudioLaguAnak.text = "Lagu Anak "
+//                    if (result.gambar != null) {
+//                        Glide.with(this@AudioLaguAnakActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
+////                            .load(result.gambar).into(imageAudioLaguAnak)
+//                    } else {
+//                        imageAudioLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailLaguAnakModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataAudio(id: Int) {
+        ApiService.endpoint.getShowAudioLaguAnakAdmin(id).enqueue(object : Callback<DetailAudioLaguAnakAdminModel> {
+            override fun onResponse(
+                call: Call<DetailAudioLaguAnakAdminModel>,
+                response: Response<DetailAudioLaguAnakAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiAudioLaguAnak.text = result.deskripsi
+                    detailNamaAudioLaguAnak.text = result.judul_audio
+                    detailJenisAudioLaguAnak.text = "Sekar Rare"
+                    if (result.gambar_audio != null) {
                         Glide.with(this@AudioLaguAnakActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioLaguAnak)
+                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioLaguAnak)
 //                            .load(result.gambar).into(imageAudioLaguAnak)
                     } else {
                         imageAudioLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
@@ -119,7 +152,7 @@ class AudioLaguAnakActivity : AppCompatActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailLaguAnakModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailAudioLaguAnakAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

@@ -13,10 +13,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BaitLaguAnakAdapter
 import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
-import com.example.ekidungmantram.model.DetailBaitPupuhModel
-import com.example.ekidungmantram.model.DetailLaguAnakModel
-import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.*
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -38,6 +35,7 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh_video")
             val video = bundle.getString("video_pupuh")
+            val id_video = bundle.getInt("id_video_pupuh")
             Log.d("id_pupuh_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -48,6 +46,7 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataVideo(id_video)
             setupRecyclerViewBait()
         }
         backToVideoPupuh.setOnClickListener {
@@ -66,12 +65,42 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiVideoPupuh.text   = result.deskripsi
-                    detailNamaVideoPupuh.text  = result.nama_post
-                    detailJenisVideoPupuh.text = "Pupuh "
-                    if(result.gambar != null) {
+//                    detailNamaVideoPupuh.text  = result.nama_post
+//                    detailJenisVideoPupuh.text = "Pupuh "
+//                    if(result.gambar != null) {
+//                        Glide.with(this@VideoPupuhActivity)
+////                            .load(result.gambar).into(imageVideoPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
+//                    }else{
+//                        imageVideoPupuh.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailPupuhModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataVideo(id: Int) {
+        ApiService.endpoint.getShowVideoPupuh(id).enqueue(object: Callback<DetailVideoPupuhModel> {
+            override fun onResponse(
+                call: Call<DetailVideoPupuhModel>,
+                response: Response<DetailVideoPupuhModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiVideoPupuh.text   = result.deskripsi
+                    detailNamaVideoPupuh.text  = result.judul_video
+                    detailJenisVideoPupuh.text = "Sekar Alit"
+                    if(result.gambar_video != null) {
                         Glide.with(this@VideoPupuhActivity)
 //                            .load(result.gambar).into(imageVideoPupuh)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoPupuh)
+                            .load(Constant.IMAGE_URL + result.gambar_video).into(imageVideoPupuh)
                     }else{
                         imageVideoPupuh.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -80,7 +109,7 @@ class VideoPupuhActivity : YouTubeBaseActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailPupuhModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailVideoPupuhModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

@@ -15,6 +15,7 @@ import com.example.ekidungmantram.adapter.VideoLaguAnakAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailBaitLaguAnakModel
 import com.example.ekidungmantram.model.DetailLaguAnakModel
+import com.example.ekidungmantram.model.adminmodel.DetailVideoLaguAnakAdminModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -36,6 +37,7 @@ class VideoLaguAnakActivity : YouTubeBaseActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu_video")
             val video = bundle.getString("video")
+            val id_video = bundle.getInt("id_video_lagu")
             Log.d("id_lagu_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -46,6 +48,7 @@ class VideoLaguAnakActivity : YouTubeBaseActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataVideo(id_video)
             setupRecyclerViewBait()
         }
         backToVideoLaguAnak.setOnClickListener {
@@ -64,12 +67,42 @@ class VideoLaguAnakActivity : YouTubeBaseActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiVideoLaguAnak.text   = result.deskripsi
-                    detailNamaVideoLaguAnak.text  = result.nama_post
-                    detailJenisVideoLaguAnak.text = "Lagu Anak "
-                    if(result.gambar != null) {
+//                    detailNamaVideoLaguAnak.text  = result.nama_post
+//                    detailJenisVideoLaguAnak.text = "Lagu Anak "
+//                    if(result.gambar != null) {
+//                        Glide.with(this@VideoLaguAnakActivity)
+////                            .load(result.gambar).into(imageVideoLaguAnak)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoLaguAnak)
+//                    }else{
+//                        imageVideoLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailLaguAnakModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataVideo(id: Int) {
+        ApiService.endpoint.getShowVideoLaguAnakAdmin(id).enqueue(object: Callback<DetailVideoLaguAnakAdminModel> {
+            override fun onResponse(
+                call: Call<DetailVideoLaguAnakAdminModel>,
+                response: Response<DetailVideoLaguAnakAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiVideoLaguAnak.text   = result.deskripsi
+                    detailNamaVideoLaguAnak.text  = result.judul_video
+                    detailJenisVideoLaguAnak.text = "Sekar Rare"
+                    if(result.gambar_video != null) {
                         Glide.with(this@VideoLaguAnakActivity)
 //                            .load(result.gambar).into(imageVideoLaguAnak)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoLaguAnak)
+                            .load(Constant.IMAGE_URL + result.gambar_video).into(imageVideoLaguAnak)
                     }else{
                         imageVideoLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
                     }
@@ -78,7 +111,7 @@ class VideoLaguAnakActivity : YouTubeBaseActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailLaguAnakModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailVideoLaguAnakAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 

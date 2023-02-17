@@ -331,6 +331,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailLaguAnakAdminActivity, VideoLaguAnakActivity::class.java)
                 bundle.putString("video_lagu_anak", result.video)
                 bundle.putInt("id_lagu_anak_video", id_lagu_anak)
+                bundle.putInt("id_video_lagu", result.id_video)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -350,6 +351,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                 val intent = Intent(this@DetailLaguAnakAdminActivity, AudioLaguAnakActivity::class.java)
                 bundle.putString("audio_lagu_anak", result.audio)
                 bundle.putInt("id_lagu_anak_audio", id_lagu_anak)
+                bundle.putInt("id_audio_lagu", result.id_audio)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

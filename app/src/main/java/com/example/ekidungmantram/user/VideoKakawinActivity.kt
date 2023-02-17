@@ -17,6 +17,7 @@ import com.example.ekidungmantram.model.DetailBaitKakawinModel
 import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKakawinModel
 import com.example.ekidungmantram.model.DetailPupuhModel
+import com.example.ekidungmantram.model.adminmodel.DetailVideoKakawinAdminModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -37,6 +38,7 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin_video")
             val video = bundle.getString("video_kakawin")
+            val id_video = bundle.getInt("id_video_kakawin")
             Log.d("id_kakawin_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -47,6 +49,7 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
             }
             getDetailData(postID)
             getBaitData(postID)
+            getDetailDataVideo(id_video)
             setupRecyclerViewBait()
         }
         backToVideoKakawin.setOnClickListener {
@@ -64,11 +67,41 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
                 val result = response.body()!!
                 result.let {
                     deskripsiVideoKakawin.text   = result.deskripsi
-                    detailNamaVideoKakawin.text  = result.nama_post
+//                    detailNamaVideoKakawin.text  = result.nama_post
+//                    detailJenisVideoKakawin.text = "Sekar Agung "
+//                    if(result.gambar != null) {
+//                        Glide.with(this@VideoKakawinActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
+////                            .load(result.gambar).into(imageVideoKakawin)
+//                    }else{
+//                        imageVideoKakawin.setImageResource(R.drawable.sample_image_yadnya)
+//                    }
+//                    playYoutubeVideo(result.video)
+                }
+                setShimmerToStop()
+            }
+
+            override fun onFailure(call: Call<DetailKakawinModel>, t: Throwable) {
+                Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getDetailDataVideo(id: Int) {
+        ApiService.endpoint.getShowVideoKakawinAdmin(id).enqueue(object: Callback<DetailVideoKakawinAdminModel> {
+            override fun onResponse(
+                call: Call<DetailVideoKakawinAdminModel>,
+                response: Response<DetailVideoKakawinAdminModel>
+            ) {
+                val result = response.body()!!
+                result.let {
+//                    deskripsiVideoKakawin.text   = result.deskripsi
+                    detailNamaVideoKakawin.text  = result.judul_video
                     detailJenisVideoKakawin.text = "Sekar Agung "
-                    if(result.gambar != null) {
+                    if(result.gambar_video != null) {
                         Glide.with(this@VideoKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar).into(imageVideoKakawin)
+                            .load(Constant.IMAGE_URL + result.gambar_video).into(imageVideoKakawin)
 //                            .load(result.gambar).into(imageVideoKakawin)
                     }else{
                         imageVideoKakawin.setImageResource(R.drawable.sample_image_yadnya)
@@ -78,7 +111,7 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
                 setShimmerToStop()
             }
 
-            override fun onFailure(call: Call<DetailKakawinModel>, t: Throwable) {
+            override fun onFailure(call: Call<DetailVideoKakawinAdminModel>, t: Throwable) {
                 Toast.makeText(applicationContext, "No Connection", Toast.LENGTH_SHORT).show()
             }
 
