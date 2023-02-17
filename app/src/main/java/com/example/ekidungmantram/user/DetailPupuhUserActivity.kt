@@ -251,11 +251,15 @@ class DetailPupuhUserActivity : AppCompatActivity() {
                     baitPupuhList.visibility   = View.GONE
                     tambahLirikPupuhUser.visibility = View.VISIBLE
                     goToListLirikPupuhUser.visibility = View.GONE
+                    bait_sekar_alit_user.visibility = View.GONE
+                    arti_sekar_alit_user.visibility = View.GONE
                 }else{
                     tv_lirik.visibility = View.GONE
                     baitPupuhList.visibility = View.VISIBLE
                     tambahLirikPupuhUser.visibility = View.GONE
                     goToListLirikPupuhUser.visibility = View.VISIBLE
+                    bait_sekar_alit_user.visibility = View.VISIBLE
+                    arti_sekar_alit_user.visibility = View.VISIBLE
                 }
                 showBaitPupuhData(response.body()!!)
                 showArtiPupuhData(response.body()!!)

@@ -1,7 +1,9 @@
 package com.example.ekidungmantram.admin.adminmanager
 
 import android.app.ProgressDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,6 +18,7 @@ import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailDataAdminModel
 import com.example.ekidungmantram.model.adminmodel.DetailMantramAdminModel
 import kotlinx.android.synthetic.main.activity_detail_admin.*
+import kotlinx.android.synthetic.main.activity_detail_ahli_need_approval.*
 import kotlinx.android.synthetic.main.activity_detail_mantram_admin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -92,6 +95,17 @@ class DetailAdminActivity : AppCompatActivity() {
                 result.let {
                     namaDetailAdmin.setText(result.name)
                     emailDetailAdmin.setText(result.email)
+                    toFileAhliDharmagita.setOnClickListener {
+                        val pdfUrl = Constant.PDF_URL + result.file
+                        val pdfIntent = Intent(Intent.ACTION_VIEW)
+                        pdfIntent.setDataAndType(Uri.parse(pdfUrl), "application/pdf")
+                        pdfIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        try {
+                            startActivity(pdfIntent)
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(this@DetailAdminActivity, "No PDF viewer app found", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
 

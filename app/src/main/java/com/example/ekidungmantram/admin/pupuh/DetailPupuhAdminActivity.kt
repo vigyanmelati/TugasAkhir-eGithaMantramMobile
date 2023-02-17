@@ -267,11 +267,15 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                     baitPupuhListAdmin.visibility   = View.GONE
                     tambahLirikPupuh.visibility = View.VISIBLE
                     goToListLirikPupuh.visibility = View.GONE
+                    bait_sekar_alit.visibility = View.GONE
+                    arti_sekar_alit.visibility = View.GONE
                 }else{
                     tv_lirik.visibility = View.GONE
                     baitPupuhListAdmin.visibility = View.VISIBLE
                     tambahLirikPupuh.visibility = View.GONE
                     goToListLirikPupuh.visibility = View.VISIBLE
+                    bait_sekar_alit.visibility = View.VISIBLE
+                    arti_sekar_alit.visibility = View.VISIBLE
                 }
                 showBaitPupuhData(response.body()!!)
                 showArtiPupuhData(response.body()!!)

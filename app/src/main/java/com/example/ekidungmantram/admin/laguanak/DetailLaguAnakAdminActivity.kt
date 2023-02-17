@@ -246,11 +246,15 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
                     baitLaguAnakListAdmin.visibility   = View.GONE
                     tambahLirikLaguAnak.visibility = View.VISIBLE
                     goToListLirikLaguAnak.visibility = View.GONE
+                    bait_sekar_rare.visibility = View.GONE
+                    arti_sekar_rare.visibility = View.GONE
                 }else{
                     tv_lirik_lagu.visibility = View.GONE
                     baitLaguAnakListAdmin.visibility = View.VISIBLE
                     tambahLirikLaguAnak.visibility = View.GONE
                     goToListLirikLaguAnak.visibility = View.VISIBLE
+                    bait_sekar_rare.visibility = View.VISIBLE
+                    arti_sekar_rare.visibility = View.VISIBLE
                 }
                 showBaitLaguAnakData(response.body()!!)
                 showArtiLaguAnakData(response.body()!!)

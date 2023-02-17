@@ -246,11 +246,15 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                     baitKakawinListAdmin.visibility   = View.GONE
                     tambahLirikKakawin.visibility = View.VISIBLE
                     goToListLirikKakawin.visibility = View.GONE
+                    bait_sekar_agung.visibility = View.GONE
+                    arti_sekar_agung.visibility = View.GONE
                 }else{
                     tv_lirik.visibility = View.GONE
                     baitKakawinListAdmin.visibility = View.VISIBLE
                     tambahLirikKakawin.visibility = View.GONE
                     goToListLirikKakawin.visibility = View.VISIBLE
+                    bait_sekar_agung.visibility = View.VISIBLE
+                    arti_sekar_agung.visibility = View.VISIBLE
                 }
                 showBaitKakawinData(response.body()!!)
                 showArtiKakawinData(response.body()!!)

@@ -161,6 +161,7 @@
                             android:layout_marginBottom="65dp"
                             android:layout_marginTop="15dp"/>
                         <TextView
+                            android:id="@+id/bait_sekar_rare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Bait Sekar Rare"
@@ -178,6 +179,8 @@
                                 tools:listitem="@layout/layout_list_detail_lagu_anak" />
                         </RelativeLayout>
                         <TextView
+                            android:id="@+id/arti_sekar_rare"
+                            android:layout_marginTop="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Arti Sekar Rare"

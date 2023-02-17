@@ -80,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<AdminModel>
                 ) {
                     if(!response.body()?.error!!){
-                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role, response.body()?.message, response.body()!!.mobile_is_logged)
+                        saveData(response.body()?.id_admin, response.body()?.nama, response.body()?.role, response.body()?.message, response.body()!!.mobile_is_logged, response.body()!!.is_approved)
                         progressDialog.dismiss()
                     }else{
                         Toast.makeText(this@LoginActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
@@ -112,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?, mesage: String?, logged: Int) {
+    private fun saveData(idAdmin: Int?, nama: String?, roleAdmin: Int?, mesage: String?, logged: Int, is_approved: Int) {
         sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val editor        = sharedPreferences.edit()
         editor.apply{
@@ -124,6 +124,7 @@ class LoginActivity : AppCompatActivity() {
             putString("ROLE", roleAdmin?.toString())
             putString("MESAGE", mesage)
             putString("LOGGED", logged.toString())
+            putInt("IS_APPROVED", is_approved)
         }.apply()
         Toast.makeText(this, "Log In Sukses", Toast.LENGTH_SHORT).show()
         if (roleAdmin.toString() != "3"){

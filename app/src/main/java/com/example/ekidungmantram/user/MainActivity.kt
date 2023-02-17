@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             val nav_Menu: Menu = navView.getMenu()
             nav_Menu.findItem(R.id.logout_user).setVisible(false)
             nav_Menu.findItem(R.id.login).setVisible(true)
+            nav_Menu.findItem(R.id.profile).setVisible(false)
         }
 
         navView.setNavigationItemSelectedListener {
