@@ -45,6 +45,32 @@ class AudioKakawinActivity : AppCompatActivity() {
             val postID = bundle.getInt("id_kakawin_audio")
             val audio = bundle.getString("audio_kakawin")
             val id_audio = bundle.getInt("id_audio_kakawin")
+
+            val id_kakawin = bundle.getInt("id_kakawin")
+            val id_kakawin_kat = bundle.getInt("id_kakawin_kat")
+            val tag_kakawin = bundle.getInt("tag_kakawin")
+            val nama_kakawin_kat = bundle.getString("nama_kakawin_kat")
+            val desc_kakawin_kat= bundle.getString("desc_kakawin_kat")
+            val nama_kakawin = bundle.getString("nama_kakawin")
+            val nama_tag_kakawin = bundle.getString("nama_tag_kakawin")
+            val gambar_kakawin= bundle.getString("gambar_kakawin")
+
+            backToAudioKakawin.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailKakawinActivity::class.java)
+                bundle.putInt("id_kakawin", id_kakawin)
+                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                bundle.putInt("tag_kakawin", tag_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                bundle.putString("gambar_kakawin", gambar_kakawin)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -92,11 +118,6 @@ class AudioKakawinActivity : AppCompatActivity() {
             getBaitData(postID)
             getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
-        }
-        backToAudioKakawin.setOnClickListener {
-            val intent = Intent(this, DetailKakawinActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 

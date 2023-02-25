@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,9 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
     private lateinit var kategoriPupuhAdapter : KategoriPupuhAdapter
     private lateinit var setAdapter    : KategoriPupuhAdapter
     private lateinit var sharedPreferences: SharedPreferences
+    var id_pupuh_kat: Int = 0
+    lateinit var nama_pupuh_kat: String
+    lateinit var desc_pupuh_kat: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_pupuh)
@@ -36,6 +40,14 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
             val namaPost = bundle.getString("nama_pupuh")
             val descPost = bundle.getString("desc_pupuh")
             Log.d("id_pupuh", postID.toString())
+
+            id_pupuh_kat = postID
+            if (namaPost != null) {
+                nama_pupuh_kat = namaPost
+            }
+            if (descPost != null) {
+                desc_pupuh_kat = descPost
+            }
 
             daftar_nama.text = "Daftar " + namaPost
             desc_kategori_pupuh.text = descPost
@@ -111,6 +123,9 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                                 bundle.putString("nama_tag_pupuh", result.nama_tag)
                                 bundle.putString("gambar_pupuh", result.gambar)
                                 bundle.putInt("tag_pupuh", result.id_tag)
+                                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -141,6 +156,9 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
                                                 bundle.putString("nama_tag_pupuh", result.nama_tag)
                                                 bundle.putString("gambar_pupuh", result.gambar)
                                                 bundle.putInt("tag_pupuh", result.id_tag)
+                                                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                                                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                                                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -179,5 +197,15 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
         shimmerKategoriPupuh.stopShimmer()
         shimmerKategoriPupuh.visibility = View.GONE
         swipeKategoriPupuh.visibility   = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

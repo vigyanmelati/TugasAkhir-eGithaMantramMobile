@@ -40,6 +40,13 @@ class DetailPupuhActivity : AppCompatActivity() {
     private lateinit var yadnyaPupuhAdapter  : YadnyaPupuhAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_pupuh : Int = 0
+    private var id_pupuh_kat : Int = 0
+    private var tag_pupuh : Int = 0
+    lateinit var nama_pupuh_kat: String
+    lateinit var desc_pupuh_kat: String
+    lateinit var nama_pupuh: String
+    lateinit var nama_tag_pupuh: String
+    lateinit var gambar_pupuh: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_pupuh)
@@ -47,13 +54,27 @@ class DetailPupuhActivity : AppCompatActivity() {
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             id_pupuh = bundle.getInt("id_pupuh")
+           id_pupuh_kat = bundle.getInt("id_pupuh_kat")
+            nama_pupuh_kat = bundle.getString("nama_pupuh_kat").toString()
+            desc_pupuh_kat = bundle.getString("desc_pupuh_kat").toString()
+
+            backToPupuh.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, AllPupuhActivity::class.java)
+                bundle.putInt("id_pupuh", id_pupuh_kat)
+                bundle.putString("nama_pupuh", nama_pupuh_kat)
+                bundle.putString("desc_pupuh", desc_pupuh_kat)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh")
-            val nama_pupuh = bundle.getString("nama_pupuh")
-            val nama_tag_pupuh = bundle.getString("nama_tag_pupuh")
-            val gambar_pupuh = bundle.getString("gambar_pupuh")
-            val tag_pupuh = bundle.getInt("tag_pupuh")
+            nama_pupuh = bundle.getString("nama_pupuh").toString()
+            nama_tag_pupuh = bundle.getString("nama_tag_pupuh").toString()
+            gambar_pupuh = bundle.getString("gambar_pupuh").toString()
+            tag_pupuh = bundle.getInt("tag_pupuh")
             Log.d("id_pupuh",postID.toString())
 
             getDetailData(postID)
@@ -94,11 +115,6 @@ class DetailPupuhActivity : AppCompatActivity() {
             }
         }
 
-        backToPupuh.setOnClickListener {
-            val intent = Intent(this, AllPupuhActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
     private fun printLog(message: String) {
@@ -218,6 +234,14 @@ class DetailPupuhActivity : AppCompatActivity() {
                 bundle.putString("video_pupuh", result.video)
                 bundle.putInt("id_pupuh_video", id_pupuh)
                 bundle.putInt("id_video_pupuh", result.id_video)
+                bundle.putInt("id_pupuh", id_pupuh)
+                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                bundle.putInt("tag_pupuh", tag_pupuh)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("nama_tag_pupuh", nama_pupuh)
+                bundle.putString("gambar_pupuh", gambar_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -238,6 +262,14 @@ class DetailPupuhActivity : AppCompatActivity() {
                 bundle.putString("audio_pupuh", result.audio)
                 bundle.putInt("id_audio_pupuh", result.id_audio)
                 bundle.putInt("id_pupuh_audio", id_pupuh)
+                bundle.putInt("id_pupuh", id_pupuh)
+                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                bundle.putInt("tag_pupuh", tag_pupuh)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("nama_tag_pupuh", nama_pupuh)
+                bundle.putString("gambar_pupuh", gambar_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -260,6 +292,15 @@ class DetailPupuhActivity : AppCompatActivity() {
                 bundle.putString("nama_yadnya", result.nama_post)
                 bundle.putString("kategori", result.kategori)
                 bundle.putString("gambar", result.gambar)
+                bundle.putInt("id_pupuh", id_pupuh)
+                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                bundle.putInt("tag_pupuh", tag_pupuh)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("nama_tag_pupuh", nama_pupuh)
+                bundle.putString("nama_tag_dhar", nama_pupuh)
+                bundle.putString("gambar_pupuh", gambar_pupuh)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

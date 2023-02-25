@@ -44,6 +44,32 @@ class AudioLaguAnakActivity : AppCompatActivity() {
             val postID = bundle.getInt("id_lagu_audio")
             val audio = bundle.getString("audio")
             val id_audio = bundle.getInt("id_audio_lagu")
+
+            val id_lagu = bundle.getInt("id_lagu")
+            val id_lagu_anak_kat = bundle.getInt("id_lagu_anak_kat")
+            val tag_lagu = bundle.getInt("tag_lagu")
+            val nama_lagu_anak_kat = bundle.getString("nama_lagu_anak_kat")
+            val desc_lagu_anak_kat= bundle.getString("desc_lagu_anak_kat")
+            val nama_lagu = bundle.getString("nama_lagu")
+            val nama_tag_lagu = bundle.getString("nama_tag_lagu")
+            val gambar_lagu= bundle.getString("gambar_lagu")
+
+            backToAudioLaguAnak.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailLaguAnakActivity::class.java)
+                bundle.putInt("id_lagu", id_lagu)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                bundle.putInt("tag_lagu", tag_lagu)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
+                bundle.putString("nama_lagu", nama_lagu)
+                bundle.putString("nama_tag_lagu", nama_tag_lagu)
+                bundle.putString("gambar_lagu", gambar_lagu)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -92,11 +118,7 @@ class AudioLaguAnakActivity : AppCompatActivity() {
             getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
         }
-        backToAudioLaguAnak.setOnClickListener {
-            val intent = Intent(this, DetailLaguAnakActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
     }
 
     private fun getDetailData(id: Int) {

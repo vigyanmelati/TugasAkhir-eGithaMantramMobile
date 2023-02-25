@@ -39,6 +39,13 @@ class DetailKakawinActivity : AppCompatActivity() {
     private lateinit var yadnyaKakawinAdapter  : YadnyaKakawinAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_kakawin : Int = 0
+    private var id_kakawin_kat : Int = 0
+    private var tag_kakawin : Int = 0
+    lateinit var nama_kakawin_kat: String
+    lateinit var desc_kakawin_kat: String
+    lateinit var nama_kakawin: String
+    lateinit var nama_tag_kakawin: String
+    lateinit var gambar_kakawin: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_kakawin)
@@ -46,13 +53,27 @@ class DetailKakawinActivity : AppCompatActivity() {
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             id_kakawin = bundle.getInt("id_kakawin")
+            id_kakawin_kat = bundle.getInt("id_kakawin_kat")
+            nama_kakawin_kat = bundle.getString("nama_kakawin_kat").toString()
+            desc_kakawin_kat = bundle.getString("desc_kakawin_kat").toString()
+
+            backToKakawin.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, AllKategoriKakawinActivity::class.java)
+                bundle.putInt("id_kakawin", id_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin_kat)
+                bundle.putString("desc_kakawin", desc_kakawin_kat)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")
-            val nama_kakawin = bundle.getString("nama_kakawin")
-            val nama_tag_kakawin = bundle.getString("nama_tag_kakawin")
-            val gambar_kakawin = bundle.getString("gambar_kakawin")
-            val tag_kakawin = bundle.getInt("tag_kakawin")
+            nama_kakawin = bundle.getString("nama_kakawin").toString()
+            nama_tag_kakawin = bundle.getString("nama_tag_kakawin").toString()
+            gambar_kakawin = bundle.getString("gambar_kakawin").toString()
+            tag_kakawin = bundle.getInt("tag_kakawin")
             Log.d("id_kakawin",postID.toString())
 
             getDetailData(postID)
@@ -92,13 +113,9 @@ class DetailKakawinActivity : AppCompatActivity() {
                     bookmarked_kakawin.isChecked = false
                 }
             }
+
         }
 
-        backToKakawin.setOnClickListener {
-            val intent = Intent(this, AllKakawinActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
     private fun printLog(message: String) {
@@ -237,6 +254,14 @@ class DetailKakawinActivity : AppCompatActivity() {
                 bundle.putString("video_kakawin", result.video)
                 bundle.putInt("id_kakawin_video", id_kakawin)
                 bundle.putInt("id_video_kakawin", result.id_video)
+                bundle.putInt("id_kakawin", id_kakawin)
+                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                bundle.putInt("tag_kakawin", tag_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                bundle.putString("gambar_kakawin", gambar_kakawin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -257,6 +282,14 @@ class DetailKakawinActivity : AppCompatActivity() {
                 bundle.putString("audio_kakawin", result.audio)
                 bundle.putInt("id_kakawin_audio", id_kakawin)
                 bundle.putInt("id_audio_kakawin", result.id_audio)
+                bundle.putInt("id_kakawin", id_kakawin)
+                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                bundle.putInt("tag_kakawin", tag_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                bundle.putString("gambar_kakawin", gambar_kakawin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -279,6 +312,15 @@ class DetailKakawinActivity : AppCompatActivity() {
                 bundle.putString("nama_yadnya", result.nama_post)
                 bundle.putString("kategori", result.kategori)
                 bundle.putString("gambar", result.gambar)
+                bundle.putInt("id_kakawin", id_kakawin)
+                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                bundle.putInt("tag_kakawin", tag_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                bundle.putString("nama_tag_dhar", nama_tag_kakawin)
+                bundle.putString("gambar_kakawin", gambar_kakawin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

@@ -39,6 +39,32 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
             val postID = bundle.getInt("id_kakawin_video")
             val video = bundle.getString("video_kakawin")
             val id_video = bundle.getInt("id_video_kakawin")
+
+            val id_kakawin = bundle.getInt("id_kakawin")
+            val id_kakawin_kat = bundle.getInt("id_kakawin_kat")
+            val tag_kakawin = bundle.getInt("tag_kakawin")
+            val nama_kakawin_kat = bundle.getString("nama_kakawin_kat")
+            val desc_kakawin_kat= bundle.getString("desc_kakawin_kat")
+            val nama_kakawin = bundle.getString("nama_kakawin")
+            val nama_tag_kakawin = bundle.getString("nama_tag_kakawin")
+            val gambar_kakawin= bundle.getString("gambar_kakawin")
+
+            backToVideoKakawin.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailKakawinActivity::class.java)
+                bundle.putInt("id_kakawin", id_kakawin)
+                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                bundle.putInt("tag_kakawin", tag_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                bundle.putString("gambar_kakawin", gambar_kakawin)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             Log.d("id_kakawin_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -51,11 +77,6 @@ class VideoKakawinActivity : YouTubeBaseActivity() {
             getBaitData(postID)
             getDetailDataVideo(id_video)
             setupRecyclerViewBait()
-        }
-        backToVideoKakawin.setOnClickListener {
-            val intent = Intent(this, DetailKakawinActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
     private fun getDetailData(id: Int) {

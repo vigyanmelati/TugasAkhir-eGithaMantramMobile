@@ -37,6 +37,10 @@ class DetailKidungActivity : YouTubeBaseActivity() {
     private lateinit var yadnyaKidungAdapter  : YadnyaKidungAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_kidung : Int = 0
+    private var tag_kidung : Int = 0
+    lateinit var nama_kidung: String
+    lateinit var nama_tag_kidung: String
+    lateinit var gambar_kidung: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_kidung)
@@ -47,10 +51,10 @@ class DetailKidungActivity : YouTubeBaseActivity() {
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung")
-            val nama_kidung = bundle.getString("nama_kidung")
-            val nama_tag_kidung = bundle.getString("nama_tag_kidung")
-            val gambar_kidung = bundle.getString("gambar_kidung")
-            val tag_kidung = bundle.getInt("tag_kidung")
+            nama_kidung = bundle.getString("nama_kidung").toString()
+            nama_tag_kidung = bundle.getString("nama_tag_kidung").toString()
+            gambar_kidung = bundle.getString("gambar_kidung").toString()
+            tag_kidung = bundle.getInt("tag_kidung")
             Log.d("id_kidung",postID.toString())
 
             getDetailData(postID)
@@ -197,6 +201,11 @@ class DetailKidungActivity : YouTubeBaseActivity() {
                 bundle.putString("video_kidung", result.video)
                 bundle.putInt("id_kidung_video", id_kidung)
                 bundle.putInt("id_video_kidung", result.id_video)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("tag_kidung", tag_kidung)
+                bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                bundle.putString("gambar_kidung", gambar_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -217,6 +226,11 @@ class DetailKidungActivity : YouTubeBaseActivity() {
                 bundle.putString("audio_kidung", result.audio)
                 bundle.putInt("id_kidung_audio", id_kidung)
                 bundle.putInt("id_audio_kidung", result.id_audio)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("tag_kidung", tag_kidung)
+                bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                bundle.putString("gambar_kidung", gambar_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -239,6 +253,12 @@ class DetailKidungActivity : YouTubeBaseActivity() {
                 bundle.putString("nama_yadnya", result.nama_post)
                 bundle.putString("kategori", result.kategori)
                 bundle.putString("gambar", result.gambar)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("tag_kidung", tag_kidung)
+                bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                bundle.putString("nama_tag_dhar", nama_tag_kidung)
+                bundle.putString("gambar_kidung", gambar_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

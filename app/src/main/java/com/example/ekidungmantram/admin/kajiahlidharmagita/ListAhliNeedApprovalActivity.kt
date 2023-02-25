@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -130,5 +131,15 @@ class ListAhliNeedApprovalActivity : AppCompatActivity() {
         shimmerAhliNAAdmin.stopShimmer()
         shimmerAhliNAAdmin.visibility = View.GONE
         swipeAhliNAAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

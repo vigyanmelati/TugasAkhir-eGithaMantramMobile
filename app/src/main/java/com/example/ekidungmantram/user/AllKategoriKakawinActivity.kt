@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,10 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
     private lateinit var kategoriKakawinAdapter : KategoriKakawinAdapter
     private lateinit var setAdapter    : KategoriKakawinAdapter
     private lateinit var sharedPreferences: SharedPreferences
+    var id_kakawin_kat: Int = 0
+    lateinit var nama_kakawin_kat: String
+    lateinit var desc_kakawin_kat: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_kakawin)
@@ -37,6 +42,14 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
             val namaPost = bundle.getString("nama_kakawin")
             val descPost = bundle.getString("desc_kakawin")
             Log.d("id_kakawin", postID.toString())
+            id_kakawin_kat =postID
+            if (namaPost != null) {
+                nama_kakawin_kat = namaPost
+            }
+            if (descPost != null) {
+                desc_kakawin_kat = descPost
+            }
+
 
             daftar_nama.text = "Daftar " + namaPost
             desc_kategori_sekar_agung.text = descPost
@@ -107,9 +120,14 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
                                 val intent = Intent(this@AllKategoriKakawinActivity, DetailKakawinActivity::class.java)
                                 bundle.putInt("id_kakawin", result.id_post)
                                 bundle.putInt("tag_kakawin", result.id_tag)
+                                Log.d("kawid", result.id_tag.toString())
                                 bundle.putString("nama_kakawin", result.nama_post)
                                 bundle.putString("gambar_kakawin", result.gambar)
                                 bundle.putString("nama_tag_kakawin", result.nama_tag)
+                                Log.d("kawidnam", result.nama_tag)
+                                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -140,6 +158,9 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
                                                 bundle.putString("nama_kakawin", result.nama_post)
                                                 bundle.putString("gambar_kakawin", result.gambar)
                                                 bundle.putString("nama_tag_kakawin", result.nama_tag)
+                                                bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                                                bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                                                bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -178,5 +199,15 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
         shimmerKategoriKakawin.stopShimmer()
         shimmerKategoriKakawin.visibility = View.GONE
         swipeKategoriKakawin.visibility   = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

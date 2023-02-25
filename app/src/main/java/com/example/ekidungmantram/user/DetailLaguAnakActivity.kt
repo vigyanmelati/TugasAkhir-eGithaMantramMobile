@@ -49,6 +49,13 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
     private lateinit var yadnyaLaguAnakAdapter  : YadnyaLaguAnakAdapter
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_lagu : Int = 0
+    private var id_lagu_anak_kat : Int = 0
+    private var tag_lagu : Int = 0
+    lateinit var nama_lagu_anak_kat: String
+    lateinit var desc_lagu_anak_kat: String
+    lateinit var nama_lagu: String
+    lateinit var nama_tag_lagu: String
+    lateinit var gambar_lagu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_lagu_anak)
@@ -56,13 +63,27 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             id_lagu = bundle.getInt("id_lagu")
+            id_lagu_anak_kat = bundle.getInt("id_lagu_anak_kat")
+            nama_lagu_anak_kat = bundle.getString("nama_lagu_anak_kat").toString()
+            desc_lagu_anak_kat = bundle.getString("desc_lagu_anak_kat").toString()
+
+            backToLaguAnak.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, AllKategoriLaguAnakActivity::class.java)
+                bundle.putInt("id_lagu_anak", id_lagu_anak_kat)
+                bundle.putString("nama_lagu_anak", nama_lagu_anak_kat)
+                bundle.putString("desc_lagu_anak", desc_lagu_anak_kat)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu")
-            val nama_lagu = bundle.getString("nama_lagu")
-            val nama_tag_lagu = bundle.getString("nama_tag_lagu")
-            val gambar_lagu = bundle.getString("gambar_lagu")
-            val tag_lagu = bundle.getInt("tag_lagu")
+            nama_lagu = bundle.getString("nama_lagu").toString()
+            nama_tag_lagu = bundle.getString("nama_tag_lagu").toString()
+            gambar_lagu = bundle.getString("gambar_lagu").toString()
+            tag_lagu = bundle.getInt("tag_lagu")
             Log.d("id_lagu",postID.toString())
 
             getDetailData(postID)
@@ -103,11 +124,6 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
             }
         }
 
-        backToLaguAnak.setOnClickListener {
-            val intent = Intent(this, AlllLaguAnakActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
     }
 
@@ -228,6 +244,14 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 bundle.putString("video", result.video)
                 bundle.putInt("id_lagu_video", id_lagu)
                 bundle.putInt("id_video_lagu", result.id_video)
+                bundle.putInt("id_lagu", id_lagu)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                bundle.putInt("tag_lagu", tag_lagu)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
+                bundle.putString("nama_lagu", nama_lagu)
+                bundle.putString("nama_tag_lagu", nama_tag_lagu)
+                bundle.putString("gambar_lagu", gambar_lagu)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -248,6 +272,14 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 bundle.putString("audio", result.audio)
                 bundle.putInt("id_lagu_audio", id_lagu)
                 bundle.putInt("id_audio_lagu", result.id_audio)
+                bundle.putInt("id_lagu", id_lagu)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                bundle.putInt("tag_lagu", tag_lagu)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
+                bundle.putString("nama_lagu", nama_lagu)
+                bundle.putString("nama_tag_lagu", nama_tag_lagu)
+                bundle.putString("gambar_lagu", gambar_lagu)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -270,6 +302,15 @@ class DetailLaguAnakActivity : YouTubeBaseActivity() {
                 bundle.putString("nama_yadnya", result.nama_post)
                 bundle.putString("kategori", result.kategori)
                 bundle.putString("gambar", result.gambar)
+                bundle.putInt("id_lagu", id_lagu)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                bundle.putInt("tag_lagu", tag_lagu)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
+                bundle.putString("nama_lagu", nama_lagu)
+                bundle.putString("nama_tag_lagu", nama_tag_lagu)
+                bundle.putString("nama_tag_dhar", nama_tag_lagu)
+                bundle.putString("gambar_lagu", gambar_lagu)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

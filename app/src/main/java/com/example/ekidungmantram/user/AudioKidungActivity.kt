@@ -45,6 +45,26 @@ class AudioKidungActivity : AppCompatActivity() {
             val postID = bundle.getInt("id_kidung_audio")
             val audio = bundle.getString("audio_kidung")
                 val id_audio = bundle.getInt("id_audio_kidung")
+
+            val id_kidung = bundle.getInt("id_kidung")
+            val tag_kidung = bundle.getInt("tag_kidung")
+            val nama_kidung = bundle.getString("nama_kidung")
+            val nama_tag_kidung = bundle.getString("nama_tag_kidung")
+            val gambar_kidung= bundle.getString("gambar_kidung")
+
+            backToAudioKidung.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailKidungActivity::class.java)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("tag_kidung", tag_kidung)
+                bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                bundle.putString("gambar_kidung", gambar_kidung)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -92,11 +112,6 @@ class AudioKidungActivity : AppCompatActivity() {
             getBaitData(postID)
             getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
-        }
-        backToAudioKidung.setOnClickListener {
-            val intent = Intent(this, DetailKidungActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
     private fun getDetailData(id: Int) {

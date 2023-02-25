@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,9 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
     private lateinit var kategoriLaguAnakAdapter : KategoriLaguAnakAdapter
     private lateinit var setAdapter    : KategoriLaguAnakAdapter
     private lateinit var sharedPreferences: SharedPreferences
+    var id_lagu_anak_kat: Int = 0
+    lateinit var nama_lagu_anak_kat: String
+    lateinit var desc_lagu_anak_kat: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_kategori_lagu_anak)
@@ -42,6 +46,14 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
             val namaPost = bundle.getString("nama_lagu_anak")
             val descPost = bundle.getString("desc_lagu_anak")
             Log.d("id_lagu_anak", postID.toString())
+
+            id_lagu_anak_kat = postID
+            if (namaPost != null) {
+                nama_lagu_anak_kat = namaPost
+            }
+            if (descPost != null) {
+                desc_lagu_anak_kat = descPost
+            }
 
             daftar_nama.text = "Daftar " + namaPost
             desc_kategori_sekar_rare.text = descPost
@@ -114,6 +126,9 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
                                 bundle.putString("nama_tag_lagu", result.nama_tag)
                                 bundle.putString("gambar_lagu", result.gambar)
                                 bundle.putInt("tag_lagu", result.id_tag)
+                                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -144,6 +159,9 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
                                                 bundle.putString("nama_tag_lagu", result.nama_tag)
                                                 bundle.putString("gambar_lagu", result.gambar)
                                                 bundle.putInt("tag_lagu", result.id_tag)
+                                                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                                                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                                                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -182,5 +200,15 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
         shimmerKategoriLaguAnak.stopShimmer()
         shimmerKategoriLaguAnak.visibility = View.GONE
         swipeKategoriLaguAnak.visibility   = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

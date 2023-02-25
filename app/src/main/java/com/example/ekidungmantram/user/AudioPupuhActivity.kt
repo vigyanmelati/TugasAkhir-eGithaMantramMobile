@@ -41,6 +41,32 @@ class AudioPupuhActivity : AppCompatActivity() {
             val postID = bundle.getInt("id_pupuh_audio")
             val audio = bundle.getString("audio_pupuh")
             val id_audio = bundle.getInt("id_audio_pupuh")
+
+            val id_pupuh = bundle.getInt("id_pupuh")
+            val id_pupuh_kat = bundle.getInt("id_pupuh_kat")
+            val tag_pupuh = bundle.getInt("tag_pupuh")
+            val nama_pupuh_kat = bundle.getString("nama_pupuh_kat")
+            val desc_pupuh_kat= bundle.getString("desc_pupuh_kat")
+            val nama_pupuh = bundle.getString("nama_pupuh")
+            val nama_tag_pupuh = bundle.getString("nama_tag_pupuh")
+            val gambar_pupuh= bundle.getString("gambar_pupuh")
+
+            backToAudioPupuh.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailPupuhActivity::class.java)
+                bundle.putInt("id_pupuh", id_pupuh)
+                bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                bundle.putInt("tag_pupuh", tag_pupuh)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("nama_tag_pupuh", nama_tag_pupuh)
+                bundle.putString("gambar_pupuh", gambar_pupuh)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             val audio_constant = Constant.AUDIO_URL + audio
             if (audio != null) {
                 val audio_uri = audio_constant.toUri()
@@ -88,11 +114,6 @@ class AudioPupuhActivity : AppCompatActivity() {
             getBaitData(postID)
             getDetailDataAudio(id_audio)
             setupRecyclerViewBait()
-        }
-        backToAudioPupuh.setOnClickListener {
-            val intent = Intent(this, DetailPupuhActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 

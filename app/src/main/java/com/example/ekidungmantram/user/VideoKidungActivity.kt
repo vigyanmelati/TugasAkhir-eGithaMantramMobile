@@ -39,6 +39,26 @@ class VideoKidungActivity : YouTubeBaseActivity() {
             val postID = bundle.getInt("id_kidung_video")
             val video = bundle.getString("video_kidung")
             val id_video = bundle.getInt("id_video_kidung")
+
+            val id_kidung = bundle.getInt("id_kidung")
+            val tag_kidung = bundle.getInt("tag_kidung")
+            val nama_kidung = bundle.getString("nama_kidung")
+            val nama_tag_kidung = bundle.getString("nama_tag_kidung")
+            val gambar_kidung= bundle.getString("gambar_kidung")
+
+            backToVideoKidung.setOnClickListener {
+                val bundle = Bundle()
+                val intent = Intent(this, DetailKidungActivity::class.java)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("tag_kidung", tag_kidung)
+                bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                bundle.putString("gambar_kidung", gambar_kidung)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                finish()
+            }
+
             Log.d("id_kidung_video",postID.toString())
             if (video != null) {
                 Log.d("id_video",video)
@@ -51,11 +71,6 @@ class VideoKidungActivity : YouTubeBaseActivity() {
             getBaitData(postID)
             getDetailDataVideo(id_video)
             setupRecyclerViewBait()
-        }
-        backToVideoKidung.setOnClickListener {
-            val intent = Intent(this, DetailKidungActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
     private fun getDetailData(id: Int) {

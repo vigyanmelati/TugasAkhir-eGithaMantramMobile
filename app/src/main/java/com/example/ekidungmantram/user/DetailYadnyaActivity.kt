@@ -42,6 +42,7 @@ class DetailYadnyaActivity : YouTubeBaseActivity() {
     private var LayoutManagerKidung     : LinearLayoutManager? = null
     private lateinit var kidungAdapter  : KidungYadnyaAdapter
     private var yadID                   : Int? = null
+    lateinit var nama_tag_dhar: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +60,110 @@ class DetailYadnyaActivity : YouTubeBaseActivity() {
 //            shareURL.setOnClickListener {
 //                shareYadnya(url)
 //            }
-            backToHome.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+
+            nama_tag_dhar = bundle.getString("nama_tag_dhar").toString()
+
+
+            if(nama_tag_dhar == "Sekar Madya"){
+                val id_kidung = bundle.getInt("id_kidung")
+                val tag_kidung = bundle.getInt("tag_kidung")
+                val nama_kidung = bundle.getString("nama_kidung")
+                val nama_tag_kidung = bundle.getString("nama_tag_kidung")
+                val gambar_kidung= bundle.getString("gambar_kidung")
+                backToHome.setOnClickListener {
+                    val bundle = Bundle()
+                    val intent = Intent(this, DetailKidungActivity::class.java)
+                    bundle.putInt("id_kidung", id_kidung)
+                    bundle.putInt("tag_kidung", tag_kidung)
+                    bundle.putString("nama_kidung", nama_kidung)
+                    bundle.putString("nama_tag_kidung", nama_tag_kidung)
+                    bundle.putString("gambar_kidung", gambar_kidung)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }
+            }else if(nama_tag_dhar == "Sekar Agung"){
+                val id_kakawin = bundle.getInt("id_kakawin")
+                val id_kakawin_kat = bundle.getInt("id_kakawin_kat")
+                val tag_kakawin = bundle.getInt("tag_kakawin")
+                val nama_kakawin_kat = bundle.getString("nama_kakawin_kat")
+                val desc_kakawin_kat= bundle.getString("desc_kakawin_kat")
+                val nama_kakawin = bundle.getString("nama_kakawin")
+                val nama_tag_kakawin = bundle.getString("nama_tag_kakawin")
+                val gambar_kakawin= bundle.getString("gambar_kakawin")
+
+                backToHome.setOnClickListener {
+                    val bundle = Bundle()
+                    val intent = Intent(this, DetailKakawinActivity::class.java)
+                    bundle.putInt("id_kakawin", id_kakawin)
+                    bundle.putInt("id_kakawin_kat", id_kakawin_kat)
+                    bundle.putInt("tag_kakawin", tag_kakawin)
+                    bundle.putString("nama_kakawin_kat", nama_kakawin_kat)
+                    bundle.putString("desc_kakawin_kat", desc_kakawin_kat)
+                    bundle.putString("nama_kakawin", nama_kakawin)
+                    bundle.putString("nama_tag_kakawin", nama_tag_kakawin)
+                    bundle.putString("gambar_kakawin", gambar_kakawin)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }
+            }else if(nama_tag_dhar == "Sekar Rare"){
+                val id_lagu = bundle.getInt("id_lagu")
+                val id_lagu_anak_kat = bundle.getInt("id_lagu_anak_kat")
+                val tag_lagu = bundle.getInt("tag_lagu")
+                val nama_lagu_anak_kat = bundle.getString("nama_lagu_anak_kat")
+                val desc_lagu_anak_kat= bundle.getString("desc_lagu_anak_kat")
+                val nama_lagu = bundle.getString("nama_lagu")
+                val nama_tag_lagu = bundle.getString("nama_tag_lagu")
+                val gambar_lagu= bundle.getString("gambar_lagu")
+
+                backToHome.setOnClickListener {
+                    val bundle = Bundle()
+                    val intent = Intent(this, DetailLaguAnakActivity::class.java)
+                    bundle.putInt("id_lagu", id_lagu)
+                    bundle.putInt("id_lagu_anak_kat", id_lagu_anak_kat)
+                    bundle.putInt("tag_lagu", tag_lagu)
+                    bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_kat)
+                    bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_kat)
+                    bundle.putString("nama_lagu", nama_lagu)
+                    bundle.putString("nama_tag_lagu", nama_tag_lagu)
+                    bundle.putString("gambar_lagu", gambar_lagu)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }
+            }else if(nama_tag_dhar == "Sekar Alit"){
+                val id_pupuh = bundle.getInt("id_pupuh")
+                val id_pupuh_kat = bundle.getInt("id_pupuh_kat")
+                val tag_pupuh = bundle.getInt("tag_pupuh")
+                val nama_pupuh_kat = bundle.getString("nama_pupuh_kat")
+                val desc_pupuh_kat= bundle.getString("desc_pupuh_kat")
+                val nama_pupuh = bundle.getString("nama_pupuh")
+                val nama_tag_pupuh = bundle.getString("nama_tag_pupuh")
+                val gambar_pupuh= bundle.getString("gambar_pupuh")
+
+                backToHome.setOnClickListener {
+                    val bundle = Bundle()
+                    val intent = Intent(this, DetailPupuhActivity::class.java)
+                    bundle.putInt("id_pupuh", id_pupuh)
+                    bundle.putInt("id_pupuh_kat", id_pupuh_kat)
+                    bundle.putInt("tag_pupuh", tag_pupuh)
+                    bundle.putString("nama_pupuh_kat", nama_pupuh_kat)
+                    bundle.putString("desc_pupuh_kat", desc_pupuh_kat)
+                    bundle.putString("nama_pupuh", nama_pupuh)
+                    bundle.putString("nama_tag_pupuh", nama_tag_pupuh)
+                    bundle.putString("gambar_pupuh", gambar_pupuh)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }
             }
+
+//            backToHome.setOnClickListener {
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            }
             bookmarked.setOnClickListener {
                 if(bookmarked.isChecked){
                     Toast.makeText(this, "Bookmark Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
