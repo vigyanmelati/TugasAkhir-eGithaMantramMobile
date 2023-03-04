@@ -98,7 +98,11 @@ class AddAudioLaguAnakNewActivity : AppCompatActivity() {
         }
 
         recordAudioLaguAnakUserNew.setOnClickListener {
+            val bundle = Bundle()
             val intent = Intent(this, RecordAudioLaguAnakActivity::class.java)
+            bundle.putInt("id_lagu_anak", id_lagu_anak)
+            bundle.putString("nama_lagu_anak", nama_lagu_anak)
+            intent.putExtras(bundle)
             startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
         }

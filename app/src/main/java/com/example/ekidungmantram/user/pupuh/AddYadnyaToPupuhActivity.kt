@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -12,14 +12,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllYadnyaNotOnPupuhAdapter
-import com.example.ekidungmantram.adapter.admin.AllYadnyaNotOnPupuhAdminAdapter
-import com.example.ekidungmantram.admin.pupuh.AllYadnyaOnPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.YadnyaPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.YadnyaPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_add_yadnya_to_pupuh.*
-import kotlinx.android.synthetic.main.activity_add_yadnya_to_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

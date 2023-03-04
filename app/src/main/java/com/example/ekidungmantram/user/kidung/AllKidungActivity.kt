@@ -14,9 +14,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllKidungAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllKidungModel
-import com.example.ekidungmantram.user.DetailKidungActivity
-import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
-import kotlinx.android.synthetic.main.activity_all_kategori_kakawin.*
+import com.example.ekidungmantram.user.MainActivity
 import kotlinx.android.synthetic.main.activity_all_kidung.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -169,6 +167,12 @@ class AllKidungActivity : AppCompatActivity() {
         shimmerKidung.stopShimmer()
         shimmerKidung.visibility = View.GONE
         swipeKidung.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKidungActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }

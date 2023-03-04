@@ -9,14 +9,9 @@ import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
 import com.example.ekidungmantram.adapter.admin.KategoriPupuhAdminAdapter
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.KategoriPupuhModel
 import com.example.ekidungmantram.model.adminmodel.KategoriPupuhAdminModel
-import com.example.ekidungmantram.user.AddPupuhActivity
-import com.example.ekidungmantram.user.DetailPupuhActivity
-import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -104,6 +99,7 @@ class AllKategoriPupuhAdminActivity : AppCompatActivity() {
                                 bundle.putInt("id_pupuh_admin_kat", id_pupuh_admin)
                                 bundle.putString("nama_pupuh_admin_kat", nama_pupuh_admin)
                                 bundle.putString("desc_pupuh_admin_kat", desc_pupuh_admin)
+                                bundle.putString("tag_user_pupuh","Admin")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -137,6 +133,7 @@ class AllKategoriPupuhAdminActivity : AppCompatActivity() {
                                                 bundle.putInt("id_pupuh_admin_kat", id_pupuh_admin)
                                                 bundle.putString("nama_pupuh_admin_kat", nama_pupuh_admin)
                                                 bundle.putString("desc_pupuh_admin_kat", desc_pupuh_admin)
+                                                bundle.putString("tag_user_pupuh","Admin")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

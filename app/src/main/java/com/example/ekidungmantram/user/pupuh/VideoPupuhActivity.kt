@@ -1,7 +1,6 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,16 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.BaitLaguAnakAdapter
 import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_detail_pupuh.*
-import kotlinx.android.synthetic.main.activity_video_kidung.*
-import kotlinx.android.synthetic.main.activity_video_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback

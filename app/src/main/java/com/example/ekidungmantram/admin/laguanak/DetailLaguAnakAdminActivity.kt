@@ -14,15 +14,16 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.*
+import com.example.ekidungmantram.admin.kakawin.AllKategoriKakawinAdminActivity
 import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
-import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
+import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakUserActivity
+import com.example.ekidungmantram.user.laguanak.AudioLaguAnakActivity
+import com.example.ekidungmantram.user.laguanak.VideoLaguAnakActivity
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak_admin.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.deletePupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,6 +43,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
     private var id_lagu_anak_admin : Int = 0
     private lateinit var nama_lagu_anak_admin :String
     private lateinit var desc_lagu_anak_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_lagu_anak_admin)
@@ -59,6 +61,7 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             id_lagu_anak_admin = bundle.getInt("id_lagu_anak_admin_kat")
             nama_lagu_anak_admin = bundle.getString("nama_lagu_anak_admin_kat").toString()
             desc_lagu_anak_admin = bundle.getString("desc_lagu_anak_admin_kat").toString()
+            tag_user = bundle.getString("tag_user_anak").toString()
 
             getDetailData(postID)
             getBaitData(postID)
@@ -77,7 +80,11 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             goToListLirikLaguAnak.setOnClickListener {
                 val intent = Intent(this, AllLirikLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_admin)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_admin)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_admin)
+                bundle.putString("tag_user_anak", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -85,7 +92,11 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             goToListVideoLaguAnak.setOnClickListener {
                 val intent = Intent(this, AllVideoLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_admin)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_admin)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_admin)
+                bundle.putString("tag_user_anak", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -101,7 +112,11 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             goToListAudioLaguAnak.setOnClickListener {
                 val intent = Intent(this, AllAudioLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_admin)
                 bundle.putString("nama_lagu_anak", nama_lagu_anak)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_admin)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_admin)
+                bundle.putString("tag_user_anak", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -141,6 +156,11 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
             toEditLaguAnak.setOnClickListener {
                 val intent = Intent(this, EditLaguAnakAdminActivity::class.java)
                 bundle.putInt("id_lagu_anak", postID)
+                bundle.putInt("id_lagu_anak_kat", id_lagu_anak_admin)
+                bundle.putString("nama_lagu_anak", nama_lagu_anak)
+                bundle.putString("nama_lagu_anak_kat", nama_lagu_anak_admin)
+                bundle.putString("desc_lagu_anak_kat", desc_lagu_anak_admin)
+                bundle.putString("tag_user_anak", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -193,14 +213,26 @@ class DetailLaguAnakAdminActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriLaguAnakAdminActivity::class.java)
-        val bundle = Bundle()
-        bundle.putInt("id_lagu_anak_admin", id_lagu_anak_admin)
-        bundle.putString("nama_lagu_anak_admin", nama_lagu_anak_admin)
-        bundle.putString("desc_lagu_anak__admin", desc_lagu_anak_admin)
-        intent.putExtras(bundle)
-        startActivity(intent)
-        finish()
+        if(tag_user == "Pengguna"){
+            val intent = Intent(this, AllKategoriLaguAnakUserActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_lagu_anak", id_lagu_anak_admin)
+            bundle.putString("nama_lagu_anak", nama_lagu_anak_admin)
+            bundle.putString("desc_lagu_anak", desc_lagu_anak_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }else if(tag_user == "Admin"){
+            val intent = Intent(this, AllKategoriLaguAnakAdminActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_lagu_anak_admin", id_lagu_anak_admin)
+            bundle.putString("nama_lagu_anak_admin", nama_lagu_anak_admin)
+            bundle.putString("desc_lagu_anak_admin", desc_lagu_anak_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     private fun getDetailData(id: Int) {

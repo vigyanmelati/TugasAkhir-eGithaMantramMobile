@@ -64,7 +64,7 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
 
             setFormData(audioID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.title = "Edit Audio Sekar Alit"
+            supportActionBar!!.title = "Edit Audio Sekar Madya"
 
             selectEditedImageAudioKidungUser.setOnClickListener {
                 val intent = Intent(Intent.ACTION_PICK)
@@ -92,7 +92,12 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
             }
 
             recordAudioKidungUserNewEdit.setOnClickListener {
+                val bundle = Bundle()
                 val intent = Intent(this, RecordAudioEditKidungActivity::class.java)
+                bundle.putInt("id_kidung", id_kidung)
+                bundle.putInt("id_audio_kidung", audioID)
+                bundle.putString("nama_kidung", nama_kidung)
+                intent.putExtras(bundle)
                 startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
             }

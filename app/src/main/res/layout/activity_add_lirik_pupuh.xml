@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.AddLirikPupuhActivity"
+    tools:context=".user.pupuh.AddLirikPupuhActivity"
     android:orientation="vertical"
     android:padding="18dp">
     <ScrollView

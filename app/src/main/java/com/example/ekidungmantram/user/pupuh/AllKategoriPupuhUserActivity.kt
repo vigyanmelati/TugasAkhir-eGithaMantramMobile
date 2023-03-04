@@ -13,8 +13,6 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriPupuhUserAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriPupuhUserModel
-import com.example.ekidungmantram.user.AddPupuhActivity
-import com.example.ekidungmantram.user.DetailPupuhUserActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh_user.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -109,6 +107,7 @@ class AllKategoriPupuhUserActivity : AppCompatActivity() {
                                 bundle.putInt("id_pupuh_user_kat", id_pupuh)
                                 bundle.putString("nama_pupuh_user_kat", nama_pupuh)
                                 bundle.putString("desc_pupuh_user_kat", desc_pupuh)
+                                bundle.putString("tag_user_pupuh","Pengguna")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -142,6 +141,7 @@ class AllKategoriPupuhUserActivity : AppCompatActivity() {
                                                 bundle.putInt("id_pupuh_user_kat", id_pupuh)
                                                 bundle.putString("nama_pupuh_user_kat", nama_pupuh)
                                                 bundle.putString("desc_pupuh_user_kat", desc_pupuh)
+                                                bundle.putString("tag_user_pupuh","Pengguna")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -180,5 +180,16 @@ class AllKategoriPupuhUserActivity : AppCompatActivity() {
         shimmerKategoriPupuhUser.stopShimmer()
         shimmerKategoriPupuhUser.visibility = View.GONE
         swipeKategoriPupuhUser.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this@AllKategoriPupuhUserActivity,AllKategoriPupuhActivity::class.java)
+        bundle.putInt("id_pupuh", id_pupuh)
+        bundle.putString("nama_pupuh", nama_pupuh)
+        bundle.putString("desc_pupuh", desc_pupuh)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

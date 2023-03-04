@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.ItemSlideBinding
-import com.example.ekidungmantram.user.*
 import com.example.ekidungmantram.user.kakawin.AllKakawinActivity
 import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.laguanak.AlllLaguAnakActivity
 import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 
 

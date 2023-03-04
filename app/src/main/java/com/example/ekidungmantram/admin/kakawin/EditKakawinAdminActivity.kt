@@ -31,7 +31,11 @@ class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLis
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
     private var yadnya : String? = null
-
+    private var id_kakawin_admin : Int = 0
+    private lateinit var nama_kakawin_admin :String
+    private lateinit var desc_kakawin_admin :String
+    private var id_kakawin : Int = 0
+    private lateinit var nama_kakawin :String
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,11 @@ class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")
+            id_kakawin = bundle.getInt("id_kakawin")
+            nama_kakawin = bundle.getString("nama_kakawin").toString()
+            id_kakawin_admin = bundle.getInt("id_kakawin_admin")
+            nama_kakawin_admin = bundle.getString("nama_kakawin_admin").toString()
+            desc_kakawin_admin = bundle.getString("desc_kakawin_admin").toString()
 
             setFormData(postID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -123,7 +132,14 @@ class EditKakawinAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLis
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriKakawinAdminActivity::class.java)
+        val intent = Intent(this@EditKakawinAdminActivity, DetailKakawinAdminActivity::class.java)
+        val bundle = Bundle()
+        bundle.putInt("id_kakawin_admin_kat", id_kakawin_admin)
+        bundle.putInt("id_kakawin_admin", id_kakawin)
+        bundle.putString("nama_kakawin_admin", nama_kakawin)
+        bundle.putString("nama_kakawin_admin_kat", nama_kakawin_admin)
+        bundle.putString("desc_kakawin_admin_kat", desc_kakawin_admin)
+        intent.putExtras(bundle)
         startActivity(intent)
         finish()
     }

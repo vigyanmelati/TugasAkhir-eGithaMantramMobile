@@ -30,6 +30,12 @@ import retrofit2.Response
 class AllYadnyaOnPupuhAdminActivity : AppCompatActivity() {
     private lateinit var tabuhAdapter : AllYadnyaOnPupuhAdminAdapter
     private lateinit var setAdapter   : AllYadnyaOnPupuhAdminAdapter
+    private var id_pupuh : Int = 0
+    private var id_pupuh_admin : Int = 0
+    private lateinit var nama_pupuh :String
+    private lateinit var nama_pupuh_admin :String
+    private lateinit var desc_pupuh_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnya_on_pupuh_admin)
@@ -38,6 +44,13 @@ class AllYadnyaOnPupuhAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_pupuh_admin")
             val namaPost = bundle.getString("nama_pupuh_admin")
+
+            id_pupuh = postID
+            nama_pupuh = namaPost.toString()
+            id_pupuh_admin = bundle.getInt("id_pupuh_kat")
+            nama_pupuh_admin = bundle.getString("nama_pupuh_kat").toString()
+            desc_pupuh_admin = bundle.getString("padalingsa").toString()
+            tag_user = bundle.getString("tag_user").toString()
 
             namaPupuhYadnya.text = namaPost
             allPupuhYadnyaAdmin1.layoutManager = LinearLayoutManager(applicationContext)
@@ -182,5 +195,19 @@ class AllYadnyaOnPupuhAdminActivity : AppCompatActivity() {
         shimmerPupuhYadnyaAdmin.stopShimmer()
         shimmerPupuhYadnyaAdmin.visibility = View.GONE
         swipePupuhYadnyaAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailPupuhAdminActivity::class.java)
+        bundle.putInt("id_pupuh_admin", id_pupuh)
+        bundle.putInt("id_pupuh_admin_kat", id_pupuh_admin)
+        bundle.putString("nama_pupuh_admin", nama_pupuh)
+        bundle.putString("nama_pupuh_admin_kat", nama_pupuh_admin)
+        bundle.putString("desc_pupuh_admin_kat", desc_pupuh_admin)
+        bundle.putString("tag_user", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

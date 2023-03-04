@@ -22,6 +22,9 @@ import retrofit2.Response
 
 class AllAudioKidungAdminActivity : AppCompatActivity() {
     private lateinit var setAdapter : AllDataAudioKidungAdminAdapter
+    private var id_kidung : Int = 0
+    private lateinit var nama_kidung :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_audio_kidung_admin)
@@ -30,6 +33,10 @@ class AllAudioKidungAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung")
             val namaPost = bundle.getString("nama_kidung")
+
+            id_kidung = postID
+            nama_kidung = namaPost.toString()
+            tag_user = bundle.getString("tag_user_kidung").toString()
 
             namaKidungAudio.text = namaPost
             allAudioKidungAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -137,5 +144,16 @@ class AllAudioKidungAdminActivity : AppCompatActivity() {
         shimmerAudioKidungAdmin.stopShimmer()
         shimmerAudioKidungAdmin.visibility = View.GONE
         swipeAudioKidungAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailKidungAdminActivity::class.java)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
+        bundle.putString("tag_user_kidung", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

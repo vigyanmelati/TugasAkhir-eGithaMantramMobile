@@ -15,6 +15,7 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.admin.kidung.AddKidungAdminActivity
 import com.example.ekidungmantram.admin.kidung.DetailKidungAdminActivity
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_kakawin_user.*
 import kotlinx.android.synthetic.main.activity_all_kategori_kakawin_user.daftar_nama_user
 import kotlinx.android.synthetic.main.activity_all_kidung_admin.*
@@ -90,6 +91,7 @@ class AllKidungUserActivity : AppCompatActivity() {
                                 val intent = Intent(this@AllKidungUserActivity, DetailKidungAdminActivity::class.java)
                                 bundle.putInt("id_kidung", result.id_post)
                                 bundle.putString("nama_kidung", result.nama_post)
+                                bundle.putString("tag_user_kidung","Pengguna")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -117,6 +119,7 @@ class AllKidungUserActivity : AppCompatActivity() {
                                                 val intent = Intent(this@AllKidungUserActivity, DetailKidungAdminActivity::class.java)
                                                 bundle.putInt("id_kidung", result.id_post)
                                                 bundle.putString("nama_kidung", result.nama_post)
+                                                bundle.putString("tag_user_kidung","Pengguna")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -155,5 +158,11 @@ class AllKidungUserActivity : AppCompatActivity() {
         shimmerKategoriKidungUser.stopShimmer()
         shimmerKategoriKidungUser.visibility = View.GONE
         swipeKategoriKidungUser.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKidungUserActivity, AllKidungActivity::class.java)
+        startActivity(intent)
     }
 }

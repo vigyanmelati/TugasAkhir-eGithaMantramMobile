@@ -25,6 +25,9 @@ import retrofit2.Response
 class AllYadnyaonKidungAdminActivity : AppCompatActivity() {
     private lateinit var tabuhAdapter : AllYadnyaonKidungAdminAdapter
     private lateinit var setAdapter   : AllYadnyaonKidungAdminAdapter
+    private var id_kidung : Int = 0
+    private lateinit var nama_kidung :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnyaon_kidung_admin)
@@ -33,6 +36,10 @@ class AllYadnyaonKidungAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung_admin")
             val namaPost = bundle.getString("nama_kidung_admin")
+
+            id_kidung = postID
+            nama_kidung = namaPost.toString()
+            tag_user = bundle.getString("tag_user_kidung").toString()
 
             namaKidungYadnya.text = namaPost
             allKidungYadnyaAdmin1.layoutManager = LinearLayoutManager(applicationContext)
@@ -177,5 +184,16 @@ class AllYadnyaonKidungAdminActivity : AppCompatActivity() {
         shimmerKidungYadnyaAdmin.stopShimmer()
         shimmerKidungYadnyaAdmin.visibility = View.GONE
         swipeKidungYadnyaAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailKidungAdminActivity::class.java)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
+        bundle.putString("tag_user_kidung", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

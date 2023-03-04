@@ -1,7 +1,6 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -14,14 +13,10 @@ import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllAudioPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailAudioPupuhModel
-import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.DetailAudioPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh_admin.*
-import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream

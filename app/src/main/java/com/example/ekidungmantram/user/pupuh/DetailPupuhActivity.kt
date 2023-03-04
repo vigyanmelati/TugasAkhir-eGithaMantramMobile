@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +17,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.model.*
-import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
-import kotlinx.android.synthetic.main.activity_detail_kakawin.*
+import com.example.ekidungmantram.user.DetailYadnyaActivity
 import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

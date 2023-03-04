@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.laguanak
 
 import android.content.Context
 import android.content.Intent
@@ -13,15 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.LoginActivity
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriLaguAnakAdapter
-import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriLaguAnakModel
-import com.example.ekidungmantram.model.KategoriPupuhModel
-import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
-import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakUserActivity
-import kotlinx.android.synthetic.main.activity_all_kategori_kakawin.*
 import kotlinx.android.synthetic.main.activity_all_kategori_lagu_anak.*
-import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.daftar_nama
 import retrofit2.Call
 import retrofit2.Callback
@@ -210,5 +204,11 @@ class AllKategoriLaguAnakActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKategoriLaguAnakActivity, AlllLaguAnakActivity::class.java)
+        startActivity(intent)
     }
 }

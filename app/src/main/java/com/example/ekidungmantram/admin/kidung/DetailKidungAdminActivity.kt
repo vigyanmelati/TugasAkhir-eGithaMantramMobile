@@ -14,20 +14,15 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.*
-import com.example.ekidungmantram.admin.kidung.*
-import com.example.ekidungmantram.admin.pupuh.*
+import com.example.ekidungmantram.admin.laguanak.AllKategoriLaguAnakAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.*
-import com.example.ekidungmantram.user.AudioKidungActivity
+import com.example.ekidungmantram.user.kidung.AudioKidungActivity
 import com.example.ekidungmantram.user.DetailYadnyaActivity
-import com.example.ekidungmantram.user.VideoKidungActivity
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_all_kidung_admin.*
+import com.example.ekidungmantram.user.kidung.AllKidungUserActivity
+import com.example.ekidungmantram.user.kidung.VideoKidungActivity
+import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakUserActivity
 import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +39,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
     private var id_kidung_admin : Int = 0
     private lateinit var nama_kidung :String
     private lateinit var desc_kidung_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_kidung_admin)
@@ -51,6 +47,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung")
             nama_kidung = bundle.getString("nama_kidung").toString()
+            tag_user = bundle.getString("tag_user_kidung").toString()
 
             getDetailData(postID)
             baitKidungListAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -69,6 +66,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllLirikKidungAdminActivity::class.java)
                 bundle.putInt("id_kidung", postID)
                 bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("tag_user_kidung", nama_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -77,6 +75,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllVideoKidungAdminActivity::class.java)
                 bundle.putInt("id_kidung", postID)
                 bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("tag_user_kidung", nama_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -85,6 +84,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllYadnyaonKidungAdminActivity::class.java)
                 bundle.putInt("id_kidung_admin", postID)
                 bundle.putString("nama_kidung_admin", nama_kidung)
+                bundle.putString("tag_user_kidung", nama_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -93,6 +93,7 @@ class DetailKidungAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllAudioKidungAdminActivity::class.java)
                 bundle.putInt("id_kidung", postID)
                 bundle.putString("nama_kidung", nama_kidung)
+                bundle.putString("tag_user_kidung", nama_kidung)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -266,9 +267,15 @@ class DetailKidungAdminActivity : AppCompatActivity() {
 //    }
 
     private fun goBack() {
-        val intent = Intent(this, AllKidungAdminActivity::class.java)
-        startActivity(intent)
-        finish()
+        if(tag_user == "Pengguna"){
+            val intent = Intent(this, AllKidungUserActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else if(tag_user == "Admin"){
+            val intent = Intent(this, AllKidungAdminActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setShimmerToStop() {

@@ -13,10 +13,10 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BookmarkedDharmagitaAdapter
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
-import com.example.ekidungmantram.user.DetailKakawinActivity
-import com.example.ekidungmantram.user.DetailKidungActivity
-import com.example.ekidungmantram.user.DetailLaguAnakActivity
-import com.example.ekidungmantram.user.DetailPupuhActivity
+import com.example.ekidungmantram.user.kakawin.DetailKakawinActivity
+import com.example.ekidungmantram.user.kidung.DetailKidungActivity
+import com.example.ekidungmantram.user.laguanak.DetailLaguAnakActivity
+import com.example.ekidungmantram.user.pupuh.DetailPupuhActivity
 import kotlinx.android.synthetic.main.fragment_list_yadnya.*
 import kotlinx.android.synthetic.main.layout_list_bookmarked.*
 import kotlinx.coroutines.CoroutineScope

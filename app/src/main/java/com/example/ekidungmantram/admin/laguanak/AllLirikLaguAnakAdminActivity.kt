@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataLirikLaguAnakAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllDataLirikPupuhAdminAdapter
+import com.example.ekidungmantram.admin.kakawin.DetailKakawinAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AddLirikPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AllLirikPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.EditLirikPupuhAdminActivity
@@ -27,6 +28,12 @@ import retrofit2.Response
 
 class AllLirikLaguAnakAdminActivity : AppCompatActivity() {
     private lateinit var setAdapter : AllDataLirikLaguAnakAdminAdapter
+    private var id_lagu_anak : Int = 0
+    private var id_lagu_anak_admin : Int = 0
+    private lateinit var nama_lagu_anak :String
+    private lateinit var nama_lagu_anak_admin :String
+    private lateinit var desc_lagu_anak_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_lirik_lagu_anak_admin)
@@ -35,6 +42,13 @@ class AllLirikLaguAnakAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu_anak")
             val namaPost = bundle.getString("nama_lagu_anak")
+
+            id_lagu_anak = postID
+            nama_lagu_anak = namaPost.toString()
+            id_lagu_anak_admin = bundle.getInt("id_lagu_anak_kat")
+            nama_lagu_anak_admin = bundle.getString("nama_lagu_anak_kat").toString()
+            desc_lagu_anak_admin = bundle.getString("desc_lagu_anak_kat").toString()
+            tag_user = bundle.getString("tag_user_anak").toString()
 
             namaLaguAnakLirik.text = namaPost
             allLirikLaguAnakAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -143,5 +157,19 @@ class AllLirikLaguAnakAdminActivity : AppCompatActivity() {
         shimmerLirikLaguAnakAdmin.stopShimmer()
         shimmerLirikLaguAnakAdmin.visibility = View.GONE
         swipeLirikLaguAnakAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailLaguAnakAdminActivity::class.java)
+        bundle.putInt("id_lagu_anak_admin", id_lagu_anak)
+        bundle.putInt("id_lagu_anak_admin_kat", id_lagu_anak_admin)
+        bundle.putString("nama_lagu_anak_admin", nama_lagu_anak)
+        bundle.putString("nama_lagu_anak_admin_kat", nama_lagu_anak_admin)
+        bundle.putString("desc_lagu_anak_admin_kat", desc_lagu_anak_admin)
+        bundle.putString("tag_user_anak", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

@@ -100,7 +100,11 @@ class AddAudioKidungNewActivity : AppCompatActivity() {
         }
 
         recordAudioKidungUserNew.setOnClickListener {
+            val bundle = Bundle()
             val intent = Intent(this, RecordAudioKidungActivity::class.java)
+            bundle.putInt("id_kidung", id_kidung)
+            bundle.putString("nama_kidung", nama_kidung)
+            intent.putExtras(bundle)
             startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
         }

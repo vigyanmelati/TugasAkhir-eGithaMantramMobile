@@ -28,6 +28,12 @@ import retrofit2.Response
 class AllYadnyaOnLaguAnakAdminActivity : AppCompatActivity() {
     private lateinit var tabuhAdapter : AllYadnyaOnLaguAnakAdminAdapter
     private lateinit var setAdapter   : AllYadnyaOnLaguAnakAdminAdapter
+    private var id_lagu_anak : Int = 0
+    private var id_lagu_anak_admin : Int = 0
+    private lateinit var nama_lagu_anak :String
+    private lateinit var nama_lagu_anak_admin :String
+    private lateinit var desc_lagu_anak_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnya_on_lagu_anak_admin)
@@ -36,6 +42,13 @@ class AllYadnyaOnLaguAnakAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu_anak_admin")
             val namaPost = bundle.getString("nama_lagu_anak_admin")
+
+            id_lagu_anak = postID
+            nama_lagu_anak = namaPost.toString()
+            id_lagu_anak_admin = bundle.getInt("id_lagu_anak_kat")
+            nama_lagu_anak_admin = bundle.getString("nama_lagu_anak_kat").toString()
+            desc_lagu_anak_admin = bundle.getString("desc_lagu_anak_kat").toString()
+            tag_user = bundle.getString("tag_user_anak").toString()
 
             namaLaguAnakYadnya.text = namaPost
             allLaguAnakYadnyaAdmin1.layoutManager = LinearLayoutManager(applicationContext)
@@ -180,5 +193,19 @@ class AllYadnyaOnLaguAnakAdminActivity : AppCompatActivity() {
         shimmerLaguAnakYadnyaAdmin.stopShimmer()
         shimmerLaguAnakYadnyaAdmin.visibility = View.GONE
         swipeLaguAnakYadnyaAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailLaguAnakAdminActivity::class.java)
+        bundle.putInt("id_lagu_anak_admin", id_lagu_anak)
+        bundle.putInt("id_lagu_anak_admin_kat", id_lagu_anak_admin)
+        bundle.putString("nama_lagu_anak_admin", nama_lagu_anak)
+        bundle.putString("nama_lagu_anak_admin_kat", nama_lagu_anak_admin)
+        bundle.putString("desc_lagu_anak_admin_kat", desc_lagu_anak_admin)
+        bundle.putString("tag_user_anak", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

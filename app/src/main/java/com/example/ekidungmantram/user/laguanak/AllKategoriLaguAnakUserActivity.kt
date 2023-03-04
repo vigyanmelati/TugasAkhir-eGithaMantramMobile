@@ -109,6 +109,7 @@ class AllKategoriLaguAnakUserActivity : AppCompatActivity() {
                                 bundle.putInt("id_lagu_anak_admin_kat", id_lagu_anak)
                                 bundle.putString("nama_lagu_anak_admin_kat", nama_lagu_anak)
                                 bundle.putString("desc_lagu_anak_admin_kat", desc_lagu_anak)
+                                bundle.putString("tag_user_anak","Pengguna")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -142,6 +143,7 @@ class AllKategoriLaguAnakUserActivity : AppCompatActivity() {
                                                 bundle.putInt("id_lagu_anak_admin_kat", id_lagu_anak)
                                                 bundle.putString("nama_lagu_anak_admin_kat", nama_lagu_anak)
                                                 bundle.putString("desc_lagu_anak_admin_kat", desc_lagu_anak)
+                                                bundle.putString("tag_user_anak","Admin")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -180,5 +182,16 @@ class AllKategoriLaguAnakUserActivity : AppCompatActivity() {
         shimmerKategoriLaguAnakUser.stopShimmer()
         shimmerKategoriLaguAnakUser.visibility = View.GONE
         swipeKategoriLaguAnakUser.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this@AllKategoriLaguAnakUserActivity, AllKategoriLaguAnakActivity::class.java)
+        bundle.putInt("id_lagu_anak", id_lagu_anak)
+        bundle.putString("nama_lagu_anak", nama_lagu_anak)
+        bundle.putString("desc_lagu_anak", desc_lagu_anak)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

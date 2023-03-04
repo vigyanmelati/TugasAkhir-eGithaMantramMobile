@@ -16,6 +16,10 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Yadnya
 import com.example.ekidungmantram.database.setup.YadnyaDb
 import com.example.ekidungmantram.model.*
+import com.example.ekidungmantram.user.kakawin.DetailKakawinActivity
+import com.example.ekidungmantram.user.kidung.DetailKidungActivity
+import com.example.ekidungmantram.user.laguanak.DetailLaguAnakActivity
+import com.example.ekidungmantram.user.pupuh.DetailPupuhActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer

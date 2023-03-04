@@ -14,8 +14,10 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllDharmagitaModel
-import com.example.ekidungmantram.model.AllYadnyaModel
-import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.kakawin.DetailKakawinActivity
+import com.example.ekidungmantram.user.kidung.DetailKidungActivity
+import com.example.ekidungmantram.user.laguanak.DetailLaguAnakActivity
+import com.example.ekidungmantram.user.pupuh.DetailPupuhActivity
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback

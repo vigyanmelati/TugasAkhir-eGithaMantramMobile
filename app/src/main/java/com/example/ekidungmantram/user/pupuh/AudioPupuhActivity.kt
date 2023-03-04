@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -14,16 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.BaitLaguAnakAdapter
 import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
-import kotlinx.android.synthetic.main.activity_audio_kidung.*
-import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.seekbar_audio
 import kotlinx.android.synthetic.main.activity_audio_pupuh.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

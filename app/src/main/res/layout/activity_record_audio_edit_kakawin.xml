@@ -75,7 +75,7 @@
                 android:layout_height="60dp"
                 android:text="Simpan Audio"/>
             <TextView
-                android:id="@+id/cancelSubmitAddAudioKidungAdminEdit"
+                android:id="@+id/cancelSubmitAddAudioKakawinAdminEdit1"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"

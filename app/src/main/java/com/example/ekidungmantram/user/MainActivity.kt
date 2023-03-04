@@ -29,6 +29,7 @@ import com.example.ekidungmantram.user.fragment.ListYadnyaFragment
 import com.example.ekidungmantram.user.fragment.SearchFragment
 import com.example.ekidungmantram.user.kakawin.AllKakawinActivity
 import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.laguanak.AlllLaguAnakActivity
 import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView

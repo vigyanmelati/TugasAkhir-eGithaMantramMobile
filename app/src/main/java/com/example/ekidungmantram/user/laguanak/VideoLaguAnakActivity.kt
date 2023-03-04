@@ -1,7 +1,6 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.laguanak
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,8 +18,6 @@ import com.example.ekidungmantram.model.adminmodel.DetailVideoLaguAnakAdminModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
-import kotlinx.android.synthetic.main.activity_video_kidung.*
 import kotlinx.android.synthetic.main.activity_video_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback

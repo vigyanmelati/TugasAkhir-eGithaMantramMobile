@@ -1,7 +1,6 @@
 package com.example.ekidungmantram.user.pupuh
 
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -9,17 +8,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.user.AllAudioPupuhActivity
 import kotlinx.android.synthetic.main.activity_add_audio_pupuh.*
-import okhttp3.MultipartBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 

@@ -24,6 +24,12 @@ import retrofit2.Response
 
 class AllAudioKakawinAdminActivity : AppCompatActivity() {
     private lateinit var setAdapter : AllDataAudioKakawinAdminAdapter
+    private var id_kakawin : Int = 0
+    private var id_kakawin_admin : Int = 0
+    private lateinit var nama_kakawin :String
+    private lateinit var nama_kakawin_admin :String
+    private lateinit var desc_kakawin_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_audio_kakawin_admin)
@@ -32,6 +38,13 @@ class AllAudioKakawinAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")
             val namaPost = bundle.getString("nama_kakawin")
+
+            id_kakawin = postID
+            nama_kakawin = namaPost.toString()
+            id_kakawin_admin = bundle.getInt("id_kakawin_kat")
+            nama_kakawin_admin = bundle.getString("nama_kakawin_kat").toString()
+            desc_kakawin_admin = bundle.getString("desc_kakawin_kat").toString()
+            tag_user = bundle.getString("tag_user").toString()
 
             namaKakawinAudio.text = namaPost
             allAudioKakawinAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -139,5 +152,19 @@ class AllAudioKakawinAdminActivity : AppCompatActivity() {
         shimmerAudioKakawinAdmin.stopShimmer()
         shimmerAudioKakawinAdmin.visibility = View.GONE
         swipeAudioKakawinAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailKakawinAdminActivity::class.java)
+        bundle.putInt("id_kakawin_admin", id_kakawin)
+        bundle.putInt("id_kakawin_admin_kat", id_kakawin_admin)
+        bundle.putString("nama_kakawin_admin", nama_kakawin)
+        bundle.putString("nama_kakawin_admin_kat", nama_kakawin_admin)
+        bundle.putString("desc_kakawin_admin_kat", desc_kakawin_admin)
+        bundle.putString("tag_user", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

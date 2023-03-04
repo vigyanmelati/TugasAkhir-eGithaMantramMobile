@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.content.Context
 import android.content.Intent
@@ -15,7 +15,6 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriPupuhModel
-import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -207,5 +206,11 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKategoriPupuhActivity, AllPupuhActivity::class.java)
+        startActivity(intent)
     }
 }

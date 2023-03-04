@@ -13,11 +13,11 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
+import com.example.ekidungmantram.user.kidung.DetailKidungActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_detail_prosesi.*
-import kotlinx.android.synthetic.main.activity_detail_yadnya.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -261,40 +261,40 @@
             android:name=".user.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AddYadnyaToPupuhActivity"
+            android:name=".user.pupuh.AddYadnyaToPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllYadnyaOnPupuhActivity"
+            android:name=".user.pupuh.AllYadnyaOnPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.EditAudioPupuhActivity"
+            android:name=".user.pupuh.EditAudioPupuhActivity"
             android:exported="false" />
         <activity
             android:name=".user.pupuh.AddAudioPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllAudioPupuhActivity"
+            android:name=".user.pupuh.AllAudioPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.EditVideoPupuhUserActivity"
+            android:name=".user.pupuh.EditVideoPupuhUserActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AddVideoPupuhActivity"
+            android:name=".user.pupuh.AddVideoPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllVideoPupuhActivity"
+            android:name=".user.pupuh.AllVideoPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.EditLirikPupuhActivity"
+            android:name=".user.pupuh.EditLirikPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AddLirikPupuhActivity"
+            android:name=".user.pupuh.AddLirikPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllLirikPupuhActivity"
+            android:name=".user.pupuh.AllLirikPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.DetailPupuhUserActivity"
+            android:name=".user.pupuh.DetailPupuhUserActivity"
             android:exported="false" />
         <activity
             android:name=".user.pupuh.AllKategoriPupuhUserActivity"
@@ -348,58 +348,58 @@
             android:name=".admin.pupuh.AllPupuhAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AddPupuhActivity"
+            android:name=".user.pupuh.AddPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.VideoKidungActivity"
+            android:name=".user.kidung.VideoKidungActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AudioKidungActivity"
+            android:name=".user.kidung.AudioKidungActivity"
             android:exported="false" />
         <activity
-            android:name=".user.VideoKakawinActivity"
+            android:name=".user.kakawin.VideoKakawinActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AudioKakawinActivity"
+            android:name=".user.kakawin.AudioKakawinActivity"
             android:exported="false" />
         <activity
-            android:name=".user.DetailKakawinActivity"
+            android:name=".user.kakawin.DetailKakawinActivity"
             android:exported="false" />
         <activity
-            android:name=".user.VideoPupuhActivity"
+            android:name=".user.pupuh.VideoPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AudioPupuhActivity"
+            android:name=".user.pupuh.AudioPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.DetailPupuhActivity"
+            android:name=".user.pupuh.DetailPupuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllKategoriKakawinActivity"
+            android:name=".user.kakawin.AllKategoriKakawinActivity"
             android:exported="false" />
         <activity
             android:name=".user.DetailMaknaDharmagitaActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AudioLaguAnakActivity"
+            android:name=".user.laguanak.AudioLaguAnakActivity"
             android:exported="false" />
         <activity
-            android:name=".user.VideoLaguAnakActivity"
+            android:name=".user.laguanak.VideoLaguAnakActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllKategoriLaguAnakActivity"
+            android:name=".user.laguanak.AllKategoriLaguAnakActivity"
             android:exported="false" />
         <activity
-            android:name=".user.DetailLaguAnakActivity"
+            android:name=".user.laguanak.DetailLaguAnakActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AllKategoriPupuhActivity"
+            android:name=".user.pupuh.AllKategoriPupuhActivity"
             android:exported="false" />
         <activity
             android:name=".user.kakawin.AllKakawinActivity"
             android:exported="false" />
         <activity
-            android:name=".user.AlllLaguAnakActivity"
+            android:name=".user.laguanak.AlllLaguAnakActivity"
             android:exported="false" />
         <activity
             android:name=".user.pupuh.AllPupuhActivity"
@@ -664,7 +664,7 @@
             android:name=".user.DetailTabuhActivity"
             android:exported="false" />
         <activity
-            android:name=".user.DetailKidungActivity"
+            android:name=".user.kidung.DetailKidungActivity"
             android:exported="false" />
         <activity
             android:name=".user.DetailTariActivity"

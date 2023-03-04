@@ -99,7 +99,11 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
         }
 
         recordAudioKakawinUserNew.setOnClickListener {
+            val bundle = Bundle()
             val intent = Intent(this, RecordAudioKakawinActivity::class.java)
+            bundle.putInt("id_kakawin", id_kakawin)
+            bundle.putString("nama_kakawin", nama_kakawin)
+            intent.putExtras(bundle)
             startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
         }

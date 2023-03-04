@@ -72,6 +72,12 @@ class DetailProfileActivity : AppCompatActivity() {
         ApiService.endpoint.deleteDataAdmin(userID).enqueue(object: Callback<CrudModel> {
             override fun onResponse(call: Call<CrudModel>, response: Response<CrudModel>) {
                 if(response.body()?.status == 200){
+                    sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+                    sharedPreferences.edit().remove("ID_ADMIN").apply()
+                    sharedPreferences.edit().remove("NAMA").apply()
+                    sharedPreferences.edit().remove("ROLE").apply()
+                    sharedPreferences.edit().remove("MESAGE").apply()
+                    sharedPreferences.edit().remove("LOGGED").apply()
                     progressDialog.dismiss()
                     Toast.makeText(this@DetailProfileActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
                     goBack(id)

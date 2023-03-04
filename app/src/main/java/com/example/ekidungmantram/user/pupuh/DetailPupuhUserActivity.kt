@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -14,14 +14,11 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
-import com.example.ekidungmantram.adapter.admin.ArtiPupuhAdapter
 import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
-import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
-import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
-import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
+import com.example.ekidungmantram.user.DetailYadnyaActivity
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
 import kotlinx.android.synthetic.main.activity_detail_pupuh_user.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_user.baitPupuhList

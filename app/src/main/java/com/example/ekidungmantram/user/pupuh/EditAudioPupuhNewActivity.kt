@@ -25,16 +25,12 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailAudioPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.uriToFile
-import com.example.ekidungmantram.user.AllAudioPupuhActivity
-import kotlinx.android.synthetic.main.activity_add_audio_pupuh_new.*
-import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.cancelSubmitEditedAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.layoutEditedNamaAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.namaEditedAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.selectEditedImageAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.submitEditedAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.submitEditedImgAudioPupuhUser
-import kotlinx.android.synthetic.main.activity_edit_audio_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh_new.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -100,7 +96,12 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
             }
 
             recordAudioPupuhUserNewEdit.setOnClickListener {
+                val bundle = Bundle()
                 val intent = Intent(this, RecordAudioEditPupuhActivity::class.java)
+                bundle.putInt("id_pupuh", id_pupuh)
+                bundle.putInt("id_audio_pupuh", audioID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                intent.putExtras(bundle)
                 startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
             }

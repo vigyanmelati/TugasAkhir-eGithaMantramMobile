@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.DetailPupuhActivity">
+    tools:context=".user.pupuh.DetailPupuhActivity">
     <com.facebook.shimmer.ShimmerFrameLayout
         android:visibility="visible"
         android:id="@+id/shimmerDetailPupuh"

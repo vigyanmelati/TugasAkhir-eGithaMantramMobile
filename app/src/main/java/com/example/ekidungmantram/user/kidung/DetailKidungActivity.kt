@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.kidung
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,7 +16,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
 import com.example.ekidungmantram.database.setup.DharmagitaDb
 import com.example.ekidungmantram.model.*
-import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.DetailYadnyaActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
 import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.coroutines.CoroutineScope

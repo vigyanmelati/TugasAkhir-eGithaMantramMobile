@@ -14,14 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.*
-import com.example.ekidungmantram.admin.kakawin.*
-import com.example.ekidungmantram.admin.pupuh.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.*
-import com.example.ekidungmantram.user.AudioKakawinActivity
+import com.example.ekidungmantram.user.kakawin.AudioKakawinActivity
 import com.example.ekidungmantram.user.DetailYadnyaActivity
-import com.example.ekidungmantram.user.VideoKakawinActivity
-import kotlinx.android.synthetic.main.activity_detail_kakawin.*
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
+import com.example.ekidungmantram.user.kakawin.VideoKakawinActivity
 import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,8 +38,10 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_kakawin : Int = 0
     private var id_kakawin_admin : Int = 0
+    private lateinit var nama_kakawin :String
     private lateinit var nama_kakawin_admin :String
     private lateinit var desc_kakawin_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_kakawin_admin)
@@ -51,14 +51,17 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
         }
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin_admin")
-            val nama_kakawin = bundle.getString("nama_kakawin_admin")
-            val nama_tag_kakawin = bundle.getString("nama_tag_kakawin_admin")
-            val gambar_kakawin = bundle.getString("gambar_kakawin_admin")
-            val tag_kakawin = bundle.getInt("tag_kakawin_admin")
+//            val nama_kakawin = bundle.getString("nama_kakawin_admin")
+            nama_kakawin = bundle.getString("nama_kakawin_admin").toString()
+//            val nama_tag_kakawin = bundle.getString("nama_tag_kakawin_admin")
+//            val gambar_kakawin = bundle.getString("gambar_kakawin_admin")
+//            val tag_kakawin = bundle.getInt("tag_kakawin_admin")
             Log.d("id_kakawin_admin",postID.toString())
             id_kakawin_admin = bundle.getInt("id_kakawin_admin_kat")
             nama_kakawin_admin = bundle.getString("nama_kakawin_admin_kat").toString()
             desc_kakawin_admin = bundle.getString("desc_kakawin_admin_kat").toString()
+            tag_user = bundle.getString("tag_user").toString()
+            Log.d("tag_user", tag_user.toString())
 
             getDetailData(postID)
             getBaitData(postID)
@@ -77,7 +80,11 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             goToListLirikKakawin.setOnClickListener {
                 val intent = Intent(this, AllLirikKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
+                bundle.putInt("id_kakawin_kat", id_kakawin_admin)
                 bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_admin)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -85,15 +92,23 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             goToListVideoKakawin.setOnClickListener {
                 val intent = Intent(this, AllVideoKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
+                bundle.putInt("id_kakawin_kat", id_kakawin_admin)
                 bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_admin)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
             goToListYadnyaKakawin.setOnClickListener {
                 val intent = Intent(this, AllYadnyaonKakawinAdminActivity::class.java)
-                bundle.putInt("id_kakawin_admin", postID)
-                bundle.putString("nama_kakawin_admin", nama_kakawin)
+                bundle.putInt("id_kakawin", postID)
+                bundle.putInt("id_kakawin_kat", id_kakawin_admin)
+                bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_admin)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -101,7 +116,11 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             goToListAudioKakawin.setOnClickListener {
                 val intent = Intent(this, AllAudioKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
+                bundle.putInt("id_kakawin_kat", id_kakawin_admin)
                 bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("nama_kakawin_kat", nama_kakawin_admin)
+                bundle.putString("desc_kakawin_kat", desc_kakawin_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -139,8 +158,13 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             }
 
             toEditKakawin.setOnClickListener {
+                val bundle = Bundle()
                 val intent = Intent(this, EditKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
+                bundle.putInt("id_kakawin_admin", id_kakawin_admin)
+                bundle.putString("nama_kakawin_admin", nama_kakawin_admin)
+                bundle.putString("nama_kakawin_admin", nama_kakawin)
+                bundle.putString("desc_kakawin_admin", desc_kakawin_admin)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -193,14 +217,26 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriKakawinAdminActivity::class.java)
-        val bundle = Bundle()
-        bundle.putInt("id_kakawin_admin", id_kakawin_admin)
-        bundle.putString("nama_kakawin_admin", nama_kakawin_admin)
-        bundle.putString("desc_kakawin_admin", desc_kakawin_admin)
-        intent.putExtras(bundle)
-        startActivity(intent)
-        finish()
+        if(tag_user == "Pengguna"){
+            val intent = Intent(this, AllKategoriKakawinUserActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_kakawin", id_kakawin_admin)
+            bundle.putString("nama_kakawin", nama_kakawin_admin)
+            bundle.putString("desc_kakawin", desc_kakawin_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }else if(tag_user == "Admin"){
+            val intent = Intent(this, AllKategoriKakawinAdminActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_kakawin_admin", id_kakawin_admin)
+            bundle.putString("nama_kakawin_admin", nama_kakawin_admin)
+            bundle.putString("desc_kakawin_admin", desc_kakawin_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     private fun getDetailData(id: Int) {
@@ -214,7 +250,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                 result.let {
                     deskripsiKakawinAdmin.text   = result.deskripsi
                     detailNamaKakawinAdmin.text  = result.nama_post
-                    detailKakawinAdmin.text = "Sekar Alit"
+                    detailKakawinAdmin.text = "Sekar Agung"
                     if(result.gambar != null) {
                         Glide.with(this@DetailKakawinAdminActivity)
                             .load(Constant.IMAGE_URL + result.gambar).into(imageDetailKakawinAdmin)
@@ -495,6 +531,29 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
     private fun showYadnyaKakawinData(body: YadnyaKakawinAdminModel) {
         val results = body.data
         yadnyaKakawinAdapter.setData(results)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if(tag_user == "Pengguna"){
+            val intent = Intent(this, AllKategoriKakawinUserActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_kakawin", id_kakawin_admin)
+            bundle.putString("nama_kakawin", nama_kakawin_admin)
+            bundle.putString("desc_kakawin", desc_kakawin_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }else if(tag_user == "Admin"){
+            val intent = Intent(this, AllKategoriKakawinAdminActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_kakawin_admin", id_kakawin_admin)
+            bundle.putString("nama_kakawin_admin", nama_kakawin_admin)
+            bundle.putString("desc_kakawin_admin", desc_kakawin_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }
     }
 
 

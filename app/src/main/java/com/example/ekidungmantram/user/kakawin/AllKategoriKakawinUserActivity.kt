@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -109,6 +110,7 @@ class AllKategoriKakawinUserActivity : AppCompatActivity() {
                                 bundle.putInt("id_kakawin_admin_kat", id_kakawin)
                                 bundle.putString("nama_kakawin_admin_kat", nama_kakawin)
                                 bundle.putString("desc_kakawin_admin_kat", desc_kakawin)
+                                bundle.putString("tag_user","Pengguna")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -142,6 +144,7 @@ class AllKategoriKakawinUserActivity : AppCompatActivity() {
                                                 bundle.putInt("id_kakawin_admin_kat", id_kakawin)
                                                 bundle.putString("nama_kakawin_admin_kat", nama_kakawin)
                                                 bundle.putString("desc_kakawin_admin_kat", desc_kakawin)
+                                                bundle.putString("tag_user","Pengguna")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }
@@ -180,5 +183,26 @@ class AllKategoriKakawinUserActivity : AppCompatActivity() {
         shimmerKategoriKakawinUser.stopShimmer()
         shimmerKategoriKakawinUser.visibility = View.GONE
         swipeKategoriKakawinUser.visibility   = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this@AllKategoriKakawinUserActivity, AllKategoriKakawinActivity::class.java)
+        bundle.putInt("id_kakawin", id_kakawin)
+        bundle.putString("nama_kakawin", nama_kakawin)
+        bundle.putString("desc_kakawin", desc_kakawin)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

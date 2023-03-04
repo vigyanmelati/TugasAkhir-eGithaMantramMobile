@@ -33,6 +33,12 @@ class EditLaguAnakAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLi
     private val REQUEST_CODE     = 100
     private var bitmap: Bitmap?  = null
     private var yadnya : String? = null
+    private var id_lagu_anak : Int = 0
+    private var id_lagu_anak_admin : Int = 0
+    private lateinit var nama_lagu_anak :String
+    private lateinit var nama_lagu_anak_admin :String
+    private lateinit var desc_lagu_anak_admin :String
+    private lateinit var tag_user :String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +47,14 @@ class EditLaguAnakAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         val bundle :Bundle ?= intent.extras
         if (bundle!=null) {
             val postID = bundle.getInt("id_lagu_anak")
+
+
+            id_lagu_anak = postID
+            nama_lagu_anak = bundle.getString("nama_lagu_anak").toString()
+            id_lagu_anak_admin = bundle.getInt("id_lagu_anak_kat")
+            nama_lagu_anak_admin = bundle.getString("nama_lagu_anak_kat").toString()
+            desc_lagu_anak_admin = bundle.getString("desc_lagu_anak_kat").toString()
+            tag_user = bundle.getString("tag_user_anak").toString()
 
             setFormData(postID)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -125,9 +139,16 @@ class EditLaguAnakAdminActivity : AppCompatActivity(), AdapterView.OnItemClickLi
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriLaguAnakAdminActivity::class.java)
+        val bundle = Bundle()
+        val intent = Intent(this, DetailLaguAnakAdminActivity::class.java)
+        bundle.putInt("id_lagu_anak_admin", id_lagu_anak)
+        bundle.putInt("id_lagu_anak_admin_kat", id_lagu_anak_admin)
+        bundle.putString("nama_lagu_anak_admin", nama_lagu_anak)
+        bundle.putString("nama_lagu_anak_admin_kat", nama_lagu_anak_admin)
+        bundle.putString("desc_lagu_anak_admin_kat", desc_lagu_anak_admin)
+        bundle.putString("tag_user_anak", tag_user)
+        intent.putExtras(bundle)
         startActivity(intent)
-        finish()
     }
 
 

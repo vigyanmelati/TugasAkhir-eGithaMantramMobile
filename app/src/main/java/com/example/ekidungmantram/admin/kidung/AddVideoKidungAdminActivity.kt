@@ -33,7 +33,6 @@ class AddVideoKidungAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_video_kidung_admin)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = "Tambah Video Sekar Madya"
 
         val bundle :Bundle ?= intent.extras

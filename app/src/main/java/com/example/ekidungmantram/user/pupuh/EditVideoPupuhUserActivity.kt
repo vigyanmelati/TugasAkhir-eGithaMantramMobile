@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -14,12 +14,9 @@ import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllVideoPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailVideoPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.DetailVideoPupuhAdminModel
-import kotlinx.android.synthetic.main.activity_edit_video_kakawin_admin.*
 import kotlinx.android.synthetic.main.activity_edit_video_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_video_pupuh_user.*
 import retrofit2.Call

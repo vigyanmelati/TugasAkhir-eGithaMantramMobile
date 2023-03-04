@@ -1,7 +1,6 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.kakawin
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,19 +10,14 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BaitKakawinAdapter
-import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailBaitKakawinModel
-import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKakawinModel
-import com.example.ekidungmantram.model.DetailPupuhModel
 import com.example.ekidungmantram.model.adminmodel.DetailVideoKakawinAdminModel
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_detail_kakawin.*
 import kotlinx.android.synthetic.main.activity_video_kakawin.*
-import kotlinx.android.synthetic.main.activity_video_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

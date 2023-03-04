@@ -13,36 +13,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.adapter.AudioPupuhAdapter
-import com.example.ekidungmantram.adapter.BaitPupuhAdapter
-import com.example.ekidungmantram.adapter.VideoPupuhAdapter
-import com.example.ekidungmantram.adapter.YadnyaPupuhAdapter
 import com.example.ekidungmantram.adapter.admin.*
-import com.example.ekidungmantram.admin.kidung.AddLirikKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.AllLirikKidungAdminActivity
-import com.example.ekidungmantram.admin.kidung.EditKidungAdminActivity
+import com.example.ekidungmantram.admin.kakawin.AllKategoriKakawinAdminActivity
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.database.data.Dharmagita
-import com.example.ekidungmantram.model.*
 import com.example.ekidungmantram.model.adminmodel.*
 import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
 import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
-import kotlinx.android.synthetic.main.activity_detail_kakawin.*
-import kotlinx.android.synthetic.main.activity_detail_kakawin_admin.*
-import kotlinx.android.synthetic.main.activity_detail_kidung_admin.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.*
-import kotlinx.android.synthetic.main.activity_detail_pupuh.lihatSemuayadnyapupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.nodataaudiopupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.nodatayadnyapupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.rv_audio_pupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.rv_yadnya_pupuh
-import kotlinx.android.synthetic.main.activity_detail_pupuh.shimmerDetailPupuh
+import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhUserActivity
+import com.example.ekidungmantram.user.pupuh.AudioPupuhActivity
+import com.example.ekidungmantram.user.pupuh.VideoPupuhActivity
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.*
 import kotlinx.android.synthetic.main.activity_detail_pupuh_admin.tv_lirik
-import kotlinx.android.synthetic.main.activity_detail_pupuh_user.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,8 +42,10 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     private var gridLayoutManagerY      : GridLayoutManager? = null
     private var id_pupuh : Int = 0
     private var id_pupuh_admin : Int = 0
+    private lateinit var nama_pupuh :String
     private lateinit var nama_pupuh_admin :String
     private lateinit var desc_pupuh_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_pupuh_admin)
@@ -79,6 +63,7 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             id_pupuh_admin = bundle.getInt("id_pupuh_admin_kat")
             nama_pupuh_admin = bundle.getString("nama_pupuh_admin_kat").toString()
             desc_pupuh_admin = bundle.getString("desc_pupuh_admin_kat").toString()
+            tag_user = bundle.getString("tag_user_kidung").toString()
 
             getDetailData(postID)
             getBaitData(postID)
@@ -99,6 +84,9 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
                 bundle.putString("padalingsa", desc_pupuh_admin)
+                bundle.putInt("id_pupuh_kat", id_pupuh_admin)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -107,14 +95,22 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllVideoPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
+                bundle.putInt("id_pupuh_kat", id_pupuh_admin)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
 
             goToListYadnyaPupuh.setOnClickListener {
                 val intent = Intent(this, AllYadnyaOnPupuhAdminActivity::class.java)
-                bundle.putInt("id_pupuh_admin", postID)
-                bundle.putString("nama_pupuh_admin", nama_pupuh)
+                bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
+                bundle.putInt("id_pupuh_kat", id_pupuh_admin)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -123,6 +119,10 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AllAudioPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
                 bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
+                bundle.putInt("id_pupuh_kat", id_pupuh_admin)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -163,6 +163,11 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
             toEditPupuh.setOnClickListener {
                 val intent = Intent(this, EditPupuhAdminActivity::class.java)
                 bundle.putInt("id_pupuh", postID)
+                bundle.putString("nama_pupuh", nama_pupuh)
+                bundle.putString("padalingsa", desc_pupuh_admin)
+                bundle.putInt("id_pupuh_kat", id_pupuh_admin)
+                bundle.putString("nama_pupuh_kat", nama_pupuh_admin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -215,14 +220,25 @@ class DetailPupuhAdminActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val intent = Intent(this, AllKategoriPupuhAdminActivity::class.java)
-        val bundle = Bundle()
-        bundle.putInt("id_pupuh_admin", id_pupuh_admin)
-        bundle.putString("nama_pupuh_admin", nama_pupuh_admin)
-        bundle.putString("desc_pupuh_admin", desc_pupuh_admin)
-        intent.putExtras(bundle)
-        startActivity(intent)
-        finish()
+        if(tag_user == "Pengguna"){
+            val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_pupuh", id_pupuh_admin)
+            bundle.putString("nama_pupuh", nama_pupuh_admin)
+            bundle.putString("desc_pupuh", desc_pupuh_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }else if(tag_user == "Admin"){
+            val intent = Intent(this, AllKategoriPupuhAdminActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_pupuh_admin", id_pupuh_admin)
+            bundle.putString("nama_pupuh_admin", nama_pupuh_admin)
+            bundle.putString("desc_pupuh_admin", desc_pupuh_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun getDetailData(id: Int) {

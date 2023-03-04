@@ -10,6 +10,7 @@ import android.os.Environment
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.admin.kakawin.AddAudioKakawinNewActivity
 import kotlinx.android.synthetic.main.activity_record_audio_kidung.*
 import java.util.*
 
@@ -17,13 +18,31 @@ class RecordAudioKidungActivity : AppCompatActivity() {
     lateinit var mr : MediaRecorder
     var random: Random? = null
     var RandomAudioFileName = "ABCDEFGHIJKLMNOP"
+    private var id_kidung: Int = 0
+    private lateinit var nama_kidung: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record_audio_kidung)
         random = Random()
+        val bundle :Bundle ?= intent.extras
+        if (bundle != null) {
+            id_kidung = bundle.getInt("id_kidung")
+        }
+        if (bundle != null) {
+            nama_kidung = bundle.getString("nama_kidung").toString()
+        }
+
+        cancelSubmitAddAudioKidungAdmin1.setOnClickListener {
+            val bundle = Bundle()
+            val intent = Intent(this, AddAudioKidungNewActivity::class.java)
+            bundle.putInt("id_kidung", id_kidung)
+            bundle.putString("nama_kidung", nama_kidung)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
 
 //        var path : String = Environment.getExternalStorageDirectory().toString()+"/myrec.3gp" //store the data
-        var path : String = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + CreateRandomAudioFileName(5) + "AudioRecording.mp4"
+        var path : String = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + CreateRandomAudioFileName(5) + "AudioRecording.3gp"
         mr = MediaRecorder()
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.RECORD_AUDIO,
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 111)
@@ -32,7 +51,7 @@ class RecordAudioKidungActivity : AppCompatActivity() {
         //start recording
         startAudioKidung.setOnClickListener {
             mr.setAudioSource(MediaRecorder.AudioSource.MIC)
-            mr.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mr.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
             mr.setOutputFile(path)
             mr.prepare()
@@ -89,6 +108,7 @@ class RecordAudioKidungActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode==111 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             startAudioKidung.isEnabled = true
+            stopAudioKidung.isEnabled = false
         }
     }
 

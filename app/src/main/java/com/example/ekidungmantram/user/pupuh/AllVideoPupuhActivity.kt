@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -11,16 +11,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllDataVideoPupuhAdapter
-import com.example.ekidungmantram.adapter.admin.AllDataVideoPupuhAdminAdapter
-import com.example.ekidungmantram.admin.pupuh.AddVideoPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AllVideoPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.EditVideoPupuhActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.VideoPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.VideoPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_all_video_pupuh.*
-import kotlinx.android.synthetic.main.activity_all_video_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

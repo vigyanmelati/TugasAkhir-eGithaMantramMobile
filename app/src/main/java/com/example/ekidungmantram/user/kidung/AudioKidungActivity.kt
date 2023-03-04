@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.kidung
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -15,19 +15,13 @@ import com.bumptech.glide.Glide
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.BaitKidungAdapter
-import com.example.ekidungmantram.adapter.BaitPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailBaitKidungModel
-import com.example.ekidungmantram.model.DetailBaitPupuhModel
 import com.example.ekidungmantram.model.DetailKidungModel
-import com.example.ekidungmantram.model.DetailPupuhModel
 import com.example.ekidungmantram.model.adminmodel.DetailAudioKidungAdminModel
-import kotlinx.android.synthetic.main.activity_audio_kakawin.*
 import kotlinx.android.synthetic.main.activity_audio_kidung.*
-import kotlinx.android.synthetic.main.activity_audio_lagu_anak.*
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.play_btn
 import kotlinx.android.synthetic.main.activity_audio_lagu_anak.seekbar_audio
-import kotlinx.android.synthetic.main.activity_audio_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -7,11 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllLirikPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailLirikPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
-import com.example.ekidungmantram.model.adminmodel.DetailLirikPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_edit_lirik_pupuh.*
 import kotlinx.android.synthetic.main.activity_edit_lirik_pupuh_admin.*
 import retrofit2.Call

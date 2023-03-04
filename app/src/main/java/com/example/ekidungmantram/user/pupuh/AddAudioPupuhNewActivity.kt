@@ -6,7 +6,6 @@ import android.app.ProgressDialog
 import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -15,24 +14,19 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toFile
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.admin.pupuh.AllAudioPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
-import com.example.ekidungmantram.createCustomTempFile
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.uriToFile
-import com.example.ekidungmantram.user.AllAudioPupuhActivity
 import kotlinx.android.synthetic.main.activity_add_audio_pupuh_new.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -103,7 +97,11 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
         }
 
         recordAudioPupuhUserNew.setOnClickListener {
+            val bundle = Bundle()
             val intent = Intent(this, RecordAudioPupuhActivity::class.java)
+            bundle.putInt("id_pupuh", id_pupuh)
+            bundle.putString("nama_pupuh", nama_pupuh)
+            intent.putExtras(bundle)
             startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
         }

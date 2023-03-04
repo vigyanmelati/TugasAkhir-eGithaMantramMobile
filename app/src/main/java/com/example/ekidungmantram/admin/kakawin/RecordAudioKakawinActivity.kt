@@ -10,20 +10,41 @@ import android.os.Environment
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.user.pupuh.AddAudioPupuhNewActivity
 import kotlinx.android.synthetic.main.activity_record_audio_kakawin.*
+import kotlinx.android.synthetic.main.activity_record_audio_pupuh.*
 import java.util.*
 
 class RecordAudioKakawinActivity : AppCompatActivity() {
     lateinit var mr : MediaRecorder
     var random: Random? = null
     var RandomAudioFileName = "ABCDEFGHIJKLMNOP"
+    private var id_kakawin: Int = 0
+    private lateinit var nama_kakawin: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record_audio_kakawin)
         random = Random()
+        val bundle :Bundle ?= intent.extras
+        if (bundle != null) {
+            id_kakawin = bundle.getInt("id_kakawin")
+        }
+        if (bundle != null) {
+            nama_kakawin = bundle.getString("nama_kakawin").toString()
+        }
+
+        cancelSubmitAddAudioKakawinAdmin1.setOnClickListener {
+            val bundle = Bundle()
+            val intent = Intent(this, AddAudioKakawinNewActivity::class.java)
+            bundle.putInt("id_kakawin", id_kakawin)
+            bundle.putString("nama_kakawin", nama_kakawin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+
+        }
 
 //        var path : String = Environment.getExternalStorageDirectory().toString()+"/myrec.3gp" //store the data
-        var path : String = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + CreateRandomAudioFileName(5) + "AudioRecording.mp4"
+        var path : String = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + CreateRandomAudioFileName(5) + "AudioRecording.3gp"
         mr = MediaRecorder()
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.RECORD_AUDIO,
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 111)
@@ -32,7 +53,7 @@ class RecordAudioKakawinActivity : AppCompatActivity() {
         //start recording
         startAudioKakawin.setOnClickListener {
             mr.setAudioSource(MediaRecorder.AudioSource.MIC)
-            mr.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mr.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
             mr.setOutputFile(path)
             mr.prepare()
@@ -89,6 +110,7 @@ class RecordAudioKakawinActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode==111 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             startAudioKakawin.isEnabled = true
+            stopAudioKakawin.isEnabled = false
         }
     }
 

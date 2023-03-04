@@ -12,7 +12,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllPupuhModel
-import com.example.ekidungmantram.user.AllKategoriPupuhActivity
+import com.example.ekidungmantram.user.MainActivity
 import kotlinx.android.synthetic.main.activity_all_pupuh.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -142,5 +142,11 @@ class AllPupuhActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllPupuhActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 }

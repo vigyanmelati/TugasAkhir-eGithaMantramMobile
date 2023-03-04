@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -12,11 +12,9 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ekidungmantram.R
-import com.example.ekidungmantram.admin.pupuh.AllVideoPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import kotlinx.android.synthetic.main.activity_add_video_pupuh.*
-import kotlinx.android.synthetic.main.activity_add_video_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +32,6 @@ class AddVideoPupuhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_video_pupuh)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = "Tambah Video Pupuh"
 
         val bundle :Bundle ?= intent.extras

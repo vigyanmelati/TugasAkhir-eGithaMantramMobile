@@ -92,7 +92,12 @@ class EditAudioLaguAnakNewActivity : AppCompatActivity() {
             }
 
             recordAudioLaguAnakUserNewEdit.setOnClickListener {
+                val bundle = Bundle()
                 val intent = Intent(this, RecordAudioEditLaguAnakActivity::class.java)
+                bundle.putInt("id_lagu_anak", id_lagu_anak)
+                bundle.putInt("id_audio_lagu_anak", audioID)
+                bundle.putString("nama_lagu_anak", nama_lagu_anak)
+                intent.putExtras(bundle)
                 startActivityForResult(intent, RQS_RECORDING);
 //            startActivity(intent)
             }

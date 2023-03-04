@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.kakawin
 
 import android.content.Context
 import android.content.Intent
@@ -15,7 +15,6 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.KategoriKakawinAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.KategoriKakawinModel
-import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinUserActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_kakawin.*
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh.daftar_nama
 import retrofit2.Call
@@ -209,5 +208,11 @@ class AllKategoriKakawinActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKategoriKakawinActivity, AllKakawinActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -26,6 +26,12 @@ import retrofit2.Response
 class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
     private lateinit var tabuhAdapter : AllYadnyaonKakawinAdminAdapter
     private lateinit var setAdapter   : AllYadnyaonKakawinAdminAdapter
+    private var id_kakawin : Int = 0
+    private var id_kakawin_admin : Int = 0
+    private lateinit var nama_kakawin :String
+    private lateinit var nama_kakawin_admin :String
+    private lateinit var desc_kakawin_admin :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_yadnyaon_kakawin_admin)
@@ -34,6 +40,13 @@ class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin_admin")
             val namaPost = bundle.getString("nama_kakawin_admin")
+
+            id_kakawin = postID
+            nama_kakawin = namaPost.toString()
+            id_kakawin_admin = bundle.getInt("id_kakawin_kat")
+            nama_kakawin_admin = bundle.getString("nama_kakawin_kat").toString()
+            desc_kakawin_admin = bundle.getString("desc_kakawin_kat").toString()
+            tag_user = bundle.getString("tag_user").toString()
 
             namaKakawinYadnya.text = namaPost
             allKakawinYadnyaAdmin1.layoutManager = LinearLayoutManager(applicationContext)
@@ -178,5 +191,19 @@ class AllYadnyaonKakawinAdminActivity : AppCompatActivity() {
         shimmerKakawinYadnyaAdmin.stopShimmer()
         shimmerKakawinYadnyaAdmin.visibility = View.GONE
         swipeKakawinYadnyaAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailKakawinAdminActivity::class.java)
+        bundle.putInt("id_kakawin_admin", id_kakawin)
+        bundle.putInt("id_kakawin_admin_kat", id_kakawin_admin)
+        bundle.putString("nama_kakawin_admin", nama_kakawin)
+        bundle.putString("nama_kakawin_admin_kat", nama_kakawin_admin)
+        bundle.putString("desc_kakawin_admin_kat", desc_kakawin_admin)
+        bundle.putString("tag_user", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

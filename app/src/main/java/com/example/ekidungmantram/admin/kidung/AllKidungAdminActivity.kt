@@ -75,6 +75,7 @@ class AllKidungAdminActivity : AppCompatActivity() {
                                 val intent = Intent(this@AllKidungAdminActivity, DetailKidungAdminActivity::class.java)
                                 bundle.putInt("id_kidung", result.id_post)
                                 bundle.putString("nama_kidung", result.nama_post)
+                                bundle.putString("tag_user_kidung","Admin")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -102,6 +103,7 @@ class AllKidungAdminActivity : AppCompatActivity() {
                                                 val intent = Intent(this@AllKidungAdminActivity, DetailKidungAdminActivity::class.java)
                                                 bundle.putInt("id_kidung", result.id_post)
                                                 bundle.putString("nama_kidung", result.nama_post)
+                                                bundle.putString("tag_user_kidung","Admin")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

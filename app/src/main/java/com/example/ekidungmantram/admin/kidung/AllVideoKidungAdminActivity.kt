@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataVideoKidungAdminAdapter
+import com.example.ekidungmantram.admin.kakawin.DetailKakawinAdminActivity
 import com.example.ekidungmantram.admin.kidung.AllVideoKidungAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
@@ -22,6 +23,9 @@ import retrofit2.Response
 
 class AllVideoKidungAdminActivity : AppCompatActivity() {
     private lateinit var setAdapter : AllDataVideoKidungAdminAdapter
+    private var id_kidung : Int = 0
+    private lateinit var nama_kidung :String
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_video_kidung_admin)
@@ -30,6 +34,10 @@ class AllVideoKidungAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kidung")
             val namaPost = bundle.getString("nama_kidung")
+
+            id_kidung = postID
+            nama_kidung = namaPost.toString()
+            tag_user = bundle.getString("tag_user_kidung").toString()
 
             namaKidungVideo.text = namaPost
             allVideoKidungAdmin.layoutManager = LinearLayoutManager(applicationContext)
@@ -137,5 +145,16 @@ class AllVideoKidungAdminActivity : AppCompatActivity() {
         shimmerVideoKidungAdmin.stopShimmer()
         shimmerVideoKidungAdmin.visibility = View.GONE
         swipeVideoKidungAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bundle = Bundle()
+        val intent = Intent(this, DetailKidungAdminActivity::class.java)
+        bundle.putInt("id_kidung", id_kidung)
+        bundle.putString("nama_kidung", nama_kidung)
+        bundle.putString("tag_user_kidung", tag_user)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

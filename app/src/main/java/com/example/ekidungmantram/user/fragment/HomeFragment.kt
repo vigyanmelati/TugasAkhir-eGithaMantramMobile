@@ -24,8 +24,11 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.data.CardSliderData
 import com.example.ekidungmantram.databinding.FragmentHomeBinding
 import com.example.ekidungmantram.model.*
-import com.example.ekidungmantram.user.*
+import com.example.ekidungmantram.user.kakawin.AllKategoriKakawinActivity
 import com.example.ekidungmantram.user.kidung.AllKidungActivity
+import com.example.ekidungmantram.user.kidung.DetailKidungActivity
+import com.example.ekidungmantram.user.laguanak.AllKategoriLaguAnakActivity
+import com.example.ekidungmantram.user.pupuh.AllKategoriPupuhActivity
 import com.example.ekidungmantram.user.pupuh.AllPupuhActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call

@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.laguanak
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +10,9 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllLaguAnakAdapter
-import com.example.ekidungmantram.adapter.AllPupuhAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllLaguAnakModel
-import com.example.ekidungmantram.model.AllPupuhModel
-import kotlinx.android.synthetic.main.activity_all_pupuh.*
+import com.example.ekidungmantram.user.MainActivity
 import kotlinx.android.synthetic.main.activity_alll_lagu_anak.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -146,4 +144,9 @@ class AlllLaguAnakActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AlllLaguAnakActivity, MainActivity::class.java)
+        startActivity(intent)
+    }
 }

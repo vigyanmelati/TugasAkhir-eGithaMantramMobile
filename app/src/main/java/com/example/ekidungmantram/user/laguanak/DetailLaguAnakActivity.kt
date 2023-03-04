@@ -1,10 +1,7 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.laguanak
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -17,18 +14,11 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.*
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.database.data.Dharmagita
-import com.example.ekidungmantram.database.data.Yadnya
 import com.example.ekidungmantram.database.setup.DharmagitaDb
-import com.example.ekidungmantram.database.setup.YadnyaDb
 import com.example.ekidungmantram.model.*
+import com.example.ekidungmantram.user.DetailYadnyaActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_detail_kakawin.*
-import kotlinx.android.synthetic.main.activity_detail_kidung.*
 import kotlinx.android.synthetic.main.activity_detail_lagu_anak.*
-import kotlinx.android.synthetic.main.activity_detail_yadnya.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

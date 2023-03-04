@@ -41,7 +41,7 @@ class AllKategoriKakawinAdminActivity : AppCompatActivity() {
             id_kakawin_admin = bundle.getInt("id_kakawin_admin")
             nama_kakawin_admin = bundle.getString("nama_kakawin_admin").toString()
             desc_kakawin_admin = bundle.getString("desc_kakawin_admin").toString()
-            Log.d("id_kakawin_admin", postID.toString())
+            Log.d("id_kakawin_admin_uwi", postID.toString())
 
             daftar_namaKakawinAdmin.text = "Daftar " + namaPost
             desc_kategori_kakawinAdmin.text = descPost
@@ -103,6 +103,7 @@ class AllKategoriKakawinAdminActivity : AppCompatActivity() {
                                 bundle.putInt("id_kakawin_admin_kat", id_kakawin_admin)
                                 bundle.putString("nama_kakawin_admin_kat", nama_kakawin_admin)
                                 bundle.putString("desc_kakawin_admin_kat", desc_kakawin_admin)
+                                bundle.putString("tag_user","Admin")
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
@@ -136,6 +137,7 @@ class AllKategoriKakawinAdminActivity : AppCompatActivity() {
                                                 bundle.putInt("id_kakawin_admin_kat", id_kakawin_admin)
                                                 bundle.putString("nama_kakawin_admin_kat", nama_kakawin_admin)
                                                 bundle.putString("desc_kakawin_admin_kat", desc_kakawin_admin)
+                                                bundle.putString("tag_user","Admin")
                                                 intent.putExtras(bundle)
                                                 startActivity(intent)
                                             }

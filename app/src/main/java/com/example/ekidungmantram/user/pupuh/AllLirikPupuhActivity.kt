@@ -1,4 +1,4 @@
-package com.example.ekidungmantram.user
+package com.example.ekidungmantram.user.pupuh
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -11,16 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllDataLirikPupuhAdapter
-import com.example.ekidungmantram.adapter.admin.AllDataLirikPupuhAdminAdapter
-import com.example.ekidungmantram.admin.pupuh.AddLirikPupuhAdminActivity
-import com.example.ekidungmantram.admin.pupuh.AllLirikPupuhAdminActivity
-import com.example.ekidungmantram.admin.pupuh.EditLirikPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllLirikPupuhModel
-import com.example.ekidungmantram.model.adminmodel.AllLirikPupuhAdminModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import kotlinx.android.synthetic.main.activity_all_lirik_pupuh.*
-import kotlinx.android.synthetic.main.activity_all_lirik_pupuh_admin.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

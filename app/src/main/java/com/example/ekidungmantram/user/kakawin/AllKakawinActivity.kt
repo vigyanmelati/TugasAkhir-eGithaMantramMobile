@@ -12,7 +12,7 @@ import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.AllKakawinAdapter
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.AllKakawinModel
-import com.example.ekidungmantram.user.AllKategoriKakawinActivity
+import com.example.ekidungmantram.user.MainActivity
 import kotlinx.android.synthetic.main.activity_all_kakawin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -142,5 +142,11 @@ class AllKakawinActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKakawinActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 }

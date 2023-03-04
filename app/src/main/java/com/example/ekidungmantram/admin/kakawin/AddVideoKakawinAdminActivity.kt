@@ -33,13 +33,12 @@ class AddVideoKakawinAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_video_kakawin_admin)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = "Tambah Video Sekar Agung"
 
         val bundle :Bundle ?= intent.extras
         if (bundle != null) {
             id_kakawin = bundle.getInt("id_kakawin")
-            nama_kakawin = bundle.getString("nama_kat_kakawin_admin").toString()
+            nama_kakawin = bundle.getString("nama_kakawin").toString()
         }
 
         selectImageVideoKakawinAdmin.setOnClickListener {
