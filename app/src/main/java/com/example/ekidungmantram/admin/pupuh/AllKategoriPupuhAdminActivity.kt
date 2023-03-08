@@ -10,6 +10,7 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.KategoriPupuhAdminAdapter
+import com.example.ekidungmantram.admin.laguanak.AllLaguAnakAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.KategoriPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_all_kategori_pupuh_admin.*
@@ -182,5 +183,11 @@ class AllKategoriPupuhAdminActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AllPupuhAdminActivity::class.java)
+        startActivity(intent)
     }
 }

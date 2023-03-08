@@ -153,4 +153,10 @@ class DetailVideoDharmagitaNeedApprovalActivity :  YouTubeBaseActivity() {
         shimmerVideoDharmagitaNA.visibility = View.GONE
         scrollVideoDharmagitaNA.visibility  = View.VISIBLE
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ListVideoDharmagitaNeedApprovalActivity::class.java)
+        startActivity(intent)
+    }
 }

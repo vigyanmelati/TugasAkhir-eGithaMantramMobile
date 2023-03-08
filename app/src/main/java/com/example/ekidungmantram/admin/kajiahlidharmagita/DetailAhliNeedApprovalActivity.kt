@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ekidungmantram.Constant
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailDataAdminModel
@@ -141,5 +142,11 @@ class DetailAhliNeedApprovalActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ListAhliNeedApprovalActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllKakawinAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllPupuhAdminAdapter
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AllKategoriPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllKakawinAdminModel
@@ -145,5 +146,11 @@ class AllKakawinAdminActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeAdminActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllKidungAdminAdapter
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.admin.adminmanager.AddAdminActivity
 import com.example.ekidungmantram.admin.adminmanager.DetailAdminActivity
 import com.example.ekidungmantram.api.ApiService
@@ -142,5 +143,11 @@ class AllKidungAdminActivity : AppCompatActivity() {
         shimmerKidungAdmin.stopShimmer()
         shimmerKidungAdmin.visibility = View.GONE
         swipeKidungAdmin.visibility   = View.VISIBLE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeAdminActivity::class.java)
+        startActivity(intent)
     }
 }

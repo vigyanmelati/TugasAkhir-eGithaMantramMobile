@@ -10,6 +10,7 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllPupuhAdminAdapter
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllPupuhAdminModel
 import kotlinx.android.synthetic.main.activity_all_pupuh_admin.*
@@ -141,5 +142,11 @@ class AllPupuhAdminActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeAdminActivity::class.java)
+        startActivity(intent)
     }
 }

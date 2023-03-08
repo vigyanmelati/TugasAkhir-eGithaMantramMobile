@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllDataAdminAdapter
 import com.example.ekidungmantram.adapter.user.AllDataUserAdapter
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.admin.adminmanager.DetailAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllDataAdminModel
@@ -143,5 +144,11 @@ class AllUserActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeAdminActivity::class.java)
+        startActivity(intent)
     }
 }

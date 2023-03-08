@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.admin.adminmanager.AllAdminActivity
 import com.example.ekidungmantram.admin.adminmanager.EditAdminActivity
 import com.example.ekidungmantram.api.ApiService
@@ -114,5 +115,11 @@ class DetailUserActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AllUserActivity::class.java)
+        startActivity(intent)
     }
 }

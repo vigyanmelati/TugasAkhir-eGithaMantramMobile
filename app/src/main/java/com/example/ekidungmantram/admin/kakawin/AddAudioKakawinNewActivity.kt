@@ -133,11 +133,10 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
             return false
         }
 
-//        if(linkAudioKakawinUser.text.toString().isEmpty()){
-//            layoutLinkAudioKakawinUser.isErrorEnabled = true
-//            layoutLinkAudioKakawinUser.error = "Link audio tidak boleh kosong!"
-//            return false
-//        }
+        if(audio_file_text_add_kakawin.visibility   == View.GONE){
+            Toast.makeText(this,"File audio tidak boleh kosong!",Toast.LENGTH_LONG).show()
+            return false
+        }
 
         return true
     }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.KategoriLaguAnakAdminAdapter
 import com.example.ekidungmantram.adapter.admin.KategoriPupuhAdminAdapter
+import com.example.ekidungmantram.admin.kakawin.AllKakawinAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AddPupuhAdminActivity
 import com.example.ekidungmantram.admin.pupuh.DetailPupuhAdminActivity
 import com.example.ekidungmantram.api.ApiService
@@ -187,5 +188,11 @@ class AllKategoriLaguAnakAdminActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, AllLaguAnakAdminActivity::class.java)
+        startActivity(intent)
     }
 }

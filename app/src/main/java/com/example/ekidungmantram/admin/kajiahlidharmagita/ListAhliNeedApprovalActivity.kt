@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
 import com.example.ekidungmantram.adapter.admin.AllAhliNeedApprovalAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllMantramNeedApprovalAdminAdapter
+import com.example.ekidungmantram.admin.HomeAdminActivity
 import com.example.ekidungmantram.admin.kajimantram.DetailMantramNeedApprovalActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.AllDataAdminModel
@@ -141,5 +142,11 @@ class ListAhliNeedApprovalActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeAdminActivity::class.java)
+        startActivity(intent)
     }
 }

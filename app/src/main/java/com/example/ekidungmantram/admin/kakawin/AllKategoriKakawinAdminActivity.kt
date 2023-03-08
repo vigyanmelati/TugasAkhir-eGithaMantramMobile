@@ -16,6 +16,7 @@ import com.example.ekidungmantram.admin.pupuh.DetailPupuhAdminActivity
 //import com.example.ekidungmantram.admin.kakawin.DetailKakawinAdminActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.KategoriKakawinAdminModel
+import com.example.ekidungmantram.user.kakawin.AllKakawinActivity
 import kotlinx.android.synthetic.main.activity_all_kategori_kakawin_admin.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -186,5 +187,11 @@ class AllKategoriKakawinAdminActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AllKategoriKakawinAdminActivity, AllKakawinAdminActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -143,4 +143,10 @@ class ListVideoDharmagitaNeedApprovalActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ListAllDharmagitaNotApprovalActivity::class.java)
+        startActivity(intent)
+    }
 }

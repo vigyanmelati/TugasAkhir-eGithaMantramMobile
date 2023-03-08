@@ -454,4 +454,10 @@ class DetailDharmagitaNeedApprovalActivity : AppCompatActivity() {
         shimmerDetailDharmagitaNA.visibility = View.GONE
         scrollDetailDharmagitaNA.visibility  = View.VISIBLE
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ListDharmagitaNeedApprovalActivity::class.java)
+        startActivity(intent)
+    }
 }

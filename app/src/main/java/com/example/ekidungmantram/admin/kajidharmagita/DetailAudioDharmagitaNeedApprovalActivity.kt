@@ -172,4 +172,10 @@ class DetailAudioDharmagitaNeedApprovalActivity : AppCompatActivity() {
         shimmerAudioDharmagitaNA.visibility = View.GONE
         scrollAudioDharmagitaNA.visibility = View.VISIBLE
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ListAudioDharmagitaNeedApprovalActivity::class.java)
+        startActivity(intent)
+    }
 }
