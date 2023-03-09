@@ -104,7 +104,9 @@ class DetailAudioDharmagitaNeedApprovalActivity : AppCompatActivity() {
                 result.let {
                     detailNamaAudioDharmagitaNA.text  = result.judul_audio
                     detailJenisAudioDharmagitaNA.text = result.nama_post
-                    val audio_uri = result.audio.toUri()
+                    val audio_constant = Constant.AUDIO_URL + result.audio
+                    val audio_uri = audio_constant.toUri()
+//                    val audio_uri = result.audio.toUri()
                     Log.d("audio_uri",audio_uri.toString())
                     val mediaplayer = MediaPlayer.create(this@DetailAudioDharmagitaNeedApprovalActivity,audio_uri)
                     seekbar_audio_NA.progress = 0

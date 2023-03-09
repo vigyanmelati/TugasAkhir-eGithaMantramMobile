@@ -197,9 +197,9 @@ class DetailPupuhUserActivity : AppCompatActivity() {
     private fun goBack() {
         val intent = Intent(this, AllKategoriPupuhUserActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt("id_pupuh_user", id_pupuh)
-        bundle.putString("nama_pupuh_user", nama_pupuh_user)
-        bundle.putString("desc_pupuh_user", desc_pupuh_user)
+        bundle.putInt("id_pupuh", id_pupuh)
+        bundle.putString("nama_pupuh", nama_pupuh_user)
+        bundle.putString("desc_pupuh", desc_pupuh_user)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()

@@ -26,6 +26,7 @@ import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailAudioKakawinAdminModel
 import com.example.ekidungmantram.uriToFile
 import kotlinx.android.synthetic.main.activity_edit_audio_kakawin_new.*
+import kotlinx.android.synthetic.main.activity_edit_audio_lagu_anak_new.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -179,11 +180,10 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
             return false
         }
 
-//        if(namaEditedLinkAudioKakawinUser.text.toString().isEmpty()){
-//            layoutEditedLinkAudioKakawinUser.isErrorEnabled = true
-//            layoutEditedLinkAudioKakawinUser.error = "Link audio tidak boleh kosong!"
-//            return false
-//        }
+        if(audio_file_text_edit_kakawin.visibility   == View.GONE){
+            Toast.makeText(this,"File audio tidak boleh kosong!",Toast.LENGTH_LONG).show()
+            return false
+        }
 
         return true
     }

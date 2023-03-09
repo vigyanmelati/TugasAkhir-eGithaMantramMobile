@@ -58,6 +58,8 @@ class AllLirikKakawinAdminActivity : AppCompatActivity() {
             fabLirikKakawin.setOnClickListener {
                 val intent = Intent(this, AddLirikKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
+                bundle.putString("nama_kakawin", namaPost)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

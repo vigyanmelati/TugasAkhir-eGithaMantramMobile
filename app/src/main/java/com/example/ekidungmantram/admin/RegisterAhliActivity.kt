@@ -159,4 +159,11 @@ class RegisterAhliActivity : AppCompatActivity() {
             file_ahli_text.text = file!!.name
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

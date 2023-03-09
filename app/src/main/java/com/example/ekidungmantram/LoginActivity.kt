@@ -221,5 +221,12 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 
 }

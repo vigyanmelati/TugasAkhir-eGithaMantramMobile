@@ -129,6 +129,7 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
                 val intent = Intent(this, AddLirikKakawinAdminActivity::class.java)
                 bundle.putInt("id_kakawin", postID)
                 bundle.putString("nama_kakawin", nama_kakawin)
+                bundle.putString("tag_user", tag_user)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -232,6 +233,15 @@ class DetailKakawinAdminActivity : AppCompatActivity() {
             bundle.putInt("id_kakawin_admin", id_kakawin_admin)
             bundle.putString("nama_kakawin_admin", nama_kakawin_admin)
             bundle.putString("desc_kakawin_admin", desc_kakawin_admin)
+            intent.putExtras(bundle)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, AllKategoriKakawinUserActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("id_kakawin", id_kakawin_admin)
+            bundle.putString("nama_kakawin", nama_kakawin_admin)
+            bundle.putString("desc_kakawin", desc_kakawin_admin)
             intent.putExtras(bundle)
             startActivity(intent)
             finish()

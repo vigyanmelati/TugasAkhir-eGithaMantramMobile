@@ -15,6 +15,7 @@ import retrofit2.Call
 import retrofit2.Response
 
 class AddLirikKakawinAdminActivity : AppCompatActivity() {
+    private lateinit var tag_user :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_lirik_kakawin_admin)
@@ -23,6 +24,7 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
         if (bundle!=null) {
             val postID = bundle.getInt("id_kakawin")
             val namaPost = bundle.getString("nama_kakawin")
+           tag_user = bundle.getString("tag_user").toString()
             Log.d("id_add_kakawin", postID.toString())
 
             submitLirikKakawin.setOnClickListener {
@@ -34,7 +36,9 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
             }
 
             cancelSubmitLirikKakawin.setOnClickListener {
-                goBack(postID, namaPost!!)
+                if (tag_user != null) {
+                    goBack(postID, namaPost!!, tag_user)
+                }
             }
         }
     }
@@ -48,7 +52,7 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
                 if(response.body()?.status == 200){
                     progressDialog.dismiss()
                     Toast.makeText(this@AddLirikKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                    goBack(postID, nama)
+                    goBack(postID, nama, tag_user)
                 }else{
                     progressDialog.dismiss()
                     Toast.makeText(this@AddLirikKakawinAdminActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
@@ -79,11 +83,12 @@ class AddLirikKakawinAdminActivity : AppCompatActivity() {
         return true
     }
 
-    private fun goBack(id: Int, nama: String) {
+    private fun goBack(id: Int, nama: String, tag_user:String) {
         val bundle = Bundle()
         val intent = Intent(this, AllLirikKakawinAdminActivity::class.java)
         bundle.putInt("id_kakawin", id)
         bundle.putString("nama_kakawin", nama)
+        bundle.putString("tag_user", tag_user)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()

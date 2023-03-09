@@ -25,6 +25,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.DetailAudioPupuhModel
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.uriToFile
+import kotlinx.android.synthetic.main.activity_edit_audio_kakawin_new.*
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.cancelSubmitEditedAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.layoutEditedNamaAudioPupuhUser
 import kotlinx.android.synthetic.main.activity_edit_audio_pupuh.namaEditedAudioPupuhUser
@@ -185,11 +186,10 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
             return false
         }
 
-//        if(namaEditedLinkAudioPupuhUser.text.toString().isEmpty()){
-//            layoutEditedLinkAudioPupuhUser.isErrorEnabled = true
-//            layoutEditedLinkAudioPupuhUser.error = "Link audio tidak boleh kosong!"
-//            return false
-//        }
+        if(audio_file_text_edit_pupuh.visibility   == View.GONE){
+            Toast.makeText(this,"File audio tidak boleh kosong!",Toast.LENGTH_LONG).show()
+            return false
+        }
 
         return true
     }

@@ -27,6 +27,7 @@ import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.model.adminmodel.CrudModel
 import com.example.ekidungmantram.model.adminmodel.DetailAudioLaguAnakAdminModel
 import com.example.ekidungmantram.uriToFile
+import kotlinx.android.synthetic.main.activity_edit_audio_kidung_new.*
 import kotlinx.android.synthetic.main.activity_edit_audio_lagu_anak_new.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -181,11 +182,10 @@ class EditAudioLaguAnakNewActivity : AppCompatActivity() {
             return false
         }
 
-//        if(namaEditedLinkAudioLaguAnakUser.text.toString().isEmpty()){
-//            layoutEditedLinkAudioLaguAnakUser.isErrorEnabled = true
-//            layoutEditedLinkAudioLaguAnakUser.error = "Link audio tidak boleh kosong!"
-//            return false
-//        }
+        if(audio_file_text_edit_lagu_anak.visibility   == View.GONE){
+            Toast.makeText(this,"File audio tidak boleh kosong!",Toast.LENGTH_LONG).show()
+            return false
+        }
 
         return true
     }

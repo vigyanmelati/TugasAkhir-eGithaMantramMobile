@@ -97,6 +97,11 @@ class HomeAdminActivity : AppCompatActivity() {
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
         }
 
+        if(role == "2"){
+            val nav_Menu: Menu = navView.getMenu()
+            nav_Menu.findItem(R.id.approval_dharmagita).setVisible(true)
+        }
+
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.yadnya_admin -> goToYadnya()
