@@ -3,37 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="Menu">
+    <item android:title="Menu Dharmagita">
         <menu>
             <group android:checkableBehavior="single">
-<!--                <item-->
-<!--                    android:id="@+id/tari_bali"-->
-<!--                    android:title="Tari Bali"-->
-<!--                    android:icon="@drawable/tari" />-->
-<!--                <item-->
-<!--                    android:id="@+id/tabuh"-->
-<!--                    android:title="Tabuh"-->
-<!--                    android:icon="@drawable/tabuh" />-->
-<!--                <item-->
-<!--                    android:id="@+id/gamelan_bali"-->
-<!--                    android:title="Gamelan Bali"-->
-<!--                    android:icon="@drawable/gamelan" />-->
-<!--                <item-->
-<!--                    android:id="@+id/mantram"-->
-<!--                    android:title="Mantram"-->
-<!--                    android:icon="@drawable/mantram" />-->
-<!--                <item-->
-<!--                    android:id="@+id/kidung"-->
-<!--                    android:title="Kidung"-->
-<!--                    android:icon="@drawable/kidung" />-->
-<!--                <item-->
-<!--                    android:id="@+id/gita"-->
-<!--                    android:title="@string/gita"-->
-<!--                    android:icon="@drawable/gita" />-->
-<!--                <item-->
-<!--                    android:id="@+id/prosesi_upacara"-->
-<!--                    android:title="Prosesi Upacara"-->
-<!--                    android:icon="@drawable/list" />-->
                 <item
                     android:id="@+id/sekar_agung"
                     android:title="Sekar Agung"
@@ -51,6 +23,24 @@
                     android:id="@+id/sekar_rare"
                     android:title="Sekar Rare"
                     android:icon="@drawable/gita" />
+
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Menu Upacara Yadnya">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/upacara_yadnya"
+                    android:title="Upacara Yadnya"
+                    android:icon="@drawable/ic_upacara" />
+                <item
+                    android:id="@+id/prosesi_upacara"
+                    android:title="Prosesi Upacara"
+                    android:icon="@drawable/list" />
 
             </group>
         </menu>

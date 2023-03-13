@@ -3,30 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="Menu Admin">
+    <item android:title="Kelola Data Dharmagita">
         <menu>
             <group android:checkableBehavior="single">
 
-<!--                <item-->
-<!--                    android:id="@+id/tari_bali_admin"-->
-<!--                    android:title="Data Tari Bali"-->
-<!--                    android:icon="@drawable/tari" />-->
-<!--                <item-->
-<!--                    android:id="@+id/tabuh_admin"-->
-<!--                    android:title="Data Tabuh"-->
-<!--                    android:icon="@drawable/tabuh" />-->
-<!--                <item-->
-<!--                    android:id="@+id/gamelan_bali_admin"-->
-<!--                    android:title="Data Gamelan Bali"-->
-<!--                    android:icon="@drawable/gamelan" />-->
-<!--                <item-->
-<!--                    android:id="@+id/mantram_admin"-->
-<!--                    android:title="Data Mantram"-->
-<!--                    android:icon="@drawable/mantram" />-->
-<!--                <item-->
-<!--                    android:id="@+id/approval"-->
-<!--                    android:title="Kaji Mantram"-->
-<!--                    android:icon="@drawable/approve" />-->
                 <item
                     android:id="@+id/sekar_agung_admin"
                     android:title="Data Sekar Agung"
@@ -44,6 +24,14 @@
                     android:id="@+id/sekar_rare_admin"
                     android:title="Data Sekar Rare"
                     android:icon="@drawable/gita" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Kelola Data Upacara Yadnya">
+        <menu>
+            <group android:checkableBehavior="single">
+
                 <item
                     android:id="@+id/yadnya_admin"
                     android:title="Data Upacara Yadnya"
@@ -52,22 +40,14 @@
                     android:id="@+id/prosesi_upacara_admin"
                     android:title="Data Prosesi Upacara"
                     android:icon="@drawable/list" />
-                <item
-                    android:id="@+id/approval_dharmagita"
-                    android:title="Kaji Dharmagita"
-                    android:icon="@drawable/approve" />
-<!--                <item-->
-<!--                    android:id="@+id/gita_admin"-->
-<!--                    android:title="@string/data_gita"-->
-<!--                    android:icon="@drawable/gita" />-->
-<!--                <item-->
-<!--                    android:id="@+id/gita_approve"-->
-<!--                    android:title="Kaji Dharmagita"-->
-<!--                    android:icon="@drawable/approve" />-->
-                <item
-                    android:id="@+id/approval_ahli"
-                    android:title="Kaji Ahli Dharmagita"
-                    android:icon="@drawable/ic_acc_ahli" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Kelola Data User Aplikasi">
+        <menu>
+            <group android:checkableBehavior="single">
+
                 <item
                     android:id="@+id/kelola_admin"
                     android:title="Kelola Ahli Dharmagita"
@@ -76,6 +56,22 @@
                     android:id="@+id/kelola_user"
                     android:title="Kelola Pengguna"
                     android:icon="@drawable/ic_user" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Kaji Data">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/approval_dharmagita"
+                    android:title="Kaji Dharmagita"
+                    android:icon="@drawable/approve" />
+                <item
+                    android:id="@+id/approval_ahli"
+                    android:title="Kaji Ahli Dharmagita"
+                    android:icon="@drawable/ic_acc_ahli" />
             </group>
         </menu>
     </item>

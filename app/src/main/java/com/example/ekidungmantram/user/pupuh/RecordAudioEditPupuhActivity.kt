@@ -56,11 +56,24 @@ class RecordAudioEditPupuhActivity : AppCompatActivity() {
             mr.setAudioSource(MediaRecorder.AudioSource.MIC)
             mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mr.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            mr.setMaxDuration(300000)
             mr.setOutputFile(path)
             mr.prepare()
             mr.start()
             stopAudioPupuhEdit.isEnabled = true
             startAudioPupuhEdit.isEnabled = false
+
+            mr.setOnInfoListener { mr, what, extra ->
+                if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+                    // stop the recording when the maximum duration is reached
+                    Toast.makeText(this,"Rekam audio dihentikan karena sudah melebihi durasi maksimum perekaman",Toast.LENGTH_LONG).show()
+                    mr.stop()
+                    mr.release()
+                    startAudioPupuhEdit.isEnabled = true
+                    stopAudioPupuhEdit.isEnabled = false
+                    // perform any other actions you need to do when the recording stops
+                }
+            }
         }
 
         //stop recording

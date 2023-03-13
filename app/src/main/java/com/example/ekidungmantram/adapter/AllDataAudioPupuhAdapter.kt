@@ -25,7 +25,7 @@ class AllDataAudioPupuhAdapter (private var results: ArrayList<AudioPupuhModel.D
     }
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-        val audio : ImageView = view.findViewById(R.id.audio_pupuh_baru)
+//        val audio : ImageView = view.findViewById(R.id.audio_pupuh_baru)
         val tittle : TextView = view.findViewById(R.id.title_audio_pupuh_baru)
         var editl : ImageView = view.findViewById(R.id.goToEditAudioPupuhUser)
         var delete : ImageView = view.findViewById(R.id.deleteAudioPupuhUser)
@@ -36,7 +36,7 @@ class AllDataAudioPupuhAdapter (private var results: ArrayList<AudioPupuhModel.D
         val result = results[position]
         holder.tittle.setText(result.judul_audio)
 //        Glide.with(holder.view).load(result.gambar_audio).into(holder.audio)
-        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.audio)
+//        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.audio)
         holder.editl.setOnClickListener {
             onclickEdit?.invoke(result)
         }

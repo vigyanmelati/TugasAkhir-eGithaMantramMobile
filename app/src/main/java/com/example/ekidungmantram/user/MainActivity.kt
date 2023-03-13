@@ -102,7 +102,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.sekar_rare -> goToLaguAnak()
 //                R.id.gita -> goToGita()
 //                R.id.mantram -> goToMantram()
-//                R.id.prosesi_upacara -> goToProsesi()
+                R.id.upacara_yadnya -> goToUpacaraYadnya()
+                R.id.prosesi_upacara -> goToProsesi()
                 R.id.login -> goToLogin()
                 R.id.logout_user -> goToLogout(id?.toInt())
                 R.id.about -> goToAbout()
@@ -134,7 +135,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
 
     private fun setTitleActionBar(s: String) {
@@ -187,6 +187,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+    }
+
+    private fun goToUpacaraYadnya() {
+        val intent = Intent(this, AllUpacaraYadnyaUserActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToDetailProfile() {

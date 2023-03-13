@@ -161,6 +161,19 @@ class DetailYadnyaActivity : YouTubeBaseActivity() {
                     startActivity(intent)
                     finish()
                 }
+            }else if(nama_tag_dhar == "selectYadnya"){
+                val id_yadnya = bundle.getInt("id_yadnya")
+                val nama_yadnya = bundle.getString("nama_yadnya")
+
+                backToHome.setOnClickListener {
+                    val bundle = Bundle()
+                    val intent = Intent(this, SelectedAllYadnyaUserActivity::class.java)
+                    bundle.putInt("id_yadnya", id_yadnya)
+                    bundle.putString("nama_yadnya", nama_yadnya)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    finish()
+                }
             }
 
 //            backToHome.setOnClickListener {

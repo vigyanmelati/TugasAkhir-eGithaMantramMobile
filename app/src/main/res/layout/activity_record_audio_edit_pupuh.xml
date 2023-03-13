@@ -33,6 +33,15 @@
                 android:src="@drawable/audiorecord"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"/>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Rekam Audio Anda dengan Durasi Maksimal adalah 5 Menit"
+                android:textSize="15sp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

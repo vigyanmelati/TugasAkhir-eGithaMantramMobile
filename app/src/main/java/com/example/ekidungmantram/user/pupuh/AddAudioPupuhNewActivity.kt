@@ -63,11 +63,11 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
             nama_pupuh = bundle.getString("nama_kat_pupuh_user").toString()
         }
 
-        selectImageAudioPupuhUserNew.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+//        selectImageAudioPupuhUserNew.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, REQUEST_CODE)
+//        }
 
 //        selectAudioPupuhUserNew.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -181,7 +181,7 @@ class AddAudioPupuhNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val imgUri: Uri? = data?.data
-            submitImgAudioPupuhUserNew.setImageURI(imgUri) // handle chosen image
+//            submitImgAudioPupuhUserNew.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imgUri)
         }
 

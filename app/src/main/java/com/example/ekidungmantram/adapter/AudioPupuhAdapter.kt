@@ -20,7 +20,7 @@ class AudioPupuhAdapter (val results:ArrayList<AudioPupuhModel.DataL>, val liste
     )
 
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view){
-        val gambar: ImageView = view.findViewById(R.id.audio_pupuh_img)
+//        val gambar: ImageView = view.findViewById(R.id.audio_pupuh_img)
         val title: TextView = view.findViewById(R.id.title_audio_pupuh)
     }
 
@@ -29,7 +29,7 @@ class AudioPupuhAdapter (val results:ArrayList<AudioPupuhModel.DataL>, val liste
         holder.title.setText(result.judul_audio)
 //        holder.gambar.setImageResource(result.gambar_audio)
 //        Glide.with(holder.view).load(result.gambar_audio).into(holder.gambar)
-        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.gambar)
+//        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
         }
