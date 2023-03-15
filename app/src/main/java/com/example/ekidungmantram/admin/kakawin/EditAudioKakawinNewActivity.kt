@@ -65,11 +65,11 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.title = "Edit Audio Sekar Alit"
 
-            selectEditedImageAudioKakawinUser.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, REQUEST_CODE)
-            }
+//            selectEditedImageAudioKakawinUser.setOnClickListener {
+//                val intent = Intent(Intent.ACTION_PICK)
+//                intent.type = "image/*"
+//                startActivityForResult(intent, REQUEST_CODE)
+//            }
 
             selectAudioKakawinUserNewEdit.setOnClickListener {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -120,9 +120,9 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
                     namaEditedAudioKakawinUser.setText(result.judul_audio)
                     audio_file_text_edit_kakawin.visibility   = View.VISIBLE
                     audio_file_text_edit_kakawin.text = result.audio
-                    Glide.with(this@EditAudioKakawinNewActivity)
-//                        .load(result.gambar_audio).into(submitEditedImgAudioKakawin)
-                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawinUser)
+//                    Glide.with(this@EditAudioKakawinNewActivity)
+////                        .load(result.gambar_audio).into(submitEditedImgAudioKakawin)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKakawinUser)
                 }
             }
 
@@ -193,7 +193,7 @@ class EditAudioKakawinNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitEditedImgAudioKakawinUser.setImageURI(imgUri) // handle chosen image
+//            submitEditedImgAudioKakawinUser.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUDIO) {

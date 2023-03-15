@@ -66,11 +66,11 @@ class AddAudioKidungNewActivity : AppCompatActivity() {
             nama_kidung = bundle.getString("nama_kidung").toString()
         }
 
-        selectImageAudioKidungUserNew.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+//        selectImageAudioKidungUserNew.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, REQUEST_CODE)
+//        }
 
 //        selectAudioKidungUserNew.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -148,7 +148,7 @@ class AddAudioKidungNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val imgUri: Uri? = data?.data
-            submitImgAudioKidungUserNew.setImageURI(imgUri) // handle chosen image
+//            submitImgAudioKidungUserNew.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imgUri)
         }
 

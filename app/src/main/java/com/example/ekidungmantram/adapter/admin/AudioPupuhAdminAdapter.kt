@@ -30,7 +30,7 @@ class AudioPupuhAdminAdapter (val results:ArrayList<AudioPupuhAdminModel.DataL>,
         holder.title.setText(result.judul_audio)
 //        holder.gambar.setImageResource(result.gambar_audio)
 //        Glide.with(holder.view).load(result.gambar_audio).into(holder.gambar)
-        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.gambar)
+//        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.gambar)
         holder.view.setOnClickListener{
             listener.onClick(result)
         }

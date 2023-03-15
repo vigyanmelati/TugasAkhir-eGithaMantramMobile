@@ -35,7 +35,7 @@ class AllDataAudioPupuhAdminAdapter (private var results: ArrayList<AudioPupuhAd
         val result = results[position]
         holder.tittle.setText(result.judul_audio)
 //        Glide.with(holder.view).load(result.gambar_audio).into(holder.audio)
-        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.audio)
+//        Glide.with(holder.view).load(Constant.IMAGE_URL + result.gambar_audio).into(holder.audio)
         holder.editl.setOnClickListener {
             onclickEdit?.invoke(result)
         }

@@ -157,13 +157,13 @@ class AudioLaguAnakActivity : AppCompatActivity() {
 //                    deskripsiAudioLaguAnak.text = result.deskripsi
                     detailNamaAudioLaguAnak.text = result.judul_audio
                     detailJenisAudioLaguAnak.text = "Sekar Rare"
-                    if (result.gambar_audio != null) {
-                        Glide.with(this@AudioLaguAnakActivity)
-                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioLaguAnak)
-//                            .load(result.gambar).into(imageAudioLaguAnak)
-                    } else {
-                        imageAudioLaguAnak.setImageResource(R.drawable.sample_image_yadnya)
-                    }
+//                    if (result.gambar_audio != null) {
+//                        Glide.with(this@AudioLaguAnakActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioLaguAnak)
+////                            .load(result.gambar).into(imageAudioLaguAnak)
+//                    } else {
+                        imageAudioLaguAnak.setImageResource(R.drawable.music)
+//                    }
 //                    playYoutubeVideo(result.video)
                 }
                 setShimmerToStop()

@@ -64,11 +64,11 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
             nama_kakawin = bundle.getString("nama_kakawin").toString()
         }
 
-        selectImageAudioKakawinUserNew.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+//        selectImageAudioKakawinUserNew.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, REQUEST_CODE)
+//        }
 
 //        selectAudioKakawinUserNew.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -146,7 +146,7 @@ class AddAudioKakawinNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val imgUri: Uri? = data?.data
-            submitImgAudioKakawinUserNew.setImageURI(imgUri) // handle chosen image
+//            submitImgAudioKakawinUserNew.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imgUri)
         }
 

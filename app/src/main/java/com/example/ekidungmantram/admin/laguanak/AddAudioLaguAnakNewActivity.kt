@@ -64,11 +64,11 @@ class AddAudioLaguAnakNewActivity : AppCompatActivity() {
             nama_lagu_anak = bundle.getString("nama_lagu_anak").toString()
         }
 
-        selectImageAudioLaguAnakUserNew.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+//        selectImageAudioLaguAnakUserNew.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, REQUEST_CODE)
+//        }
 
 //        selectAudioLaguAnakUserNew.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -146,7 +146,7 @@ class AddAudioLaguAnakNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val imgUri: Uri? = data?.data
-            submitImgAudioLaguAnakUserNew.setImageURI(imgUri) // handle chosen image
+//            submitImgAudioLaguAnakUserNew.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imgUri)
         }
 

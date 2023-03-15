@@ -153,13 +153,13 @@ class AudioPupuhActivity : AppCompatActivity() {
                 result.let {
                     detailNamaAudioPupuh.text  = result.judul_audio
                     detailJenisAudioPupuh.text = "Sekar Alit "
-                    if(result.gambar_audio != null) {
-                        Glide.with(this@AudioPupuhActivity)
-//                            .load(result.gambar).into(imageAudioPupuh)
-                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioPupuh)
-                    }else{
-                        imageAudioPupuh.setImageResource(R.drawable.sample_image_yadnya)
-                    }
+//                    if(result.gambar_audio != null) {
+//                        Glide.with(this@AudioPupuhActivity)
+////                            .load(result.gambar).into(imageAudioPupuh)
+//                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioPupuh)
+//                    }else{
+                        imageAudioPupuh.setImageResource(R.drawable.music)
+//                    }
 //                    playYoutubeVideo(result.video)
                 }
                 setShimmerToStop()

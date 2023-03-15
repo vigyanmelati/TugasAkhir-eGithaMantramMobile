@@ -71,11 +71,11 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.title = "Edit Audio Sekar Alit"
 
-            selectEditedImageAudioPupuhUser.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, REQUEST_CODE)
-            }
+//            selectEditedImageAudioPupuhUser.setOnClickListener {
+//                val intent = Intent(Intent.ACTION_PICK)
+//                intent.type = "image/*"
+//                startActivityForResult(intent, REQUEST_CODE)
+//            }
 
             selectAudioPupuhUserNewEdit.setOnClickListener {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -126,9 +126,9 @@ class EditAudioPupuhNewActivity : AppCompatActivity() {
                     namaEditedAudioPupuhUser.setText(result.judul_audio)
                     audio_file_text_edit_pupuh.visibility   = View.VISIBLE
                     audio_file_text_edit_pupuh.text = result.audio
-                    Glide.with(this@EditAudioPupuhNewActivity)
-//                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
-                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuhUser)
+//                    Glide.with(this@EditAudioPupuhNewActivity)
+////                        .load(result.gambar_audio).into(submitEditedImgAudioPupuh)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioPupuhUser)
                 }
             }
 

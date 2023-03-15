@@ -124,7 +124,7 @@ class AudioKidungActivity : AppCompatActivity() {
 //                            .load(Constant.IMAGE_URL + result.gambar).into(imageAudioKidung)
 ////                            .load(result.gambar).into(imageAudioKidung)
 //                    }else{
-//                        imageAudioKidung.setImageResource(R.drawable.sample_image_yadnya)
+                        imageAudioKidung.setImageResource(R.drawable.music)
 //                    }
 //                    playYoutubeVideo(result.video)
                 }

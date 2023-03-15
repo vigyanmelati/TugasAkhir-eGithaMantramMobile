@@ -156,13 +156,13 @@ class AudioKakawinActivity : AppCompatActivity() {
 //                    deskripsiAudioKakawin.text   = result.deskripsi
                     detailNamaAudioKakawin.text  = result.judul_audio
                     detailJenisAudioKakawin.text = "Sekar Agung "
-                    if(result.gambar_audio != null) {
-                        Glide.with(this@AudioKakawinActivity)
-                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioKakawin)
-//                            .load(result.gambar).into(imageAudioKakawin)
-                    }else{
-                        imageAudioKakawin.setImageResource(R.drawable.sample_image_yadnya)
-                    }
+//                    if(result.gambar_audio != null) {
+//                        Glide.with(this@AudioKakawinActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioKakawin)
+////                            .load(result.gambar).into(imageAudioKakawin)
+//                    }else{
+                        imageAudioKakawin.setImageResource(R.drawable.music)
+//                    }
 //                    playYoutubeVideo(result.video)
                 }
                 setShimmerToStop()

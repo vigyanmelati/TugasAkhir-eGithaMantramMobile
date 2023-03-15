@@ -47,12 +47,12 @@ class AllAudioDharmagitaNeedApprovalAdminAdapter  (private var results: ArrayLis
 //                jenis.text = "Dharmagita"
 //            }
             nama_post.text = data.nama_post
-            if(data.gambar_audio != null){
-                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar_audio).into(gambar)
-//                Glide.with(itemView).load(data.gambar_audio).into(gambar)
-            }else{
-                gambar.setImageResource(R.drawable.meditation)
-            }
+//            if(data.gambar_audio != null){
+//                Glide.with(itemView).load(Constant.IMAGE_URL + data.gambar_audio).into(gambar)
+////                Glide.with(itemView).load(data.gambar_audio).into(gambar)
+//            }else{
+                gambar.setImageResource(R.drawable.music)
+//            }
         }
 
     }

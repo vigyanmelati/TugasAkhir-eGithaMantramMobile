@@ -67,11 +67,11 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.title = "Edit Audio Sekar Madya"
 
-            selectEditedImageAudioKidungUser.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, REQUEST_CODE)
-            }
+//            selectEditedImageAudioKidungUser.setOnClickListener {
+//                val intent = Intent(Intent.ACTION_PICK)
+//                intent.type = "image/*"
+//                startActivityForResult(intent, REQUEST_CODE)
+//            }
 
             selectAudioKidungUserNewEdit.setOnClickListener {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -122,9 +122,9 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
                     namaEditedAudioKidungUser.setText(result.judul_audio)
                     audio_file_text_edit_kidung.visibility   = View.VISIBLE
                     audio_file_text_edit_kidung.text = result.audio
-                    Glide.with(this@EditAudioKidungNewActivity)
-//                        .load(result.gambar_audio).into(submitEditedImgAudioKidung)
-                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKidungUser)
+//                    Glide.with(this@EditAudioKidungNewActivity)
+////                        .load(result.gambar_audio).into(submitEditedImgAudioKidung)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioKidungUser)
                 }
             }
 
@@ -195,7 +195,7 @@ class EditAudioKidungNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitEditedImgAudioKidungUser.setImageURI(imgUri) // handle chosen image
+//            submitEditedImgAudioKidungUser.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUDIO) {

@@ -146,13 +146,13 @@ class DetailAudioDharmagitaNeedApprovalActivity : AppCompatActivity() {
                         play_btn_NA.setImageResource(R.drawable.ic_play)
                         seekbar_audio_NA.progress = 0
                     }
-                    if(result.gambar_audio != null) {
-                        Glide.with(this@DetailAudioDharmagitaNeedApprovalActivity)
-                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioDharmagitaNA)
-//                            .load(result.gambar_audio).into(imageAudioDharmagitaNA)
-                    }else{
-                        imageAudioDharmagitaNA.setImageResource(R.drawable.sample_image_yadnya)
-                    }
+//                    if(result.gambar_audio != null) {
+//                        Glide.with(this@DetailAudioDharmagitaNeedApprovalActivity)
+//                            .load(Constant.IMAGE_URL + result.gambar_audio).into(imageAudioDharmagitaNA)
+////                            .load(result.gambar_audio).into(imageAudioDharmagitaNA)
+//                    }else{
+                        imageAudioDharmagitaNA.setImageResource(R.drawable.music)
+//                    }
 //                    playYoutubeVideo(result.video)
                 }
                 setShimmerToStop()

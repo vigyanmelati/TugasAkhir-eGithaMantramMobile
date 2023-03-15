@@ -67,11 +67,11 @@ class EditAudioLaguAnakNewActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.title = "Edit Audio Sekar Alit"
 
-            selectEditedImageAudioLaguAnakUser.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, REQUEST_CODE)
-            }
+//            selectEditedImageAudioLaguAnakUser.setOnClickListener {
+//                val intent = Intent(Intent.ACTION_PICK)
+//                intent.type = "image/*"
+//                startActivityForResult(intent, REQUEST_CODE)
+//            }
 
             selectAudioLaguAnakUserNewEdit.setOnClickListener {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -122,9 +122,9 @@ class EditAudioLaguAnakNewActivity : AppCompatActivity() {
                     namaEditedAudioLaguAnakUser.setText(result.judul_audio)
                     audio_file_text_edit_lagu_anak.visibility   = View.VISIBLE
                     audio_file_text_edit_lagu_anak.text = result.audio
-                    Glide.with(this@EditAudioLaguAnakNewActivity)
-//                        .load(result.gambar_audio).into(submitEditedImgAudioLaguAnak)
-                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioLaguAnakUser)
+//                    Glide.with(this@EditAudioLaguAnakNewActivity)
+////                        .load(result.gambar_audio).into(submitEditedImgAudioLaguAnak)
+//                        .load(Constant.IMAGE_URL+result.gambar_audio).into(submitEditedImgAudioLaguAnakUser)
                 }
             }
 
@@ -195,7 +195,7 @@ class EditAudioLaguAnakNewActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             val imgUri: Uri? = data?.data
-            submitEditedImgAudioLaguAnakUser.setImageURI(imgUri) // handle chosen image
+//            submitEditedImgAudioLaguAnakUser.setImageURI(imgUri) // handle chosen image
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver,imgUri)
         }
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUDIO) {
