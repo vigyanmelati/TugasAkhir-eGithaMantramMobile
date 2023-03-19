@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ekidungmantram.R
+import com.example.ekidungmantram.adapter.AllDharmagitaHomeAdapter
+import com.example.ekidungmantram.adapter.AllDharmagitaUserAdapter
 import com.example.ekidungmantram.adapter.admin.AllDharmagitaAdminAdapter
 import com.example.ekidungmantram.adapter.admin.AllYadnyaHomeAdminAdapter
 import com.example.ekidungmantram.admin.ListYadnyaAdminActivity
@@ -27,9 +29,11 @@ import com.example.ekidungmantram.admin.laguanak.AllLaguAnakAdminActivity
 import com.example.ekidungmantram.admin.pupuh.AllPupuhAdminActivity
 import com.example.ekidungmantram.admin.upacarayadnya.SelectedAllYadnyaAdminActivity
 import com.example.ekidungmantram.api.ApiService
+import com.example.ekidungmantram.model.AllDharmagitaHomePenggunaModel
 import com.example.ekidungmantram.model.adminmodel.AllDharmagitaHomeAdminModel
 import com.example.ekidungmantram.model.adminmodel.AllYadnyaHomeAdminModel
 import com.example.ekidungmantram.model.adminmodel.JumlahModel
+import com.example.ekidungmantram.user.AllDharmagitaCreatedActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home_admin.*
 import retrofit2.Call
@@ -40,6 +44,8 @@ import retrofit2.Response
 class HomeAdminFragment : Fragment() {
     private lateinit var yadnyaAdapter     : AllYadnyaHomeAdminAdapter
     private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var yadnya1Adapter     : AllDharmagitaHomeAdapter
+    private var id_admin : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +64,7 @@ class HomeAdminFragment : Fragment() {
         sharedPreferences = getActivity()!!.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val nama          = sharedPreferences.getString("NAMA", null)
         val role          = sharedPreferences.getString("ROLE", null)
+        id_admin         = sharedPreferences.getInt("ID_ADMIN_INT", 0)
         namaAdmin.text    = "Selamat Datang, $nama!"
 
         if(role != "1"){
@@ -170,15 +177,15 @@ class HomeAdminFragment : Fragment() {
             })
     }
 
-//    private fun getAdminHomeDharmagitaApprovalData() {
-//        ApiService.endpoint.getDharmagitaApprovalAdminHomeList()
-//            .enqueue(object: Callback<JumlahModel> {
+
+//    private fun getAdminHomeDharmagitaData() {
+//        ApiService.endpoint.getDharmagitaAdminHomeList()
+//            .enqueue(object: Callback<ArrayList<AllDharmagitaHomeAdminModel>> {
 //                override fun onResponse(
-//                    call: Call<JumlahModel>,
-//                    response: Response<JumlahModel>
+//                    call: Call<ArrayList<AllDharmagitaHomeAdminModel>>,
+//                    response: Response<ArrayList<AllDharmagitaHomeAdminModel>>
 //                ) {
-//                    val datalist   = response.body()?.jumlah
-//                    Log.d("approve", datalist.toString())
+//                    val datalist   = response.body()
 //                    if(datalist != null){
 //                        swipeAdmin.visibility = View.VISIBLE
 //                        shimmerHomeAdmin.visibility = View.GONE
@@ -186,11 +193,35 @@ class HomeAdminFragment : Fragment() {
 //                        swipeAdmin.visibility = View.GONE
 //                        shimmerHomeAdmin.visibility = View.VISIBLE
 //                    }
-//                    approve.text = datalist.toString()
+//                    yadnyaAdapter = datalist?.let { AllYadnyaHomeAdminAdapter(it,
+//                        object : AllYadnyaHomeAdminAdapter.OnAdapterAllYadnyaHomeAdminListener{
+//                            override fun onClick(result: AllDharmagitaHomeAdminModel) {
+//                                if(result.nama_post == "Sekar Agung"){
+//                                    val intent = Intent(activity, AllKakawinAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_post == "Sekar Madya"){
+//                                    val intent = Intent(activity, AllKidungAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_post == "Sekar Alit"){
+//                                    val intent = Intent(activity, AllPupuhAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_post == "Sekar Rare"){
+//                                    val intent = Intent(activity, AllLaguAnakAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }
+////                                val bundle = Bundle()
+////                                val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
+////                                bundle.putInt("id_dharmagita", result.id_kategori)
+////                                intent.putExtras(bundle)
+////                                startActivity(intent)
+//                            }
+//                        }) }!!
+//
+//                    yadnyaAdminHome.adapter = yadnyaAdapter
 //                    setShimmerToStop()
 //                }
 //
-//                override fun onFailure(call: Call<JumlahModel>, t: Throwable) {
+//                override fun onFailure(call: Call<ArrayList<AllDharmagitaHomeAdminModel>>, t: Throwable) {
 //                    Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
 //                    setShimmerToStop()
 //                }
@@ -198,12 +229,12 @@ class HomeAdminFragment : Fragment() {
 //            })
 //    }
 
-    private fun getAdminHomeDharmagitaData() {
-        ApiService.endpoint.getDharmagitaAdminHomeList()
-            .enqueue(object: Callback<ArrayList<AllDharmagitaHomeAdminModel>> {
+        private fun getAdminHomeDharmagitaData() {
+        ApiService.endpoint.getDharmagitaPenggunaHomeList(id_admin)
+            .enqueue(object: Callback<ArrayList<AllDharmagitaHomePenggunaModel>> {
                 override fun onResponse(
-                    call: Call<ArrayList<AllDharmagitaHomeAdminModel>>,
-                    response: Response<ArrayList<AllDharmagitaHomeAdminModel>>
+                    call: Call<ArrayList<AllDharmagitaHomePenggunaModel>>,
+                    response: Response<ArrayList<AllDharmagitaHomePenggunaModel>>
                 ) {
                     val datalist   = response.body()
                     if(datalist != null){
@@ -213,41 +244,44 @@ class HomeAdminFragment : Fragment() {
                         swipeAdmin.visibility = View.GONE
                         shimmerHomeAdmin.visibility = View.VISIBLE
                     }
-                    yadnyaAdapter = datalist?.let { AllYadnyaHomeAdminAdapter(it,
-                        object : AllYadnyaHomeAdminAdapter.OnAdapterAllYadnyaHomeAdminListener{
-                            override fun onClick(result: AllDharmagitaHomeAdminModel) {
-                                if(result.nama_post == "Sekar Agung"){
-                                    val intent = Intent(activity, AllKakawinAdminActivity::class.java)
-                                    startActivity(intent)
-                                }else if(result.nama_post == "Sekar Madya"){
-                                    val intent = Intent(activity, AllKidungAdminActivity::class.java)
-                                    startActivity(intent)
-                                }else if(result.nama_post == "Sekar Alit"){
-                                    val intent = Intent(activity, AllPupuhAdminActivity::class.java)
-                                    startActivity(intent)
-                                }else if(result.nama_post == "Sekar Rare"){
-                                    val intent = Intent(activity, AllLaguAnakAdminActivity::class.java)
-                                    startActivity(intent)
-                                }
-//                                val bundle = Bundle()
-//                                val intent = Intent(activity, SelectedAllYadnyaAdminActivity::class.java)
-//                                bundle.putInt("id_dharmagita", result.id_kategori)
-//                                intent.putExtras(bundle)
-//                                startActivity(intent)
+                    yadnya1Adapter = datalist?.let { AllDharmagitaHomeAdapter(it,
+                        object : AllDharmagitaHomeAdapter.OnAdapterAllDharmagitaHomePenggunaListener{
+                            override fun onClick(result: AllDharmagitaHomePenggunaModel) {
+//                                if(result.nama_tag == "Sekar Agung"){
+//                                    val intent = Intent(activity, AllKakawinAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_tag == "Sekar Madya"){
+//                                    val intent = Intent(activity, AllKidungAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_tag == "Sekar Alit"){
+//                                    val intent = Intent(activity, AllPupuhAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }else if(result.nama_tag == "Sekar Rare"){
+//                                    val intent = Intent(activity, AllLaguAnakAdminActivity::class.java)
+//                                    startActivity(intent)
+//                                }
+                                val bundle = Bundle()
+                                val intent = Intent(activity, AllDharmagitaCreatedActivity::class.java)
+                                bundle.putInt("id_dharmagita", result.id_tag)
+                                bundle.putInt("id_user", id_admin)
+                                intent.putExtras(bundle)
+                                startActivity(intent)
                             }
                         }) }!!
 
-                    yadnyaAdminHome.adapter = yadnyaAdapter
+                    yadnyaAdminHome.adapter = yadnya1Adapter
                     setShimmerToStop()
                 }
 
-                override fun onFailure(call: Call<ArrayList<AllDharmagitaHomeAdminModel>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<AllDharmagitaHomePenggunaModel>>, t: Throwable) {
                     Toast.makeText(activity, "No Connection", Toast.LENGTH_SHORT).show()
                     setShimmerToStop()
                 }
 
             })
     }
+
+
 
     private fun setShimmerToStop() {
         shimmerHomeAdmin.stopShimmer()

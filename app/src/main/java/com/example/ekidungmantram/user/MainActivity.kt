@@ -24,6 +24,7 @@ import com.example.ekidungmantram.admin.adminmanager.DetailProfileActivity
 import com.example.ekidungmantram.api.ApiService
 import com.example.ekidungmantram.databinding.ActivityMainBinding
 import com.example.ekidungmantram.model.AdminModel
+import com.example.ekidungmantram.user.fragment.DashboardFragment
 import com.example.ekidungmantram.user.fragment.HomeFragment
 import com.example.ekidungmantram.user.fragment.ListYadnyaFragment
 import com.example.ekidungmantram.user.fragment.SearchFragment
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private val homeFragment                = HomeFragment()
     private val searchFragment              = SearchFragment()
     private val listYadnya                  = ListYadnyaFragment()
+    private val dashboard                  = DashboardFragment()
     private val fm: FragmentManager         = supportFragmentManager
     private var active : Fragment           = homeFragment
     private lateinit var sharedPreferences: SharedPreferences
@@ -55,9 +57,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setTitleActionBar("Beranda")
 
-        fm.beginTransaction().add(R.id.fragment_container, listYadnya).hide(listYadnya).commit()
-        fm.beginTransaction().add(R.id.fragment_container, searchFragment).hide(searchFragment).commit()
-        fm.beginTransaction().add(R.id.fragment_container,homeFragment).commit()
+//        fm.beginTransaction().add(R.id.fragment_container, listYadnya).hide(listYadnya).commit()
+//        fm.beginTransaction().add(R.id.fragment_container, searchFragment).hide(searchFragment).commit()
+//        fm.beginTransaction().add(R.id.fragment_container, dashboard).hide(dashboard).commit()
+//        fm.beginTransaction().add(R.id.fragment_container,homeFragment).commit()
 
         val drawerLayout : DrawerLayout    = binding.appDrawer
         val navView : NavigationView       = binding.navView
@@ -71,6 +74,32 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        botView.setOnNavigationItemSelectedListener{
+            when (it.itemId) {
+                R.id.home -> {
+                    fm.beginTransaction().hide(active).show(homeFragment).commit()
+                    active = homeFragment
+                    setTitleActionBar("Beranda")
+                }
+                R.id.cari -> {
+                    fm.beginTransaction().hide(active).show(searchFragment).commit()
+                    active = searchFragment
+                    setTitleActionBar("Cari Dharmagita")
+                }
+                R.id.list_yadnya -> {
+                    fm.beginTransaction().hide(active).show(listYadnya).commit()
+                    active = listYadnya
+                    setTitleActionBar("Dharmagita Ditandai")
+                }
+                R.id.dashboard -> {
+                    fm.beginTransaction().hide(active).show(dashboard).commit()
+                    active = dashboard
+                    setTitleActionBar("Dashboard Pengguna")
+                }
+            }
+            true
+        }
+
         sharedPreferences = this.getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         val role          = sharedPreferences.getString("ROLE", null)
         val id            = sharedPreferences.getString("ID_ADMIN", null)
@@ -83,12 +112,24 @@ class MainActivity : AppCompatActivity() {
             nav_Menu.findItem(R.id.logout_user).setVisible(true)
             nav_Menu.findItem(R.id.login).setVisible(false)
             nav_Menu.findItem(R.id.profile).setVisible(true)
+            val bot_Menu: Menu = botView.getMenu()
+            bot_Menu.findItem(R.id.dashboard).setVisible(true)
 //            nav_Menu.findItem(R.id.gita_approve).setVisible(false)
+            fm.beginTransaction().add(R.id.fragment_container, listYadnya).hide(listYadnya).commit()
+            fm.beginTransaction().add(R.id.fragment_container, searchFragment).hide(searchFragment).commit()
+            fm.beginTransaction().add(R.id.fragment_container, dashboard).commit()
+            fm.beginTransaction().add(R.id.fragment_container,homeFragment).hide(homeFragment).commit()
         }else{
             val nav_Menu: Menu = navView.getMenu()
             nav_Menu.findItem(R.id.logout_user).setVisible(false)
             nav_Menu.findItem(R.id.login).setVisible(true)
             nav_Menu.findItem(R.id.profile).setVisible(false)
+            val bot_Menu: Menu = botView.getMenu()
+            bot_Menu.findItem(R.id.dashboard).setVisible(false)
+            fm.beginTransaction().add(R.id.fragment_container, listYadnya).hide(listYadnya).commit()
+            fm.beginTransaction().add(R.id.fragment_container, searchFragment).hide(searchFragment).commit()
+            fm.beginTransaction().add(R.id.fragment_container, dashboard).hide(dashboard).commit()
+            fm.beginTransaction().add(R.id.fragment_container,homeFragment).commit()
         }
 
         navView.setNavigationItemSelectedListener {
@@ -113,26 +154,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        botView.setOnNavigationItemSelectedListener{
-            when (it.itemId) {
-                R.id.home -> {
-                    fm.beginTransaction().hide(active).show(homeFragment).commit()
-                    active = homeFragment
-                    setTitleActionBar("Beranda")
-                }
-                R.id.cari -> {
-                    fm.beginTransaction().hide(active).show(searchFragment).commit()
-                    active = searchFragment
-                    setTitleActionBar("Cari Dharmagita")
-                }
-                R.id.list_yadnya -> {
-                    fm.beginTransaction().hide(active).show(listYadnya).commit()
-                    active = listYadnya
-                    setTitleActionBar("Dharmagita Ditandai")
-                }
-            }
-            true
-        }
+
 
     }
 

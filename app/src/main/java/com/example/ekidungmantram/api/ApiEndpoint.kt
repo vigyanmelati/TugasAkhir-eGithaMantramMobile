@@ -1351,7 +1351,10 @@ interface ApiEndpoint {
     fun getDetailVideoDharmagita(@Path("id_video") id: Int) : Call<VideoDharmagitaModel>
     @GET("detailaudiodharmagita/{id_audio}")
     fun getDetailAudioDharmagita(@Path("id_audio") id: Int) : Call<AudioDharmagitaModel>
-
+    @GET("listjumlahdharmagitauser1/{id_user}")
+    fun getDharmagitaPenggunaHomeList(@Path("id_user") id: Int): Call<ArrayList<AllDharmagitaHomePenggunaModel>>
+    @GET("listdharmagitauser/{id_user}/{id_dharmagita}}")
+    fun getListDharmagitaUser(@Path("id_user") id: Int, @Path("id_dharmagita") id_dharmagita: Int) : Call<ArrayList<AllDharmagitaUserModel>>
 
     //Pupuh
     @GET("listallpupuh")

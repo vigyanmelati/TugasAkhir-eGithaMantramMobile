@@ -169,7 +169,7 @@
                             android:layout_marginTop="25dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Jumlah Data"
+                            android:text="Jumlah Data yang Telah Ditambahkan"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/grey_200"/>

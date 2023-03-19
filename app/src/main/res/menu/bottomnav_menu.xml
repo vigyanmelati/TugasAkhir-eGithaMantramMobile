@@ -15,4 +15,9 @@
         android:icon="@drawable/bookmark_list"
         android:title="Dharmagita Ditandai"/>
 
+    <item
+        android:id="@+id/dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard" />
+
 </menu>
