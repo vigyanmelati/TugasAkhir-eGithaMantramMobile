@@ -330,8 +330,9 @@ class HomeFragment : Fragment() {
                     binding.nodatayadnya.visibility  = View.GONE
                 }
 
+
                 override fun onFailure(call: Call<NewDharmagitaModel>, t: Throwable) {
-                    printLog("on failure: $t")
+                    printLog("on failure dhar: $t")
                 }
 
             })

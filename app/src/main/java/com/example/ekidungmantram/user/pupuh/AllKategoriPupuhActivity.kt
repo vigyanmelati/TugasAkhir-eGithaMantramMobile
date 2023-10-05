@@ -46,6 +46,8 @@ class AllKategoriPupuhActivity : AppCompatActivity() {
             }
             if (descPost != null) {
                 desc_pupuh_kat = descPost
+            }else {
+                desc_pupuh_kat ="-"
             }
 
             daftar_nama.text = "Daftar " + namaPost
